@@ -1,0 +1,35 @@
+{
+  "name": "pbkdf2-compat",
+  "version": "2.0.1",
+  "description": "Provides the functionality of PBKDF2 with the ability to use any natively supported Node crypto hashing algorithm.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "istanbul": "^0.3.2"
+  },
+  "scripts": {
+    "coverage": "istanbul cover mocha -- test/*.js",
+    "test": "istanbul test mocha -- --reporter list test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcousens/pbkdf2-compat.git"
+  },
+  "keywords": [
+    "pbkdf2",
+    "kdf",
+    "salt",
+    "hash"
+  ],
+  "author": "Daniel Cousens",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dcousens/pbkdf2-compat/issues"
+  },
+  "homepage": "https://github.com/dcousens/pbkdf2-compat",
+  "_from": "pbkdf2-compat@2.0.1",
+  "_resolved": "http://registry.npm.taobao.org/pbkdf2-compat/download/pbkdf2-compat-2.0.1.tgz"
+}

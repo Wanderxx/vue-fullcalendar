@@ -1,0 +1,34 @@
+{
+  "name": "detective",
+  "description": "find all require() calls by walking the AST",
+  "version": "4.3.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/substack/node-detective.git"
+  },
+  "main": "index.js",
+  "keywords": [
+    "require",
+    "source",
+    "analyze",
+    "ast"
+  ],
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "dependencies": {
+    "acorn": "^1.0.3",
+    "defined": "^1.0.0"
+  },
+  "devDependencies": {
+    "tap": "^1.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net"
+  },
+  "_from": "detective@4.3.1",
+  "_resolved": "http://registry.npm.taobao.org/detective/download/detective-4.3.1.tgz"
+}

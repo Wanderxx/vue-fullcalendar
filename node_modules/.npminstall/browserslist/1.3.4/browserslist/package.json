@@ -1,0 +1,26 @@
+{
+  "name": "browserslist",
+  "version": "1.3.4",
+  "description": "Get browsers versions that matches given criterias like in Autoprefixer",
+  "keywords": [
+    "caniuse",
+    "browsers"
+  ],
+  "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "license": "MIT",
+  "repository": "ai/browserslist",
+  "dependencies": {
+    "caniuse-db": "^1.0.30000488"
+  },
+  "bin": "./cli.js",
+  "devDependencies": {
+    "eslint-config-postcss": "2.0.2",
+    "eslint": "2.13.1",
+    "ava": "0.15.2"
+  },
+  "scripts": {
+    "test": "ava && eslint *.js test/*.js"
+  },
+  "_from": "browserslist@1.3.4",
+  "_resolved": "http://registry.npm.taobao.org/browserslist/download/browserslist-1.3.4.tgz"
+}

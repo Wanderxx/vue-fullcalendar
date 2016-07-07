@@ -1,0 +1,58 @@
+{
+  "name": "ansi-regex",
+  "version": "2.0.0",
+  "description": "Regular expression for matching ANSI escape codes",
+  "license": "MIT",
+  "repository": "sindresorhus/ansi-regex",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "maintainers": [
+    "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)",
+    "Joshua Appelman <jappelman@xebia.com> (jbnicolai.com)"
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha test/test.js",
+    "view-supported": "node test/viewCodes.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "ansi",
+    "styles",
+    "color",
+    "colour",
+    "colors",
+    "terminal",
+    "console",
+    "cli",
+    "string",
+    "tty",
+    "escape",
+    "formatting",
+    "rgb",
+    "256",
+    "shell",
+    "xterm",
+    "command-line",
+    "text",
+    "regex",
+    "regexp",
+    "re",
+    "match",
+    "test",
+    "find",
+    "pattern"
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "_from": "ansi-regex@2.0.0",
+  "_resolved": "http://registry.npm.taobao.org/ansi-regex/download/ansi-regex-2.0.0.tgz"
+}

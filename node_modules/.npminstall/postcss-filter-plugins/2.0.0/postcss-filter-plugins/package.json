@@ -1,0 +1,41 @@
+{
+  "name": "postcss-filter-plugins",
+  "version": "2.0.0",
+  "description": "Exclude/warn on duplicated PostCSS plugins.",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "babel src --out-dir dist --ignore /__tests__/",
+    "test-unformatted": "babel-tape-runner \"src/**/__tests__/*.js\"",
+    "test": "npm run test-unformatted | tap-spec"
+  },
+  "files": [
+    "LICENSE-MIT",
+    "dist"
+  ],
+  "keywords": [
+    "css",
+    "postcss",
+    "postcss-plugin"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-tape-runner": "^1.2.0",
+    "postcss-minify-font-weight": "^1.0.1",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.0"
+  },
+  "homepage": "https://github.com/postcss/postcss-filter-plugins",
+  "author": {
+    "name": "Ben Briggs",
+    "email": "beneb.info@gmail.com",
+    "url": "http://beneb.info"
+  },
+  "repository": "postcss/postcss-filter-plugins",
+  "dependencies": {
+    "postcss": "^5.0.4",
+    "uniqid": "^1.0.0"
+  },
+  "_from": "postcss-filter-plugins@2.0.0",
+  "_resolved": "http://registry.npm.taobao.org/postcss-filter-plugins/download/postcss-filter-plugins-2.0.0.tgz"
+}

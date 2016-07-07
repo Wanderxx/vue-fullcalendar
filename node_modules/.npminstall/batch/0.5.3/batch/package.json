@@ -1,0 +1,25 @@
+{
+  "name": "batch",
+  "version": "0.5.3",
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "description": "Simple async batch",
+  "author": "TJ Holowaychuk <tj@vision-media.ca>",
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "main": "index",
+  "browser": {
+    "emitter": "events"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/visionmedia/batch.git"
+  },
+  "_from": "batch@0.5.3",
+  "_resolved": "http://registry.npm.taobao.org/batch/download/batch-0.5.3.tgz"
+}

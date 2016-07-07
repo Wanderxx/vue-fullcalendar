@@ -1,0 +1,40 @@
+{
+  "name": "sha.js",
+  "description": "streaming sha1 hash in pure javascript",
+  "version": "2.2.6",
+  "homepage": "https://github.com/dominictarr/sha.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dominictarr/sha.js.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "buffer": "~2.3.2",
+    "typedarray": "0.0.6",
+    "tape": "~2.3.2"
+  },
+  "bin": "./bin.js",
+  "scripts": {
+    "test": "set -e; for t in test/*.js; do node $t; done;"
+  },
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
+  "license": "MIT",
+  "testling": {
+    "files": "test/{vectors,write,hash}.js",
+    "browsers": [
+      "ie/8..latest",
+      "firefox/17..latest",
+      "firefox/nightly",
+      "chrome/22..latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
+  },
+  "_from": "sha.js@2.2.6",
+  "_resolved": "http://registry.npm.taobao.org/sha.js/download/sha.js-2.2.6.tgz"
+}

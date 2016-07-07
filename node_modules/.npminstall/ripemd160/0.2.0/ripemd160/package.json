@@ -1,0 +1,27 @@
+{
+  "name": "ripemd160",
+  "version": "0.2.0",
+  "description": "Compute RIPEMD160 of bytes or strings.",
+  "keywords": [
+    "string",
+    "strings",
+    "ripemd160",
+    "ripe160",
+    "bitcoin",
+    "bytes",
+    "cryptography"
+  ],
+  "devDependencies": {
+    "mocha": "~1.17.1",
+    "terst": "~0.1.0",
+    "mochify": "~0.4.2"
+  },
+  "repository": {
+    "url": "https://github.com/cryptocoinjs/ripemd160",
+    "type": "git"
+  },
+  "main": "./lib/ripemd160.js",
+  "dependencies": {},
+  "_from": "ripemd160@0.2.0",
+  "_resolved": "http://registry.npm.taobao.org/ripemd160/download/ripemd160-0.2.0.tgz"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "wide-align",
+  "version": "1.1.0",
+  "description": "A wide-character aware text alignment function for use on the console or with fixed width fonts.",
+  "main": "align.js",
+  "scripts": {
+    "test": "tap --coverage test/*.js"
+  },
+  "keywords": [
+    "wide",
+    "double",
+    "unicode",
+    "cjkv",
+    "pad",
+    "align"
+  ],
+  "author": "Rebecca Turner <me@re-becca.org> (http://re-becca.org/)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iarna/wide-align"
+  },
+  "dependencies": {
+    "string-width": "^1.0.1"
+  },
+  "devDependencies": {
+    "tap": "^2.3.2"
+  },
+  "_from": "wide-align@1.1.0",
+  "_resolved": "http://registry.npm.taobao.org/wide-align/download/wide-align-1.1.0.tgz"
+}

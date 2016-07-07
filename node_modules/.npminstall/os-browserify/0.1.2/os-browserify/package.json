@@ -1,0 +1,14 @@
+{
+  "name": "os-browserify",
+  "version": "0.1.2",
+  "author": "Drew Young",
+  "license": "MIT",
+  "main": "main.js",
+  "browser": "browser.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/drewyoung1/os-browserify.git"
+  },
+  "_from": "os-browserify@0.1.2",
+  "_resolved": "http://registry.npm.taobao.org/os-browserify/download/os-browserify-0.1.2.tgz"
+}

@@ -1,0 +1,20 @@
+{
+  "author": "Felix Geisendörfer <felix@debuggable.com> (http://debuggable.com/)",
+  "name": "stream-cache",
+  "description": "A simple way to cache and replay readable streams.",
+  "version": "0.0.2",
+  "homepage": "https://github.com/felixge/node-stream-cache",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/felixge/node-stream-cache.git"
+  },
+  "main": "./index",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "_from": "stream-cache@0.0.2",
+  "_resolved": "http://registry.npm.taobao.org/stream-cache/download/stream-cache-0.0.2.tgz"
+}

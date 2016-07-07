@@ -1,0 +1,47 @@
+{
+  "name": "postcss-merge-rules",
+  "version": "2.0.9",
+  "description": "Merge CSS rules with PostCSS.",
+  "main": "dist/index.js",
+  "files": [
+    "LICENSE-MIT",
+    "dist"
+  ],
+  "scripts": {
+    "pretest": "eslint src",
+    "prepublish": "babel src --out-dir dist --ignore /__tests__/",
+    "test": "babel-tape-runner \"src/**/__tests__/*.js\" | tap-spec"
+  },
+  "keywords": [
+    "css",
+    "optimise",
+    "postcss",
+    "postcss-plugin"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-tape-runner": "1.2.0",
+    "eslint": "^2.8.0",
+    "eslint-config-cssnano": "^2.0.0",
+    "postcss-discard-comments": "^2.0.4",
+    "postcss-simple-vars": "^1.2.0",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.0"
+  },
+  "homepage": "https://github.com/ben-eb/postcss-merge-rules",
+  "author": {
+    "name": "Ben Briggs",
+    "email": "beneb.info@gmail.com",
+    "url": "http://beneb.info"
+  },
+  "repository": "ben-eb/postcss-merge-rules",
+  "dependencies": {
+    "postcss": "^5.0.4"
+  },
+  "eslintConfig": {
+    "extends": "cssnano"
+  },
+  "_from": "postcss-merge-rules@2.0.9",
+  "_resolved": "http://registry.npm.taobao.org/postcss-merge-rules/download/postcss-merge-rules-2.0.9.tgz"
+}

@@ -1,0 +1,42 @@
+{
+  "name": "os-homedir",
+  "version": "1.0.1",
+  "description": "io.js 2.3.0 os.homedir() ponyfill",
+  "license": "MIT",
+  "repository": "sindresorhus/os-homedir",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "built-in",
+    "core",
+    "ponyfill",
+    "polyfill",
+    "shim",
+    "os",
+    "homedir",
+    "home",
+    "dir",
+    "directory",
+    "folder",
+    "user",
+    "path"
+  ],
+  "devDependencies": {
+    "ava": "0.0.4",
+    "path-exists": "^1.0.0"
+  },
+  "_from": "os-homedir@1.0.1",
+  "_resolved": "http://registry.npm.taobao.org/os-homedir/download/os-homedir-1.0.1.tgz"
+}

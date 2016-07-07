@@ -1,0 +1,43 @@
+{
+  "name": "code-point-at",
+  "version": "1.0.0",
+  "description": "ES2015 String#codePointAt() ponyfill",
+  "license": "MIT",
+  "repository": "sindresorhus/code-point-at",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "es2015",
+    "es6",
+    "ponyfill",
+    "polyfill",
+    "shim",
+    "string",
+    "str",
+    "code",
+    "point",
+    "at",
+    "codepoint",
+    "unicode"
+  ],
+  "dependencies": {
+    "number-is-nan": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "0.0.4"
+  },
+  "_from": "code-point-at@1.0.0",
+  "_resolved": "http://registry.npm.taobao.org/code-point-at/download/code-point-at-1.0.0.tgz"
+}

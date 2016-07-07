@@ -1,0 +1,22 @@
+{
+  "name": "ms",
+  "version": "0.7.1",
+  "description": "Tiny ms conversion utility",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/guille/ms.js.git"
+  },
+  "main": "./index",
+  "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*",
+    "serve": "*"
+  },
+  "component": {
+    "scripts": {
+      "ms/index.js": "index.js"
+    }
+  },
+  "_from": "ms@0.7.1",
+  "_resolved": "http://registry.npm.taobao.org/ms/download/ms-0.7.1.tgz"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "are-we-there-yet",
+  "version": "1.1.2",
+  "description": "Keep track of the overall completion of many dispirate processes",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iarna/are-we-there-yet.git"
+  },
+  "author": "Rebecca Turner (http://re-becca.org)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iarna/are-we-there-yet/issues"
+  },
+  "homepage": "https://github.com/iarna/are-we-there-yet",
+  "devDependencies": {
+    "standard": "^6.0.8",
+    "tap": "^5.7.0"
+  },
+  "dependencies": {
+    "delegates": "^1.0.0",
+    "readable-stream": "^2.0.0 || ^1.1.13"
+  },
+  "_from": "are-we-there-yet@1.1.2",
+  "_resolved": "http://registry.npm.taobao.org/are-we-there-yet/download/are-we-there-yet-1.1.2.tgz"
+}
