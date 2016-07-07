@@ -21,6 +21,7 @@ just download this project from git
 switch you directory to this project, and run this command. Then go to your http://localhost:8080
 
 ```
+  npm install (NOTE : if you are in China mainland, cnpm install is more recommended.)
   npm run dev
 ```
 
