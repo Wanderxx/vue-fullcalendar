@@ -25,19 +25,28 @@ switch you directory to this project, and run this command. Then go to your http
 ```
 
 If everything runs well. You should see this.
+
 ![Yeah you see the calendar](http://upload-images.jianshu.io/upload_images/1678581-169e72e080ce5fad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+In my project, I add eventCard and filter. So, I find this roof. You find your roof.
+
+![event Card and filter!](http://upload-images.jianshu.io/upload_images/1678581-3a1ac130207b5f54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### import
+
 In your code , do as follow. Then you will be able to use this component.
+
 ```
     import fullcalendar from 'vue-fullcalendar/src/fullcalendar.vue'
 ```
 
 ### VUE-API
+
 Since fc is a vue-based component. I pre-defined some properties.
 
 #### VUE:props
+
 fc will receive some props from outside world.
 
    1. events: Events will be displayed on the calendar
@@ -58,6 +67,7 @@ fc will receive some props from outside world.
       ```
 
 ### VUE:events
+
 When you do something, fc will dispatch some events out.
 
 1. 'changeMonth' : Every time you click arrow to next/last month, fc will dispatch **changeMonth**
@@ -82,6 +92,7 @@ this.$dispatch('eventClick', event, jsEvent, pos)
 
 **pos** is the relative coordinates of fc
 
+
 3. 'dayClick' : fc dispatch it when you click a day slot.
 
 ```
@@ -92,9 +103,8 @@ this.$dispatch('eventClick', event, jsEvent, pos)
 
 **jsEvent** holds the native javascript event
 
-
+###END
 
 
       
-
 
