@@ -1,7 +1,7 @@
 <template>
   <div class="comp-full-calendar">
     <!-- header pick month -->
-    <fc-header :current-date.sync="currentDate" :current-info="currentInfo">
+    <fc-header :current-date.sync="currentDate">
 
       <div slot="header-right">
         <slot name="fc-header-right">
@@ -32,11 +32,6 @@
     data () {
       return {
         currentDate : new Date()
-      }
-    },
-    computed : {
-      currentInfo () {
-        return this.currentDate.getFullYear() + '年' + MONTH_NAMES[this.currentDate.getMonth()]
       }
     },
     components : {

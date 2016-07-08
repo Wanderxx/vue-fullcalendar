@@ -44,15 +44,21 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// main entry file
-	var Vue = __webpack_require__(1);
+	'use strict';
 
-	new Vue({
+	var _vue = __webpack_require__(1);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	new _vue2.default({
 	  el: '#app',
 	  components: {
 	    'app': __webpack_require__(3)
 	  }
-	});
+	}); // main entry file
+	// var Vue = require('vue')
 
 /***/ },
 /* 1 */
@@ -10266,7 +10272,7 @@
 	var __vue_script__, __vue_template__
 	__webpack_require__(4)
 	__vue_script__ = __webpack_require__(8)
-	__vue_template__ = __webpack_require__(25)
+	__vue_template__ = __webpack_require__(45)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10274,7 +10280,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/SunnyWang/code/vue-fullcalendar/src/app.vue"
+	  var id = "/Users/SunnyWang/code/vue-fullcalendar/demo/app.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -10298,8 +10304,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-6343c960&file=app.vue!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./app.vue", function() {
-				var newContent = require("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-6343c960&file=app.vue!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./app.vue");
+			module.hot.accept("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-3e32e7fb&file=app.vue!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./app.vue", function() {
+				var newContent = require("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-3e32e7fb&file=app.vue!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./app.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -10691,7 +10697,7 @@
 	  },
 
 	  components: {
-	    'full-calendar': __webpack_require__(9)
+	    'full-calendar': __webpack_require__(46)
 	  }
 	};
 	// </script>
@@ -10702,13 +10708,55 @@
 	// </style>
 
 /***/ },
-/* 9 */
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */
+/***/ function(module, exports) {
+
+	module.exports = "\n  <div>\n  \t<p>\n  \t\tHere you can see the demo of my vue-fullcalendar, no jquery fullcalendar.js required.\n  \t</p>\n    <full-calendar class=\"test-fc\" :events=\"fcEvents\"></full-calendar>\n  </div>\n";
+
+/***/ },
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(10)
-	__vue_script__ = __webpack_require__(12)
-	__vue_template__ = __webpack_require__(24)
+	__webpack_require__(47)
+	__vue_script__ = __webpack_require__(49)
+	__vue_template__ = __webpack_require__(61)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10725,13 +10773,13 @@
 	})()}
 
 /***/ },
-/* 10 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(11);
+	var content = __webpack_require__(48);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -10751,7 +10799,7 @@
 	}
 
 /***/ },
-/* 11 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -10765,7 +10813,7 @@
 
 
 /***/ },
-/* 12 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10776,7 +10824,7 @@
 	// <template>
 	//   <div class="comp-full-calendar">
 	//     <!-- header pick month -->
-	//     <fc-header :current-date.sync="currentDate" :current-info="currentInfo">
+	//     <fc-header :current-date.sync="currentDate">
 	//
 	//       <div slot="header-right">
 	//         <slot name="fc-header-right">
@@ -10809,14 +10857,9 @@
 	    };
 	  },
 
-	  computed: {
-	    currentInfo: function currentInfo() {
-	      return this.currentDate.getFullYear() + '年' + MONTH_NAMES[this.currentDate.getMonth()];
-	    }
-	  },
 	  components: {
-	    'fc-body': __webpack_require__(13),
-	    'fc-header': __webpack_require__(19)
+	    'fc-body': __webpack_require__(50),
+	    'fc-header': __webpack_require__(56)
 	  }
 	};
 
@@ -10836,13 +10879,13 @@
 	// </style>
 
 /***/ },
-/* 13 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(14)
-	__vue_script__ = __webpack_require__(16)
-	__vue_template__ = __webpack_require__(18)
+	__webpack_require__(51)
+	__vue_script__ = __webpack_require__(53)
+	__vue_template__ = __webpack_require__(55)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10859,13 +10902,13 @@
 	})()}
 
 /***/ },
-/* 14 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(15);
+	var content = __webpack_require__(52);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -10885,7 +10928,7 @@
 	}
 
 /***/ },
-/* 15 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -10899,7 +10942,7 @@
 
 
 /***/ },
-/* 16 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10908,7 +10951,7 @@
 	  value: true
 	});
 
-	var _dateFunc = __webpack_require__(17);
+	var _dateFunc = __webpack_require__(54);
 
 	var _dateFunc2 = _interopRequireDefault(_dateFunc);
 
@@ -11297,32 +11340,34 @@
 	//
 
 /***/ },
-/* 17 */
+/* 54 */
 /***/ function(module, exports) {
 
-	let dateFunc = {
-	    getDuration(date) {
+	'use strict';
+
+	var dateFunc = {
+	    getDuration: function getDuration(date) {
 	        // how many days of this month
-	        let dt = new Date(date);
+	        var dt = new Date(date);
 	        var month = dt.getMonth();
 	        dt.setMonth(dt.getMonth() + 1);
 	        dt.setDate(0);
 	        return dt.getDate();
 	    },
-	    changeDay(date, num) {
-	        let dt = new Date(date);
+	    changeDay: function changeDay(date, num) {
+	        var dt = new Date(date);
 	        return new Date(dt.setDate(dt.getDate() + num));
 	    },
-	    getStartDate(date) {
+	    getStartDate: function getStartDate(date) {
 	        // return first day of this month
 	        return new Date(date.getFullYear(), date.getMonth(), 1);
 	    },
-	    getEndDate(date) {
+	    getEndDate: function getEndDate(date) {
 	        // get last day of this month
-	        let dt = new Date(date.getFullYear(), date.getMonth() + 1, 1); // 1st day of next month
+	        var dt = new Date(date.getFullYear(), date.getMonth() + 1, 1); // 1st day of next month
 	        return new Date(dt.setDate(dt.getDate() - 1)); // last day of this month
 	    },
-	    format(date, format) {
+	    format: function format(date, _format) {
 	        if (typeof date === 'string') {
 	            date = new Date(date.replace(/-/g, '/'));
 	        } else {
@@ -11339,7 +11384,7 @@
 	            'S': date.getMilliseconds()
 	        };
 
-	        format = format.replace(/([yMdhmsqS])+/g, (all, t) => {
+	        _format = _format.replace(/([yMdhmsqS])+/g, function (all, t) {
 	            var v = map[t];
 	            if (v !== undefined) {
 	                if (all.length > 1) {
@@ -11352,26 +11397,26 @@
 	            }
 	            return all;
 	        });
-	        return format;
+	        return _format;
 	    }
 	};
 
 	module.exports = dateFunc;
 
 /***/ },
-/* 18 */
+/* 55 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n      \n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{'is-start':isStart(event.start, day.date),\n                    'is-end':isEnd(event.end,day.date),\n                    'is-opacity' : !event.isShow}\" @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-show=\"day.events.length > eventLimit\" \n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                show more\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\" \n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\" \n              v-show=\"event.isShow\" class=\"body-item\" \n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
 
 /***/ },
-/* 19 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(20)
-	__vue_script__ = __webpack_require__(22)
-	__vue_template__ = __webpack_require__(23)
+	__webpack_require__(57)
+	__vue_script__ = __webpack_require__(59)
+	__vue_template__ = __webpack_require__(60)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -11388,13 +11433,13 @@
 	})()}
 
 /***/ },
-/* 20 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(21);
+	var content = __webpack_require__(58);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -11414,7 +11459,7 @@
 	}
 
 /***/ },
-/* 21 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -11428,7 +11473,7 @@
 
 
 /***/ },
-/* 22 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11437,7 +11482,7 @@
 	  value: true
 	});
 
-	var _dateFunc = __webpack_require__(17);
+	var _dateFunc = __webpack_require__(54);
 
 	var _dateFunc2 = _interopRequireDefault(_dateFunc);
 
@@ -11449,11 +11494,12 @@
 	  },
 
 	  props: {
-	    currentDate: {},
-	    currentInfo: {}
+	    currentDate: {}
 	  },
 	  data: function data() {
-	    return {};
+	    return {
+	      title: ''
+	    };
 	  },
 
 	  methods: {
@@ -11470,6 +11516,7 @@
 	      return new Date(dt.setMonth(dt.getMonth() + num));
 	    },
 	    dispatchEvent: function dispatchEvent() {
+	      this.title = _dateFunc2.default.format(this.currentDate, 'yyyy年MM月');
 	      var startDate = _dateFunc2.default.getStartDate(this.currentDate);
 	      var curWeekDay = startDate.getDay();
 	      startDate.setDate(startDate.getDate() - curWeekDay + 1); // 1st day of this monthView
@@ -11507,7 +11554,7 @@
 	//     </div>
 	//     <div class="header-center">
 	//       <span class="prev-month" @click.stop="goPrev">《 </span>
-	//       <span class="title">{{currentInfo}}</span>
+	//       <span class="title">{{title}}</span>
 	//       <span class="next-month" @click.stop="goNext"> 》</span>
 	//     </div>
 	//     <div class="header-right">
@@ -11519,22 +11566,16 @@
 	// <script type="text/babel">
 
 /***/ },
-/* 23 */
+/* 60 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">《 </span>\n      <span class=\"title\">{{currentInfo}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\"> 》</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">《 </span>\n      <span class=\"title\">{{title}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\"> 》</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
 
 /***/ },
-/* 24 */
+/* 61 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"comp-full-calendar\">\n    <!-- header pick month -->\n    <fc-header :current-date.sync=\"currentDate\" :current-info=\"currentInfo\">\n\n      <div slot=\"header-right\">\n        <slot name=\"fc-header-right\">\n        </slot>\n      </div>\n    </fc-header>\n    <!-- body display date day and events -->\n    <fc-body :current-date=\"currentDate\" :events=\"events\">\n      <div slot=\"body-card\">\n        <slot name=\"fc-body-card\">\n        </slot>\n      </div>\n    </fc-body>\n  </div>\n";
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	module.exports = "\n  <div>\n  \t<p>\n  \t\tHere you can see the demo of my vue-fullcalendar, no jquery fullcalendar.js required.\n  \t</p>\n    <full-calendar class=\"test-fc\" :events=\"fcEvents\"></full-calendar>\n  </div>\n";
+	module.exports = "\n  <div class=\"comp-full-calendar\">\n    <!-- header pick month -->\n    <fc-header :current-date.sync=\"currentDate\">\n\n      <div slot=\"header-right\">\n        <slot name=\"fc-header-right\">\n        </slot>\n      </div>\n    </fc-header>\n    <!-- body display date day and events -->\n    <fc-body :current-date=\"currentDate\" :events=\"events\">\n      <div slot=\"body-card\">\n        <slot name=\"fc-body-card\">\n        </slot>\n      </div>\n    </fc-body>\n  </div>\n";
 
 /***/ }
 /******/ ]);

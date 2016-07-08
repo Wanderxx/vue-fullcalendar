@@ -1,7 +1,7 @@
 ##vue-fullcalendar
 
  So as it's called. This is a fullCalendar component based on vue.js . No Jquery or fullCalendar.js required. 
-Currently, It only supports month view and I only developed the .vue version. If possible, I will develop .js version in later future. In following words, I will use fc stands for vue-fullcalendar.
+Currently, It only supports month view. I will use fc stands for vue-fullcalendar in following words.
 
 Feel free to download it,re-develop it and use in your project.
 
@@ -39,7 +39,7 @@ In my project, I add eventCard and filter. So, I find this roof. You find your r
 In your code , do as follow. Then you will be able to use this component.
 
 ```
-    import fullcalendar from 'vue-fullcalendar/src/fullcalendar.vue'
+    import fullcalendar from 'vue-fullcalendar'
 ```
 
 ### VUE-API

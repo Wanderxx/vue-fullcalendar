@@ -6,4 +6,11 @@ var stripLoader = {
  loader: WebpackStripLoader.loader('console.log')
 }
 devConfig.module.loaders.push(stripLoader);
+devConfig.entry = './src/index.js'
+devConfig.output = {
+  path:'./dist',
+  filename:'vue-fullcalendar.js',
+  libaray:'VueFullcalendar',
+  libraryTarget: 'umd'
+}
 module.exports = devConfig;

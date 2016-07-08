@@ -6,7 +6,7 @@
     </div>
     <div class="header-center">
       <span class="prev-month" @click.stop="goPrev">《 </span>
-      <span class="title">{{currentInfo}}</span>
+      <span class="title">{{title}}</span>
       <span class="next-month" @click.stop="goNext"> 》</span>
     </div>
     <div class="header-right">
@@ -23,11 +23,12 @@
       this.dispatchEvent()
     },
     props : {
-      currentDate : {},
-      currentInfo : {}
+      currentDate : {}
     },
     data () {
-      return {}
+      return {
+        title : ''
+      }
     },
     methods : {
       goPrev () {
@@ -43,6 +44,7 @@
         return new Date(dt.setMonth(dt.getMonth() + num))
       },
       dispatchEvent() {
+        this.title = dateFunc.format(this.currentDate, 'yyyy年MM月')
         let startDate = dateFunc.getStartDate(this.currentDate)
         let curWeekDay = startDate.getDay()
         startDate.setDate(startDate.getDate() - curWeekDay + 1) // 1st day of this monthView

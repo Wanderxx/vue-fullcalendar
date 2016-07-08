@@ -1,5 +1,6 @@
 // main entry file
-var Vue = require('vue')
+// var Vue = require('vue')
+import Vue from 'vue'
 
 new Vue({
   el : '#app',

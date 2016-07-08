@@ -2,12 +2,11 @@ var path    = require('path')
 var webpack = require('webpack')
 
 module.exports={
-	entry:'./src/main.js',
+	entry:'./demo/main.js',
 	output:{
 		path:'./static',
 		filename:'bundle.js'
 	},
-  watch : true,
 	plugins : [
     new webpack.ProvidePlugin({
       Promise : 'es6-promise'
@@ -16,7 +15,8 @@ module.exports={
   resolve: {
     extensions: ['', '.js', '.vue'],
     alias: {
-      'src' : path.resolve(__dirname, './src')
+      'src' : path.resolve(__dirname, './src'),
+      'dist' : path.resolve(__dirname, './dist')
     }
   },
 	module:{
@@ -24,7 +24,7 @@ module.exports={
       {
         test:/\.js$/,
         exclude:/node_modules/,
-        loader:'babel'
+        loader:'babel?presets[]=es2015'
       },
       {
         test:/\.vue$/,
@@ -36,10 +36,6 @@ module.exports={
       {
         test:/\.css$/,
         loader:'style!css'
-      },
-      {
-        test   : /\.(png|jpg|gif)$/,
-        loader : 'url-loader?limit=8192'
       }
     ]
   },
@@ -50,5 +46,9 @@ module.exports={
         loaders: {
           scss: 'style!css!sass'
         }
+    },
+  babel: {
+      presets: ['es2015'],
+      plugins: ['transform-runtime']
     }
 }
