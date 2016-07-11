@@ -35,8 +35,6 @@ If everything runs well. You should see this.
 
 In my project, I add eventCard and filter. So, I find this roof. You find your roof.
 
-![event Card and filter!](http://upload-images.jianshu.io/upload_images/1678581-3a1ac130207b5f54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 
 ### import
 
@@ -55,21 +53,21 @@ Since fc is a vue-based component. I pre-defined some properties.
 fc will receive some props from outside world.
 
    1. events: Events will be displayed on the calendar
-      ```
-      events = [
-          {
-            title :  'event1',
-            start: '2016-07-01'，
-            YOUR_DATA : {}
-          },
-          {
-            title : 'event2',
-            start : '2016-07-02',
-            end : '2016-07-03',
-            YOUR_DATA : {}
-          }
-      ]         
-      ```
+ ```javascript
+events = [
+{
+title :  'event1',
+start: '2016-07-01'，
+YOUR_DATA : {}
+},
+{
+title : 'event2',
+start : '2016-07-02',
+end : '2016-07-03',
+YOUR_DATA : {}
+}
+]         
+ ```
 
 ### VUE:events
 
