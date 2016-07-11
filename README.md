@@ -1,5 +1,7 @@
 ##vue-fullcalendar
 
+![demo.gif](http://g.recordit.co/vovteJ5m9o.gif)
+
  So as it's called. This is a fullCalendar component based on vue.js . No Jquery or fullCalendar.js required. 
 Currently, It only supports month view. I will use fc stands for vue-fullcalendar in following words.
 
