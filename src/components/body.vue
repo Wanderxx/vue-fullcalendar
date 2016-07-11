@@ -30,7 +30,7 @@
               </p>
               <p v-show="day.events.length > eventLimit" 
                 class="more-link" @click.stop="selectThisDay(day, $event)">
-                show more
+                show all
               </p>
             </div>
           </div>
@@ -63,14 +63,14 @@
   </div>
 </template>
 <script type="text/babel">
-  const DAY_NAMES = ['周一','周二','周三','周四','周五','周六','周日']
-  const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','11月','12月']
   import dateFunc from './dateFunc'
 
   export default {
     props : {
       currentDate : {},
-      events  : {}
+      events  : {},
+      weekNames : {},
+      monthNames : {}
     },
     created () {
       this.events.forEach((item, index) => {
@@ -81,7 +81,7 @@
     },
     data () {
       return {
-        weekNames : DAY_NAMES,
+        // weekNames : DAY_NAMES,
         weekMask : [1,2,3,4,5,6,7],
         // events : [],
         isLismit : true,
@@ -105,7 +105,7 @@
       },
       moreTitle (date) {
         let dt = new Date(date)
-        return DAY_NAMES[dt.getDay()-1] + ', ' + MONTH_NAMES[dt.getMonth()] + dt.getDate() + '日'
+        return this.weekNames[dt.getDay()-1] + ', ' + this.monthNames[dt.getMonth()] + dt.getDate() + '日'
       }
     },
     computed : {
@@ -283,6 +283,7 @@
       position:absolute;
       top:0;
       left:0;
+      z-index:1;
       width: 100%;
       .events-week{
         display: flex;
@@ -304,22 +305,24 @@
             .event-item{
               cursor: pointer;
               font-size:12px;
-              background-color:#3993E5;
+              background-color:#C7E6FD;
               margin-bottom:2px;
-              color: #fff;
-              padding:4px;
+              color: rgba(0,0,0,.87);
+              padding:0 0 0 4px;
+              height: 18px;
+              line-height: 18px;
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
               &.is-start{
                 margin-left: 5px;
-                border-top-left-radius:4px;
-                border-bottom-left-radius:4px;
+                // border-top-left-radius:4px;
+                // border-bottom-left-radius:4px;
               }
               &.is-end{
                 margin-right: 5px;
-                border-top-right-radius:4px;
-                border-bottom-right-radius:4px;
+                // border-top-right-radius:4px;
+                // border-bottom-right-radius:4px;
               }
               &.is-opacity{
                 opacity: 0;
@@ -328,9 +331,11 @@
             .more-link{
               cursor: pointer;
               // text-align: right;
-              padding-left:2px;
-              padding-right:2px;
-              color:#3993E5;
+              padding-left: 8px;
+              padding-right: 2px;
+              margin-top: 6px;
+              color: rgba(0,0,0,.38);
+              font-size: 14px;
             }
           }
         }
@@ -338,8 +343,8 @@
     }
     .more-events{
       position:absolute;
-      width: 160px;
-      z-index: 1;
+      width: 150px;
+      z-index: 2;
       border:1px solid #eee;
       box-shadow: 0 2px 6px rgba(0,0,0,.15);
       .more-header{
@@ -347,6 +352,7 @@
         padding:5px;
         display: flex;
         align-items : center;
+        font-size: 14px;
         .title{
           flex:1;
         }
@@ -361,18 +367,21 @@
         overflow: hidden;
         .body-list{
           height: 120px;
-          padding:10px;
+          padding:5px;
           overflow: auto;
           background-color:#fff;
           .body-item{
             cursor: pointer;
+            font-size:12px;
+            background-color:#C7E6FD;
+            margin-bottom:2px;
+            color: rgba(0,0,0,.87);
+            padding:0 0 0 4px;
+            height: 18px;
+            line-height: 18px;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            border-radius:2px;
-            background-color:#3993E5;
-            color:#fff;
-            padding:2px;
-            margin: 0 2px 5px 2px;
           }
         }
       }

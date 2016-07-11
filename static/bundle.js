@@ -10272,7 +10272,7 @@
 	var __vue_script__, __vue_template__
 	__webpack_require__(4)
 	__vue_script__ = __webpack_require__(8)
-	__vue_template__ = __webpack_require__(45)
+	__vue_template__ = __webpack_require__(25)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10663,27 +10663,27 @@
 	  start: '2016-06-29',
 	  end: '2016-06-30'
 	}, {
-	  title: 'Sunny 请假',
+	  title: 'Sunny OoO',
 	  start: '2016-06-30'
 	}, {
 	  title: 'Sunny more',
 	  start: '2016-06-30'
 	}, {
-	  title: 'Sunny 发财',
+	  title: 'Sunny swim',
 	  start: '2016-07-01'
 	}, {
-	  title: 'Michelle 旅游',
+	  title: 'Michelle trip',
 	  start: '2016-07-01',
 	  end: '2016-07-02'
 	}, {
 	  title: 'Tao yoyo',
 	  start: '2016-07-02'
 	}, {
-	  title: 'AMY 请假',
+	  title: 'AMY OoO',
 	  start: '2016-07-03',
 	  end: '2016-07-04'
 	}, {
-	  title: 'BEN 出去玩',
+	  title: 'BEN OoO',
 	  start: '2016-07-06',
 	  end: '2016-07-08'
 	}];
@@ -10697,7 +10697,7 @@
 	  },
 
 	  components: {
-	    'full-calendar': __webpack_require__(46)
+	    'full-calendar': __webpack_require__(9)
 	  }
 	};
 	// </script>
@@ -10708,55 +10708,13 @@
 	// </style>
 
 /***/ },
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */
-/***/ function(module, exports) {
-
-	module.exports = "\n  <div>\n  \t<p>\n  \t\tHere you can see the demo of my vue-fullcalendar, no jquery fullcalendar.js required.\n  \t</p>\n    <full-calendar class=\"test-fc\" :events=\"fcEvents\"></full-calendar>\n  </div>\n";
-
-/***/ },
-/* 46 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(47)
-	__vue_script__ = __webpack_require__(49)
-	__vue_template__ = __webpack_require__(61)
+	__webpack_require__(10)
+	__vue_script__ = __webpack_require__(12)
+	__vue_template__ = __webpack_require__(24)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10773,13 +10731,13 @@
 	})()}
 
 /***/ },
-/* 47 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(48);
+	var content = __webpack_require__(11);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -10799,7 +10757,7 @@
 	}
 
 /***/ },
-/* 48 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -10813,7 +10771,7 @@
 
 
 /***/ },
-/* 49 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10824,7 +10782,7 @@
 	// <template>
 	//   <div class="comp-full-calendar">
 	//     <!-- header pick month -->
-	//     <fc-header :current-date.sync="currentDate">
+	//     <fc-header :current-date.sync="currentDate" :title-format="titleFormat">
 	//
 	//       <div slot="header-right">
 	//         <slot name="fc-header-right">
@@ -10832,7 +10790,7 @@
 	//       </div>
 	//     </fc-header>
 	//     <!-- body display date day and events -->
-	//     <fc-body :current-date="currentDate" :events="events">
+	//     <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" :week-names="weekNames">
 	//       <div slot="body-card">
 	//         <slot name="fc-body-card">
 	//         </slot>
@@ -10841,13 +10799,28 @@
 	//   </div>
 	// </template>
 	// <script type="text/babel">
-	var MONTH_NAMES = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '11月', '12月'];
 
 	exports.default = {
 	  props: {
-	    events: {
+	    events: { // events will be displayed on calendar
 	      type: Array,
 	      default: []
+	    },
+	    titleFormat: {
+	      type: String,
+	      default: 'yyyy年MM月'
+	    },
+	    monthNames: {
+	      type: Array,
+	      default: function _default() {
+	        return ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '11月', '12月'];
+	      }
+	    },
+	    weekNames: {
+	      type: Array,
+	      default: function _default() {
+	        return ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+	      }
 	    }
 	  },
 	  created: function created() {},
@@ -10858,8 +10831,8 @@
 	  },
 
 	  components: {
-	    'fc-body': __webpack_require__(50),
-	    'fc-header': __webpack_require__(56)
+	    'fc-body': __webpack_require__(13),
+	    'fc-header': __webpack_require__(19)
 	  }
 	};
 
@@ -10879,13 +10852,13 @@
 	// </style>
 
 /***/ },
-/* 50 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(51)
-	__vue_script__ = __webpack_require__(53)
-	__vue_template__ = __webpack_require__(55)
+	__webpack_require__(14)
+	__vue_script__ = __webpack_require__(16)
+	__vue_template__ = __webpack_require__(18)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10902,13 +10875,13 @@
 	})()}
 
 /***/ },
-/* 51 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(52);
+	var content = __webpack_require__(15);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -10928,7 +10901,7 @@
 	}
 
 /***/ },
-/* 52 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -10936,13 +10909,13 @@
 
 
 	// module
-	exports.push([module.id, ".full-calendar-body {\n  margin-top: 20px; }\n  .full-calendar-body .weeks {\n    display: -webkit-box;\n    display: flex;\n    border-top: 1px solid #e0e0e0;\n    border-bottom: 1px solid #e0e0e0;\n    border-left: 1px solid #e0e0e0; }\n    .full-calendar-body .weeks .week {\n      -webkit-box-flex: 1;\n              flex: 1;\n      text-align: center;\n      border-right: 1px solid #e0e0e0; }\n  .full-calendar-body .dates {\n    position: relative; }\n    .full-calendar-body .dates .week-row {\n      border-left: 1px solid #e0e0e0;\n      display: -webkit-box;\n      display: flex; }\n      .full-calendar-body .dates .week-row .day-cell {\n        -webkit-box-flex: 1;\n                flex: 1;\n        min-height: 100px;\n        padding: 4px;\n        border-right: 1px solid #e0e0e0;\n        border-bottom: 1px solid #e0e0e0; }\n        .full-calendar-body .dates .week-row .day-cell .day-number {\n          text-align: right; }\n        .full-calendar-body .dates .week-row .day-cell.today {\n          background-color: #fcf8e3; }\n        .full-calendar-body .dates .week-row .day-cell.not-cur-month .day-number {\n          color: rgba(0, 0, 0, 0.24); }\n    .full-calendar-body .dates .dates-events {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%; }\n      .full-calendar-body .dates .dates-events .events-week {\n        display: -webkit-box;\n        display: flex; }\n        .full-calendar-body .dates .dates-events .events-week .events-day {\n          cursor: pointer;\n          -webkit-box-flex: 1;\n                  flex: 1;\n          min-height: 109px; }\n          .full-calendar-body .dates .dates-events .events-week .events-day .day-number {\n            text-align: right;\n            padding: 4px 5px 4px 4px;\n            opacity: 0; }\n          .full-calendar-body .dates .dates-events .events-week .events-day.not-cur-month .day-number {\n            color: rgba(0, 0, 0, 0.24); }\n          .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #3993E5;\n            margin-bottom: 2px;\n            color: #fff;\n            padding: 4px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-start {\n              margin-left: 5px;\n              border-top-left-radius: 4px;\n              border-bottom-left-radius: 4px; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-end {\n              margin-right: 5px;\n              border-top-right-radius: 4px;\n              border-bottom-right-radius: 4px; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-opacity {\n              opacity: 0; }\n          .full-calendar-body .dates .dates-events .events-week .events-day .event-box .more-link {\n            cursor: pointer;\n            padding-left: 2px;\n            padding-right: 2px;\n            color: #3993E5; }\n    .full-calendar-body .dates .more-events {\n      position: absolute;\n      width: 160px;\n      z-index: 1;\n      border: 1px solid #eee;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }\n      .full-calendar-body .dates .more-events .more-header {\n        background-color: #eee;\n        padding: 5px;\n        display: -webkit-box;\n        display: flex;\n        -webkit-box-align: center;\n                align-items: center; }\n        .full-calendar-body .dates .more-events .more-header .title {\n          -webkit-box-flex: 1;\n                  flex: 1; }\n        .full-calendar-body .dates .more-events .more-header .close {\n          margin-right: 2px;\n          cursor: pointer;\n          font-size: 16px; }\n      .full-calendar-body .dates .more-events .more-body {\n        height: 140px;\n        overflow: hidden; }\n        .full-calendar-body .dates .more-events .more-body .body-list {\n          height: 120px;\n          padding: 10px;\n          overflow: auto;\n          background-color: #fff; }\n          .full-calendar-body .dates .more-events .more-body .body-list .body-item {\n            cursor: pointer;\n            overflow: hidden;\n            text-overflow: ellipsis;\n            border-radius: 2px;\n            background-color: #3993E5;\n            color: #fff;\n            padding: 2px;\n            margin: 0 2px 5px 2px; }\n", ""]);
+	exports.push([module.id, ".full-calendar-body {\n  margin-top: 20px; }\n  .full-calendar-body .weeks {\n    display: -webkit-box;\n    display: flex;\n    border-top: 1px solid #e0e0e0;\n    border-bottom: 1px solid #e0e0e0;\n    border-left: 1px solid #e0e0e0; }\n    .full-calendar-body .weeks .week {\n      -webkit-box-flex: 1;\n              flex: 1;\n      text-align: center;\n      border-right: 1px solid #e0e0e0; }\n  .full-calendar-body .dates {\n    position: relative; }\n    .full-calendar-body .dates .week-row {\n      border-left: 1px solid #e0e0e0;\n      display: -webkit-box;\n      display: flex; }\n      .full-calendar-body .dates .week-row .day-cell {\n        -webkit-box-flex: 1;\n                flex: 1;\n        min-height: 100px;\n        padding: 4px;\n        border-right: 1px solid #e0e0e0;\n        border-bottom: 1px solid #e0e0e0; }\n        .full-calendar-body .dates .week-row .day-cell .day-number {\n          text-align: right; }\n        .full-calendar-body .dates .week-row .day-cell.today {\n          background-color: #fcf8e3; }\n        .full-calendar-body .dates .week-row .day-cell.not-cur-month .day-number {\n          color: rgba(0, 0, 0, 0.24); }\n    .full-calendar-body .dates .dates-events {\n      position: absolute;\n      top: 0;\n      left: 0;\n      z-index: 1;\n      width: 100%; }\n      .full-calendar-body .dates .dates-events .events-week {\n        display: -webkit-box;\n        display: flex; }\n        .full-calendar-body .dates .dates-events .events-week .events-day {\n          cursor: pointer;\n          -webkit-box-flex: 1;\n                  flex: 1;\n          min-height: 109px; }\n          .full-calendar-body .dates .dates-events .events-week .events-day .day-number {\n            text-align: right;\n            padding: 4px 5px 4px 4px;\n            opacity: 0; }\n          .full-calendar-body .dates .dates-events .events-week .events-day.not-cur-month .day-number {\n            color: rgba(0, 0, 0, 0.24); }\n          .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-start {\n              margin-left: 5px; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-end {\n              margin-right: 5px; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-opacity {\n              opacity: 0; }\n          .full-calendar-body .dates .dates-events .events-week .events-day .event-box .more-link {\n            cursor: pointer;\n            padding-left: 8px;\n            padding-right: 2px;\n            margin-top: 6px;\n            color: rgba(0, 0, 0, 0.38);\n            font-size: 14px; }\n    .full-calendar-body .dates .more-events {\n      position: absolute;\n      width: 150px;\n      z-index: 2;\n      border: 1px solid #eee;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }\n      .full-calendar-body .dates .more-events .more-header {\n        background-color: #eee;\n        padding: 5px;\n        display: -webkit-box;\n        display: flex;\n        -webkit-box-align: center;\n                align-items: center;\n        font-size: 14px; }\n        .full-calendar-body .dates .more-events .more-header .title {\n          -webkit-box-flex: 1;\n                  flex: 1; }\n        .full-calendar-body .dates .more-events .more-header .close {\n          margin-right: 2px;\n          cursor: pointer;\n          font-size: 16px; }\n      .full-calendar-body .dates .more-events .more-body {\n        height: 140px;\n        overflow: hidden; }\n        .full-calendar-body .dates .more-events .more-body .body-list {\n          height: 120px;\n          padding: 5px;\n          overflow: auto;\n          background-color: #fff; }\n          .full-calendar-body .dates .more-events .more-body .body-list .body-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 53 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10951,83 +10924,18 @@
 	  value: true
 	});
 
-	var _dateFunc = __webpack_require__(54);
+	var _dateFunc = __webpack_require__(17);
 
 	var _dateFunc2 = _interopRequireDefault(_dateFunc);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
-	//   <div class="full-calendar-body">
-	//     <div class="weeks">
-	//       <strong class="week" v-for="week in weekNames">{{week}}</strong>
-	//     </div>
-	//     <div class="dates" v-el:dates>
-	//       <div calss="dates-bg">
-	//         <div class="week-row" v-for="week in currentDates">
-	//           <div class="day-cell" v-for="day in week"
-	//             :class="{'today' : day.isToday,
-	//               'not-cur-month' : !day.isCurMonth}">
-	//             <p class="day-number">{{day.monthDay}}</p>
-	//           </div>
-	//         </div>
-	//       </div>
-	//
-	//       <!-- absolute so we can make dynamic td -->
-	//       <div class="dates-events">
-	//         <div class="events-week" v-for="week in currentDates">
-	//           <div class="events-day" v-for="day in week" track-by="$index"
-	//             :class="{'today' : day.isToday,
-	//               'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
-	//             <p class="day-number">{{day.monthDay}}</p>
-	//             <div class="event-box">
-	//               <p class="event-item" v-for="event in day.events" v-show="event.cellIndex <= eventLimit"
-	//                  :class="{'is-start':isStart(event.start, day.date),
-	//                     'is-end':isEnd(event.end,day.date),
-	//                     'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
-	//                 {{event | isBegin day.date day.weekDay}}
-	//               </p>
-	//               <p v-show="day.events.length > eventLimit"
-	//                 class="more-link" @click.stop="selectThisDay(day, $event)">
-	//                 show more
-	//               </p>
-	//             </div>
-	//           </div>
-	//         </div>
-	//       </div>
-	//
-	//       <!-- full events when click show more -->
-	//       <div class="more-events" v-show="showMore"
-	//         :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
-	//         <div class="more-header">
-	//           <span class="title">{{selectDay.date | moreTitle }}</span>
-	//           <span class="close" @click.stop="showMore = false">x</span>
-	//         </div>
-	//         <div class="more-body">
-	//           <ul class="body-list">
-	//             <li v-for="event in selectDay.events"
-	//               v-show="event.isShow" class="body-item"
-	//               @click="eventClick(event,$event)">
-	//               {{event.title}}
-	//             </li>
-	//           </ul>
-	//         </div>
-	//       </div>
-	//
-	//       <slot name="body-card">
-	//
-	//       </slot>
-	//
-	//     </div>
-	//   </div>
-	// </template>
-	// <script type="text/babel">
-	var DAY_NAMES = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-	var MONTH_NAMES = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '11月', '12月'];
 	exports.default = {
 	  props: {
 	    currentDate: {},
-	    events: {}
+	    events: {},
+	    weekNames: {},
+	    monthNames: {}
 	  },
 	  created: function created() {
 	    this.events.forEach(function (item, index) {
@@ -11038,7 +10946,7 @@
 	  },
 	  data: function data() {
 	    return {
-	      weekNames: DAY_NAMES,
+	      // weekNames : DAY_NAMES,
 	      weekMask: [1, 2, 3, 4, 5, 6, 7],
 	      // events : [],
 	      isLismit: true,
@@ -11063,7 +10971,7 @@
 	    },
 	    moreTitle: function moreTitle(date) {
 	      var dt = new Date(date);
-	      return DAY_NAMES[dt.getDay() - 1] + ', ' + MONTH_NAMES[dt.getMonth()] + dt.getDate() + '日';
+	      return this.weekNames[dt.getDay() - 1] + ', ' + this.monthNames[dt.getMonth()] + dt.getDate() + '日';
 	    }
 	  },
 	  computed: {
@@ -11240,6 +11148,7 @@
 	//       position:absolute;
 	//       top:0;
 	//       left:0;
+	//       z-index:1;
 	//       width: 100%;
 	//       .events-week{
 	//         display: flex;
@@ -11261,22 +11170,24 @@
 	//             .event-item{
 	//               cursor: pointer;
 	//               font-size:12px;
-	//               background-color:#3993E5;
+	//               background-color:#C7E6FD;
 	//               margin-bottom:2px;
-	//               color: #fff;
-	//               padding:4px;
+	//               color: rgba(0,0,0,.87);
+	//               padding:0 0 0 4px;
+	//               height: 18px;
+	//               line-height: 18px;
 	//               white-space: nowrap;
 	//               overflow: hidden;
 	//               text-overflow: ellipsis;
 	//               &.is-start{
 	//                 margin-left: 5px;
-	//                 border-top-left-radius:4px;
-	//                 border-bottom-left-radius:4px;
+	//                 // border-top-left-radius:4px;
+	//                 // border-bottom-left-radius:4px;
 	//               }
 	//               &.is-end{
 	//                 margin-right: 5px;
-	//                 border-top-right-radius:4px;
-	//                 border-bottom-right-radius:4px;
+	//                 // border-top-right-radius:4px;
+	//                 // border-bottom-right-radius:4px;
 	//               }
 	//               &.is-opacity{
 	//                 opacity: 0;
@@ -11285,9 +11196,11 @@
 	//             .more-link{
 	//               cursor: pointer;
 	//               // text-align: right;
-	//               padding-left:2px;
-	//               padding-right:2px;
-	//               color:#3993E5;
+	//               padding-left: 8px;
+	//               padding-right: 2px;
+	//               margin-top: 6px;
+	//               color: rgba(0,0,0,.38);
+	//               font-size: 14px;
 	//             }
 	//           }
 	//         }
@@ -11295,8 +11208,8 @@
 	//     }
 	//     .more-events{
 	//       position:absolute;
-	//       width: 160px;
-	//       z-index: 1;
+	//       width: 150px;
+	//       z-index: 2;
 	//       border:1px solid #eee;
 	//       box-shadow: 0 2px 6px rgba(0,0,0,.15);
 	//       .more-header{
@@ -11304,6 +11217,7 @@
 	//         padding:5px;
 	//         display: flex;
 	//         align-items : center;
+	//         font-size: 14px;
 	//         .title{
 	//           flex:1;
 	//         }
@@ -11318,18 +11232,21 @@
 	//         overflow: hidden;
 	//         .body-list{
 	//           height: 120px;
-	//           padding:10px;
+	//           padding:5px;
 	//           overflow: auto;
 	//           background-color:#fff;
 	//           .body-item{
 	//             cursor: pointer;
+	//             font-size:12px;
+	//             background-color:#C7E6FD;
+	//             margin-bottom:2px;
+	//             color: rgba(0,0,0,.87);
+	//             padding:0 0 0 4px;
+	//             height: 18px;
+	//             line-height: 18px;
+	//             white-space: nowrap;
 	//             overflow: hidden;
 	//             text-overflow: ellipsis;
-	//             border-radius:2px;
-	//             background-color:#3993E5;
-	//             color:#fff;
-	//             padding:2px;
-	//             margin: 0 2px 5px 2px;
 	//           }
 	//         }
 	//       }
@@ -11338,9 +11255,74 @@
 	// }
 	// </style>
 	//
+	// <template>
+	//   <div class="full-calendar-body">
+	//     <div class="weeks">
+	//       <strong class="week" v-for="week in weekNames">{{week}}</strong>
+	//     </div>
+	//     <div class="dates" v-el:dates>
+	//       <div calss="dates-bg">
+	//         <div class="week-row" v-for="week in currentDates">
+	//           <div class="day-cell" v-for="day in week"
+	//             :class="{'today' : day.isToday,
+	//               'not-cur-month' : !day.isCurMonth}">
+	//             <p class="day-number">{{day.monthDay}}</p>
+	//           </div>
+	//         </div>
+	//       </div>
+	//
+	//       <!-- absolute so we can make dynamic td -->
+	//       <div class="dates-events">
+	//         <div class="events-week" v-for="week in currentDates">
+	//           <div class="events-day" v-for="day in week" track-by="$index"
+	//             :class="{'today' : day.isToday,
+	//               'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
+	//             <p class="day-number">{{day.monthDay}}</p>
+	//             <div class="event-box">
+	//               <p class="event-item" v-for="event in day.events" v-show="event.cellIndex <= eventLimit"
+	//                  :class="{'is-start':isStart(event.start, day.date),
+	//                     'is-end':isEnd(event.end,day.date),
+	//                     'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
+	//                 {{event | isBegin day.date day.weekDay}}
+	//               </p>
+	//               <p v-show="day.events.length > eventLimit"
+	//                 class="more-link" @click.stop="selectThisDay(day, $event)">
+	//                 show all
+	//               </p>
+	//             </div>
+	//           </div>
+	//         </div>
+	//       </div>
+	//
+	//       <!-- full events when click show more -->
+	//       <div class="more-events" v-show="showMore"
+	//         :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
+	//         <div class="more-header">
+	//           <span class="title">{{selectDay.date | moreTitle }}</span>
+	//           <span class="close" @click.stop="showMore = false">x</span>
+	//         </div>
+	//         <div class="more-body">
+	//           <ul class="body-list">
+	//             <li v-for="event in selectDay.events"
+	//               v-show="event.isShow" class="body-item"
+	//               @click="eventClick(event,$event)">
+	//               {{event.title}}
+	//             </li>
+	//           </ul>
+	//         </div>
+	//       </div>
+	//
+	//       <slot name="body-card">
+	//
+	//       </slot>
+	//
+	//     </div>
+	//   </div>
+	// </template>
+	// <script type="text/babel">
 
 /***/ },
-/* 54 */
+/* 17 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11404,19 +11386,19 @@
 	module.exports = dateFunc;
 
 /***/ },
-/* 55 */
+/* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n      \n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{'is-start':isStart(event.start, day.date),\n                    'is-end':isEnd(event.end,day.date),\n                    'is-opacity' : !event.isShow}\" @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-show=\"day.events.length > eventLimit\" \n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                show more\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\" \n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\" \n              v-show=\"event.isShow\" class=\"body-item\" \n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n      \n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{'is-start':isStart(event.start, day.date),\n                    'is-end':isEnd(event.end,day.date),\n                    'is-opacity' : !event.isShow}\" @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-show=\"day.events.length > eventLimit\" \n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                show all\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\" \n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\" \n              v-show=\"event.isShow\" class=\"body-item\" \n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
 
 /***/ },
-/* 56 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(57)
-	__vue_script__ = __webpack_require__(59)
-	__vue_template__ = __webpack_require__(60)
+	__webpack_require__(20)
+	__vue_script__ = __webpack_require__(22)
+	__vue_template__ = __webpack_require__(23)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -11433,13 +11415,13 @@
 	})()}
 
 /***/ },
-/* 57 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(58);
+	var content = __webpack_require__(21);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -11459,7 +11441,7 @@
 	}
 
 /***/ },
-/* 58 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -11473,7 +11455,7 @@
 
 
 /***/ },
-/* 59 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11482,7 +11464,7 @@
 	  value: true
 	});
 
-	var _dateFunc = __webpack_require__(54);
+	var _dateFunc = __webpack_require__(17);
 
 	var _dateFunc2 = _interopRequireDefault(_dateFunc);
 
@@ -11494,7 +11476,8 @@
 	  },
 
 	  props: {
-	    currentDate: {}
+	    currentDate: {},
+	    titleFormat: {}
 	  },
 	  data: function data() {
 	    return {
@@ -11516,7 +11499,7 @@
 	      return new Date(dt.setMonth(dt.getMonth() + num));
 	    },
 	    dispatchEvent: function dispatchEvent() {
-	      this.title = _dateFunc2.default.format(this.currentDate, 'yyyy年MM月');
+	      this.title = _dateFunc2.default.format(this.currentDate, this.titleFormat);
 	      var startDate = _dateFunc2.default.getStartDate(this.currentDate);
 	      var curWeekDay = startDate.getDay();
 	      startDate.setDate(startDate.getDate() - curWeekDay + 1); // 1st day of this monthView
@@ -11566,16 +11549,22 @@
 	// <script type="text/babel">
 
 /***/ },
-/* 60 */
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">《 </span>\n      <span class=\"title\">{{title}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\"> 》</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
 
 /***/ },
-/* 61 */
+/* 24 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"comp-full-calendar\">\n    <!-- header pick month -->\n    <fc-header :current-date.sync=\"currentDate\">\n\n      <div slot=\"header-right\">\n        <slot name=\"fc-header-right\">\n        </slot>\n      </div>\n    </fc-header>\n    <!-- body display date day and events -->\n    <fc-body :current-date=\"currentDate\" :events=\"events\">\n      <div slot=\"body-card\">\n        <slot name=\"fc-body-card\">\n        </slot>\n      </div>\n    </fc-body>\n  </div>\n";
+	module.exports = "\n  <div class=\"comp-full-calendar\">\n    <!-- header pick month -->\n    <fc-header :current-date.sync=\"currentDate\" :title-format=\"titleFormat\">\n\n      <div slot=\"header-right\">\n        <slot name=\"fc-header-right\">\n        </slot>\n      </div>\n    </fc-header>\n    <!-- body display date day and events -->\n    <fc-body :current-date=\"currentDate\" :events=\"events\" :month-names=\"monthNames\" :week-names=\"weekNames\">\n      <div slot=\"body-card\">\n        <slot name=\"fc-body-card\">\n        </slot>\n      </div>\n    </fc-body>\n  </div>\n";
+
+/***/ },
+/* 25 */
+/***/ function(module, exports) {
+
+	module.exports = "\n  <div>\n  \t<p>\n  \t\tHere you can see the demo of my vue-fullcalendar, no jquery fullcalendar.js required.\n  \t</p>\n    <full-calendar class=\"test-fc\" :events=\"fcEvents\"></full-calendar>\n  </div>\n";
 
 /***/ }
 /******/ ]);

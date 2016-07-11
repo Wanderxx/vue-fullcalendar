@@ -23,7 +23,8 @@
       this.dispatchEvent()
     },
     props : {
-      currentDate : {}
+      currentDate : {},
+      titleFormat : {}
     },
     data () {
       return {
@@ -44,7 +45,7 @@
         return new Date(dt.setMonth(dt.getMonth() + num))
       },
       dispatchEvent() {
-        this.title = dateFunc.format(this.currentDate, 'yyyy年MM月')
+        this.title = dateFunc.format(this.currentDate, this.titleFormat)
         let startDate = dateFunc.getStartDate(this.currentDate)
         let curWeekDay = startDate.getDay()
         startDate.setDate(startDate.getDate() - curWeekDay + 1) // 1st day of this monthView

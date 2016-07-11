@@ -19,7 +19,7 @@ let demoEvents = [
       end : '2016-06-30'
     },
     {
-      title : 'Sunny 请假',
+      title : 'Sunny OoO',
       start : '2016-06-30'
     },
     {
@@ -27,11 +27,11 @@ let demoEvents = [
       start : '2016-06-30'
     },
     {
-      title : 'Sunny 发财',
+      title : 'Sunny swim',
       start : '2016-07-01'
     },
     {
-      title : 'Michelle 旅游',
+      title : 'Michelle trip',
       start : '2016-07-01',
       end   : '2016-07-02'
     },
@@ -40,12 +40,12 @@ let demoEvents = [
       start : '2016-07-02'
     },
     {
-      title : 'AMY 请假',
+      title : 'AMY OoO',
       start : '2016-07-03',
       end   : '2016-07-04'
     },
     {
-      title : 'BEN 出去玩',
+      title : 'BEN OoO',
       start : '2016-07-06',
       end   : '2016-07-08'
     }
