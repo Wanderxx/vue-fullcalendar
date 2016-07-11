@@ -18,6 +18,8 @@ just download this project from git
 
 ### demo
 
+You can directly visit the simple online [demo](http://wanderxx.github.io/fullcalendar)
+
 switch you directory to this project, and run this command. Then go to your http://localhost:8080
 
 ```
