@@ -10648,7 +10648,7 @@
 	// <template>
 	//   <div>
 	//   	<p>
-	//   		Here is the demo of vue-fullcalendar, no jquery fullcalendar.js required.
+	//   		1Here is the demo of vue-fullcalendar, no jquery fullcalendar.js required!
 	//   	</p>
 	//     <full-calendar class="test-fc" :events="fcEvents"></full-calendar>
 	//   </div>
@@ -11025,7 +11025,7 @@
 	          //   break
 	          // }
 	        }
-	        weekStartDate = startDate; // first date of next week
+	        weekStartDate = startDate; // first date of next week 
 
 	        calendar.push(week);
 	        // if (isFinal) break
@@ -11285,7 +11285,7 @@
 	//                     'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
 	//                 {{event | isBegin day.date day.weekDay}}
 	//               </p>
-	//               <p v-show="day.events.length > eventLimit"
+	//               <p v-show="day.events.length > eventLimit" 
 	//                 class="more-link" @click.stop="selectThisDay(day, $event)">
 	//                 show all
 	//               </p>
@@ -11295,7 +11295,7 @@
 	//       </div>
 	//
 	//       <!-- full events when click show more -->
-	//       <div class="more-events" v-show="showMore"
+	//       <div class="more-events" v-show="showMore" 
 	//         :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
 	//         <div class="more-header">
 	//           <span class="title">{{selectDay.date | moreTitle }}</span>
@@ -11303,8 +11303,8 @@
 	//         </div>
 	//         <div class="more-body">
 	//           <ul class="body-list">
-	//             <li v-for="event in selectDay.events"
-	//               v-show="event.isShow" class="body-item"
+	//             <li v-for="event in selectDay.events" 
+	//               v-show="event.isShow" class="body-item" 
 	//               @click="eventClick(event,$event)">
 	//               {{event.title}}
 	//             </li>
@@ -11564,7 +11564,7 @@
 /* 25 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div>\n  \t<p>\n  \t\tHere is the demo of vue-fullcalendar, no jquery fullcalendar.js required.\n  \t</p>\n    <full-calendar class=\"test-fc\" :events=\"fcEvents\"></full-calendar>\n  </div>\n";
+	module.exports = "\n  <div>\n  \t<p>\n  \t\t1Here is the demo of vue-fullcalendar, no jquery fullcalendar.js required!\n  \t</p>\n    <full-calendar class=\"test-fc\" :events=\"fcEvents\"></full-calendar>\n  </div>\n";
 
 /***/ }
 /******/ ]);

@@ -4,7 +4,7 @@ var webpack = require('webpack')
 module.exports={
 	entry:'./demo/main.js',
 	output:{
-		path:'./static',
+		path:path.resolve(__dirname, 'static'),
     publichPath : '/static/',
 		filename:'bundle.js'
 	},
