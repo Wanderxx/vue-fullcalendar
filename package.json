@@ -11,7 +11,7 @@
     "src"
   ],
   "scripts": {
-    "dev": "webpack-dev-server --hot --inline",
+    "dev": "webpack-dev-server --inline --hot",
     "demo": "webpack --progress --watch",
     "build": "webpack --progress --hide-modules --config webpack.build.js && webpack --progress --hide-modules --config webpack.build.min.js -p"
   },

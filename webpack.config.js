@@ -5,6 +5,7 @@ module.exports={
 	entry:'./demo/main.js',
 	output:{
 		path:'./static',
+    publichPath : '/static/',
 		filename:'bundle.js'
 	},
 	plugins : [

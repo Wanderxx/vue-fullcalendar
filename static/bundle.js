@@ -10648,7 +10648,7 @@
 	// <template>
 	//   <div>
 	//   	<p>
-	//   		Here you can see the demo of my vue-fullcalendar, no jquery fullcalendar.js required.
+	//   		Here is the demo of vue-fullcalendar, no jquery fullcalendar.js required.
 	//   	</p>
 	//     <full-calendar class="test-fc" :events="fcEvents"></full-calendar>
 	//   </div>
@@ -11564,7 +11564,7 @@
 /* 25 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div>\n  \t<p>\n  \t\tHere you can see the demo of my vue-fullcalendar, no jquery fullcalendar.js required.\n  \t</p>\n    <full-calendar class=\"test-fc\" :events=\"fcEvents\"></full-calendar>\n  </div>\n";
+	module.exports = "\n  <div>\n  \t<p>\n  \t\tHere is the demo of vue-fullcalendar, no jquery fullcalendar.js required.\n  \t</p>\n    <full-calendar class=\"test-fc\" :events=\"fcEvents\"></full-calendar>\n  </div>\n";
 
 /***/ }
 /******/ ]);
