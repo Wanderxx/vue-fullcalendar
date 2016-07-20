@@ -2,7 +2,7 @@
 
 ![demo.gif](http://g.recordit.co/vovteJ5m9o.gif)
 
- So as it's called. This is a fullCalendar component based on vue.js . No Jquery or fullCalendar.js required. 
+So as it's called. This is a fullCalendar component based on vue.js . No Jquery or fullCalendar.js required. 
 Currently, It only supports month view. I will use fc stands for vue-fullcalendar in following words.
 
 Feel free to download it,re-develop it and use in your project.
@@ -11,8 +11,8 @@ Feel free to download it,re-develop it and use in your project.
 
 open your project and run this command.
 
-```
-  npm install vue-fullcalendar
+```shell
+$ npm install vue-fullcalendar
 ```
 or
 
@@ -24,9 +24,9 @@ You can directly visit the simple online [demo](http://wanderxx.github.io/fullca
 
 switch you directory to this project, and run this command. Then go to your http://localhost:8080
 
-```
-  npm install (NOTE : if you are in China mainland, cnpm install is more recommended.)
-  npm run dev
+```shell
+$ npm install (NOTE : if you are in China mainland, cnpm install is more recommended.)
+$ npm run dev
 ```
 
 If everything runs well. You should see this.
@@ -40,8 +40,8 @@ In my project, I add eventCard and filter. So, I find this roof. You find your r
 
 In your code , do as follow. Then you will be able to use this component.
 
-```
-    import fullcalendar from 'vue-fullcalendar'
+```javascript
+import fullcalendar from 'vue-fullcalendar'
 ```
 
 ### VUE-API
@@ -52,30 +52,31 @@ Since fc is a vue-based component. I pre-defined some properties.
 
 fc will receive some props from outside world.
 
-   1. events: Events will be displayed on the calendar
- ```javascript
+- `events` : Events will be displayed on the calendar
+
+```javascript
 events = [
-{
-title :  'event1',
-start: '2016-07-01'，
-YOUR_DATA : {}
-},
-{
-title : 'event2',
-start : '2016-07-02',
-end : '2016-07-03',
-YOUR_DATA : {}
-}
+  {
+    title     :  'event1',
+    start     : '2016-07-01'，
+    YOUR_DATA : {}
+  },
+  {
+    title     : 'event2',
+    start     : '2016-07-02',
+    end       : '2016-07-03',
+    YOUR_DATA : {}
+  }
 ]         
- ```
+```
 
 ### VUE:events
 
 When you do something, fc will dispatch some events out.
 
-1. 'changeMonth' : Every time you click arrow to next/last month, fc will dispatch **changeMonth**
+- `changeMonth` : Every time you click arrow to next/last month, fc will dispatch **changeMonth**
 
-```
+```javascript
 this.$dispatch('changeMonth', start, end)
 ```
 
@@ -83,9 +84,9 @@ this.$dispatch('changeMonth', start, end)
 
 **end** is the last day of current monthView
 
-2. 'eventClick' : Every time you click a event, fc will dispatch **eventClick**
+- `eventClick` : Every time you click a event, fc will dispatch **eventClick**
 
-```
+```javascript
 this.$dispatch('eventClick', event, jsEvent, pos)
 ```
 
@@ -96,10 +97,10 @@ this.$dispatch('eventClick', event, jsEvent, pos)
 **pos** is the relative coordinates of fc
 
 
-3. 'dayClick' : fc dispatch it when you click a day slot.
+- `dayClick` : fc dispatch it when you click a day slot.
 
-```
- this.$dispatch('eventClick', day, jsEvent)
+```javascript
+this.$dispatch('eventClick', day, jsEvent)
 ```
 
 **day** is a Date Object of the day you click
