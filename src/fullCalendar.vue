@@ -18,6 +18,7 @@
   </div>
 </template>
 <script type="text/babel">
+  import langSets from './dataMap/langSets'
 
   export default {
     props : {
@@ -25,20 +26,26 @@
         type : Array,
         default : []
       },
+      lang : {
+        type : String,
+        default : 'zh'
+      },
       titleFormat : {
         type : String,
-        default : 'yyyy年MM月'
+        default () {
+          return langSets[this.lang].titleFormat
+        }
       },
       monthNames : {
         type : Array,
         default () {
-          return ['1月','2月','3月','4月','5月','6月','7月','8月','9月','11月','12月']
+          return langSets[this.lang].monthNames
         } 
       },
       weekNames : {
         type : Array,
         default () {
-          return ['周一','周二','周三','周四','周五','周六','周日']
+          return langSets[this.lang].weekNames
         }
       }
     },

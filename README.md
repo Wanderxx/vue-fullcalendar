@@ -52,7 +52,7 @@ Since fc is a vue-based component. I pre-defined some properties.
 
 fc will receive some props from outside world.
 
-- `events` : Events will be displayed on the calendar
+1. **events** : Events will be displayed on the calendar
 
 ```javascript
 events = [
@@ -70,42 +70,77 @@ events = [
 ]         
 ```
 
+- `title` is the title of this event, will be displayed on calendar
+
+- `start` is the start day of this event
+
+- `end` is the end day of this event
+
+- `YOUR_DATA` You can define as many data you want as possible
+
+2. **lang** : langague of things like monthNames weekNames and titleFormat
+
+```javascript
+export default {
+  en : {
+    weekNames :  ['Mon','Tue','Wen','Thur','Fri','Sat','Sun'],
+    monthNames : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    titleFormat : 'MM/yyyy'
+  },
+  zh : {
+    weekNames : ['周一','周二','周三','周四','周五','周六','周日'],
+    monthNames : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','11月','12月'],
+    titleFormat : 'yyyy年MM月'
+  }
+}
+```
+
+- `option` : `zh` | `en`
+
+- `default` : `zh`
+
+3. **monthNames** 
+
+4. **weekNames**
+
+5. **titleFormat**
+
 ### VUE:events
 
 When you do something, fc will dispatch some events out.
 
-- `changeMonth` : Every time you click arrow to next/last month, fc will dispatch **changeMonth**
+1. **changeMonth** : Every time you click arrow to next/last month, fc will dispatch **changeMonth**
 
 ```javascript
 this.$dispatch('changeMonth', start, end)
 ```
 
-**start** is the first day of current monthView
+- `start` is the first day of current monthView
 
-**end** is the last day of current monthView
+- `end` is the last day of current monthView
 
-- `eventClick` : Every time you click a event, fc will dispatch **eventClick**
+2. **eventClick** : Every time you click a event, fc will dispatch **eventClick**
 
 ```javascript
 this.$dispatch('eventClick', event, jsEvent, pos)
 ```
 
-**event** is an Event object hold the event's information
+- `event` is an Event object hold the event's information
 
-**jsEvent** holds the native javascript event
+- `jsEvent` holds the native javascript event
 
-**pos** is the relative coordinates of fc
+- `pos` is the relative coordinates of fc
 
 
-- `dayClick` : fc dispatch it when you click a day slot.
+3. **dayClick** : fc dispatch it when you click a day slot.
 
 ```javascript
 this.$dispatch('eventClick', day, jsEvent)
 ```
 
-**day** is a Date Object of the day you click
+- `day` is a Date Object of the day you click
 
-**jsEvent** holds the native javascript event
+- `jsEvent` holds the native javascript event
 
 ###END
 
