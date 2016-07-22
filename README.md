@@ -1,5 +1,7 @@
 ##vue-fullcalendar
 
+<img src="https://img.shields.io/npm/dm/vue-fullcalendar.svg?style=flat-square">
+
 ![demo.gif](http://g.recordit.co/vovteJ5m9o.gif)
 
 So as it's called. This is a fullCalendar component based on vue.js . No Jquery or fullCalendar.js required. 
