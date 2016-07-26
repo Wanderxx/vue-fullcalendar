@@ -1,5 +1,9 @@
 ##vue-fullcalendar
 
+[![npm](https://img.shields.io/npm/v/vue-fullcalendar.svg?maxAge=2592000?style=flat-square)]()
+[![npm](https://img.shields.io/npm/dt/vue-fullcalendar.svg?maxAge=2592000?style=flat-square)]()
+[![npm](https://img.shields.io/npm/dm/vue-fullcalendar.svg?maxAge=2592000?style=flat-square)]()
+
 ![demo.gif](http://g.recordit.co/vovteJ5m9o.gif)
 
 So as it's called. This is a fullCalendar component based on vue.js . No Jquery or fullCalendar.js required. 
