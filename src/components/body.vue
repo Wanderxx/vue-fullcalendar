@@ -197,7 +197,6 @@
             end : dateFunc.format(date,'yyyy-MM-dd'),
             isShow : false
           })
-          i++
         }
 
         return thisDayEvents
@@ -333,7 +332,6 @@
               // text-align: right;
               padding-left: 8px;
               padding-right: 2px;
-              margin-top: 6px;
               color: rgba(0,0,0,.38);
               font-size: 14px;
             }
