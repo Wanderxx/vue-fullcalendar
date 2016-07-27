@@ -9,46 +9,25 @@
 <script>
 let demoEvents = [
     {
-      title : 'Sunny 628-630',
-      start : '2016-06-28',
-      end : '2016-06-30'
+      title : 'Sunny 728-730',
+      start : '2016-07-25',
+      end : '2016-07-27'
     },
     {
-      title : 'Sunny 629-630',
-      start : '2016-06-29',
-      end : '2016-06-30'
+      title : 'Sunny 726-727',
+      start : '2016-07-26',
+      end : '2016-07-27'
     },
     {
-      title : 'Sunny OoO',
-      start : '2016-06-30'
+      title : 'Sunny 727-728',
+      start : '2016-07-27',
+      end : '2016-07-28'
     },
     {
-      title : 'Sunny more',
-      start : '2016-06-30'
+      title : 'Sunny 728-730',
+      start : '2016-07-28',
+      end : '2016-07-30'
     },
-    {
-      title : 'Sunny swim',
-      start : '2016-07-01'
-    },
-    {
-      title : 'Michelle trip',
-      start : '2016-07-01',
-      end   : '2016-07-02'
-    },
-    {
-      title : 'Tao yoyo',
-      start : '2016-07-02'
-    },
-    {
-      title : 'AMY OoO',
-      start : '2016-07-03',
-      end   : '2016-07-04'
-    },
-    {
-      title : 'BEN OoO',
-      start : '2016-07-06',
-      end   : '2016-07-08'
-    }
   ]
 
 export default {

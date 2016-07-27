@@ -1,13 +1,13 @@
 {
   "name": "vue-fullcalendar",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "author": "Sunny Wang",
   "license": "MIT",
   "description": "pure vue-based fullcalendar, no jquery moment required",
   "main": "dist/vue-fullcalendar.js",
   "files": [
     "dist/vue-fullcalendar.js",
-    "dist/vuvue-fullcalendare.min.js",
+    "dist/vue-fullcalendar.min.js",
     "src"
   ],
   "scripts": {
