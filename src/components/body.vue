@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- absolute so we can make dynamic td -->
       <div class="dates-events">
         <div class="events-week" v-for="week in currentDates">
@@ -28,7 +28,7 @@
                     'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
                 {{event | isBegin day.date day.weekDay}}
               </p>
-              <p v-show="day.events.length > eventLimit" 
+              <p v-show="day.events.length > eventLimit"
                 class="more-link" @click.stop="selectThisDay(day, $event)">
                 show all
               </p>
@@ -38,7 +38,7 @@
       </div>
 
       <!-- full events when click show more -->
-      <div class="more-events" v-show="showMore" 
+      <div class="more-events" v-show="showMore"
         :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
         <div class="more-header">
           <span class="title">{{selectDay.date | moreTitle }}</span>
@@ -46,8 +46,8 @@
         </div>
         <div class="more-body">
           <ul class="body-list">
-            <li v-for="event in selectDay.events" 
-              v-show="event.isShow" class="body-item" 
+            <li v-for="event in selectDay.events"
+              v-show="event.isShow" class="body-item"
               @click="eventClick(event,$event)">
               {{event.title}}
             </li>
@@ -97,7 +97,7 @@
     filters : {
       isBegin (event, date, index) {
         let st = new Date(event.start)
-        
+
         if (index == 0 || st.toDateString() == date.toDateString()) {
           return event.title
         }
@@ -114,10 +114,6 @@
       }
     },
     methods : {
-      getStartDate(date) {
-        // if duration=0 return 1st day
-        return new Date(date.getFullYear(),date.getMonth(),1)
-      },
       getCalendar () {
         // calculate 2d-array of each month
         // first day of this month
@@ -129,19 +125,16 @@
         // let endDate = this.changeDay(startDate,duration)
 
         let curWeekDay = startDate.getDay()
-
         // begin date of this table may be some day of last month
-        startDate.setDate(startDate.getDate() - curWeekDay + 1)
+        startDate.setDate(startDate.getDate() - curWeekDay)
 
         let calendar = []
-        let weekStartDate = startDate
-        let weekEndDate = startDate
         // let isFinal = false
 
         for(let perWeek = 0 ; perWeek < 6 ; perWeek++) {
 
           let week = []
-        
+
           for(let perDay = 0 ; perDay < 7 ; perDay++) {
             week.push({
               monthDay : startDate.getDate(),
@@ -152,14 +145,12 @@
               events : this.slotEvents(startDate)
             })
 
-            weekEndDate = startDate // last date of this week
             startDate.setDate(startDate.getDate() + 1)
             // if (startDate.toDateString() == endDate.toDateString()) {
             //   isFinal = true
             //   break
             // }
           }
-          weekStartDate = startDate // first date of next week 
 
           calendar.push(week)
           // if (isFinal) break

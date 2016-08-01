@@ -1,5 +1,5 @@
 let dateFunc = {
-  getDuration (date) { 
+  getDuration (date) {
     // how many days of this month
     let dt = new Date(date)
     var month = dt.getMonth()
@@ -13,7 +13,7 @@ let dateFunc = {
   },
   getStartDate(date) {
     // return first day of this month
-    return new Date(date.getFullYear(),date.getMonth(),1)
+    return new Date(date.getFullYear(), date.getMonth(), 1)
   },
   getEndDate (date) {
     // get last day of this month
