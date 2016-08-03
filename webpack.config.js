@@ -41,15 +41,23 @@ module.exports={
     ]
   },
   vue: {
-        autoprefixer: {
-          browsers: ['> 1%']
-        },
-        loaders: {
-          scss: 'style!css!sass'
-        }
+    autoprefixer: {
+      browsers: ['> 1%']
     },
-  babel: {
-      presets: ['es2015'],
-      plugins: ['transform-runtime']
+    loaders: {
+      scss: 'style!css!sass'
     }
+  },
+  babel: {
+    presets: ['es2015'],
+    plugins: ['transform-runtime']
+  },
+  devServer: {
+    port : 8080,
+    historyApiFallback: true,
+    stats : {
+      colors : true,
+      chunks : false
+    }
+  }
 }

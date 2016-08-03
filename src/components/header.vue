@@ -5,9 +5,9 @@
       </slot>
     </div>
     <div class="header-center">
-      <span class="prev-month" @click.stop="goPrev">《 </span>
+      <span class="prev-month" @click.stop="goPrev">{{leftArrow}}</span>
       <span class="title">{{title}}</span>
-      <span class="next-month" @click.stop="goNext"> 》</span>
+      <span class="next-month" @click.stop="goNext">{{righArrow}}</span>
     </div>
     <div class="header-right">
       <slot name="header-right">
@@ -28,16 +28,18 @@
     },
     data () {
       return {
-        title : ''
+        title      : '',
+        leftArrow  : '<',
+        rightArrow : '>'
       }
     },
     methods : {
       goPrev () {
-        this.currentDate = this.changeMonth(this.currentDate,-1)
+        this.currentDate = this.changeMonth(this.currentDate, -1)
         this.dispatchEvent()
       },
       goNext () {
-        this.currentDate = this.changeMonth(this.currentDate,1)
+        this.currentDate = this.changeMonth(this.currentDate, 1)
         this.dispatchEvent()
       },
       changeMonth (date, num) {
@@ -49,10 +51,10 @@
         let startDate = dateFunc.getStartDate(this.currentDate)
         let curWeekDay = startDate.getDay()
         startDate.setDate(startDate.getDate() - curWeekDay + 1) // 1st day of this monthView
-        let endDate = dateFunc.changeDay(startDate,41)  // the month view is 6*7
+        let endDate = dateFunc.changeDay(startDate, 41)  // the month view is 6*7
         this.$dispatch('changeMonth', 
-          dateFunc.format(startDate,'yyyy-MM-dd'),
-          dateFunc.format(endDate,'yyyy-MM-dd'))
+          dateFunc.format(startDate, 'yyyy-MM-dd'),
+          dateFunc.format(endDate, 'yyyy-MM-dd'))
       }
     }
   }

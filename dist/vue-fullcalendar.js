@@ -775,11 +775,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var ed = new Date(eventDate);
 	      return ed.toDateString() == date.toDateString();
 	    },
-	    selectThisDay: function selectThisDay(day, event) {
+	    selectThisDay: function selectThisDay(day, jsEvent) {
 	      this.selectDay = day;
 	      this.showMore = true;
 	      this.morePos = this.computePos(event.target);
 	      this.morePos.top -= 100;
+	      var events = day.events.filter(function (item) {
+	        return item.isShow == true;
+	      });
+	      this.$dispatch('moreClick', day.date, events, jsEvent);
 	    },
 	    computePos: function computePos(target) {
 	      var eventRect = target.getBoundingClientRect();
@@ -984,9 +988,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	//                     'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
 	//                 {{event | isBegin day.date day.weekDay}}
 	//               </p>
-	//               <p v-show="day.events.length > eventLimit" 
+	//               <p v-if="day.events.length > eventLimit" 
 	//                 class="more-link" @click.stop="selectThisDay(day, $event)">
-	//                 show all
+	//                 + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
 	//               </p>
 	//             </div>
 	//           </div>
@@ -1088,7 +1092,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n      \n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{'is-start':isStart(event.start, day.date),\n                    'is-end':isEnd(event.end,day.date),\n                    'is-opacity' : !event.isShow}\" @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-show=\"day.events.length > eventLimit\" \n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                show all\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\" \n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\" \n              v-show=\"event.isShow\" class=\"body-item\" \n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n      \n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{'is-start':isStart(event.start, day.date),\n                    'is-end':isEnd(event.end,day.date),\n                    'is-opacity' : !event.isShow}\" @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-if=\"day.events.length > eventLimit\" \n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                + {{day.events[day.events.length -1].cellIndex - eventLimit}} more\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\" \n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\" \n              v-show=\"event.isShow\" class=\"body-item\" \n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
 
 /***/ },
 /* 14 */
@@ -1180,7 +1184,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  data: function data() {
 	    return {
-	      title: ''
+	      title: '',
+	      leftArrow: '<',
+	      rightArrow: '>'
 	    };
 	  },
 
@@ -1235,9 +1241,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	//       </slot>
 	//     </div>
 	//     <div class="header-center">
-	//       <span class="prev-month" @click.stop="goPrev">《 </span>
+	//       <span class="prev-month" @click.stop="goPrev">{{leftArrow}}</span>
 	//       <span class="title">{{title}}</span>
-	//       <span class="next-month" @click.stop="goNext"> 》</span>
+	//       <span class="next-month" @click.stop="goNext">{{righArrow}}</span>
 	//     </div>
 	//     <div class="header-right">
 	//       <slot name="header-right">
@@ -1251,7 +1257,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">《 </span>\n      <span class=\"title\">{{title}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\"> 》</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">{{leftArrow}}</span>\n      <span class=\"title\">{{title}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\">{{righArrow}}</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
 
 /***/ },
 /* 19 */
