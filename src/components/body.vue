@@ -28,9 +28,9 @@
                     'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
                 {{event | isBegin day.date day.weekDay}}
               </p>
-              <p v-show="day.events.length > eventLimit" 
+              <p v-if="day.events.length > eventLimit" 
                 class="more-link" @click.stop="selectThisDay(day, $event)">
-                show all
+                + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
               </p>
             </div>
           </div>
@@ -214,6 +214,7 @@
         this.showMore = true
         this.morePos = this.computePos(event.target)
         this.morePos.top -= 100
+        this.$dispatch('moreClick', day.date, day.events)
       },
       computePos (target) {
         let eventRect = target.getBoundingClientRect()
