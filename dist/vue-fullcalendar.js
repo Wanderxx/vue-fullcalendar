@@ -775,12 +775,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var ed = new Date(eventDate);
 	      return ed.toDateString() == date.toDateString();
 	    },
-	    selectThisDay: function selectThisDay(day, event) {
+	    selectThisDay: function selectThisDay(day, jsEvent) {
 	      this.selectDay = day;
 	      this.showMore = true;
 	      this.morePos = this.computePos(event.target);
 	      this.morePos.top -= 100;
-	      this.$dispatch('moreClick', day.date, day.events);
+	      var events = day.events.filter(function (item) {
+	        return item.isShow == true;
+	      });
+	      this.$dispatch('moreClick', day.date, events, jsEvent);
 	    },
 	    computePos: function computePos(target) {
 	      var eventRect = target.getBoundingClientRect();
@@ -1181,7 +1184,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  data: function data() {
 	    return {
-	      title: ''
+	      title: '',
+	      leftArrow: '<',
+	      rightArrow: '>'
 	    };
 	  },
 
@@ -1236,9 +1241,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	//       </slot>
 	//     </div>
 	//     <div class="header-center">
-	//       <span class="prev-month" @click.stop="goPrev">《 </span>
+	//       <span class="prev-month" @click.stop="goPrev">{{leftArrow}}</span>
 	//       <span class="title">{{title}}</span>
-	//       <span class="next-month" @click.stop="goNext"> 》</span>
+	//       <span class="next-month" @click.stop="goNext">{{righArrow}}</span>
 	//     </div>
 	//     <div class="header-right">
 	//       <slot name="header-right">
@@ -1252,7 +1257,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">《 </span>\n      <span class=\"title\">{{title}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\"> 》</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">{{leftArrow}}</span>\n      <span class=\"title\">{{title}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\">{{righArrow}}</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
 
 /***/ },
 /* 19 */

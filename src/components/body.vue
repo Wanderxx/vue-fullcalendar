@@ -209,12 +209,15 @@
         let ed = new Date(eventDate)
         return ed.toDateString() == date.toDateString()
       },
-      selectThisDay (day,event) {
+      selectThisDay (day, jsEvent) {
         this.selectDay = day
         this.showMore = true
         this.morePos = this.computePos(event.target)
         this.morePos.top -= 100
-        this.$dispatch('moreClick', day.date, day.events)
+        let events = day.events.filter(item =>{
+          return item.isShow == true
+        })
+        this.$dispatch('moreClick', day.date, events, jsEvent)
       },
       computePos (target) {
         let eventRect = target.getBoundingClientRect()
