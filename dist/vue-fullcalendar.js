@@ -1243,7 +1243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//     <div class="header-center">
 	//       <span class="prev-month" @click.stop="goPrev">{{leftArrow}}</span>
 	//       <span class="title">{{title}}</span>
-	//       <span class="next-month" @click.stop="goNext">{{righArrow}}</span>
+	//       <span class="next-month" @click.stop="goNext">{{rightArrow}}</span>
 	//     </div>
 	//     <div class="header-right">
 	//       <slot name="header-right">
@@ -1257,7 +1257,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">{{leftArrow}}</span>\n      <span class=\"title\">{{title}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\">{{righArrow}}</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"full-calendar-header\">\n    <div class=\"header-left\">\n      <slot name=\"header-left\">\n      </slot>\n    </div>\n    <div class=\"header-center\">\n      <span class=\"prev-month\" @click.stop=\"goPrev\">{{leftArrow}}</span>\n      <span class=\"title\">{{title}}</span>\n      <span class=\"next-month\" @click.stop=\"goNext\">{{rightArrow}}</span>\n    </div>\n    <div class=\"header-right\">\n      <slot name=\"header-right\">\n      </slot>\n    </div>\n  </div>\n";
 
 /***/ },
 /* 19 */
