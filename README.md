@@ -138,7 +138,7 @@ this.$dispatch('eventClick', event, jsEvent, pos)
 3. **dayClick** : fc dispatch it when you click a day slot.
 
 ```javascript
-this.$dispatch('eventClick', day, jsEvent)
+this.$dispatch('dayClick', day, jsEvent)
 ```
 
 - `day` is a Date Object of the day you click
