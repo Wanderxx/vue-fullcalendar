@@ -81,7 +81,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/SunnyWang/code/vue-fullcalendar/src/fullCalendar.vue"
+	  var id = "/Users/andrew/code/javascript/vue-fullcalendar/src/fullCalendar.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -105,8 +105,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-3e333dbe&file=fullCalendar.vue!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./fullCalendar.vue", function() {
-				var newContent = require("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-3e333dbe&file=fullCalendar.vue!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./fullCalendar.vue");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5ded4669&file=fullCalendar.vue!./../node_modules/sass-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./fullCalendar.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5ded4669&file=fullCalendar.vue!./../node_modules/sass-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./fullCalendar.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -541,12 +541,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = {
 	  en: {
-	    weekNames: ['Mon', 'Tue', 'Wen', 'Thur', 'Fri', 'Sat', 'Sun'],
-	    monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	    weekNames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+	    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 	    titleFormat: 'MM/yyyy'
 	  },
 	  zh: {
-	    weekNames: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+	    weekNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
 	    monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '11月', '12月'],
 	    titleFormat: 'yyyy年MM月'
 	  }
@@ -567,7 +567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/SunnyWang/code/vue-fullcalendar/src/components/body.vue"
+	  var id = "/Users/andrew/code/javascript/vue-fullcalendar/src/components/body.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -591,8 +591,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-734054ba&file=body.vue!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./body.vue", function() {
-				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-734054ba&file=body.vue!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./body.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-f591efa2&file=body.vue!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./body.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-f591efa2&file=body.vue!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./body.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -672,7 +672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    moreTitle: function moreTitle(date) {
 	      var dt = new Date(date);
-	      return this.weekNames[dt.getDay() - 1] + ', ' + this.monthNames[dt.getMonth()] + dt.getDate() + '日';
+	      return this.weekNames[dt.getDay()] + ', ' + this.monthNames[dt.getMonth()] + dt.getDate();
 	    }
 	  },
 	  computed: {
@@ -681,10 +681,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  methods: {
-	    getStartDate: function getStartDate(date) {
-	      // if duration=0 return 1st day
-	      return new Date(date.getFullYear(), date.getMonth(), 1);
-	    },
 	    getCalendar: function getCalendar() {
 	      // calculate 2d-array of each month
 	      // first day of this month
@@ -696,13 +692,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // let endDate = this.changeDay(startDate,duration)
 
 	      var curWeekDay = startDate.getDay();
-
 	      // begin date of this table may be some day of last month
-	      startDate.setDate(startDate.getDate() - curWeekDay + 1);
+	      startDate.setDate(startDate.getDate() - curWeekDay);
 
 	      var calendar = [];
-	      var weekStartDate = startDate;
-	      var weekEndDate = startDate;
 	      // let isFinal = false
 
 	      for (var perWeek = 0; perWeek < 6; perWeek++) {
@@ -719,14 +712,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            events: this.slotEvents(startDate)
 	          });
 
-	          weekEndDate = startDate; // last date of this week
 	          startDate.setDate(startDate.getDate() + 1);
 	          // if (startDate.toDateString() == endDate.toDateString()) {
 	          //   isFinal = true
 	          //   break
 	          // }
 	        }
-	        weekStartDate = startDate; // first date of next week 
 
 	        calendar.push(week);
 	        // if (isFinal) break
@@ -988,7 +979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//                     'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
 	//                 {{event | isBegin day.date day.weekDay}}
 	//               </p>
-	//               <p v-if="day.events.length > eventLimit" 
+	//               <p v-if="day.events.length > eventLimit"
 	//                 class="more-link" @click.stop="selectThisDay(day, $event)">
 	//                 + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
 	//               </p>
@@ -998,7 +989,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//       </div>
 	//
 	//       <!-- full events when click show more -->
-	//       <div class="more-events" v-show="showMore" 
+	//       <div class="more-events" v-show="showMore"
 	//         :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
 	//         <div class="more-header">
 	//           <span class="title">{{selectDay.date | moreTitle }}</span>
@@ -1006,8 +997,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	//         </div>
 	//         <div class="more-body">
 	//           <ul class="body-list">
-	//             <li v-for="event in selectDay.events" 
-	//               v-show="event.isShow" class="body-item" 
+	//             <li v-for="event in selectDay.events"
+	//               v-show="event.isShow" class="body-item"
 	//               @click="eventClick(event,$event)">
 	//               {{event.title}}
 	//             </li>
@@ -1092,7 +1083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n      \n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{'is-start':isStart(event.start, day.date),\n                    'is-end':isEnd(event.end,day.date),\n                    'is-opacity' : !event.isShow}\" @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-if=\"day.events.length > eventLimit\" \n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                + {{day.events[day.events.length -1].cellIndex - eventLimit}} more\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\" \n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\" \n              v-show=\"event.isShow\" class=\"body-item\" \n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n\n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{'is-start':isStart(event.start, day.date),\n                    'is-end':isEnd(event.end,day.date),\n                    'is-opacity' : !event.isShow}\" @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-if=\"day.events.length > eventLimit\"\n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                + {{day.events[day.events.length -1].cellIndex - eventLimit}} more\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\"\n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\"\n              v-show=\"event.isShow\" class=\"body-item\"\n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
 
 /***/ },
 /* 14 */
@@ -1109,7 +1100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/SunnyWang/code/vue-fullcalendar/src/components/header.vue"
+	  var id = "/Users/andrew/code/javascript/vue-fullcalendar/src/components/header.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -1133,8 +1124,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-62863025&file=header.vue!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
-				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-62863025&file=header.vue!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5cc44b4c&file=header.vue!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5cc44b4c&file=header.vue!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
