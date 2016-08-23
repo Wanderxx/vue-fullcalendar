@@ -86,12 +86,12 @@ events = [
 ```javascript
 export default {
   en : {
-    weekNames :  ['Mon','Tue','Wen','Thur','Fri','Sat','Sun'],
-    monthNames : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    weekNames :  ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat'],
+    monthNames : ['January','February','March','April','May','June','July','August','September','October','November','December'],
     titleFormat : 'MM/yyyy'
   },
   zh : {
-    weekNames : ['周一','周二','周三','周四','周五','周六','周日'],
+    weekNames : ['周日', '周一','周二','周三','周四','周五','周六'],
     monthNames : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','11月','12月'],
     titleFormat : 'yyyy年MM月'
   }
@@ -115,12 +115,14 @@ When you do something, fc will dispatch some events out.
 1. **changeMonth** : Every time you click arrow to next/last month, fc will dispatch **changeMonth**
 
 ```javascript
-this.$dispatch('changeMonth', start, end)
+this.$dispatch('changeMonth', start, end, current)
 ```
 
 - `start` is the first day of current monthView
 
 - `end` is the last day of current monthView
+
+- `current` is the first day of current month
 
 2. **eventClick** : Every time you click a event, fc will dispatch **eventClick**
 

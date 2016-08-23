@@ -37,6 +37,11 @@ export default {
       fcEvents : demoEvents
     }
 	},
+  events : {
+    'changeMonth' (start, end, current) {
+      console.log('changeMonth', start, end, current)
+    }
+  },
   components : {
     'full-calendar' : require('src/fullCalendar')
   }
