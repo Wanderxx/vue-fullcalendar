@@ -68,7 +68,8 @@
     // font-family: "elvetica neue", tahoma, "hiragino sans gb";
     padding:20px;
     background: #fff;
-    width: 960px;
+    max-width: 960px;
+    margin:0 auto;
     ul,p{
       margin:0;
       padding:0;

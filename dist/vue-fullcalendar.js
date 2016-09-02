@@ -81,7 +81,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/andrew/code/javascript/vue-fullcalendar/src/fullCalendar.vue"
+	  var id = "/Users/SunnyWang/code/vue-fullcalendar/src/fullCalendar.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -105,8 +105,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5ded4669&file=fullCalendar.vue!./../node_modules/sass-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./fullCalendar.vue", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5ded4669&file=fullCalendar.vue!./../node_modules/sass-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./fullCalendar.vue");
+			module.hot.accept("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-3e333dbe&file=fullCalendar.vue!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./fullCalendar.vue", function() {
+				var newContent = require("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-3e333dbe&file=fullCalendar.vue!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./fullCalendar.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -124,7 +124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".comp-full-calendar {\n  padding: 20px;\n  background: #fff;\n  width: 960px; }\n  .comp-full-calendar ul, .comp-full-calendar p {\n    margin: 0;\n    padding: 0;\n    font-size: 14px; }\n", ""]);
+	exports.push([module.id, ".comp-full-calendar {\n  padding: 20px;\n  background: #fff;\n  max-width: 960px;\n  margin: 0 auto; }\n  .comp-full-calendar ul, .comp-full-calendar p {\n    margin: 0;\n    padding: 0;\n    font-size: 14px; }\n", ""]);
 
 	// exports
 
@@ -501,7 +501,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	//     // font-family: "elvetica neue", tahoma, "hiragino sans gb";
 	//     padding:20px;
 	//     background: #fff;
-	//     width: 960px;
+	//     max-width: 960px;
+	//     margin:0 auto;
 	//     ul,p{
 	//       margin:0;
 	//       padding:0;
@@ -567,7 +568,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/andrew/code/javascript/vue-fullcalendar/src/components/body.vue"
+	  var id = "/Users/SunnyWang/code/vue-fullcalendar/src/components/body.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -591,8 +592,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-f591efa2&file=body.vue!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./body.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-f591efa2&file=body.vue!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./body.vue");
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-734054ba&file=body.vue!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./body.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-734054ba&file=body.vue!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./body.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -610,7 +611,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".full-calendar-body {\n  margin-top: 20px; }\n  .full-calendar-body .weeks {\n    display: -webkit-box;\n    display: flex;\n    border-top: 1px solid #e0e0e0;\n    border-bottom: 1px solid #e0e0e0;\n    border-left: 1px solid #e0e0e0; }\n    .full-calendar-body .weeks .week {\n      -webkit-box-flex: 1;\n              flex: 1;\n      text-align: center;\n      border-right: 1px solid #e0e0e0; }\n  .full-calendar-body .dates {\n    position: relative; }\n    .full-calendar-body .dates .week-row {\n      border-left: 1px solid #e0e0e0;\n      display: -webkit-box;\n      display: flex; }\n      .full-calendar-body .dates .week-row .day-cell {\n        -webkit-box-flex: 1;\n                flex: 1;\n        min-height: 100px;\n        padding: 4px;\n        border-right: 1px solid #e0e0e0;\n        border-bottom: 1px solid #e0e0e0; }\n        .full-calendar-body .dates .week-row .day-cell .day-number {\n          text-align: right; }\n        .full-calendar-body .dates .week-row .day-cell.today {\n          background-color: #fcf8e3; }\n        .full-calendar-body .dates .week-row .day-cell.not-cur-month .day-number {\n          color: rgba(0, 0, 0, 0.24); }\n    .full-calendar-body .dates .dates-events {\n      position: absolute;\n      top: 0;\n      left: 0;\n      z-index: 1;\n      width: 100%; }\n      .full-calendar-body .dates .dates-events .events-week {\n        display: -webkit-box;\n        display: flex; }\n        .full-calendar-body .dates .dates-events .events-week .events-day {\n          cursor: pointer;\n          -webkit-box-flex: 1;\n                  flex: 1;\n          min-height: 109px; }\n          .full-calendar-body .dates .dates-events .events-week .events-day .day-number {\n            text-align: right;\n            padding: 4px 5px 4px 4px;\n            opacity: 0; }\n          .full-calendar-body .dates .dates-events .events-week .events-day.not-cur-month .day-number {\n            color: rgba(0, 0, 0, 0.24); }\n          .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-start {\n              margin-left: 5px; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-end {\n              margin-right: 5px; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-opacity {\n              opacity: 0; }\n          .full-calendar-body .dates .dates-events .events-week .events-day .event-box .more-link {\n            cursor: pointer;\n            padding-left: 8px;\n            padding-right: 2px;\n            color: rgba(0, 0, 0, 0.38);\n            font-size: 14px; }\n    .full-calendar-body .dates .more-events {\n      position: absolute;\n      width: 150px;\n      z-index: 2;\n      border: 1px solid #eee;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }\n      .full-calendar-body .dates .more-events .more-header {\n        background-color: #eee;\n        padding: 5px;\n        display: -webkit-box;\n        display: flex;\n        -webkit-box-align: center;\n                align-items: center;\n        font-size: 14px; }\n        .full-calendar-body .dates .more-events .more-header .title {\n          -webkit-box-flex: 1;\n                  flex: 1; }\n        .full-calendar-body .dates .more-events .more-header .close {\n          margin-right: 2px;\n          cursor: pointer;\n          font-size: 16px; }\n      .full-calendar-body .dates .more-events .more-body {\n        height: 140px;\n        overflow: hidden; }\n        .full-calendar-body .dates .more-events .more-body .body-list {\n          height: 120px;\n          padding: 5px;\n          overflow: auto;\n          background-color: #fff; }\n          .full-calendar-body .dates .more-events .more-body .body-list .body-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n", ""]);
+	exports.push([module.id, ".full-calendar-body {\n  margin-top: 20px; }\n  .full-calendar-body .weeks {\n    display: -webkit-box;\n    display: flex;\n    border-top: 1px solid #e0e0e0;\n    border-bottom: 1px solid #e0e0e0;\n    border-left: 1px solid #e0e0e0; }\n    .full-calendar-body .weeks .week {\n      -webkit-box-flex: 1;\n              flex: 1;\n      text-align: center;\n      border-right: 1px solid #e0e0e0; }\n  .full-calendar-body .dates {\n    position: relative; }\n    .full-calendar-body .dates .week-row {\n      border-left: 1px solid #e0e0e0;\n      display: -webkit-box;\n      display: flex; }\n      .full-calendar-body .dates .week-row .day-cell {\n        -webkit-box-flex: 1;\n                flex: 1;\n        min-height: 100px;\n        padding: 4px;\n        border-right: 1px solid #e0e0e0;\n        border-bottom: 1px solid #e0e0e0; }\n        .full-calendar-body .dates .week-row .day-cell .day-number {\n          text-align: right; }\n        .full-calendar-body .dates .week-row .day-cell.today {\n          background-color: #fcf8e3; }\n        .full-calendar-body .dates .week-row .day-cell.not-cur-month .day-number {\n          color: rgba(0, 0, 0, 0.24); }\n    .full-calendar-body .dates .dates-events {\n      position: absolute;\n      top: 0;\n      left: 0;\n      z-index: 1;\n      width: 100%; }\n      .full-calendar-body .dates .dates-events .events-week {\n        display: -webkit-box;\n        display: flex; }\n        .full-calendar-body .dates .dates-events .events-week .events-day {\n          cursor: pointer;\n          -webkit-box-flex: 1;\n                  flex: 1;\n          min-height: 109px;\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .full-calendar-body .dates .dates-events .events-week .events-day .day-number {\n            text-align: right;\n            padding: 4px 5px 4px 4px;\n            opacity: 0; }\n          .full-calendar-body .dates .dates-events .events-week .events-day.not-cur-month .day-number {\n            color: rgba(0, 0, 0, 0.24); }\n          .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-start {\n              margin-left: 4px; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-end {\n              margin-right: 4px; }\n            .full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-opacity {\n              opacity: 0; }\n          .full-calendar-body .dates .dates-events .events-week .events-day .event-box .more-link {\n            cursor: pointer;\n            padding-left: 8px;\n            padding-right: 2px;\n            color: rgba(0, 0, 0, 0.38);\n            font-size: 14px; }\n    .full-calendar-body .dates .more-events {\n      position: absolute;\n      width: 150px;\n      z-index: 2;\n      border: 1px solid #eee;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }\n      .full-calendar-body .dates .more-events .more-header {\n        background-color: #eee;\n        padding: 5px;\n        display: -webkit-box;\n        display: flex;\n        -webkit-box-align: center;\n                align-items: center;\n        font-size: 14px; }\n        .full-calendar-body .dates .more-events .more-header .title {\n          -webkit-box-flex: 1;\n                  flex: 1; }\n        .full-calendar-body .dates .more-events .more-header .close {\n          margin-right: 2px;\n          cursor: pointer;\n          font-size: 16px; }\n      .full-calendar-body .dates .more-events .more-body {\n        height: 140px;\n        overflow: hidden; }\n        .full-calendar-body .dates .more-events .more-body .body-list {\n          height: 120px;\n          padding: 5px;\n          overflow: auto;\n          background-color: #fff; }\n          .full-calendar-body .dates .more-events .more-body .body-list .body-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis; }\n", ""]);
 
 	// exports
 
@@ -851,6 +852,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	//           cursor: pointer;
 	//           flex:1;
 	//           min-height: 109px;
+	//           overflow: hidden;
+	//           text-overflow: ellipsis;
 	//           .day-number{
 	//             text-align: right;
 	//             padding:4px 5px 4px 4px;
@@ -875,12 +878,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	//               overflow: hidden;
 	//               text-overflow: ellipsis;
 	//               &.is-start{
-	//                 margin-left: 5px;
+	//                 margin-left: 4px;
 	//                 // border-top-left-radius:4px;
 	//                 // border-bottom-left-radius:4px;
 	//               }
 	//               &.is-end{
-	//                 margin-right: 5px;
+	//                 margin-right: 4px;
 	//                 // border-top-right-radius:4px;
 	//                 // border-bottom-right-radius:4px;
 	//               }
@@ -974,9 +977,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	//             <p class="day-number">{{day.monthDay}}</p>
 	//             <div class="event-box">
 	//               <p class="event-item" v-for="event in day.events" v-show="event.cellIndex <= eventLimit"
-	//                  :class="{'is-start':isStart(event.start, day.date),
-	//                     'is-end':isEnd(event.end,day.date),
-	//                     'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
+	//                  :class="{
+	//                   'is-start'   : isStart(event.start, day.date),
+	//                   'is-end'     : isEnd(event.end,day.date),
+	//                   'is-opacity' : !event.isShow
+	//                   }" 
+	//                 @click="eventClick(event,$event)">
 	//                 {{event | isBegin day.date day.weekDay}}
 	//               </p>
 	//               <p v-if="day.events.length > eventLimit"
@@ -1083,7 +1089,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n\n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{'is-start':isStart(event.start, day.date),\n                    'is-end':isEnd(event.end,day.date),\n                    'is-opacity' : !event.isShow}\" @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-if=\"day.events.length > eventLimit\"\n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                + {{day.events[day.events.length -1].cellIndex - eventLimit}} more\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\"\n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\"\n              v-show=\"event.isShow\" class=\"body-item\"\n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"full-calendar-body\">\n    <div class=\"weeks\">\n      <strong class=\"week\" v-for=\"week in weekNames\">{{week}}</strong>\n    </div>\n    <div class=\"dates\" v-el:dates>\n      <div calss=\"dates-bg\">\n        <div class=\"week-row\" v-for=\"week in currentDates\">\n          <div class=\"day-cell\" v-for=\"day in week\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n          </div>\n        </div>\n      </div>\n\n      <!-- absolute so we can make dynamic td -->\n      <div class=\"dates-events\">\n        <div class=\"events-week\" v-for=\"week in currentDates\">\n          <div class=\"events-day\" v-for=\"day in week\" track-by=\"$index\"\n            :class=\"{'today' : day.isToday,\n              'not-cur-month' : !day.isCurMonth}\" @click.stop=\"dayClick(day.date, $event)\">\n            <p class=\"day-number\">{{day.monthDay}}</p>\n            <div class=\"event-box\">\n              <p class=\"event-item\" v-for=\"event in day.events\" v-show=\"event.cellIndex <= eventLimit\"\n                 :class=\"{\n                  'is-start'   : isStart(event.start, day.date),\n                  'is-end'     : isEnd(event.end,day.date),\n                  'is-opacity' : !event.isShow\n                  }\" \n                @click=\"eventClick(event,$event)\">\n                {{event | isBegin day.date day.weekDay}}\n              </p>\n              <p v-if=\"day.events.length > eventLimit\"\n                class=\"more-link\" @click.stop=\"selectThisDay(day, $event)\">\n                + {{day.events[day.events.length -1].cellIndex - eventLimit}} more\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- full events when click show more -->\n      <div class=\"more-events\" v-show=\"showMore\"\n        :style=\"{left: morePos.left + 'px', top: morePos.top + 'px'}\">\n        <div class=\"more-header\">\n          <span class=\"title\">{{selectDay.date | moreTitle }}</span>\n          <span class=\"close\" @click.stop=\"showMore = false\">x</span>\n        </div>\n        <div class=\"more-body\">\n          <ul class=\"body-list\">\n            <li v-for=\"event in selectDay.events\"\n              v-show=\"event.isShow\" class=\"body-item\"\n              @click=\"eventClick(event,$event)\">\n              {{event.title}}\n            </li>\n          </ul>\n        </div>\n      </div>\n\n      <slot name=\"body-card\">\n\n      </slot>\n\n    </div>\n  </div>\n";
 
 /***/ },
 /* 14 */
@@ -1100,7 +1106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/andrew/code/javascript/vue-fullcalendar/src/components/header.vue"
+	  var id = "/Users/SunnyWang/code/vue-fullcalendar/src/components/header.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -1124,8 +1130,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5cc44b4c&file=header.vue!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5cc44b4c&file=header.vue!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-62863025&file=header.vue!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/style-rewriter.js?id=_v-62863025&file=header.vue!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/7.5.3/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1196,11 +1202,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    dispatchEvent: function dispatchEvent() {
 	      this.title = _dateFunc2.default.format(this.currentDate, this.titleFormat);
+
 	      var startDate = _dateFunc2.default.getStartDate(this.currentDate);
 	      var curWeekDay = startDate.getDay();
-	      startDate.setDate(startDate.getDate() - curWeekDay + 1); // 1st day of this monthView
-	      var endDate = _dateFunc2.default.changeDay(startDate, 41); // the month view is 6*7
-	      this.$dispatch('changeMonth', _dateFunc2.default.format(startDate, 'yyyy-MM-dd'), _dateFunc2.default.format(endDate, 'yyyy-MM-dd'));
+
+	      // 1st day of this monthView
+	      startDate.setDate(startDate.getDate() - curWeekDay + 1);
+
+	      // the month view is 6*7
+	      var endDate = _dateFunc2.default.changeDay(startDate, 41);
+
+	      // 1st day of current month
+	      var currentDate = _dateFunc2.default.getStartDate(this.currentDate);
+
+	      this.$dispatch('changeMonth', _dateFunc2.default.format(startDate, 'yyyy-MM-dd'), _dateFunc2.default.format(endDate, 'yyyy-MM-dd'), _dateFunc2.default.format(currentDate, 'yyyy-MM-dd'));
 	    }
 	  }
 	};

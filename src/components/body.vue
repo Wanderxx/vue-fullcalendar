@@ -23,9 +23,12 @@
             <p class="day-number">{{day.monthDay}}</p>
             <div class="event-box">
               <p class="event-item" v-for="event in day.events" v-show="event.cellIndex <= eventLimit"
-                 :class="{'is-start':isStart(event.start, day.date),
-                    'is-end':isEnd(event.end,day.date),
-                    'is-opacity' : !event.isShow}" @click="eventClick(event,$event)">
+                 :class="{
+                  'is-start'   : isStart(event.start, day.date),
+                  'is-end'     : isEnd(event.end,day.date),
+                  'is-opacity' : !event.isShow
+                  }" 
+                @click="eventClick(event,$event)">
                 {{event | isBegin day.date day.weekDay}}
               </p>
               <p v-if="day.events.length > eventLimit"
@@ -285,6 +288,8 @@
           cursor: pointer;
           flex:1;
           min-height: 109px;
+          overflow: hidden;
+          text-overflow: ellipsis;
           .day-number{
             text-align: right;
             padding:4px 5px 4px 4px;
@@ -309,12 +314,12 @@
               overflow: hidden;
               text-overflow: ellipsis;
               &.is-start{
-                margin-left: 5px;
+                margin-left: 4px;
                 // border-top-left-radius:4px;
                 // border-bottom-left-radius:4px;
               }
               &.is-end{
-                margin-right: 5px;
+                margin-right: 4px;
                 // border-top-right-radius:4px;
                 // border-bottom-right-radius:4px;
               }

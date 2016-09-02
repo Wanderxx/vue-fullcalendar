@@ -1,6 +1,6 @@
 {
   "name": "vue-fullcalendar",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "author": "Sunny Wang",
   "license": "MIT",
   "description": "pure vue-based fullcalendar, no jquery moment required",
