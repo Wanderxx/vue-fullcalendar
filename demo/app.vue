@@ -9,14 +9,16 @@
 <script>
 let demoEvents = [
     {
-      title : 'Sunny 728-730',
-      start : '2016-07-25',
-      end : '2016-07-27'
+      title    : 'Sunny 728-730',
+      start    : '2016-07-25',
+      end      : '2016-07-27',
+      cssClass : 'family'
     },
     {
       title : 'Sunny 726-727',
       start : '2016-07-26',
-      end : '2016-07-27'
+      end : '2016-07-27',
+      cssClass : ['home', 'work']
     },
     {
       title : 'Sunny 727-728',

@@ -86,12 +86,14 @@ A sample screenshot is here,
 	  {
 	    title     :  'event1',
 	    start     : '2016-07-01'，
+	    cssClass  : 'family',
 	    YOUR_DATA : {}
 	  },
 	  {
 	    title     : 'event2',
 	    start     : '2016-07-02',
 	    end       : '2016-07-03',
+	    cssClass  : ['family', 'career']
 	    YOUR_DATA : {}
 	  }
 	]         
@@ -102,6 +104,8 @@ A sample screenshot is here,
 	- `start` is the start day of this event
 	
 	- `end` is the end day of this event
+
+	- `cssClass` is css class of each event label, such that, you will be able to set different colors, style ..
 	
 	- `YOUR_DATA` You can define as many data you want as possible
 

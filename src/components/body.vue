@@ -23,11 +23,11 @@
             <p class="day-number">{{day.monthDay}}</p>
             <div class="event-box">
               <p class="event-item" v-for="event in day.events" v-show="event.cellIndex <= eventLimit"
-                 :class="{
+                 :class="[classNames(event.cssClass), {
                   'is-start'   : isStart(event.start, day.date),
                   'is-end'     : isEnd(event.end,day.date),
                   'is-opacity' : !event.isShow
-                  }" 
+                  }]" 
                 @click="eventClick(event,$event)">
                 {{event | isBegin day.date day.weekDay}}
               </p>
@@ -117,6 +117,17 @@
       }
     },
     methods : {
+      classNames (cssClass) {
+        if(!cssClass) return ''
+        // string  
+        if (typeof cssClass == 'string') return cssClass
+
+        // Array
+        if (Array.isArray(cssClass)) return cssClass.join(' ')
+        
+        // else
+        return ''
+      },
       getCalendar () {
         // calculate 2d-array of each month
         // first day of this month
