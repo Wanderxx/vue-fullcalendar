@@ -463,6 +463,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      type: String,
 	      default: 'zh'
 	    },
+	    firstDay: {
+	      type: Number,
+	      coerce: function coerce(val) {
+	        var res = parseInt(val);
+	        if (res < 0 || res > 6) return 0;
+	        return res;
+	      },
+
+	      default: 0
+	    },
 	    titleFormat: {
 	      type: String,
 	      default: function _default() {
@@ -478,7 +488,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    weekNames: {
 	      type: Array,
 	      default: function _default() {
-	        return _langSets2.default[this.lang].weekNames;
+	        var arr = _langSets2.default[this.lang].weekNames;
+	        return arr.slice(this.firstDay).concat(arr.slice(0, this.firstDay));
 	      }
 	    }
 	  },
@@ -521,7 +532,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	//       </div>
 	//     </fc-header>
 	//     <!-- body display date day and events -->
-	//     <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" :week-names="weekNames">
+	//     <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" 
+	//       :week-names="weekNames" :first-day="firstDay">
 	//       <div slot="body-card">
 	//         <slot name="fc-body-card">
 	//         </slot>
@@ -637,7 +649,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    currentDate: {},
 	    events: {},
 	    weekNames: {},
-	    monthNames: {}
+	    monthNames: {},
+	    firstDay: {}
 	  },
 	  created: function created() {
 	    this.events.forEach(function (item, index) {
@@ -705,7 +718,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var curWeekDay = startDate.getDay();
 	      // begin date of this table may be some day of last month
-	      startDate.setDate(startDate.getDate() - curWeekDay);
+	      startDate.setDate(startDate.getDate() - curWeekDay + this.firstDay);
 
 	      var calendar = [];
 	      // let isFinal = false
@@ -1280,7 +1293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"comp-full-calendar\">\n    <!-- header pick month -->\n    <fc-header :current-date.sync=\"currentDate\" :title-format=\"titleFormat\">\n\n      <div slot=\"header-right\">\n        <slot name=\"fc-header-right\">\n        </slot>\n      </div>\n    </fc-header>\n    <!-- body display date day and events -->\n    <fc-body :current-date=\"currentDate\" :events=\"events\" :month-names=\"monthNames\" :week-names=\"weekNames\">\n      <div slot=\"body-card\">\n        <slot name=\"fc-body-card\">\n        </slot>\n      </div>\n    </fc-body>\n  </div>\n";
+	module.exports = "\n  <div class=\"comp-full-calendar\">\n    <!-- header pick month -->\n    <fc-header :current-date.sync=\"currentDate\" :title-format=\"titleFormat\">\n\n      <div slot=\"header-right\">\n        <slot name=\"fc-header-right\">\n        </slot>\n      </div>\n    </fc-header>\n    <!-- body display date day and events -->\n    <fc-body :current-date=\"currentDate\" :events=\"events\" :month-names=\"monthNames\" \n      :week-names=\"weekNames\" :first-day=\"firstDay\">\n      <div slot=\"body-card\">\n        <slot name=\"fc-body-card\">\n        </slot>\n      </div>\n    </fc-body>\n  </div>\n";
 
 /***/ }
 /******/ ])

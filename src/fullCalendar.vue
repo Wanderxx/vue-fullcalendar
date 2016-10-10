@@ -9,7 +9,8 @@
       </div>
     </fc-header>
     <!-- body display date day and events -->
-    <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" :week-names="weekNames">
+    <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" 
+      :week-names="weekNames" :first-day="firstDay">
       <div slot="body-card">
         <slot name="fc-body-card">
         </slot>
@@ -30,6 +31,15 @@
         type : String,
         default : 'zh'
       },
+      firstDay : {
+        type : Number,
+        coerce (val) {
+          let res = parseInt(val)
+          if (res < 0 || res > 6) return 0
+          return res
+        },
+        default : 0
+      },
       titleFormat : {
         type : String,
         default () {
@@ -45,7 +55,8 @@
       weekNames : {
         type : Array,
         default () {
-          return langSets[this.lang].weekNames
+          let arr = langSets[this.lang].weekNames
+          return arr.slice(this.firstDay).concat(arr.slice(0, this.firstDay))
         }
       }
     },

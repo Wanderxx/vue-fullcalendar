@@ -71,9 +71,10 @@
   export default {
     props : {
       currentDate : {},
-      events  : {},
-      weekNames : {},
-      monthNames : {}
+      events      : {},
+      weekNames   : {},
+      monthNames  : {},
+      firstDay    : {}
     },
     created () {
       this.events.forEach((item, index) => {
@@ -140,7 +141,7 @@
 
         let curWeekDay = startDate.getDay()
         // begin date of this table may be some day of last month
-        startDate.setDate(startDate.getDate() - curWeekDay)
+        startDate.setDate(startDate.getDate() - curWeekDay + this.firstDay)
 
         let calendar = []
         // let isFinal = false

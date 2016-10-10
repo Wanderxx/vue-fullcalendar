@@ -136,6 +136,10 @@ A sample screenshot is here,
 
 5. **titleFormat**
 
+6. **firstDay** : first day of the week, `Number`, default: 0 (Sunday)
+	Sunday=0, Monday=1, Tuesday=2, etc.
+	Any number smaller than 0 or larger than 6 will be set to 0.
+
 #### events
 
 fc will dispatch some events out.
