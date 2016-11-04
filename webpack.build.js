@@ -10,7 +10,7 @@ devConfig.entry = './src/index.js'
 devConfig.output = {
   path:'./dist',
   filename:'vue-fullcalendar.js',
-  libaray:'VueFullcalendar',
+  library:'VueFullcalendar',
   libraryTarget: 'umd'
 }
 module.exports = devConfig;
