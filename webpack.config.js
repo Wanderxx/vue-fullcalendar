@@ -53,7 +53,7 @@ module.exports={
     plugins: ['transform-runtime']
   },
   devServer: {
-    port : 8080,
+    port : 8070,
     historyApiFallback: true,
     stats : {
       colors : true,

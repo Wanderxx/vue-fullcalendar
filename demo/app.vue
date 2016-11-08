@@ -42,6 +42,15 @@ export default {
   events : {
     'changeMonth' (start, end, current) {
       console.log('changeMonth', start, end, current)
+    },
+    'eventClick' (event, jsEvent, pos) {
+       console.log('eventClick', event, jsEvent, pos)
+    },
+    'dayClick' (day, jsEvent) {
+      console.log('dayClick', day, jsEvent)
+    },
+    'moreClick' (day, events, jsEvent) {
+      console.log('moreCLick', day, events, jsEvent)
     }
   },
   components : {

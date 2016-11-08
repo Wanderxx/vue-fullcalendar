@@ -61,7 +61,8 @@
         // 1st day of current month
         let currentDate = dateFunc.getStartDate(this.currentDate)
 
-        this.$dispatch('changeMonth', 
+        console.log('changeMonth on head')
+        this.$emit('change', 
           dateFunc.format(startDate, 'yyyy-MM-dd'),
           dateFunc.format(endDate, 'yyyy-MM-dd'),
           dateFunc.format(currentDate,'yyyy-MM-dd')

@@ -1,7 +1,8 @@
 <template>
   <div class="comp-full-calendar">
     <!-- header pick month -->
-    <fc-header :current-date.sync="currentDate" :title-format="titleFormat">
+    <fc-header :current-date.sync="currentDate" :title-format="titleFormat"
+      @change="emitChangeMonth">
 
       <div slot="header-right">
         <slot name="fc-header-right">
@@ -10,7 +11,9 @@
     </fc-header>
     <!-- body display date day and events -->
     <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" 
-      :week-names="weekNames" :first-day="firstDay">
+      :week-names="weekNames" :first-day="firstDay"
+      @eventclick="emitEventClick" @dayclick="emitDayClick"
+      @moreclick="emitMoreClick">
       <div slot="body-card">
         <slot name="fc-body-card">
         </slot>
@@ -61,10 +64,26 @@
       }
     },
     created () {
+      this.emit = this.$dispatch.bind(this) || this.$emit.bind(this)
     },
     data () {
       return {
-        currentDate : new Date()
+        currentDate : new Date(),
+        emit : () => {}
+      }
+    },
+    methods : {
+      emitChangeMonth (start, end, current) {
+        this.emit('changeMonth', start, end, current)
+      },
+      emitEventClick (event, jsEvent, pos) {
+        this.emit('eventClick', event, jsEvent, pos)
+      },
+      emitDayClick (day, jsEvent) {
+        this.emit('dayClick', day, jsEvent)
+      },
+      emitMoreClick (day, events, jsEvent) {
+        this.emit('moreClick', day, event, jsEvent)
       }
     },
     components : {

@@ -493,13 +493,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  },
-	  created: function created() {},
+	  created: function created() {
+	    this.emit = this.$dispatch.bind(this) || this.$emit.bind(this);
+	  },
 	  data: function data() {
 	    return {
-	      currentDate: new Date()
+	      currentDate: new Date(),
+	      emit: function emit() {}
 	    };
 	  },
 
+	  methods: {
+	    emitChangeMonth: function emitChangeMonth(start, end, current) {
+	      this.emit('changeMonth', start, end, current);
+	    },
+	    emitEventClick: function emitEventClick(event, jsEvent, pos) {
+	      this.emit('eventClick', event, jsEvent, pos);
+	    },
+	    emitDayClick: function emitDayClick(day, jsEvent) {
+	      this.emit('dayClick', day, jsEvent);
+	    },
+	    emitMoreClick: function emitMoreClick(day, events, jsEvent) {
+	      this.emit('moreClick', day, event, jsEvent);
+	    }
+	  },
 	  components: {
 	    'fc-body': __webpack_require__(8),
 	    'fc-header': __webpack_require__(14)
@@ -524,7 +541,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	// <template>
 	//   <div class="comp-full-calendar">
 	//     <!-- header pick month -->
-	//     <fc-header :current-date.sync="currentDate" :title-format="titleFormat">
+	//     <fc-header :current-date.sync="currentDate" :title-format="titleFormat"
+	//       @change="emitChangeMonth">
 	//
 	//       <div slot="header-right">
 	//         <slot name="fc-header-right">
@@ -533,7 +551,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	//     </fc-header>
 	//     <!-- body display date day and events -->
 	//     <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" 
-	//       :week-names="weekNames" :first-day="firstDay">
+	//       :week-names="weekNames" :first-day="firstDay"
+	//       @eventclick="emitEventClick" @dayclick="emitDayClick"
+	//       @moreclick="emitMoreClick">
 	//       <div slot="body-card">
 	//         <slot name="fc-body-card">
 	//         </slot>
@@ -799,7 +819,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var events = day.events.filter(function (item) {
 	        return item.isShow == true;
 	      });
-	      this.$dispatch('moreClick', day.date, events, jsEvent);
+	      this.$emit('moreclick', day.date, events, jsEvent);
 	    },
 	    computePos: function computePos(target) {
 	      var eventRect = target.getBoundingClientRect();
@@ -810,16 +830,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    },
 	    dayClick: function dayClick(day, jsEvent) {
-	      this.$dispatch('dayClick', day, jsEvent);
+	      this.$emit('dayclick', day, jsEvent);
 	    },
 	    eventClick: function eventClick(event, jsEvent) {
-	      console.log('cellIndex', event.cellIndex);
 	      if (!event.isShow) {
 	        return;
 	      }
 	      jsEvent.stopPropagation();
 	      var pos = this.computePos(jsEvent.target);
-	      this.$dispatch('eventClick', event, jsEvent, pos);
+	      this.$emit('eventclick', event, jsEvent, pos);
 	    }
 	  }
 	};
@@ -1239,7 +1258,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // 1st day of current month
 	      var currentDate = _dateFunc2.default.getStartDate(this.currentDate);
 
-	      this.$dispatch('changeMonth', _dateFunc2.default.format(startDate, 'yyyy-MM-dd'), _dateFunc2.default.format(endDate, 'yyyy-MM-dd'), _dateFunc2.default.format(currentDate, 'yyyy-MM-dd'));
+	      console.log('changeMonth on head');
+	      this.$emit('change', _dateFunc2.default.format(startDate, 'yyyy-MM-dd'), _dateFunc2.default.format(endDate, 'yyyy-MM-dd'), _dateFunc2.default.format(currentDate, 'yyyy-MM-dd'));
 	    }
 	  }
 	};
@@ -1293,7 +1313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"comp-full-calendar\">\n    <!-- header pick month -->\n    <fc-header :current-date.sync=\"currentDate\" :title-format=\"titleFormat\">\n\n      <div slot=\"header-right\">\n        <slot name=\"fc-header-right\">\n        </slot>\n      </div>\n    </fc-header>\n    <!-- body display date day and events -->\n    <fc-body :current-date=\"currentDate\" :events=\"events\" :month-names=\"monthNames\" \n      :week-names=\"weekNames\" :first-day=\"firstDay\">\n      <div slot=\"body-card\">\n        <slot name=\"fc-body-card\">\n        </slot>\n      </div>\n    </fc-body>\n  </div>\n";
+	module.exports = "\n  <div class=\"comp-full-calendar\">\n    <!-- header pick month -->\n    <fc-header :current-date.sync=\"currentDate\" :title-format=\"titleFormat\"\n      @change=\"emitChangeMonth\">\n\n      <div slot=\"header-right\">\n        <slot name=\"fc-header-right\">\n        </slot>\n      </div>\n    </fc-header>\n    <!-- body display date day and events -->\n    <fc-body :current-date=\"currentDate\" :events=\"events\" :month-names=\"monthNames\" \n      :week-names=\"weekNames\" :first-day=\"firstDay\"\n      @eventclick=\"emitEventClick\" @dayclick=\"emitDayClick\"\n      @moreclick=\"emitMoreClick\">\n      <div slot=\"body-card\">\n        <slot name=\"fc-body-card\">\n        </slot>\n      </div>\n    </fc-body>\n  </div>\n";
 
 /***/ }
 /******/ ])

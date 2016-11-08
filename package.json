@@ -54,5 +54,8 @@
   "bugs": {
     "url": "https://github.com/Wanderxx/vue-fullcalendar/issues"
   },
-  "homepage": "https://github.com/Wanderxx/vue-fullcalendar#readme"
+  "homepage": "https://github.com/Wanderxx/vue-fullcalendar#readme",
+  "dependencies": {
+    "es6-promise": "^4.0.5"
+  }
 }

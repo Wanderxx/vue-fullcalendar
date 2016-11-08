@@ -223,7 +223,7 @@
         let events = day.events.filter(item =>{
           return item.isShow == true
         })
-        this.$dispatch('moreClick', day.date, events, jsEvent)
+        this.$emit('moreclick', day.date, events, jsEvent)
       },
       computePos (target) {
         let eventRect = target.getBoundingClientRect()
@@ -234,16 +234,15 @@
         }
       },
       dayClick(day, jsEvent) {
-        this.$dispatch('dayClick', day, jsEvent)
+        this.$emit('dayclick', day, jsEvent)
       },
       eventClick(event, jsEvent) {
-        console.log('cellIndex', event.cellIndex)
         if (!event.isShow) {
           return
         }
         jsEvent.stopPropagation()
         let pos = this.computePos(jsEvent.target)
-        this.$dispatch('eventClick', event, jsEvent, pos)
+        this.$emit('eventclick', event, jsEvent, pos)
       }
     }
   }
