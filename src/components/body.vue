@@ -3,7 +3,7 @@
     <div class="weeks">
       <strong class="week" v-for="week in weekNames">{{week}}</strong>
     </div>
-    <div class="dates" v-el:dates>
+    <div class="dates" ref="dates">
       <div calss="dates-bg">
         <div class="week-row" v-for="week in currentDates">
           <div class="day-cell" v-for="day in week"
@@ -29,7 +29,7 @@
                   'is-opacity' : !event.isShow
                   }]" 
                 @click="eventClick(event,$event)">
-                {{event | isBegin day.date day.weekDay}}
+                {{isBegin(event, day.date, day.weekDay)}}
               </p>
               <p v-if="day.events.length > eventLimit"
                 class="more-link" @click.stop="selectThisDay(day, $event)">
@@ -44,7 +44,7 @@
       <div class="more-events" v-show="showMore"
         :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
         <div class="more-header">
-          <span class="title">{{selectDay.date | moreTitle }}</span>
+          <span class="title">{{moreTitle(selectDay.date)}}</span>
           <span class="close" @click.stop="showMore = false">x</span>
         </div>
         <div class="more-body">
@@ -72,7 +72,10 @@
     props : {
       currentDate : {},
       events      : {},
-      weekNames   : {},
+      weekNames   : {
+        type : Array,
+        default : []
+      },
       monthNames  : {},
       firstDay    : {}
     },
@@ -98,7 +101,17 @@
         selectDay : {}
       }
     },
-    filters : {
+    watch : {
+      weekNames (val) {
+        console.log('watch weekNames', val)
+      }
+    },
+    computed : {
+      currentDates () {
+        return this.getCalendar()
+      }
+    },
+    methods : {
       isBegin (event, date, index) {
         let st = new Date(event.start)
 
@@ -110,14 +123,7 @@
       moreTitle (date) {
         let dt = new Date(date)
         return this.weekNames[dt.getDay()] + ', ' + this.monthNames[dt.getMonth()] + dt.getDate()
-      }
-    },
-    computed : {
-      currentDates () {
-        return this.getCalendar()
-      }
-    },
-    methods : {
+      },
       classNames (cssClass) {
         if(!cssClass) return ''
         // string  
@@ -136,15 +142,11 @@
         let current = new Date(this.currentDate)
 
         let startDate = dateFunc.getStartDate(current)
-        // let duration = this.getDuration(current) - 1
-        // let endDate = this.changeDay(startDate,duration)
 
         let curWeekDay = startDate.getDay()
         // begin date of this table may be some day of last month
-        startDate.setDate(startDate.getDate() - curWeekDay + this.firstDay)
-
+        startDate.setDate(startDate.getDate() - curWeekDay + parseInt(this.firstDay))
         let calendar = []
-        // let isFinal = false
 
         for(let perWeek = 0 ; perWeek < 6 ; perWeek++) {
 
@@ -166,14 +168,12 @@
             //   break
             // }
           }
-
           calendar.push(week)
           // if (isFinal) break
-
         }
         return calendar
       },
-      slotEvents(date) {
+      slotEvents (date) {
 
         // find all events start from this date
         let cellIndexArr = []
@@ -181,6 +181,7 @@
           let dt = new Date(day.start)
           let st = new Date(dt.getFullYear(),dt.getMonth(),dt.getDate())
           let ed = day.end ? new Date(day.end) : st
+          // console.log('slotEvt', st, ed, date)
           return date>=st && date<=ed
         })
 
@@ -227,7 +228,7 @@
       },
       computePos (target) {
         let eventRect = target.getBoundingClientRect()
-        let pageRect = this.$els.dates.getBoundingClientRect()
+        let pageRect = this.$refs.dates.getBoundingClientRect()
         return {
           left : eventRect.left - pageRect.left,
           top  : eventRect.top + eventRect.height - pageRect.top

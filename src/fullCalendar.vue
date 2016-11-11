@@ -1,7 +1,7 @@
 <template>
   <div class="comp-full-calendar">
     <!-- header pick month -->
-    <fc-header :current-date.sync="currentDate" :title-format="titleFormat"
+    <fc-header :current-date="currentDate" :title-format="titleFormat"
       @change="emitChangeMonth">
 
       <div slot="header-right">
@@ -35,7 +35,7 @@
         default : 'zh'
       },
       firstDay : {
-        type : Number,
+        type : Number | String,
         coerce (val) {
           let res = parseInt(val)
           if (res < 0 || res > 6) return 0
@@ -63,27 +63,26 @@
         }
       }
     },
-    created () {
-      this.emit = this.$dispatch.bind(this) || this.$emit.bind(this)
-    },
     data () {
       return {
-        currentDate : new Date(),
-        emit : () => {}
+        currentDate : new Date()
       }
     },
     methods : {
-      emitChangeMonth (start, end, current) {
-        this.emit('changeMonth', start, end, current)
+      emitChangeMonth (start, end, currentStart, current) {
+        console.log('currentDate 2', this.currentDate)
+        this.currentDate = current
+        console.log('currentDate 3', this.currentDate)
+        this.$emit('changeMonth', start, end, currentStart)
       },
       emitEventClick (event, jsEvent, pos) {
-        this.emit('eventClick', event, jsEvent, pos)
+        this.$emit('eventClick', event, jsEvent, pos)
       },
       emitDayClick (day, jsEvent) {
-        this.emit('dayClick', day, jsEvent)
+        this.$emit('dayClick', day, jsEvent)
       },
       emitMoreClick (day, events, jsEvent) {
-        this.emit('moreClick', day, event, jsEvent)
+        this.$emit('moreClick', day, event, jsEvent)
       }
     },
     components : {
