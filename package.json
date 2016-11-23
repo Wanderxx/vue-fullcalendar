@@ -11,6 +11,7 @@
     "src"
   ],
   "scripts": {
+    "demo" : "webpack",
     "dev": "webpack-dev-server --output-public-path=/static/ --inline --hot",
     "build": "webpack --progress --hide-modules --config webpack.build.js && webpack --progress --hide-modules --config webpack.build.min.js -p"
   },
