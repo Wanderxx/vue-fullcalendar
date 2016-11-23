@@ -42,6 +42,18 @@ import fullCalendar from 'vue-fullcalendar'
 
 Vue.component('full-calendar', fullCalendar)
 
+// Vue2
+new Vue({
+  el : '#app',
+  render: h => h(App),
+  template : '<App/>',
+  components : {
+    App
+  }
+})
+
+//Vue1
+
 new Vue({
 	el : 'body',
 	components : {
@@ -186,8 +198,7 @@ fc will dispatch some events out.
 	
 	- `jsEvent` holds the native javascript event
 
+4. **moreClick** : fc dispatch it when you click a `more` button
+    
+
 ###END
-
-
-      
-
