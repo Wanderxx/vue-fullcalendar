@@ -1,3 +1,8 @@
+/*!
+ * vue-fullcalendar v1.0.1
+ * (c) 2016 Sunny Wang <sunnywang0104@163.com> 
+ * @license MIT
+ */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
