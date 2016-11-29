@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.1
+ * vue-fullcalendar v1.0.2
  * (c) 2016 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -550,6 +550,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'fc-header': __webpack_require__(14)
 	  }
 	}; //
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -1384,6 +1389,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      "change": emitChangeMonth
 	    }
 	  }, [_h('div', {
+	    slot: "header-left"
+	  }, [_t("fc-header-left")]), " ", _h('div', {
 	    slot: "header-right"
 	  }, [_t("fc-header-right")])]), " ", " ", _h('fc-body', {
 	    attrs: {

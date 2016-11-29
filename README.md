@@ -199,6 +199,15 @@ fc will dispatch some events out.
 	- `jsEvent` holds the native javascript event
 
 4. **moreClick** : fc dispatch it when you click a `more` button
-    
+
+#### slots
+
+You will be able to register your own stuff by using slots
+
+1. **fc-header-left** : top left area
+
+2. **fc-header-right** : top right area. In my case, I added a filter menu there 
+
+3. **fc-body-card** : inside the body area, usually working with `EventClick`, to display a event detail
 
 ###END

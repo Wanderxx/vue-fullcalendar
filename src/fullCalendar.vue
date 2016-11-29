@@ -4,6 +4,11 @@
     <fc-header :current-date="currentDate" :title-format="titleFormat"
       @change="emitChangeMonth">
 
+      <div slot="header-left">
+        <slot name="fc-header-left">
+        </slot>
+      </div>
+
       <div slot="header-right">
         <slot name="fc-header-right">
         </slot>
