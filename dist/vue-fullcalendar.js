@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.3
+ * vue-fullcalendar v1.0.4
  * (c) 2016 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -494,10 +494,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    firstDay: {
 	      type: Number | String,
-	      coerce: function coerce(val) {
+	      validator: function validator(val) {
 	        var res = parseInt(val);
-	        if (res < 0 || res > 6) return 0;
-	        return res;
+	        return res >= 0 && res <= 6;
 	      },
 
 	      default: 0
@@ -550,6 +549,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'fc-header': __webpack_require__(14)
 	  }
 	}; //
+	//
+	//
 	//
 	//
 	//
@@ -777,11 +778,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var now = new Date(); // today
 	      var current = new Date(this.currentDate);
 
-	      var startDate = _dateFunc2.default.getStartDate(current);
+	      var startDate = _dateFunc2.default.getStartDate(current); // 1st day of this month
 
 	      var curWeekDay = startDate.getDay();
+
 	      // begin date of this table may be some day of last month
-	      startDate.setDate(startDate.getDate() - curWeekDay + parseInt(this.firstDay));
+	      var diff = parseInt(this.firstDay) - curWeekDay;
+	      diff = diff > 0 ? diff - 7 : diff;
+
+	      startDate.setDate(startDate.getDate() + diff);
 	      var calendar = [];
 
 	      for (var perWeek = 0; perWeek < 6; perWeek++) {
@@ -1263,7 +1268,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  props: {
 	    currentDate: {},
-	    titleFormat: {}
+	    titleFormat: {},
+	    firstDay: {}
 	  },
 	  data: function data() {
 	    return {
@@ -1302,7 +1308,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var curWeekDay = startDate.getDay();
 
 	      // 1st day of this monthView
-	      startDate.setDate(startDate.getDate() - curWeekDay + 1);
+	      var diff = parseInt(this.firstDay) - curWeekDay;
+	      diff = diff > 0 ? diff - 7 : diff;
+	      startDate.setDate(startDate.getDate() + diff);
 
 	      // the month view is 6*7
 	      var endDate = _dateFunc2.default.changeDay(startDate, 41);
@@ -1381,7 +1389,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, [_h('fc-header', {
 	    attrs: {
 	      "current-date": currentDate,
-	      "title-format": titleFormat
+	      "title-format": titleFormat,
+	      "first-day": firstDay
 	    },
 	    on: {
 	      "change": emitChangeMonth

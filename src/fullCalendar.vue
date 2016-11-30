@@ -1,7 +1,9 @@
 <template>
   <div class="comp-full-calendar">
     <!-- header pick month -->
-    <fc-header :current-date="currentDate" :title-format="titleFormat"
+    <fc-header :current-date="currentDate" 
+      :title-format="titleFormat"
+      :first-day="firstDay"
       @change="emitChangeMonth">
 
       <div slot="header-left">
@@ -41,10 +43,9 @@
       },
       firstDay : {
         type : Number | String,
-        coerce (val) {
+        validator (val) {
           let res = parseInt(val)
-          if (res < 0 || res > 6) return 0
-          return res
+          return res >= 0 && res <= 6
         },
         default : 0
       },

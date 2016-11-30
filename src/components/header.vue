@@ -24,7 +24,8 @@
     },
     props : {
       currentDate : {},
-      titleFormat : {}
+      titleFormat : {},
+      firstDay : {}
     },
     data () {
       return {
@@ -62,7 +63,9 @@
         let curWeekDay = startDate.getDay()
 
         // 1st day of this monthView
-        startDate.setDate(startDate.getDate() - curWeekDay + 1) 
+        let diff = parseInt(this.firstDay) - curWeekDay
+        diff = diff > 0 ? (diff - 7) : diff
+        startDate.setDate(startDate.getDate() + diff) 
 
         // the month view is 6*7
         let endDate = dateFunc.changeDay(startDate, 41)

@@ -141,11 +141,15 @@
         let now = new Date() // today
         let current = new Date(this.currentDate)
 
-        let startDate = dateFunc.getStartDate(current)
+        let startDate = dateFunc.getStartDate(current) // 1st day of this month
 
         let curWeekDay = startDate.getDay()
+
         // begin date of this table may be some day of last month
-        startDate.setDate(startDate.getDate() - curWeekDay + parseInt(this.firstDay))
+        let diff = parseInt(this.firstDay) - curWeekDay
+        diff = diff > 0 ? (diff - 7) : diff
+
+        startDate.setDate(startDate.getDate() + diff)
         let calendar = []
 
         for(let perWeek = 0 ; perWeek < 6 ; perWeek++) {
