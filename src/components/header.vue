@@ -64,7 +64,7 @@
 
         // 1st day of this monthView
         let diff = parseInt(this.firstDay) - curWeekDay
-        diff = diff > 0 ? (diff - 7) : diff
+        if (diff) diff -= 7
         startDate.setDate(startDate.getDate() + diff) 
 
         // the month view is 6*7
