@@ -4,7 +4,7 @@
       <strong class="week" v-for="week in weekNames">{{week}}</strong>
     </div>
     <div class="dates" ref="dates">
-      <div calss="dates-bg">
+      <div class="dates-bg">
         <div class="week-row" v-for="week in currentDates">
           <div class="day-cell" v-for="day in week"
             :class="{'today' : day.isToday,

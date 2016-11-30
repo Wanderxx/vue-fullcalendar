@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.2
+ * vue-fullcalendar v1.0.3
  * (c) 2016 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -1031,9 +1031,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ref: "dates",
 	    staticClass: "dates"
 	  }, [_h('div', {
-	    attrs: {
-	      "calss": "dates-bg"
-	    }
+	    staticClass: "dates-bg"
 	  }, [_l((currentDates), function(week) {
 	    return _h('div', {
 	      staticClass: "week-row"
