@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.4
+ * vue-fullcalendar v1.0.5
  * (c) 2016 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -134,8 +134,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/style-rewriter.js?id=data-v-3e333dbe!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/selector.js?type=styles&index=0!./fullCalendar.vue", function() {
-				var newContent = require("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/style-rewriter.js?id=data-v-3e333dbe!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/selector.js?type=styles&index=0!./fullCalendar.vue");
+			module.hot.accept("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/style-rewriter.js?id=data-v-3e333dbe!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/selector.js?type=styles&index=0!./fullCalendar.vue", function() {
+				var newContent = require("!!./../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/style-rewriter.js?id=data-v-3e333dbe!./../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/selector.js?type=styles&index=0!./fullCalendar.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -664,8 +664,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/style-rewriter.js?id=data-v-734054ba!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/selector.js?type=styles&index=0!./body.vue", function() {
-				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/style-rewriter.js?id=data-v-734054ba!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/selector.js?type=styles&index=0!./body.vue");
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/style-rewriter.js?id=data-v-734054ba!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/selector.js?type=styles&index=0!./body.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/style-rewriter.js?id=data-v-734054ba!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/selector.js?type=styles&index=0!./body.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1023,41 +1023,41 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){with(this) {
-	  return _h('div', {
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', {
 	    staticClass: "full-calendar-body"
-	  }, [_h('div', {
+	  }, [_c('div', {
 	    staticClass: "weeks"
-	  }, [_l((weekNames), function(week) {
-	    return _h('strong', {
+	  }, _vm._l((_vm.weekNames), function(week) {
+	    return _c('strong', {
 	      staticClass: "week"
-	    }, [_s(week)])
-	  })]), " ", _h('div', {
+	    }, [_vm._v(_vm._s(week))])
+	  })), _vm._v(" "), _c('div', {
 	    ref: "dates",
 	    staticClass: "dates"
-	  }, [_h('div', {
+	  }, [_c('div', {
 	    staticClass: "dates-bg"
-	  }, [_l((currentDates), function(week) {
-	    return _h('div', {
+	  }, _vm._l((_vm.currentDates), function(week) {
+	    return _c('div', {
 	      staticClass: "week-row"
-	    }, [_l((week), function(day) {
-	      return _h('div', {
+	    }, _vm._l((week), function(day) {
+	      return _c('div', {
 	        staticClass: "day-cell",
 	        class: {
 	          'today': day.isToday,
 	            'not-cur-month': !day.isCurMonth
 	        }
-	      }, [_h('p', {
+	      }, [_c('p', {
 	        staticClass: "day-number"
-	      }, [_s(day.monthDay)])])
-	    })])
-	  })]), " ", " ", _h('div', {
+	      }, [_vm._v(_vm._s(day.monthDay))])])
+	    }))
+	  })), _vm._v(" "), _vm._v(" "), _c('div', {
 	    staticClass: "dates-events"
-	  }, [_l((currentDates), function(week) {
-	    return _h('div', {
+	  }, _vm._l((_vm.currentDates), function(week) {
+	    return _c('div', {
 	      staticClass: "events-week"
-	    }, [_l((week), function(day) {
-	      return _h('div', {
+	    }, _vm._l((week), function(day) {
+	      return _c('div', {
 	        staticClass: "events-day",
 	        class: {
 	          'today': day.isToday,
@@ -1069,73 +1069,73 @@ return /******/ (function(modules) { // webpackBootstrap
 	        on: {
 	          "click": function($event) {
 	            $event.stopPropagation();
-	            dayClick(day.date, $event)
+	            _vm.dayClick(day.date, $event)
 	          }
 	        }
-	      }, [_h('p', {
+	      }, [_c('p', {
 	        staticClass: "day-number"
-	      }, [_s(day.monthDay)]), " ", _h('div', {
+	      }, [_vm._v(_vm._s(day.monthDay))]), _vm._v(" "), _c('div', {
 	        staticClass: "event-box"
-	      }, [_l((day.events), function(event) {
-	        return _h('p', {
+	      }, [_vm._l((day.events), function(event) {
+	        return _c('p', {
 	          directives: [{
 	            name: "show",
 	            rawName: "v-show",
-	            value: (event.cellIndex <= eventLimit),
+	            value: (event.cellIndex <= _vm.eventLimit),
 	            expression: "event.cellIndex <= eventLimit"
 	          }],
 	          staticClass: "event-item",
-	          class: [classNames(event.cssClass), {
-	            'is-start': isStart(event.start, day.date),
-	            'is-end': isEnd(event.end, day.date),
+	          class: [_vm.classNames(event.cssClass), {
+	            'is-start': _vm.isStart(event.start, day.date),
+	            'is-end': _vm.isEnd(event.end, day.date),
 	            'is-opacity': !event.isShow
 	          }],
 	          on: {
 	            "click": function($event) {
-	              eventClick(event, $event)
+	              _vm.eventClick(event, $event)
 	            }
 	          }
-	        }, ["\n              " + _s(isBegin(event, day.date, day.weekDay)) + "\n            "])
-	      }), " ", (day.events.length > eventLimit) ? _h('p', {
+	        }, [_vm._v("\n              " + _vm._s(_vm.isBegin(event, day.date, day.weekDay)) + "\n            ")])
+	      }), _vm._v(" "), (day.events.length > _vm.eventLimit) ? _c('p', {
 	        staticClass: "more-link",
 	        on: {
 	          "click": function($event) {
 	            $event.stopPropagation();
-	            selectThisDay(day, $event)
+	            _vm.selectThisDay(day, $event)
 	          }
 	        }
-	      }, ["\n              + " + _s(day.events[day.events.length - 1].cellIndex - eventLimit) + " more\n            "]) : _e()])])
-	    })])
-	  })]), " ", " ", _h('div', {
+	      }, [_vm._v("\n              + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n            ")]) : _vm._e()], true)])
+	    }))
+	  })), _vm._v(" "), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
-	      value: (showMore),
+	      value: (_vm.showMore),
 	      expression: "showMore"
 	    }],
 	    staticClass: "more-events",
 	    style: ({
-	      left: morePos.left + 'px',
-	      top: morePos.top + 'px'
+	      left: _vm.morePos.left + 'px',
+	      top: _vm.morePos.top + 'px'
 	    })
-	  }, [_h('div', {
+	  }, [_c('div', {
 	    staticClass: "more-header"
-	  }, [_h('span', {
+	  }, [_c('span', {
 	    staticClass: "title"
-	  }, [_s(moreTitle(selectDay.date))]), " ", _h('span', {
+	  }, [_vm._v(_vm._s(_vm.moreTitle(_vm.selectDay.date)))]), _vm._v(" "), _c('span', {
 	    staticClass: "close",
 	    on: {
 	      "click": function($event) {
 	        $event.stopPropagation();
-	        showMore = false
+	        _vm.showMore = false
 	      }
 	    }
-	  }, ["x"])]), " ", _h('div', {
+	  }, [_vm._v("x")])]), _vm._v(" "), _c('div', {
 	    staticClass: "more-body"
-	  }, [_h('ul', {
+	  }, [_c('ul', {
 	    staticClass: "body-list"
-	  }, [_l((selectDay.events), function(event) {
-	    return _h('li', {
+	  }, _vm._l((_vm.selectDay.events), function(event) {
+	    return _c('li', {
 	      directives: [{
 	        name: "show",
 	        rawName: "v-show",
@@ -1145,12 +1145,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      staticClass: "body-item",
 	      on: {
 	        "click": function($event) {
-	          eventClick(event, $event)
+	          _vm.eventClick(event, $event)
 	        }
 	      }
-	    }, ["\n            " + _s(event.title) + "\n          "])
-	  })])])]), " ", _t("body-card")])])
-	}},staticRenderFns: []}
+	    }, [_vm._v("\n            " + _vm._s(event.title) + "\n          ")])
+	  }))])]), _vm._v(" "), _vm._t("body-card")], true)])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
@@ -1221,8 +1222,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/style-rewriter.js?id=data-v-62863025!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/selector.js?type=styles&index=0!./header.vue", function() {
-				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/style-rewriter.js?id=data-v-62863025!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/9.8.1/vue-loader/lib/selector.js?type=styles&index=0!./header.vue");
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/style-rewriter.js?id=data-v-62863025!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/selector.js?type=styles&index=0!./header.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/style-rewriter.js?id=data-v-62863025!./../../node_modules/.npminstall/sass-loader/3.2.3/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/10.0.2/vue-loader/lib/selector.js?type=styles&index=0!./header.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1309,7 +1310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      // 1st day of this monthView
 	      var diff = parseInt(this.firstDay) - curWeekDay;
-	      diff = diff > 0 ? diff - 7 : diff;
+	      if (diff) diff -= 7;
 	      startDate.setDate(startDate.getDate() + diff);
 
 	      // the month view is 6*7
@@ -1343,35 +1344,36 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){with(this) {
-	  return _h('div', {
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', {
 	    staticClass: "full-calendar-header"
-	  }, [_h('div', {
+	  }, [_c('div', {
 	    staticClass: "header-left"
-	  }, [_t("header-left")]), " ", _h('div', {
+	  }, [_vm._t("header-left")], true), _vm._v(" "), _c('div', {
 	    staticClass: "header-center"
-	  }, [_h('span', {
+	  }, [_c('span', {
 	    staticClass: "prev-month",
 	    on: {
 	      "click": function($event) {
 	        $event.stopPropagation();
-	        goPrev($event)
+	        _vm.goPrev($event)
 	      }
 	    }
-	  }, [_s(leftArrow)]), " ", _h('span', {
+	  }, [_vm._v(_vm._s(_vm.leftArrow))]), _vm._v(" "), _c('span', {
 	    staticClass: "title"
-	  }, [_s(title)]), " ", _h('span', {
+	  }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('span', {
 	    staticClass: "next-month",
 	    on: {
 	      "click": function($event) {
 	        $event.stopPropagation();
-	        goNext($event)
+	        _vm.goNext($event)
 	      }
 	    }
-	  }, [_s(rightArrow)])]), " ", _h('div', {
+	  }, [_vm._v(_vm._s(_vm.rightArrow))])]), _vm._v(" "), _c('div', {
 	    staticClass: "header-right"
-	  }, [_t("header-right")])])
-	}},staticRenderFns: []}
+	  }, [_vm._t("header-right")], true)])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
@@ -1383,39 +1385,40 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){with(this) {
-	  return _h('div', {
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', {
 	    staticClass: "comp-full-calendar"
-	  }, [_h('fc-header', {
+	  }, [_c('fc-header', {
 	    attrs: {
-	      "current-date": currentDate,
-	      "title-format": titleFormat,
-	      "first-day": firstDay
+	      "current-date": _vm.currentDate,
+	      "title-format": _vm.titleFormat,
+	      "first-day": _vm.firstDay
 	    },
 	    on: {
-	      "change": emitChangeMonth
+	      "change": _vm.emitChangeMonth
 	    }
-	  }, [_h('div', {
+	  }, [_c('div', {
 	    slot: "header-left"
-	  }, [_t("fc-header-left")]), " ", _h('div', {
+	  }, [_vm._t("fc-header-left")], true), _vm._v(" "), _c('div', {
 	    slot: "header-right"
-	  }, [_t("fc-header-right")])]), " ", " ", _h('fc-body', {
+	  }, [_vm._t("fc-header-right")], true)]), _vm._v(" "), _vm._v(" "), _c('fc-body', {
 	    attrs: {
-	      "current-date": currentDate,
-	      "events": events,
-	      "month-names": monthNames,
-	      "week-names": weekNames,
-	      "first-day": firstDay
+	      "current-date": _vm.currentDate,
+	      "events": _vm.events,
+	      "month-names": _vm.monthNames,
+	      "week-names": _vm.weekNames,
+	      "first-day": _vm.firstDay
 	    },
 	    on: {
-	      "eventclick": emitEventClick,
-	      "dayclick": emitDayClick,
-	      "moreclick": emitMoreClick
+	      "eventclick": _vm.emitEventClick,
+	      "dayclick": _vm.emitDayClick,
+	      "moreclick": _vm.emitMoreClick
 	    }
-	  }, [_h('div', {
+	  }, [_c('div', {
 	    slot: "body-card"
-	  }, [_t("fc-body-card")])])])
-	}},staticRenderFns: []}
+	  }, [_vm._t("fc-body-card")], true)])])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
