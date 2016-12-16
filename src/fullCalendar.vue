@@ -4,6 +4,7 @@
     <fc-header :current-date="currentDate" 
       :title-format="titleFormat"
       :first-day="firstDay"
+      :month-names="monthNames"
       @change="emitChangeMonth">
 
       <div slot="header-left">
@@ -39,7 +40,7 @@
       },
       lang : {
         type : String,
-        default : 'zh'
+        default : 'en'
       },
       firstDay : {
         type : Number | String,

@@ -1,3 +1,32 @@
+const shortMonth = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oc',
+    'Nov',
+    'Dec'
+]
+const defMonthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+]
+
 let dateFunc = {
   getDuration (date) {
     // how many days of this month
@@ -20,7 +49,8 @@ let dateFunc = {
     let dt = new Date(date.getFullYear(),date.getMonth()+1,1) // 1st day of next month
     return new Date(dt.setDate(dt.getDate()-1)) // last day of this month
   },
-  format (date, format) {
+  format (date, format, monthNames) {
+    monthNames = monthNames || defMonthNames
     if (typeof date === 'string') {
         date = new Date(date.replace(/-/g, '/'))
     } else {
@@ -38,8 +68,15 @@ let dateFunc = {
     }
 
     format = format.replace(/([yMdhmsqS])+/g, (all, t) => {
+            console.log('all', all, t, format)
             var v = map[t]
             if (v !== undefined) {
+                if (all === 'MMMM') {
+                    return monthNames[v - 1]
+                }
+                if (all === 'MMM') {
+                    return shortMonth[v - 1]
+                }
                 if (all.length > 1) {
                     v = '0' + v
                     v = v.substr(v.length - 2)
@@ -50,6 +87,7 @@ let dateFunc = {
             }
         return all
     })
+    console.log('format res', format)
     return format
   }
 }

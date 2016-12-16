@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.5
+ * vue-fullcalendar v1.0.6
  * (c) 2016 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -490,7 +490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    lang: {
 	      type: String,
-	      default: 'zh'
+	      default: 'en'
 	    },
 	    firstDay: {
 	      type: Number | String,
@@ -578,6 +578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
 
 /***/ },
 /* 7 */
@@ -592,7 +593,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  en: {
 	    weekNames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 	    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-	    titleFormat: 'MM/yyyy'
+	    titleFormat: 'MMMM yyyy'
 	  },
 	  zh: {
 	    weekNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
@@ -961,6 +962,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	var shortMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc', 'Nov', 'Dec'];
+	var defMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 	var dateFunc = {
 	    getDuration: function getDuration(date) {
 	        // how many days of this month
@@ -983,7 +987,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var dt = new Date(date.getFullYear(), date.getMonth() + 1, 1); // 1st day of next month
 	        return new Date(dt.setDate(dt.getDate() - 1)); // last day of this month
 	    },
-	    format: function format(date, _format) {
+	    format: function format(date, _format, monthNames) {
+	        monthNames = monthNames || defMonthNames;
 	        if (typeof date === 'string') {
 	            date = new Date(date.replace(/-/g, '/'));
 	        } else {
@@ -1003,6 +1008,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _format = _format.replace(/([yMdhmsqS])+/g, function (all, t) {
 	            var v = map[t];
 	            if (v !== undefined) {
+	                if (all === 'MMMM') {
+	                    return monthNames[v - 1];
+	                }
+	                if (all === 'MMM') {
+	                    return shortMonth[v - 1];
+	                }
 	                if (all.length > 1) {
 	                    v = '0' + v;
 	                    v = v.substr(v.length - 2);
@@ -1270,7 +1281,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  props: {
 	    currentDate: {},
 	    titleFormat: {},
-	    firstDay: {}
+	    firstDay: {},
+	    monthNames: {}
 	  },
 	  data: function data() {
 	    return {
@@ -1303,7 +1315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return new Date(dt.setMonth(dt.getMonth() + num));
 	    },
 	    dispatchEvent: function dispatchEvent() {
-	      this.title = _dateFunc2.default.format(this.headDate, this.titleFormat);
+	      this.title = _dateFunc2.default.format(this.headDate, this.titleFormat, this.monthNames);
 
 	      var startDate = _dateFunc2.default.getStartDate(this.headDate);
 	      var curWeekDay = startDate.getDay();
@@ -1392,7 +1404,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    attrs: {
 	      "current-date": _vm.currentDate,
 	      "title-format": _vm.titleFormat,
-	      "first-day": _vm.firstDay
+	      "first-day": _vm.firstDay,
+	      "month-names": _vm.monthNames
 	    },
 	    on: {
 	      "change": _vm.emitChangeMonth

@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/vue-fullcalendar.svg?maxAge=2592000?style=flat-square)]()
 [![npm](https://img.shields.io/npm/dt/vue-fullcalendar.svg?maxAge=2592000?style=flat-square)]()
 
->Works for Vue2 now. This is a fullCalendar component based on vue.js . No Jquery or fullCalendar.js required. Currently, It only supports month view. I will use fc stands for vue-fullcalendar in following words.
+>Works for Vue2 now. This is a fullCalendar component based on vue.js . No Jquery or fullCalendar.js required. Currently, It only supports month view. It's inspired by fullCalendar.io but not cloned by it. So please read the docs here below to understand all features.
 
 [Simple Live Demo](https://wanderxx.github.io/vue-fullcalendar/)
 

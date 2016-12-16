@@ -25,7 +25,8 @@
     props : {
       currentDate : {},
       titleFormat : {},
-      firstDay : {}
+      firstDay    : {},
+      monthNames  : {}
     },
     data () {
       return {
@@ -57,7 +58,7 @@
         return new Date(dt.setMonth(dt.getMonth() + num))
       },
       dispatchEvent() {
-        this.title = dateFunc.format(this.headDate, this.titleFormat)
+        this.title = dateFunc.format(this.headDate, this.titleFormat, this.monthNames)
 
         let startDate = dateFunc.getStartDate(this.headDate)
         let curWeekDay = startDate.getDay()

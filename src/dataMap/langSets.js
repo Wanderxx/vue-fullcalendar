@@ -2,7 +2,7 @@ export default {
   en : {
     weekNames :  ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat'],
     monthNames : ['January','February','March','April','May','June','July','August','September','October','November','December'],
-    titleFormat : 'MM/yyyy'
+    titleFormat : 'MMMM yyyy'
   },
   zh : {
     weekNames : ['周日', '周一','周二','周三','周四','周五','周六'],
