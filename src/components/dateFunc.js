@@ -8,7 +8,7 @@ const shortMonth = [
     'Jul',
     'Aug',
     'Sep',
-    'Oc',
+    'Oct',
     'Nov',
     'Dec'
 ]
