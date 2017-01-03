@@ -1,6 +1,6 @@
 /*!
- * vue-fullcalendar v1.0.7
- * (c) 2016 Sunny Wang <sunnywang0104@163.com> 
+ * vue-fullcalendar v1.0.8
+ * (c) 2017 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -599,6 +599,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    weekNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
 	    monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
 	    titleFormat: 'yyyy年MM月'
+	  },
+	  fr: {
+	    weekNames: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+	    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+	    titleFormat: 'MMMM yyyy'
 	  }
 	};
 
@@ -962,7 +967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var shortMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc', 'Nov', 'Dec'];
+	var shortMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	var defMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 	var dateFunc = {
