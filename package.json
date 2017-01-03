@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "es6-promise": "^4.0.5",
-    "vue": "^2.1.6",
+    "vue": "^2.1.8",
     "vue-fullcalendar": "^1.0.5"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
     "style-loader": "^0.13.0",
     "uglify-js": "^2.4.24",
     "vue-loader": "^10.0.2",
-    "vue-template-compiler": "^2.1.6",
+    "vue-template-compiler": "^2.1.8",
     "webpack": "^1.12.8",
     "webpack-dev-server": "^1.12.0"
   },
