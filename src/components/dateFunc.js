@@ -1,4 +1,4 @@
-const shortMonth = [
+var shortMonth = [
     'Jan',
     'Feb',
     'Mar',
@@ -12,7 +12,7 @@ const shortMonth = [
     'Nov',
     'Dec'
 ]
-const defMonthNames = [
+var defMonthNames = [
     'January',
     'February',
     'March',
