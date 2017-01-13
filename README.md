@@ -13,12 +13,12 @@
 
 By NPM
 
-`1.0.0` works for Vue2
+`@latest` works for Vue2
 `0.1.11` works for Vue1.*
 
 ```shell
 // for Vue2
-npm install vue-fullcalendar@1.0.0 --save 
+npm install vue-fullcalendar@latest --save 
 
 // for Vue1
 npm install vue-fullcalendar@0.1.11 --save 

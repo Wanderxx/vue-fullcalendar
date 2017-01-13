@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.8
+ * vue-fullcalendar v1.0.9
  * (c) 2017 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -1067,7 +1067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        staticClass: "day-number"
 	      }, [_vm._v(_vm._s(day.monthDay))])])
 	    }))
-	  })), _vm._v(" "), _vm._v(" "), _c('div', {
+	  })), _vm._v(" "), _c('div', {
 	    staticClass: "dates-events"
 	  }, _vm._l((_vm.currentDates), function(week) {
 	    return _c('div', {
@@ -1120,9 +1120,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _vm.selectThisDay(day, $event)
 	          }
 	        }
-	      }, [_vm._v("\n              + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n            ")]) : _vm._e()], true)])
+	      }, [_vm._v("\n              + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n            ")]) : _vm._e()], 2)])
 	    }))
-	  })), _vm._v(" "), _vm._v(" "), _c('div', {
+	  })), _vm._v(" "), _c('div', {
 	    directives: [{
 	      name: "show",
 	      rawName: "v-show",
@@ -1165,7 +1165,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 	    }, [_vm._v("\n            " + _vm._s(event.title) + "\n          ")])
-	  }))])]), _vm._v(" "), _vm._t("body-card")], true)])
+	  }))])]), _vm._v(" "), _vm._t("body-card")], 2)])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -1366,7 +1366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    staticClass: "full-calendar-header"
 	  }, [_c('div', {
 	    staticClass: "header-left"
-	  }, [_vm._t("header-left")], true), _vm._v(" "), _c('div', {
+	  }, [_vm._t("header-left")], 2), _vm._v(" "), _c('div', {
 	    staticClass: "header-center"
 	  }, [_c('span', {
 	    staticClass: "prev-month",
@@ -1388,7 +1388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }, [_vm._v(_vm._s(_vm.rightArrow))])]), _vm._v(" "), _c('div', {
 	    staticClass: "header-right"
-	  }, [_vm._t("header-right")], true)])
+	  }, [_vm._t("header-right")], 2)])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -1417,9 +1417,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }, [_c('div', {
 	    slot: "header-left"
-	  }, [_vm._t("fc-header-left")], true), _vm._v(" "), _c('div', {
+	  }, [_vm._t("fc-header-left")], 2), _vm._v(" "), _c('div', {
 	    slot: "header-right"
-	  }, [_vm._t("fc-header-right")], true)]), _vm._v(" "), _vm._v(" "), _c('fc-body', {
+	  }, [_vm._t("fc-header-right")], 2)]), _vm._v(" "), _c('fc-body', {
 	    attrs: {
 	      "current-date": _vm.currentDate,
 	      "events": _vm.events,
@@ -1434,7 +1434,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }, [_c('div', {
 	    slot: "body-card"
-	  }, [_vm._t("fc-body-card")], true)])])
+	  }, [_vm._t("fc-body-card")], 2)])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
