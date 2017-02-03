@@ -13,5 +13,11 @@ export default {
     weekNames   : ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
     monthNames  : ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
     titleFormat : 'MMMM yyyy'
+  },
+  de : {
+    weekNames   : ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    monthNames  : ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+    titleFormat : 'MMMM yyyy',
+    firstDay    : 1
   }
 }
