@@ -148,11 +148,11 @@ fc will dispatch some events out.
 	this.$dispatch('changeMonth', start, end, current)
 	```
 	
-	- `start` is the first day of current monthView
+	- `start` is the first day of current monthView (`moment` object)
 	
-	- `end` is the last day of current monthView
+	- `end` is the last day of current monthView (`moment` object)
 	
-	- `current` is the first day of current month 
+	- `current` is the first day of current month (`moment` object) 
 
 2. **eventClick** : Every time you click a event, fc will dispatch **eventClick**
 
@@ -173,11 +173,17 @@ fc will dispatch some events out.
 	this.$dispatch('eventClick', day, jsEvent)
 	```
 	
-	- `day` is a Date Object of the day you click
+	- `date` is a Date Object of the day you click (`moment` object)
 	
 	- `jsEvent` holds the native javascript event
 
 4. **moreClick** : fc dispatch it when you click a `more` button
+
+    - `date` is the date corresponding to the "more" clicked (`moment` object) 
+    
+    - `events` is the list of events that will be in the box
+    
+    - `jsEvent` holds the native javascript event
 
 #### slots
 
