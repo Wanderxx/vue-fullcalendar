@@ -77,9 +77,7 @@
     },
     methods : {
       emitChangeMonth (start, end, currentStart, current) {
-        console.log('currentDate 2', this.currentDate)
         this.currentDate = current
-        console.log('currentDate 3', this.currentDate)
         this.$emit('changeMonth', start, end, currentStart)
       },
       emitEventClick (event, jsEvent, pos) {

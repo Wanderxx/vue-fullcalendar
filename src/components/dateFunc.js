@@ -11,7 +11,8 @@ var shortMonth = [
     'Oct',
     'Nov',
     'Dec'
-]
+];
+
 var defMonthNames = [
     'January',
     'February',
@@ -25,19 +26,18 @@ var defMonthNames = [
     'October',
     'November',
     'December'
-]
+];
 
 let dateFunc = {
   getDuration (date) {
     // how many days of this month
-    let dt = new Date(date)
-    var month = dt.getMonth()
-    dt.setMonth(dt.getMonth() + 1)
+    let dt = new Date(date);
+    dt.setMonth(dt.getMonth() + 1);
     dt.setDate(0);
     return dt.getDate()
   },
   changeDay (date, num) {
-    let dt = new Date(date)
+    let dt = new Date(date);
     return new Date(dt.setDate(dt.getDate()+num))
   },
   getStartDate(date) {
@@ -46,11 +46,11 @@ let dateFunc = {
   },
   getEndDate (date) {
     // get last day of this month
-    let dt = new Date(date.getFullYear(),date.getMonth()+1,1) // 1st day of next month
-    return new Date(dt.setDate(dt.getDate()-1)) // last day of this month
+    let dt = new Date(date.getFullYear(),date.getMonth()+1,1); // 1st day of next month
+    return new Date(dt.setDate(dt.getDate()-1)); // last day of this month
   },
   format (date, format, monthNames) {
-    monthNames = monthNames || defMonthNames
+    monthNames = monthNames || defMonthNames;
     if (typeof date === 'string') {
         date = new Date(date.replace(/-/g, '/'))
     } else {
@@ -65,11 +65,10 @@ let dateFunc = {
         's' : date.getSeconds(),
         'q' : Math.floor((date.getMonth() + 3) / 3),
         'S' : date.getMilliseconds()
-    }
+    };
 
     format = format.replace(/([yMdhmsqS])+/g, (all, t) => {
-            console.log('all', all, t, format)
-            var v = map[t]
+            var v = map[t];
             if (v !== undefined) {
                 if (all === 'MMMM') {
                     return monthNames[v - 1]
@@ -78,7 +77,7 @@ let dateFunc = {
                     return shortMonth[v - 1]
                 }
                 if (all.length > 1) {
-                    v = '0' + v
+                    v = '0' + v;
                     v = v.substr(v.length - 2)
                 }
                 return v
@@ -86,10 +85,9 @@ let dateFunc = {
                 return String(date.getFullYear()).substr(4 - all.length)
             }
         return all
-    })
-    console.log('format res', format)
+    });
     return format
   }
-}
+};
 
-module.exports = dateFunc
+module.exports = dateFunc;
