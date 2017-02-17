@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 var shortMonth = [
     'Jan',
     'Feb',
@@ -48,6 +50,16 @@ let dateFunc = {
     // get last day of this month
     let dt = new Date(date.getFullYear(),date.getMonth()+1,1); // 1st day of next month
     return new Date(dt.setDate(dt.getDate()-1)); // last day of this month
+  },
+  getMonthViewStartDate (date) {
+    let start = moment(date);
+
+    start.subtract(start.startOf('month').day(), 'days');
+
+    return start;
+  },
+  getMonthViewEndDate (date) {
+    return this.getMonthViewStartDate().add(6, 'weeks');
   },
   format (date, format, monthNames) {
     monthNames = monthNames || defMonthNames;

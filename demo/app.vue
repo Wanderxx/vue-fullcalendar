@@ -16,27 +16,22 @@
 let demoEvents = [
     {
       title    : 'Sunny 725-727',
-      start    : '2016-07-25',
-      end      : '2016-07-27',
+      start    : '2017-02-25',
+      end      : '2017-02-27',
       cssClass : 'family'
     },
     {
       title : 'Sunny 726-727',
-      start : '2016-07-26',
-      end : '2016-07-27',
+      start : '2017-02-26',
+      end : '2017-02-27',
       cssClass : ['home', 'work']
     },
     {
       title : 'Sunny 727-728',
-      start : '2016-07-27',
-      end : '2016-07-28'
-    },
-    {
-      title : 'Sunny 728-730',
-      start : '2016-07-28',
-      end : '2016-07-30'
-    },
-  ]
+      start : '2017-02-27',
+      end : '2017-02-28'
+    }
+  ];
 
 export default {
 	data () {

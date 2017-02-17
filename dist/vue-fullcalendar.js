@@ -529,9 +529,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  methods: {
 	    emitChangeMonth: function emitChangeMonth(start, end, currentStart, current) {
-	      console.log('currentDate 2', this.currentDate);
-	      this.currentDate = current;
-	      console.log('currentDate 3', this.currentDate);
+	      console.log('currentMonth 2', this.currentMonth);
+	      this.currentMonth = current;
+	      console.log('currentMonth 3', this.currentMonth);
 	      this.$emit('changeMonth', start, end, currentStart);
 	    },
 	    emitEventClick: function emitEventClick(event, jsEvent, pos) {
@@ -712,7 +712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = {
 	  props: {
-	    currentDate: {},
+	    currentMonth: {},
 	    events: {},
 	    weekNames: {
 	      type: Array,
@@ -782,9 +782,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // calculate 2d-array of each month
 	      // first day of this month
 	      var now = new Date(); // today
-	      var current = new Date(this.currentDate);
+	      var current = new Date(this.currentMonth);
 
-	      var startDate = _dateFunc2.default.getStartDate(current); // 1st day of this month
+	      var startDate = _dateFunc2.default.getFirstDayOfMonth(current); // 1st day of this month
 
 	      var curWeekDay = startDate.getDay();
 
@@ -983,11 +983,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var dt = new Date(date);
 	        return new Date(dt.setDate(dt.getDate() + num));
 	    },
-	    getStartDate: function getStartDate(date) {
+	    getFirstDayOfMonth: function getStartDate(date) {
 	        // return first day of this month
 	        return new Date(date.getFullYear(), date.getMonth(), 1);
 	    },
-	    getEndDate: function getEndDate(date) {
+	    getLastDayOfMonth: function getEndDate(date) {
 	        // get last day of this month
 	        var dt = new Date(date.getFullYear(), date.getMonth() + 1, 1); // 1st day of next month
 	        return new Date(dt.setDate(dt.getDate() - 1)); // last day of this month
@@ -1284,7 +1284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  props: {
-	    currentDate: {},
+	    currentMonth: {},
 	    titleFormat: {},
 	    firstDay: {},
 	    monthNames: {}
@@ -1299,7 +1299,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  watch: {
-	    currentDate: function currentDate(val) {
+	    currentMonth: function currentDate(val) {
 	      if (!val) return;
 	      this.headDate = val;
 	      console.log('currentDate', val);
@@ -1322,7 +1322,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    dispatchEvent: function dispatchEvent() {
 	      this.title = _dateFunc2.default.format(this.headDate, this.titleFormat, this.monthNames);
 
-	      var startDate = _dateFunc2.default.getStartDate(this.headDate);
+	      var startDate = _dateFunc2.default.getFirstDayOfMonth(this.headDate);
 	      var curWeekDay = startDate.getDay();
 
 	      // 1st day of this monthView
@@ -1334,7 +1334,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var endDate = _dateFunc2.default.changeDay(startDate, 41);
 
 	      // 1st day of current month
-	      var currentDate = _dateFunc2.default.getStartDate(this.headDate);
+	      var currentDate = _dateFunc2.default.getFirstDayOfMonth(this.headDate);
 
 	      this.$emit('change', _dateFunc2.default.format(startDate, 'yyyy-MM-dd'), _dateFunc2.default.format(endDate, 'yyyy-MM-dd'), _dateFunc2.default.format(currentDate, 'yyyy-MM-dd'), this.headDate);
 	    }
@@ -1407,7 +1407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    staticClass: "comp-full-calendar"
 	  }, [_c('fc-header', {
 	    attrs: {
-	      "current-date": _vm.currentDate,
+	      "current-date": _vm.currentMonth,
 	      "title-format": _vm.titleFormat,
 	      "first-day": _vm.firstDay,
 	      "month-names": _vm.monthNames
@@ -1421,7 +1421,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    slot: "header-right"
 	  }, [_vm._t("fc-header-right")], 2)]), _vm._v(" "), _c('fc-body', {
 	    attrs: {
-	      "current-date": _vm.currentDate,
+	      "current-date": _vm.currentMonth,
 	      "events": _vm.events,
 	      "month-names": _vm.monthNames,
 	      "week-names": _vm.weekNames,

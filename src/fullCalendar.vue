@@ -1,7 +1,7 @@
 <template>
   <div class="comp-full-calendar">
     <!-- header pick month -->
-    <fc-header :current-date="currentDate" 
+    <fc-header :current-date="currentMonth"
       :title-format="titleFormat"
       :first-day="firstDay"
       :month-names="monthNames"
@@ -18,7 +18,7 @@
       </div>
     </fc-header>
     <!-- body display date day and events -->
-    <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" 
+    <fc-body :current-date="currentMonth" :events="events" :month-names="monthNames"
       :week-names="weekNames" :first-day="firstDay"
       @eventclick="emitEventClick" @dayclick="emitDayClick"
       @moreclick="emitMoreClick">
@@ -31,6 +31,8 @@
 </template>
 <script type="text/babel">
   import langSets from './dataMap/langSets'
+  import dateFunc from './components/dateFunc'
+  import moment from 'moment';
 
   export default {
     props : {
@@ -45,7 +47,7 @@
       firstDay : {
         type : Number | String,
         validator (val) {
-          let res = parseInt(val)
+          let res = parseInt(val);
           return res >= 0 && res <= 6
         },
         default : 0
@@ -65,20 +67,27 @@
       weekNames : {
         type : Array,
         default () {
-          let arr = langSets[this.lang].weekNames
+          let arr = langSets[this.lang].weekNames;
           return arr.slice(this.firstDay).concat(arr.slice(0, this.firstDay))
         }
       }
     },
+    mounted () {
+      this.emitChangeMonth(this.currentMonth);
+    },
     data () {
       return {
-        currentDate : new Date()
+        currentMonth : moment().startOf('month')
       }
     },
     methods : {
-      emitChangeMonth (start, end, currentStart, current) {
-        this.currentDate = current
-        this.$emit('changeMonth', start, end, currentStart)
+      emitChangeMonth (current) {
+        this.currentMonth = current;
+
+        let start = dateFunc.getMonthViewStartDate(current);
+        let end = dateFunc.getMonthViewEndDate(current);
+
+        this.$emit('changeMonth', start, end, current.toDate())
       },
       emitEventClick (event, jsEvent, pos) {
         this.$emit('eventClick', event, jsEvent, pos)
@@ -87,7 +96,7 @@
         this.$emit('dayClick', day, jsEvent)
       },
       emitMoreClick (day, events, jsEvent) {
-        this.$emit('moreClick', day, event, jsEvent)
+        this.$emit('moreClick', day, events, jsEvent)
       }
     },
     components : {
