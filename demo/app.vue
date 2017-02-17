@@ -4,7 +4,7 @@
   		Here is the demo of vue-fullcalendar, no jquery fullcalendar.js required!
   	</p>
     <full-calendar class="test-fc" :events="fcEvents" 
-      first-day='1' lang="en"
+      first-day='1' locale="fr"
       @changeMonth="changeMonth"
       @eventClick="eventClick"
       @dayClick="dayClick"
@@ -16,38 +16,48 @@
 let demoEvents = [
     {
       title    : 'Sunny 725-727',
-      start    : '2016-07-25',
-      end      : '2016-07-27',
+      start    : '2017-02-25',
+      end      : '2017-02-27',
       cssClass : 'family'
     },
     {
       title : 'Sunny 726-727',
-      start : '2016-07-26',
-      end : '2016-07-27',
+      start : '2017-02-26',
+      end : '2017-02-27',
       cssClass : ['home', 'work']
     },
     {
       title : 'Sunny 727-728',
-      start : '2016-07-27',
-      end : '2016-07-28'
+      start : '2017-02-27',
+      end : '2017-02-28'
     },
     {
-      title : 'Sunny 728-730',
-      start : '2016-07-28',
-      end : '2016-07-30'
+        title : 'Sunny 727-728',
+        start : '2017-02-27',
+        end : '2017-02-28'
     },
-  ]
+    {
+        title : 'Sunny 727-728',
+        start : '2017-02-27',
+        end : '2017-02-28'
+    },
+    {
+        title : 'Sunny 727-728',
+        start : '2017-02-27',
+        end : '2017-02-28'
+    },
+  ];
 
 export default {
 	data () {
 		return {
-      name:'Sunny!',
-      fcEvents : demoEvents
-    }
+            name:'Sunny!',
+            fcEvents : demoEvents
+        }
 	},
   methods : {
     'changeMonth' (start, end, current) {
-      console.log('changeMonth', start, end, current)
+      console.log('changeMonth', start.format(), end.format(), current.format())
     },
     'eventClick' (event, jsEvent, pos) {
        console.log('eventClick', event, jsEvent, pos)

@@ -7726,9 +7726,9 @@
 
 	  methods: {
 	    emitChangeMonth: function emitChangeMonth(start, end, currentStart, current) {
-	      console.log('currentDate 2', this.currentDate);
-	      this.currentDate = current;
-	      console.log('currentDate 3', this.currentDate);
+	      console.log('currentMonth 2', this.currentMonth);
+	      this.currentMonth = current;
+	      console.log('currentMonth 3', this.currentMonth);
 	      this.$emit('changeMonth', start, end, currentStart);
 	    },
 	    emitEventClick: function emitEventClick(event, jsEvent, pos) {
@@ -7896,7 +7896,7 @@
 
 	exports.default = {
 	  props: {
-	    currentDate: {},
+	    currentMonth: {},
 	    events: {},
 	    weekNames: {
 	      type: Array,
@@ -7966,9 +7966,9 @@
 	      // calculate 2d-array of each month
 	      // first day of this month
 	      var now = new Date(); // today
-	      var current = new Date(this.currentDate);
+	      var current = new Date(this.currentMonth);
 
-	      var startDate = _dateFunc2.default.getStartDate(current);
+	      var startDate = _dateFunc2.default.getFirstDayOfMonth(current);
 
 	      var curWeekDay = startDate.getDay();
 	      // begin date of this table may be some day of last month
@@ -8160,11 +8160,11 @@
 	        var dt = new Date(date);
 	        return new Date(dt.setDate(dt.getDate() + num));
 	    },
-	    getStartDate: function getStartDate(date) {
+	    getFirstDayOfMonth: function getStartDate(date) {
 	        // return first day of this month
 	        return new Date(date.getFullYear(), date.getMonth(), 1);
 	    },
-	    getEndDate: function getEndDate(date) {
+	    getLastDayOfMonth: function getEndDate(date) {
 	        // get last day of this month
 	        var dt = new Date(date.getFullYear(), date.getMonth() + 1, 1); // 1st day of next month
 	        return new Date(dt.setDate(dt.getDate() - 1)); // last day of this month
@@ -8455,7 +8455,7 @@
 	  },
 
 	  props: {
-	    currentDate: {},
+	    currentMonth: {},
 	    titleFormat: {}
 	  },
 	  data: function data() {
@@ -8468,7 +8468,7 @@
 	  },
 
 	  watch: {
-	    currentDate: function currentDate(val) {
+	    currentMonth: function currentDate(val) {
 	      if (!val) return;
 	      this.headDate = val;
 	      console.log('currentDate', val);
@@ -8491,7 +8491,7 @@
 	    dispatchEvent: function dispatchEvent() {
 	      this.title = _dateFunc2.default.format(this.headDate, this.titleFormat);
 
-	      var startDate = _dateFunc2.default.getStartDate(this.headDate);
+	      var startDate = _dateFunc2.default.getFirstDayOfMonth(this.headDate);
 	      var curWeekDay = startDate.getDay();
 
 	      // 1st day of this monthView
@@ -8501,7 +8501,7 @@
 	      var endDate = _dateFunc2.default.changeDay(startDate, 41);
 
 	      // 1st day of current month
-	      var currentDate = _dateFunc2.default.getStartDate(this.headDate);
+	      var currentDate = _dateFunc2.default.getFirstDayOfMonth(this.headDate);
 
 	      this.$emit('change', _dateFunc2.default.format(startDate, 'yyyy-MM-dd'), _dateFunc2.default.format(endDate, 'yyyy-MM-dd'), _dateFunc2.default.format(currentDate, 'yyyy-MM-dd'), this.headDate);
 	    }
@@ -8573,7 +8573,7 @@
 	    staticClass: "comp-full-calendar"
 	  }, [_h('fc-header', {
 	    attrs: {
-	      "current-date": currentDate,
+	      "current-date": currentMonth,
 	      "title-format": titleFormat
 	    },
 	    on: {
@@ -8583,7 +8583,7 @@
 	    slot: "header-right"
 	  }, [_t("fc-header-right")])]), " ", " ", _h('fc-body', {
 	    attrs: {
-	      "current-date": currentDate,
+	      "current-date": currentMonth,
 	      "events": events,
 	      "month-names": monthNames,
 	      "week-names": weekNames,
