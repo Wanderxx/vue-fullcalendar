@@ -1,7 +1,7 @@
 <template>
   <div class="full-calendar-body">
     <div class="weeks">
-      <strong class="week" v-for="week in weekNames">{{week}}</strong>
+      <strong class="week" v-for="dayIndex in 7">{{ (dayIndex - 1) | localeWeekDay(firstDay, locale) }}</strong>
     </div>
     <div class="dates" ref="dates">
       <div class="dates-bg">
@@ -22,7 +22,7 @@
               'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
             <p class="day-number">{{day.monthDay}}</p>
             <div class="event-box">
-              <event-card :event="event" :date="day.date" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick(event, $event)"></event-card>
+              <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick"></event-card>
               <p v-if="day.events.length > eventLimit"
                 class="more-link" @click.stop="selectThisDay(day, $event)">
                 + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
@@ -36,14 +36,14 @@
       <div class="more-events" v-show="showMore"
         :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
         <div class="more-header">
-          <span class="title">{{moreTitle(selectDay.date)}}</span>
+          <span class="title">{{ moreTitle(selectDay.date) }}</span>
           <span class="close" @click.stop="showMore = false">x</span>
         </div>
         <div class="more-body">
           <ul class="body-list">
             <li v-for="event in selectDay.events"
               v-show="event.isShow" class="body-item"
-              @click="eventClick(event,$event)">
+              @click="eventClick(event, $event)">
               {{event.title}}
             </li>
           </ul>
@@ -66,12 +66,8 @@
     props : {
       currentDate : {},
       events      : {},
-      weekNames   : {
-        type : Array,
-        default : []
-      },
-      monthNames  : {},
-      firstDay    : {}
+      firstDay    : {},
+      locale      : {}
     },
     components: {
       'event-card': EventCard
@@ -105,26 +101,12 @@
     },
     methods : {
       moreTitle (date) {
-        let dt = new Date(date);
-        return this.weekNames[dt.getDay()] + ', ' + this.monthNames[dt.getMonth()] + dt.getDate()
+        if (!date) return '';
+        return moment(date).format('ll');
       },
       getCalendar () {
         // calculate 2d-array of each month
-        // first day of this month
-//        let now = new Date() // today
-//        let current = this.currentMonth;
-//
-//        let startDate = current // 1st day of this month
-//
-//        let curWeekDay = startDate.getDay()
-//
-//        // begin date of this table may be some day of last month
-//        let diff = parseInt(this.firstDay) - curWeekDay
-//        diff = diff > 0 ? (diff - 7) : diff
-//
-//        startDate.setDate(startDate.getDate() + diff)
-
-        let monthViewStartDate = dateFunc.getMonthViewStartDate(this.currentMonth);
+        let monthViewStartDate = dateFunc.getMonthViewStartDate(this.currentMonth, this.firstDay);
         let calendar = [];
 
         for(let perWeek = 0 ; perWeek < 6 ; perWeek++) {
@@ -155,9 +137,8 @@
         let thisDayEvents = this.events.filter(day => {
           let st = moment(day.start);
           let ed = moment(day.end ? day.end : st);
-          // console.log('slotEvt', dt, st, ed, date);
+
           return date.isBetween(st, ed, null, '[]');
-          // return date>=st && date<=ed
         });
 
         // sort by duration
@@ -175,8 +156,8 @@
           thisDayEvents.splice(i,0,{
             title : 'holder',
             cellIndex : i+1,
-            start : dateFunc.format(date,'yyyy-MM-dd'),
-            end : dateFunc.format(date,'yyyy-MM-dd'),
+            start : date.format(),
+            end : date.format(),
             isShow : false
           })
         }
@@ -205,12 +186,18 @@
         this.$emit('dayclick', day, jsEvent)
       },
       eventClick(event, jsEvent) {
-        if (!event.isShow) {
-          return
-        }
+        if (!event.isShow) return;
+
         jsEvent.stopPropagation();
         let pos = this.computePos(jsEvent.target);
         this.$emit('eventclick', event, jsEvent, pos)
+      }
+    },
+    filters: {
+      localeWeekDay (weekday, firstDay, locale) {
+        firstDay = parseInt(firstDay);
+        var localMoment = moment().locale(locale);
+        return localMoment.localeData().weekdaysShort()[(weekday + firstDay) % 7];
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
     <p class="event-item" :class="cssClasses"
-       @click="eventClick(event,$event)">
-        {{ isBegin }}
+       @click="$emit('click', event, $event)">
+        {{ title }}
     </p>
 </template>
 
@@ -9,7 +9,7 @@
     import moment from 'moment'
 
     export default {
-        props: ['event', 'date'],
+        props: ['event', 'date', 'firstDay'],
         computed: {
             cssClasses () {
                 var cssClasses = this.event.cssClass;
@@ -21,7 +21,6 @@
                 }
 
                 if (this.start.isSame(this.date, 'day')) {
-                    console.log("is Start: ", this.start.format(), this.date.format());
                     cssClasses.push('is-start');
                 }
 
@@ -36,8 +35,9 @@
                 return cssClasses.join(' ');
             },
 
-            isBegin () {
-                return (this.date.day() == 0 || this.start.isSame(this.date, 'day')) ? this.event.title : '　';
+            title () {
+                // On first day of week or on start date we put the title
+                return (this.date.day() == this.firstDay || this.start.isSame(this.date, 'day')) ? this.event.title : '　';
             },
             start () {
                 return moment(this.event.start);

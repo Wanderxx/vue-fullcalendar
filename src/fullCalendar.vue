@@ -1,10 +1,9 @@
 <template>
   <div class="comp-full-calendar">
     <!-- header pick month -->
-    <fc-header :current-date="currentMonth"
-      :title-format="titleFormat"
+    <fc-header :current-month="currentMonth"
       :first-day="firstDay"
-      :month-names="monthNames"
+      :locale="locale"
       @change="emitChangeMonth">
 
       <div slot="header-left">
@@ -18,8 +17,7 @@
       </div>
     </fc-header>
     <!-- body display date day and events -->
-    <fc-body :current-date="currentMonth" :events="events" :month-names="monthNames"
-      :week-names="weekNames" :first-day="firstDay"
+    <fc-body :current-date="currentMonth" :events="events" :first-day="firstDay" :locale="locale"
       @eventclick="emitEventClick" @dayclick="emitDayClick"
       @moreclick="emitMoreClick">
       <div slot="body-card">
@@ -30,7 +28,7 @@
   </div>
 </template>
 <script type="text/babel">
-  import langSets from './dataMap/langSets'
+  // import langSets from './dataMap/langSets'
   import dateFunc from './components/dateFunc'
   import moment from 'moment';
 
@@ -40,7 +38,7 @@
         type : Array,
         default : []
       },
-      lang : {
+      locale : {
         type : String,
         default : 'en'
       },
@@ -51,25 +49,6 @@
           return res >= 0 && res <= 6
         },
         default : 0
-      },
-      titleFormat : {
-        type : String,
-        default () {
-          return langSets[this.lang].titleFormat
-        }
-      },
-      monthNames : {
-        type : Array,
-        default () {
-          return langSets[this.lang].monthNames
-        } 
-      },
-      weekNames : {
-        type : Array,
-        default () {
-          let arr = langSets[this.lang].weekNames;
-          return arr.slice(this.firstDay).concat(arr.slice(0, this.firstDay))
-        }
       }
     },
     mounted () {
@@ -81,22 +60,22 @@
       }
     },
     methods : {
-      emitChangeMonth (current) {
-        this.currentMonth = current;
+      emitChangeMonth (firstDayOfMonth) {
+        this.currentMonth = firstDayOfMonth;
 
-        let start = dateFunc.getMonthViewStartDate(current);
-        let end = dateFunc.getMonthViewEndDate(current);
+        let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
+        let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
 
-        this.$emit('changeMonth', start, end, current.toDate())
+        this.$emit('changeMonth', start, end, firstDayOfMonth)
       },
       emitEventClick (event, jsEvent, pos) {
         this.$emit('eventClick', event, jsEvent, pos)
       },
-      emitDayClick (day, jsEvent) {
-        this.$emit('dayClick', day, jsEvent)
+      emitDayClick (date, jsEvent) {
+        this.$emit('dayClick', date, jsEvent)
       },
-      emitMoreClick (day, events, jsEvent) {
-        this.$emit('moreClick', day, events, jsEvent)
+      emitMoreClick (date, events, jsEvent) {
+        this.$emit('moreClick', date, events, jsEvent)
       }
     },
     components : {

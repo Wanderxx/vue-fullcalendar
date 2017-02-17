@@ -68,7 +68,7 @@ or register locally in your `.vue` file
 ### Example
 
 ```html
-<full-calendar :events="fcEvents" lang="en"></full-calendar>
+<full-calendar :events="fcEvents" locale="en"></full-calendar>
 ```
 
 ```javascript
@@ -128,36 +128,15 @@ A sample screenshot is here,
 	
 	- `YOUR_DATA` You can define as many data you want as possible
 
-2. **lang** : langague of things like monthNames weekNames and titleFormat
-
-	```javascript
-	export default {
-	  en : {
-	    weekNames :  ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat'],
-	    monthNames : ['January','February','March','April','May','June','July','August','September','October','November','December'],
-	    titleFormat : 'MM/yyyy'
-	  },
-	  zh : {
-	    weekNames : ['周一','周二','周三','周四','周五','周六','周日'],
-	    monthNames : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','11月','12月'],
-	    titleFormat : 'yyyy年MM月'
-	  }
-	}
-	```
-
-	- `option` : `zh` | `en`
+2. **locale** : langague of things like monthNames weekNames and titleFormat. Support same locales than [moment.js](http://momentjs.com/docs/#/i18n/)
 	
-	- `default` : `zh`
+	- `default` : `en`
 
-3. **monthNames** 
-
-4. **weekNames**
-
-5. **titleFormat**
-
-6. **firstDay** : first day of the week, `Number`, default: 0 (Sunday)
+3. **firstDay** : first day of the week, `Number`, default: 0 (Sunday)
 	Sunday=0, Monday=1, Tuesday=2, etc.
 	Any number smaller than 0 or larger than 6 will be set to 0.
+
+    - `default` : 0
 
 #### events
 

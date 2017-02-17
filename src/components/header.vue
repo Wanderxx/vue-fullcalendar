@@ -24,13 +24,19 @@
       currentMonth : {},
       titleFormat  : {},
       firstDay     : {},
-      monthNames   : {}
+      monthNames   : {},
+      locale       : {}
     },
     data () {
       return {
-        title      : '',
         leftArrow  : '<',
         rightArrow : '>'
+      }
+    },
+    computed: {
+      title () {
+        if (!this.currentMonth) return;
+        return this.currentMonth.locale(this.locale).format('MMMM YYYY')
       }
     },
     methods : {
