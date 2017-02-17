@@ -64,7 +64,7 @@
 
   export default {
     props : {
-      currentDate : {},
+      currentMonth : {},
       events      : {},
       firstDay    : {},
       locale      : {}
@@ -77,13 +77,9 @@
         item._id = item.id || index;
         item.end = item.end || item.start;
       });
-      // this.events = events
     },
     data () {
       return {
-        // weekNames : DAY_NAMES,
-        weekMask : [1,2,3,4,5,6,7],
-        // events : [],
         isLismit : true,
         eventLimit : 3,
         showMore : false,
@@ -116,7 +112,7 @@
             week.push({
               monthDay : monthViewStartDate.date(),
               isToday : monthViewStartDate.isSame(moment(), 'day'),
-              isCurMonth : monthViewStartDate.isSame(moment(), 'month'),
+              isCurMonth : monthViewStartDate.isSame(this.currentMonth, 'month'),
               weekDay : perDay,
               date : moment(monthViewStartDate),
               events : this.slotEvents(monthViewStartDate)

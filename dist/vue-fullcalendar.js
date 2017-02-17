@@ -15654,7 +15654,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	exports.default = {
 	  props: {
-	    currentDate: {},
+	    currentMonth: {},
 	    events: {},
 	    firstDay: {},
 	    locale: {}
@@ -15667,13 +15667,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      item._id = item.id || index;
 	      item.end = item.end || item.start;
 	    });
-	    // this.events = events
 	  },
 	  data: function data() {
 	    return {
-	      // weekNames : DAY_NAMES,
-	      weekMask: [1, 2, 3, 4, 5, 6, 7],
-	      // events : [],
 	      isLismit: true,
 	      eventLimit: 3,
 	      showMore: false,
@@ -15707,7 +15703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          week.push({
 	            monthDay: monthViewStartDate.date(),
 	            isToday: monthViewStartDate.isSame((0, _moment2.default)(), 'day'),
-	            isCurMonth: monthViewStartDate.isSame((0, _moment2.default)(), 'month'),
+	            isCurMonth: monthViewStartDate.isSame(this.currentMonth, 'month'),
 	            weekDay: perDay,
 	            date: (0, _moment2.default)(monthViewStartDate),
 	            events: this.slotEvents(monthViewStartDate)
@@ -16836,39 +16832,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  methods: {
 	    goPrev: function goPrev() {
-	      newMonth = (0, _moment2.default)(this.currentMonth).substract(1, 'months').startOf('month');
+	      var newMonth = (0, _moment2.default)(this.currentMonth).subtract(1, 'months').startOf('month');
 	      this.$emit('change', newMonth);
 	    },
 	    goNext: function goNext() {
-	      newMonth = (0, _moment2.default)(this.currentMonth).add(1, 'months').startOf('month');
+	      var newMonth = (0, _moment2.default)(this.currentMonth).add(1, 'months').startOf('month');
 	      this.$emit('change', newMonth);
-	    },
-	    changeMonth: function changeMonth(date, num) {
-	      var dt = new Date(date);
-	      return new Date(dt.setMonth(dt.getMonth() + num));
-	    },
-	    dispatchEvent: function dispatchEvent() {
-	      this.$emit('change', newMonth);
-	      //        this.title = dateFunc.format(this.headDate, this.titleFormat, this.monthNames);
-	      //
-	      //        let startDate = dateFunc.getMonthViewStartDate(this.headDate, );
-	      //        let endDate = dateFunc.getMonthViewEndDate();
-	      //
-	      //        let startDate = dateFunc.getFirstDayOfMonth(this.headDate);
-	      //        let curWeekDay = startDate.getDay();
-	      //
-	      //        // 1st day of this monthView
-	      //        let diff = parseInt(this.firstDay) - curWeekDay;
-	      //        if (diff) diff -= 7;
-	      //        startDate.setDate(startDate.getDate() + diff) ;
-	      //
-	      //        // the month view is 6*7
-	      //        let endDate = dateFunc.changeDay(startDate, 41);
-	      //
-	      //        // 1st day of current month
-	      //        let currentMonth = dateFunc.getFirstDayOfMonth(this.headDate);
-	
-	      //this.$emit('change', this.headDate.substract(1, 'months'));
 	    }
 	  }
 	};
@@ -16936,7 +16905,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    slot: "header-right"
 	  }, [_vm._t("fc-header-right")], 2)]), _vm._v(" "), _c('fc-body', {
 	    attrs: {
-	      "current-date": _vm.currentMonth,
+	      "current-month": _vm.currentMonth,
 	      "events": _vm.events,
 	      "first-day": _vm.firstDay,
 	      "locale": _vm.locale

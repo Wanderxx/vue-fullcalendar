@@ -17,7 +17,7 @@
       </div>
     </fc-header>
     <!-- body display date day and events -->
-    <fc-body :current-date="currentMonth" :events="events" :first-day="firstDay" :locale="locale"
+    <fc-body :current-month="currentMonth" :events="events" :first-day="firstDay" :locale="locale"
       @eventclick="emitEventClick" @dayclick="emitDayClick"
       @moreclick="emitMoreClick">
       <div slot="body-card">

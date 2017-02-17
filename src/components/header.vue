@@ -41,39 +41,12 @@
     },
     methods : {
       goPrev () {
-        newMonth = moment(this.currentMonth).substract(1, 'months').startOf('month');
+        var newMonth = moment(this.currentMonth).subtract(1, 'months').startOf('month');
         this.$emit('change', newMonth);
       },
       goNext () {
-        newMonth = moment(this.currentMonth).add(1, 'months').startOf('month');
+        var newMonth = moment(this.currentMonth).add(1, 'months').startOf('month');
         this.$emit('change', newMonth);
-      },
-      changeMonth (date, num) {
-        let dt = new Date(date);
-        return new Date(dt.setMonth(dt.getMonth() + num))
-      },
-      dispatchEvent() {
-          this.$emit('change', newMonth);
-//        this.title = dateFunc.format(this.headDate, this.titleFormat, this.monthNames);
-//
-//        let startDate = dateFunc.getMonthViewStartDate(this.headDate, );
-//        let endDate = dateFunc.getMonthViewEndDate();
-//
-//        let startDate = dateFunc.getFirstDayOfMonth(this.headDate);
-//        let curWeekDay = startDate.getDay();
-//
-//        // 1st day of this monthView
-//        let diff = parseInt(this.firstDay) - curWeekDay;
-//        if (diff) diff -= 7;
-//        startDate.setDate(startDate.getDate() + diff) ;
-//
-//        // the month view is 6*7
-//        let endDate = dateFunc.changeDay(startDate, 41);
-//
-//        // 1st day of current month
-//        let currentMonth = dateFunc.getFirstDayOfMonth(this.headDate);
-
-        //this.$emit('change', this.headDate.substract(1, 'months'));
       }
     }
   }
