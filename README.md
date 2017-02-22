@@ -141,11 +141,22 @@ A sample screenshot is here,
 	    weekNames : ['周一','周二','周三','周四','周五','周六','周日'],
 	    monthNames : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','11月','12月'],
 	    titleFormat : 'yyyy年MM月'
+	  },
+	  pl : {
+	    weekNames   : ['Niedz.','Pon.','Wt.','Śr.','Czw.','Pt.','Sob.'],
+	    monthNames  : ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'],
+	    titleFormat : 'MM/yyyy',
+	    firstDay    : 1
+	  },
+	  fr : {
+	    weekNames   : ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+	    monthNames  : ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+	    titleFormat : 'MMMM yyyy'
 	  }
 	}
 	```
 
-	- `option` : `zh` | `en`
+	- `option` : `zh` | `en` | `pl` | `fr`
 	
 	- `default` : `zh`
 
