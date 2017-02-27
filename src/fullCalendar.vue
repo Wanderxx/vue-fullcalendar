@@ -379,10 +379,10 @@
   }
   }
   .more-body{
-    height: 140px;
+    height: 146px;
     overflow: hidden;
   .body-list{
-    height: 120px;
+    height: 144px;
     padding:5px;
     overflow: auto;
     background-color:#fff;
