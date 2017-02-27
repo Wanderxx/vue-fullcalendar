@@ -306,7 +306,7 @@
   .events-day{
     cursor: pointer;
     flex:1;
-    min-height: 109px;
+    min-height: 99px;
     overflow: hidden;
     text-overflow: ellipsis;
   .day-number{
