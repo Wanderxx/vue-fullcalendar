@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(7),
 	  /* template */
-	  __webpack_require__(170),
+	  __webpack_require__(165),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -144,7 +144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, "\n.comp-full-calendar {\n  padding: 20px;\n  background: #fff;\n  max-width: 960px;\n  margin: 0 auto;\n}\n.comp-full-calendar ul, .comp-full-calendar p {\n    margin: 0;\n    padding: 0;\n    font-size: 14px;\n}\n", ""]);
+	exports.push([module.id, "\n.comp-full-calendar {\n  padding: 20px;\n  background: #fff;\n  max-width: 960px;\n  margin: 0 auto;\n}\n.comp-full-calendar ul, .comp-full-calendar p {\n    margin: 0;\n    padding: 0;\n    font-size: 14px;\n}\n.full-calendar-body {\n  margin-top: 20px;\n}\n.full-calendar-body .weeks {\n    display: flex;\n    border-top: 1px solid #e0e0e0;\n    border-bottom: 1px solid #e0e0e0;\n    border-left: 1px solid #e0e0e0;\n}\n.full-calendar-body .weeks .week {\n      flex: 1;\n      text-align: center;\n      border-right: 1px solid #e0e0e0;\n}\n.full-calendar-body .dates {\n    position: relative;\n}\n.full-calendar-body .dates .week-row {\n      border-left: 1px solid #e0e0e0;\n      display: flex;\n}\n.full-calendar-body .dates .week-row .day-cell {\n        flex: 1;\n        min-height: 100px;\n        padding: 4px;\n        border-right: 1px solid #e0e0e0;\n        border-bottom: 1px solid #e0e0e0;\n}\n.full-calendar-body .dates .week-row .day-cell .day-number {\n          text-align: right;\n}\n.full-calendar-body .dates .week-row .day-cell.today {\n          background-color: #fcf8e3;\n}\n.full-calendar-body .dates .week-row .day-cell.not-cur-month .day-number {\n          color: rgba(0, 0, 0, 0.24);\n}\n.full-calendar-body .dates .dates-events {\n      position: absolute;\n      top: 0;\n      left: 0;\n      z-index: 1;\n      width: 100%;\n}\n.full-calendar-body .dates .dates-events .events-week {\n        display: flex;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day {\n          cursor: pointer;\n          flex: 1;\n          min-height: 99px;\n          overflow: hidden;\n          text-overflow: ellipsis;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .day-number {\n            text-align: right;\n            padding: 4px 5px 4px 4px;\n            opacity: 0;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day.not-cur-month .day-number {\n            color: rgba(0, 0, 0, 0.24);\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-start {\n              margin-left: 4px;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-end {\n              margin-right: 4px;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-opacity {\n              opacity: 0;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .more-link {\n            cursor: pointer;\n            padding-left: 8px;\n            padding-right: 2px;\n            color: rgba(0, 0, 0, 0.38);\n            font-size: 14px;\n}\n.full-calendar-body .dates .more-events {\n      position: absolute;\n      width: 150px;\n      z-index: 2;\n      border: 1px solid #eee;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\n}\n.full-calendar-body .dates .more-events .more-header {\n        background-color: #eee;\n        padding: 5px;\n        display: flex;\n        align-items: center;\n        font-size: 14px;\n}\n.full-calendar-body .dates .more-events .more-header .title {\n          flex: 1;\n}\n.full-calendar-body .dates .more-events .more-header .close {\n          margin-right: 2px;\n          cursor: pointer;\n          font-size: 16px;\n}\n.full-calendar-body .dates .more-events .more-body {\n        height: 140px;\n        overflow: hidden;\n}\n.full-calendar-body .dates .more-events .more-body .body-list {\n          height: 120px;\n          padding: 5px;\n          overflow: auto;\n          background-color: #fff;\n}\n.full-calendar-body .dates .more-events .more-body .body-list .body-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis;\n}\n", ""]);
 	
 	// exports
 
@@ -528,8 +528,220 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
+	var _eventCard = __webpack_require__(120);
+	
+	var _eventCard2 = _interopRequireDefault(_eventCard);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	exports.default = {
+	  props: {
+	    events: { // events will be displayed on calendar
+	      type: Array,
+	      default: []
+	    },
+	    locale: {
+	      type: String,
+	      default: 'en'
+	    },
+	    firstDay: {
+	      type: Number | String,
+	      validator: function validator(val) {
+	        var res = parseInt(val);
+	        return res >= 0 && res <= 6;
+	      },
+	
+	      default: 0
+	    }
+	  },
+	  components: {
+	    'event-card': _eventCard2.default,
+	    'fc-header': __webpack_require__(160)
+	  },
+	  mounted: function mounted() {
+	    this.emitChangeMonth(this.currentMonth);
+	  },
+	  data: function data() {
+	    return {
+	      currentMonth: (0, _moment2.default)().startOf('month'),
+	      isLismit: true,
+	      eventLimit: 3,
+	      showMore: false,
+	      morePos: {
+	        top: 0,
+	        left: 0
+	      },
+	      selectDay: {}
+	    };
+	  },
+	
+	  computed: {
+	    currentDates: function currentDates() {
+	      return this.getCalendar();
+	    }
+	  },
+	  methods: {
+	    emitChangeMonth: function emitChangeMonth(firstDayOfMonth) {
+	      this.currentMonth = firstDayOfMonth;
+	
+	      var start = _dateFunc2.default.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
+	      var end = _dateFunc2.default.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
+	
+	      this.$emit('changeMonth', start, end, firstDayOfMonth);
+	    },
+	    moreTitle: function moreTitle(date) {
+	      if (!date) return '';
+	      return (0, _moment2.default)(date).format('ll');
+	    },
+	    getCalendar: function getCalendar() {
+	      // calculate 2d-array of each month
+	      var monthViewStartDate = _dateFunc2.default.getMonthViewStartDate(this.currentMonth, this.firstDay);
+	      var calendar = [];
+	
+	      for (var perWeek = 0; perWeek < 6; perWeek++) {
+	        var week = [];
+	
+	        for (var perDay = 0; perDay < 7; perDay++) {
+	          week.push({
+	            monthDay: monthViewStartDate.date(),
+	            isToday: monthViewStartDate.isSame((0, _moment2.default)(), 'day'),
+	            isCurMonth: monthViewStartDate.isSame(this.currentMonth, 'month'),
+	            weekDay: perDay,
+	            date: (0, _moment2.default)(monthViewStartDate),
+	            events: this.slotEvents(monthViewStartDate)
+	          });
+	
+	          monthViewStartDate.add(1, 'day');
+	        }
+	
+	        calendar.push(week);
+	      }
+	
+	      return calendar;
+	    },
+	    slotEvents: function slotEvents(date) {
+	
+	      // find all events start from this date
+	      var cellIndexArr = [];
+	      var thisDayEvents = this.events.filter(function (day) {
+	        var st = (0, _moment2.default)(day.start);
+	        var ed = (0, _moment2.default)(day.end ? day.end : st);
+	
+	        return date.isBetween(st, ed, null, '[]');
+	      });
+	
+	      // sort by duration
+	      thisDayEvents.sort(function (a, b) {
+	        if (!a.cellIndex) return 1;
+	        if (!b.cellIndex) return -1;
+	        return a.cellIndex - b.cellIndex;
+	      });
+	
+	      // mark cellIndex and place holder
+	      for (var i = 0; i < thisDayEvents.length; i++) {
+	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
+	        thisDayEvents[i].isShow = true;
+	        if (thisDayEvents[i].cellIndex == i + 1 || i > 2) continue;
+	        thisDayEvents.splice(i, 0, {
+	          title: 'holder',
+	          cellIndex: i + 1,
+	          start: date.format(),
+	          end: date.format(),
+	          isShow: false
+	        });
+	      }
+	
+	      return thisDayEvents;
+	    },
+	    selectThisDay: function selectThisDay(day, jsEvent) {
+	      this.selectDay = day;
+	      this.showMore = true;
+	      this.morePos = this.computePos(event.target);
+	      this.morePos.top -= 100;
+	      var events = day.events.filter(function (item) {
+	        return item.isShow == true;
+	      });
+	      this.$emit('moreClick', day.date, events, jsEvent);
+	    },
+	    computePos: function computePos(target) {
+	      var eventRect = target.getBoundingClientRect();
+	      var pageRect = this.$refs.dates.getBoundingClientRect();
+	      return {
+	        left: eventRect.left - pageRect.left,
+	        top: eventRect.top + eventRect.height - pageRect.top
+	      };
+	    },
+	    dayClick: function dayClick(day, jsEvent) {
+	      this.$emit('dayClick', day, jsEvent);
+	    },
+	    eventClick: function eventClick(event, jsEvent) {
+	      if (!event.isShow) return;
+	
+	      jsEvent.stopPropagation();
+	      var pos = this.computePos(jsEvent.target);
+	      this.$emit('eventClick', event, jsEvent, pos);
+	    }
+	  },
+	  filters: {
+	    localeWeekDay: function localeWeekDay(weekday, firstDay, locale) {
+	      firstDay = parseInt(firstDay);
+	      var localMoment = (0, _moment2.default)().locale(locale);
+	      return localMoment.localeData().weekdaysShort()[(weekday + firstDay) % 7];
+	    }
+	  }
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -561,59 +773,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	
 	// import langSets from './dataMap/langSets'
-	exports.default = {
-	  props: {
-	    events: { // events will be displayed on calendar
-	      type: Array,
-	      default: []
-	    },
-	    locale: {
-	      type: String,
-	      default: 'en'
-	    },
-	    firstDay: {
-	      type: Number | String,
-	      validator: function validator(val) {
-	        var res = parseInt(val);
-	        return res >= 0 && res <= 6;
-	      },
-	
-	      default: 0
-	    }
-	  },
-	  mounted: function mounted() {
-	    this.emitChangeMonth(this.currentMonth);
-	  },
-	  data: function data() {
-	    return {
-	      currentMonth: (0, _moment2.default)().startOf('month')
-	    };
-	  },
-	
-	  methods: {
-	    emitChangeMonth: function emitChangeMonth(firstDayOfMonth) {
-	      this.currentMonth = firstDayOfMonth;
-	
-	      var start = _dateFunc2.default.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
-	      var end = _dateFunc2.default.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
-	
-	      this.$emit('changeMonth', start, end, firstDayOfMonth);
-	    },
-	    emitEventClick: function emitEventClick(event, jsEvent, pos) {
-	      this.$emit('eventClick', event, jsEvent, pos);
-	    },
-	    emitDayClick: function emitDayClick(date, jsEvent) {
-	      this.$emit('dayClick', date, jsEvent);
-	    },
-	    emitMoreClick: function emitMoreClick(date, events, jsEvent) {
-	      this.$emit('moreClick', date, events, jsEvent);
-	    }
-	  },
-	  components: {
-	    'fc-body': __webpack_require__(120),
-	    'fc-header': __webpack_require__(165)
-	  }
-	};
 
 /***/ },
 /* 8 */
@@ -15554,308 +15713,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	/* styles */
-	__webpack_require__(121)
-	
 	var Component = __webpack_require__(6)(
 	  /* script */
-	  __webpack_require__(123),
+	  __webpack_require__(121),
 	  /* template */
-	  __webpack_require__(164),
-	  /* scopeId */
-	  null,
-	  /* cssModules */
-	  null
-	)
-	Component.options.__file = "/var/www/vue-fullcalendar/src/components/body.vue"
-	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-	if (Component.options.functional) {console.error("[vue-loader] body.vue: functional components are not supported with templates, they should use render functions.")}
-	
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-53cf6203", Component.options)
-	  } else {
-	    hotAPI.reload("data-v-53cf6203", Component.options)
-	  }
-	})()}
-	
-	module.exports = Component.exports
-
-
-/***/ },
-/* 121 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(122);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-53cf6203!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./body.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-53cf6203!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./body.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(4)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "\n.full-calendar-body {\n  margin-top: 20px;\n}\n.full-calendar-body .weeks {\n    display: flex;\n    border-top: 1px solid #e0e0e0;\n    border-bottom: 1px solid #e0e0e0;\n    border-left: 1px solid #e0e0e0;\n}\n.full-calendar-body .weeks .week {\n      flex: 1;\n      text-align: center;\n      border-right: 1px solid #e0e0e0;\n}\n.full-calendar-body .dates {\n    position: relative;\n}\n.full-calendar-body .dates .week-row {\n      border-left: 1px solid #e0e0e0;\n      display: flex;\n}\n.full-calendar-body .dates .week-row .day-cell {\n        flex: 1;\n        min-height: 100px;\n        padding: 4px;\n        border-right: 1px solid #e0e0e0;\n        border-bottom: 1px solid #e0e0e0;\n}\n.full-calendar-body .dates .week-row .day-cell .day-number {\n          text-align: right;\n}\n.full-calendar-body .dates .week-row .day-cell.today {\n          background-color: #fcf8e3;\n}\n.full-calendar-body .dates .week-row .day-cell.not-cur-month .day-number {\n          color: rgba(0, 0, 0, 0.24);\n}\n.full-calendar-body .dates .dates-events {\n      position: absolute;\n      top: 0;\n      left: 0;\n      z-index: 1;\n      width: 100%;\n}\n.full-calendar-body .dates .dates-events .events-week {\n        display: flex;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day {\n          cursor: pointer;\n          flex: 1;\n          min-height: 109px;\n          overflow: hidden;\n          text-overflow: ellipsis;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .day-number {\n            text-align: right;\n            padding: 4px 5px 4px 4px;\n            opacity: 0;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day.not-cur-month .day-number {\n            color: rgba(0, 0, 0, 0.24);\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-start {\n              margin-left: 4px;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-end {\n              margin-right: 4px;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-opacity {\n              opacity: 0;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .more-link {\n            cursor: pointer;\n            padding-left: 8px;\n            padding-right: 2px;\n            color: rgba(0, 0, 0, 0.38);\n            font-size: 14px;\n}\n.full-calendar-body .dates .more-events {\n      position: absolute;\n      width: 150px;\n      z-index: 2;\n      border: 1px solid #eee;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\n}\n.full-calendar-body .dates .more-events .more-header {\n        background-color: #eee;\n        padding: 5px;\n        display: flex;\n        align-items: center;\n        font-size: 14px;\n}\n.full-calendar-body .dates .more-events .more-header .title {\n          flex: 1;\n}\n.full-calendar-body .dates .more-events .more-header .close {\n          margin-right: 2px;\n          cursor: pointer;\n          font-size: 16px;\n}\n.full-calendar-body .dates .more-events .more-body {\n        height: 140px;\n        overflow: hidden;\n}\n.full-calendar-body .dates .more-events .more-body .body-list {\n          height: 120px;\n          padding: 5px;\n          overflow: auto;\n          background-color: #fff;\n}\n.full-calendar-body .dates .more-events .more-body .body-list .body-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #C7E6FD;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis;\n}\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 123 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _dateFunc = __webpack_require__(8);
-	
-	var _dateFunc2 = _interopRequireDefault(_dateFunc);
-	
-	var _moment = __webpack_require__(9);
-	
-	var _moment2 = _interopRequireDefault(_moment);
-	
-	var _eventCard = __webpack_require__(124);
-	
-	var _eventCard2 = _interopRequireDefault(_eventCard);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = {
-	  props: {
-	    currentMonth: {},
-	    events: {},
-	    firstDay: {},
-	    locale: {}
-	  },
-	  components: {
-	    'event-card': _eventCard2.default
-	  },
-	  created: function created() {
-	    this.events.forEach(function (item, index) {
-	      item._id = item.id || index;
-	      item.end = item.end || item.start;
-	    });
-	  },
-	  data: function data() {
-	    return {
-	      isLismit: true,
-	      eventLimit: 3,
-	      showMore: false,
-	      morePos: {
-	        top: 0,
-	        left: 0
-	      },
-	      selectDay: {}
-	    };
-	  },
-	
-	  computed: {
-	    currentDates: function currentDates() {
-	      return this.getCalendar();
-	    }
-	  },
-	  methods: {
-	    moreTitle: function moreTitle(date) {
-	      if (!date) return '';
-	      return (0, _moment2.default)(date).format('ll');
-	    },
-	    getCalendar: function getCalendar() {
-	      // calculate 2d-array of each month
-	      var monthViewStartDate = _dateFunc2.default.getMonthViewStartDate(this.currentMonth, this.firstDay);
-	      var calendar = [];
-	
-	      for (var perWeek = 0; perWeek < 6; perWeek++) {
-	        var week = [];
-	
-	        for (var perDay = 0; perDay < 7; perDay++) {
-	          week.push({
-	            monthDay: monthViewStartDate.date(),
-	            isToday: monthViewStartDate.isSame((0, _moment2.default)(), 'day'),
-	            isCurMonth: monthViewStartDate.isSame(this.currentMonth, 'month'),
-	            weekDay: perDay,
-	            date: (0, _moment2.default)(monthViewStartDate),
-	            events: this.slotEvents(monthViewStartDate)
-	          });
-	
-	          monthViewStartDate.add(1, 'day');
-	        }
-	
-	        calendar.push(week);
-	      }
-	
-	      return calendar;
-	    },
-	    slotEvents: function slotEvents(date) {
-	
-	      // find all events start from this date
-	      var cellIndexArr = [];
-	      var thisDayEvents = this.events.filter(function (day) {
-	        var st = (0, _moment2.default)(day.start);
-	        var ed = (0, _moment2.default)(day.end ? day.end : st);
-	
-	        return date.isBetween(st, ed, null, '[]');
-	      });
-	
-	      // sort by duration
-	      thisDayEvents.sort(function (a, b) {
-	        if (!a.cellIndex) return 1;
-	        if (!b.cellIndex) return -1;
-	        return a.cellIndex - b.cellIndex;
-	      });
-	
-	      // mark cellIndex and place holder
-	      for (var i = 0; i < thisDayEvents.length; i++) {
-	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
-	        thisDayEvents[i].isShow = true;
-	        if (thisDayEvents[i].cellIndex == i + 1 || i > 2) continue;
-	        thisDayEvents.splice(i, 0, {
-	          title: 'holder',
-	          cellIndex: i + 1,
-	          start: date.format(),
-	          end: date.format(),
-	          isShow: false
-	        });
-	      }
-	
-	      return thisDayEvents;
-	    },
-	    selectThisDay: function selectThisDay(day, jsEvent) {
-	      this.selectDay = day;
-	      this.showMore = true;
-	      this.morePos = this.computePos(event.target);
-	      this.morePos.top -= 100;
-	      var events = day.events.filter(function (item) {
-	        return item.isShow == true;
-	      });
-	      this.$emit('moreclick', day.date, events, jsEvent);
-	    },
-	    computePos: function computePos(target) {
-	      var eventRect = target.getBoundingClientRect();
-	      var pageRect = this.$refs.dates.getBoundingClientRect();
-	      return {
-	        left: eventRect.left - pageRect.left,
-	        top: eventRect.top + eventRect.height - pageRect.top
-	      };
-	    },
-	    dayClick: function dayClick(day, jsEvent) {
-	      this.$emit('dayclick', day, jsEvent);
-	    },
-	    eventClick: function eventClick(event, jsEvent) {
-	      if (!event.isShow) return;
-	
-	      jsEvent.stopPropagation();
-	      var pos = this.computePos(jsEvent.target);
-	      this.$emit('eventclick', event, jsEvent, pos);
-	    }
-	  },
-	  filters: {
-	    localeWeekDay: function localeWeekDay(weekday, firstDay, locale) {
-	      firstDay = parseInt(firstDay);
-	      var localMoment = (0, _moment2.default)().locale(locale);
-	      return localMoment.localeData().weekdaysShort()[(weekday + firstDay) % 7];
-	    }
-	  }
-	}; //
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-
-/***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Component = __webpack_require__(6)(
-	  /* script */
-	  __webpack_require__(125),
-	  /* template */
-	  __webpack_require__(163),
+	  __webpack_require__(159),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -15882,7 +15744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 125 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15891,7 +15753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: true
 	});
 	
-	var _from = __webpack_require__(126);
+	var _from = __webpack_require__(122);
 	
 	var _from2 = _interopRequireDefault(_from);
 	
@@ -15927,9 +15789,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	            return cssClasses.join(' ');
 	        },
-	        title: function title() {
-	            // On first day of week or on start date we put the title
-	            return this.date.day() == this.firstDay || this.start.isSame(this.date, 'day') ? this.event.title : '　';
+	        showTitle: function showTitle() {
+	            return this.date.day() == this.firstDay || this.start.isSame(this.date, 'day');
 	        },
 	        start: function start() {
 	            return (0, _moment2.default)(this.event.start);
@@ -15945,30 +15806,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
+	//
 
 /***/ },
-/* 126 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(127), __esModule: true };
+	module.exports = { "default": __webpack_require__(123), __esModule: true };
 
 /***/ },
-/* 127 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(128);
-	__webpack_require__(152);
-	module.exports = __webpack_require__(136).Array.from;
+	__webpack_require__(124);
+	__webpack_require__(148);
+	module.exports = __webpack_require__(132).Array.from;
 
 /***/ },
-/* 128 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var $at  = __webpack_require__(129)(true);
+	var $at  = __webpack_require__(125)(true);
 	
 	// 21.1.3.27 String.prototype[@@iterator]()
-	__webpack_require__(132)(String, 'String', function(iterated){
+	__webpack_require__(128)(String, 'String', function(iterated){
 	  this._t = String(iterated); // target
 	  this._i = 0;                // next index
 	// 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -15983,11 +15846,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 129 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var toInteger = __webpack_require__(130)
-	  , defined   = __webpack_require__(131);
+	var toInteger = __webpack_require__(126)
+	  , defined   = __webpack_require__(127);
 	// true  -> String#at
 	// false -> String#codePointAt
 	module.exports = function(TO_STRING){
@@ -16005,7 +15868,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 130 */
+/* 126 */
 /***/ function(module, exports) {
 
 	// 7.1.4 ToInteger
@@ -16016,7 +15879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 131 */
+/* 127 */
 /***/ function(module, exports) {
 
 	// 7.2.1 RequireObjectCoercible(argument)
@@ -16026,20 +15889,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 132 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var LIBRARY        = __webpack_require__(133)
-	  , $export        = __webpack_require__(134)
-	  , redefine       = __webpack_require__(139)
-	  , hide           = __webpack_require__(140)
-	  , has            = __webpack_require__(145)
-	  , Iterators      = __webpack_require__(146)
-	  , $iterCreate    = __webpack_require__(147)
-	  , setToStringTag = __webpack_require__(148)
-	  , getProto       = __webpack_require__(141).getProto
-	  , ITERATOR       = __webpack_require__(149)('iterator')
+	var LIBRARY        = __webpack_require__(129)
+	  , $export        = __webpack_require__(130)
+	  , redefine       = __webpack_require__(135)
+	  , hide           = __webpack_require__(136)
+	  , has            = __webpack_require__(141)
+	  , Iterators      = __webpack_require__(142)
+	  , $iterCreate    = __webpack_require__(143)
+	  , setToStringTag = __webpack_require__(144)
+	  , getProto       = __webpack_require__(137).getProto
+	  , ITERATOR       = __webpack_require__(145)('iterator')
 	  , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
 	  , FF_ITERATOR    = '@@iterator'
 	  , KEYS           = 'keys'
@@ -16097,18 +15960,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 133 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = true;
 
 /***/ },
-/* 134 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var global    = __webpack_require__(135)
-	  , core      = __webpack_require__(136)
-	  , ctx       = __webpack_require__(137)
+	var global    = __webpack_require__(131)
+	  , core      = __webpack_require__(132)
+	  , ctx       = __webpack_require__(133)
 	  , PROTOTYPE = 'prototype';
 	
 	var $export = function(type, name, source){
@@ -16154,7 +16017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = $export;
 
 /***/ },
-/* 135 */
+/* 131 */
 /***/ function(module, exports) {
 
 	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -16163,18 +16026,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ },
-/* 136 */
+/* 132 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '1.2.6'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 137 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// optional / simple context binding
-	var aFunction = __webpack_require__(138);
+	var aFunction = __webpack_require__(134);
 	module.exports = function(fn, that, length){
 	  aFunction(fn);
 	  if(that === undefined)return fn;
@@ -16195,7 +16058,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 138 */
+/* 134 */
 /***/ function(module, exports) {
 
 	module.exports = function(it){
@@ -16204,18 +16067,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 139 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(140);
+	module.exports = __webpack_require__(136);
 
 /***/ },
-/* 140 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $          = __webpack_require__(141)
-	  , createDesc = __webpack_require__(142);
-	module.exports = __webpack_require__(143) ? function(object, key, value){
+	var $          = __webpack_require__(137)
+	  , createDesc = __webpack_require__(138);
+	module.exports = __webpack_require__(139) ? function(object, key, value){
 	  return $.setDesc(object, key, createDesc(1, value));
 	} : function(object, key, value){
 	  object[key] = value;
@@ -16223,7 +16086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 141 */
+/* 137 */
 /***/ function(module, exports) {
 
 	var $Object = Object;
@@ -16241,7 +16104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 142 */
+/* 138 */
 /***/ function(module, exports) {
 
 	module.exports = function(bitmap, value){
@@ -16254,16 +16117,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 143 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(144)(function(){
+	module.exports = !__webpack_require__(140)(function(){
 	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ },
-/* 144 */
+/* 140 */
 /***/ function(module, exports) {
 
 	module.exports = function(exec){
@@ -16275,7 +16138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 145 */
+/* 141 */
 /***/ function(module, exports) {
 
 	var hasOwnProperty = {}.hasOwnProperty;
@@ -16284,23 +16147,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 146 */
+/* 142 */
 /***/ function(module, exports) {
 
 	module.exports = {};
 
 /***/ },
-/* 147 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var $              = __webpack_require__(141)
-	  , descriptor     = __webpack_require__(142)
-	  , setToStringTag = __webpack_require__(148)
+	var $              = __webpack_require__(137)
+	  , descriptor     = __webpack_require__(138)
+	  , setToStringTag = __webpack_require__(144)
 	  , IteratorPrototype = {};
 	
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-	__webpack_require__(140)(IteratorPrototype, __webpack_require__(149)('iterator'), function(){ return this; });
+	__webpack_require__(136)(IteratorPrototype, __webpack_require__(145)('iterator'), function(){ return this; });
 	
 	module.exports = function(Constructor, NAME, next){
 	  Constructor.prototype = $.create(IteratorPrototype, {next: descriptor(1, next)});
@@ -16308,34 +16171,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 148 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var def = __webpack_require__(141).setDesc
-	  , has = __webpack_require__(145)
-	  , TAG = __webpack_require__(149)('toStringTag');
+	var def = __webpack_require__(137).setDesc
+	  , has = __webpack_require__(141)
+	  , TAG = __webpack_require__(145)('toStringTag');
 	
 	module.exports = function(it, tag, stat){
 	  if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 	};
 
 /***/ },
-/* 149 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var store  = __webpack_require__(150)('wks')
-	  , uid    = __webpack_require__(151)
-	  , Symbol = __webpack_require__(135).Symbol;
+	var store  = __webpack_require__(146)('wks')
+	  , uid    = __webpack_require__(147)
+	  , Symbol = __webpack_require__(131).Symbol;
 	module.exports = function(name){
 	  return store[name] || (store[name] =
 	    Symbol && Symbol[name] || (Symbol || uid)('Symbol.' + name));
 	};
 
 /***/ },
-/* 150 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var global = __webpack_require__(135)
+	var global = __webpack_require__(131)
 	  , SHARED = '__core-js_shared__'
 	  , store  = global[SHARED] || (global[SHARED] = {});
 	module.exports = function(key){
@@ -16343,7 +16206,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 151 */
+/* 147 */
 /***/ function(module, exports) {
 
 	var id = 0
@@ -16353,18 +16216,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 152 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var ctx         = __webpack_require__(137)
-	  , $export     = __webpack_require__(134)
-	  , toObject    = __webpack_require__(153)
-	  , call        = __webpack_require__(154)
-	  , isArrayIter = __webpack_require__(157)
-	  , toLength    = __webpack_require__(158)
-	  , getIterFn   = __webpack_require__(159);
-	$export($export.S + $export.F * !__webpack_require__(162)(function(iter){ Array.from(iter); }), 'Array', {
+	var ctx         = __webpack_require__(133)
+	  , $export     = __webpack_require__(130)
+	  , toObject    = __webpack_require__(149)
+	  , call        = __webpack_require__(150)
+	  , isArrayIter = __webpack_require__(153)
+	  , toLength    = __webpack_require__(154)
+	  , getIterFn   = __webpack_require__(155);
+	$export($export.S + $export.F * !__webpack_require__(158)(function(iter){ Array.from(iter); }), 'Array', {
 	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
 	  from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
 	    var O       = toObject(arrayLike)
@@ -16395,21 +16258,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 153 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.13 ToObject(argument)
-	var defined = __webpack_require__(131);
+	var defined = __webpack_require__(127);
 	module.exports = function(it){
 	  return Object(defined(it));
 	};
 
 /***/ },
-/* 154 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// call something on iterator step with safe closing on error
-	var anObject = __webpack_require__(155);
+	var anObject = __webpack_require__(151);
 	module.exports = function(iterator, fn, value, entries){
 	  try {
 	    return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -16422,17 +16285,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 155 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(156);
+	var isObject = __webpack_require__(152);
 	module.exports = function(it){
 	  if(!isObject(it))throw TypeError(it + ' is not an object!');
 	  return it;
 	};
 
 /***/ },
-/* 156 */
+/* 152 */
 /***/ function(module, exports) {
 
 	module.exports = function(it){
@@ -16440,12 +16303,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 157 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
-	var Iterators  = __webpack_require__(146)
-	  , ITERATOR   = __webpack_require__(149)('iterator')
+	var Iterators  = __webpack_require__(142)
+	  , ITERATOR   = __webpack_require__(145)('iterator')
 	  , ArrayProto = Array.prototype;
 	
 	module.exports = function(it){
@@ -16453,36 +16316,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 158 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(130)
+	var toInteger = __webpack_require__(126)
 	  , min       = Math.min;
 	module.exports = function(it){
 	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 	};
 
 /***/ },
-/* 159 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var classof   = __webpack_require__(160)
-	  , ITERATOR  = __webpack_require__(149)('iterator')
-	  , Iterators = __webpack_require__(146);
-	module.exports = __webpack_require__(136).getIteratorMethod = function(it){
+	var classof   = __webpack_require__(156)
+	  , ITERATOR  = __webpack_require__(145)('iterator')
+	  , Iterators = __webpack_require__(142);
+	module.exports = __webpack_require__(132).getIteratorMethod = function(it){
 	  if(it != undefined)return it[ITERATOR]
 	    || it['@@iterator']
 	    || Iterators[classof(it)];
 	};
 
 /***/ },
-/* 160 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// getting tag from 19.1.3.6 Object.prototype.toString()
-	var cof = __webpack_require__(161)
-	  , TAG = __webpack_require__(149)('toStringTag')
+	var cof = __webpack_require__(157)
+	  , TAG = __webpack_require__(145)('toStringTag')
 	  // ES3 wrong here
 	  , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 	
@@ -16498,7 +16361,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 161 */
+/* 157 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -16508,10 +16371,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 162 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ITERATOR     = __webpack_require__(149)('iterator')
+	var ITERATOR     = __webpack_require__(145)('iterator')
 	  , SAFE_CLOSING = false;
 	
 	try {
@@ -16534,7 +16397,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 163 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -16546,7 +16409,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _vm.$emit('click', _vm.event, $event)
 	      }
 	    }
-	  }, [_vm._v("\n    " + _vm._s(_vm.title) + "\n")])
+	  }, [(_vm.showTitle) ? _vm._t("default", [_vm._v("\n        Def: " + _vm._s(_vm.event.title) + "\n    ")], {
+	    event: _vm.event
+	  }) : _vm._e()], 2)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -16557,155 +16422,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 164 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
-	    staticClass: "full-calendar-body"
-	  }, [_c('div', {
-	    staticClass: "weeks"
-	  }, _vm._l((7), function(dayIndex) {
-	    return _c('strong', {
-	      staticClass: "week"
-	    }, [_vm._v(_vm._s(_vm._f("localeWeekDay")((dayIndex - 1), _vm.firstDay, _vm.locale)))])
-	  })), _vm._v(" "), _c('div', {
-	    ref: "dates",
-	    staticClass: "dates"
-	  }, [_c('div', {
-	    staticClass: "dates-bg"
-	  }, _vm._l((_vm.currentDates), function(week) {
-	    return _c('div', {
-	      staticClass: "week-row"
-	    }, _vm._l((week), function(day) {
-	      return _c('div', {
-	        staticClass: "day-cell",
-	        class: {
-	          'today': day.isToday,
-	            'not-cur-month': !day.isCurMonth
-	        }
-	      }, [_c('p', {
-	        staticClass: "day-number"
-	      }, [_vm._v(_vm._s(day.monthDay))])])
-	    }))
-	  })), _vm._v(" "), _c('div', {
-	    staticClass: "dates-events"
-	  }, _vm._l((_vm.currentDates), function(week) {
-	    return _c('div', {
-	      staticClass: "events-week"
-	    }, _vm._l((week), function(day) {
-	      return _c('div', {
-	        staticClass: "events-day",
-	        class: {
-	          'today': day.isToday,
-	            'not-cur-month': !day.isCurMonth
-	        },
-	        attrs: {
-	          "track-by": "$index"
-	        },
-	        on: {
-	          "click": function($event) {
-	            $event.stopPropagation();
-	            _vm.dayClick(day.date, $event)
-	          }
-	        }
-	      }, [_c('p', {
-	        staticClass: "day-number"
-	      }, [_vm._v(_vm._s(day.monthDay))]), _vm._v(" "), _c('div', {
-	        staticClass: "event-box"
-	      }, [_vm._l((day.events), function(event) {
-	        return _c('event-card', {
-	          directives: [{
-	            name: "show",
-	            rawName: "v-show",
-	            value: (event.cellIndex <= _vm.eventLimit),
-	            expression: "event.cellIndex <= eventLimit"
-	          }],
-	          attrs: {
-	            "event": event,
-	            "date": day.date,
-	            "firstDay": _vm.firstDay
-	          },
-	          on: {
-	            "click": _vm.eventClick
-	          }
-	        })
-	      }), _vm._v(" "), (day.events.length > _vm.eventLimit) ? _c('p', {
-	        staticClass: "more-link",
-	        on: {
-	          "click": function($event) {
-	            $event.stopPropagation();
-	            _vm.selectThisDay(day, $event)
-	          }
-	        }
-	      }, [_vm._v("\n              + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n            ")]) : _vm._e()], 2)])
-	    }))
-	  })), _vm._v(" "), _c('div', {
-	    directives: [{
-	      name: "show",
-	      rawName: "v-show",
-	      value: (_vm.showMore),
-	      expression: "showMore"
-	    }],
-	    staticClass: "more-events",
-	    style: ({
-	      left: _vm.morePos.left + 'px',
-	      top: _vm.morePos.top + 'px'
-	    })
-	  }, [_c('div', {
-	    staticClass: "more-header"
-	  }, [_c('span', {
-	    staticClass: "title"
-	  }, [_vm._v(_vm._s(_vm.moreTitle(_vm.selectDay.date)))]), _vm._v(" "), _c('span', {
-	    staticClass: "close",
-	    on: {
-	      "click": function($event) {
-	        $event.stopPropagation();
-	        _vm.showMore = false
-	      }
-	    }
-	  }, [_vm._v("x")])]), _vm._v(" "), _c('div', {
-	    staticClass: "more-body"
-	  }, [_c('ul', {
-	    staticClass: "body-list"
-	  }, _vm._l((_vm.selectDay.events), function(event) {
-	    return _c('li', {
-	      directives: [{
-	        name: "show",
-	        rawName: "v-show",
-	        value: (event.isShow),
-	        expression: "event.isShow"
-	      }],
-	      staticClass: "body-item",
-	      on: {
-	        "click": function($event) {
-	          _vm.eventClick(event, $event)
-	        }
-	      }
-	    }, [_vm._v("\n            " + _vm._s(event.title) + "\n          ")])
-	  }))])]), _vm._v(" "), _vm._t("body-card")], 2)])
-	},staticRenderFns: []}
-	module.exports.render._withStripped = true
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-53cf6203", module.exports)
-	  }
-	}
-
-/***/ },
-/* 165 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	/* styles */
-	__webpack_require__(166)
+	__webpack_require__(161)
 	
 	var Component = __webpack_require__(6)(
 	  /* script */
-	  __webpack_require__(168),
+	  __webpack_require__(163),
 	  /* template */
-	  __webpack_require__(169),
+	  __webpack_require__(164),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -16732,13 +16460,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 166 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(167);
+	var content = __webpack_require__(162);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -16758,7 +16486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 167 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -16772,7 +16500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 168 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16843,7 +16571,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 169 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -16884,7 +16612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 170 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -16903,21 +16631,136 @@ return /******/ (function(modules) { // webpackBootstrap
 	    slot: "header-left"
 	  }, [_vm._t("fc-header-left")], 2), _vm._v(" "), _c('div', {
 	    slot: "header-right"
-	  }, [_vm._t("fc-header-right")], 2)]), _vm._v(" "), _c('fc-body', {
-	    attrs: {
-	      "current-month": _vm.currentMonth,
-	      "events": _vm.events,
-	      "first-day": _vm.firstDay,
-	      "locale": _vm.locale
-	    },
-	    on: {
-	      "eventclick": _vm.emitEventClick,
-	      "dayclick": _vm.emitDayClick,
-	      "moreclick": _vm.emitMoreClick
-	    }
+	  }, [_vm._t("fc-header-right")], 2)]), _vm._v(" "), _c('div', {
+	    staticClass: "full-calendar-body"
 	  }, [_c('div', {
-	    slot: "body-card"
-	  }, [_vm._t("fc-body-card")], 2)])], 1)
+	    staticClass: "weeks"
+	  }, _vm._l((7), function(dayIndex) {
+	    return _c('strong', {
+	      staticClass: "week"
+	    }, [_vm._v(_vm._s(_vm._f("localeWeekDay")((dayIndex - 1), _vm.firstDay, _vm.locale)))])
+	  })), _vm._v(" "), _c('div', {
+	    ref: "dates",
+	    staticClass: "dates"
+	  }, [_c('div', {
+	    staticClass: "dates-bg"
+	  }, _vm._l((_vm.currentDates), function(week) {
+	    return _c('div', {
+	      staticClass: "week-row"
+	    }, _vm._l((week), function(day) {
+	      return _c('div', {
+	        staticClass: "day-cell",
+	        class: {
+	          'today': day.isToday,
+	            'not-cur-month': !day.isCurMonth
+	        }
+	      }, [_c('p', {
+	        staticClass: "day-number"
+	      }, [_vm._v(_vm._s(day.monthDay))])])
+	    }))
+	  })), _vm._v(" "), _c('div', {
+	    staticClass: "dates-events"
+	  }, _vm._l((_vm.currentDates), function(week) {
+	    return _c('div', {
+	      staticClass: "events-week"
+	    }, _vm._l((week), function(day) {
+	      return _c('div', {
+	        staticClass: "events-day",
+	        class: {
+	          'today': day.isToday,
+	            'not-cur-month': !day.isCurMonth
+	        },
+	        attrs: {
+	          "track-by": "$index"
+	        },
+	        on: {
+	          "click": function($event) {
+	            $event.stopPropagation();
+	            _vm.dayClick(day.date, $event)
+	          }
+	        }
+	      }, [_c('p', {
+	        staticClass: "day-number"
+	      }, [_vm._v(_vm._s(day.monthDay))]), _vm._v(" "), _c('div', {
+	        staticClass: "event-box"
+	      }, [_vm._l((day.events), function(event) {
+	        return _c('event-card', {
+	          directives: [{
+	            name: "show",
+	            rawName: "v-show",
+	            value: (event.cellIndex <= _vm.eventLimit),
+	            expression: "event.cellIndex <= eventLimit"
+	          }],
+	          attrs: {
+	            "event": event,
+	            "date": day.date,
+	            "firstDay": _vm.firstDay
+	          },
+	          on: {
+	            "click": _vm.eventClick
+	          },
+	          scopedSlots: {
+	            default: function(p) {
+	              return [_vm._t("fc-event-card", null, {
+	                event: p.event
+	              })]
+	            }
+	          }
+	        })
+	      }), _vm._v(" "), (day.events.length > _vm.eventLimit) ? _c('p', {
+	        staticClass: "more-link",
+	        on: {
+	          "click": function($event) {
+	            $event.stopPropagation();
+	            _vm.selectThisDay(day, $event)
+	          }
+	        }
+	      }, [_vm._v("\n                + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n              ")]) : _vm._e()], 2)])
+	    }))
+	  })), _vm._v(" "), _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.showMore),
+	      expression: "showMore"
+	    }],
+	    staticClass: "more-events",
+	    style: ({
+	      left: _vm.morePos.left + 'px',
+	      top: _vm.morePos.top + 'px'
+	    })
+	  }, [_c('div', {
+	    staticClass: "more-header"
+	  }, [_c('span', {
+	    staticClass: "title"
+	  }, [_vm._v(_vm._s(_vm.moreTitle(_vm.selectDay.date)))]), _vm._v(" "), _c('span', {
+	    staticClass: "close",
+	    on: {
+	      "click": function($event) {
+	        $event.stopPropagation();
+	        _vm.showMore = false
+	      }
+	    }
+	  }, [_vm._v("x")])]), _vm._v(" "), _c('div', {
+	    staticClass: "more-body"
+	  }, [_c('ul', {
+	    staticClass: "body-list"
+	  }, _vm._l((_vm.selectDay.events), function(event) {
+	    return _c('li', {
+	      directives: [{
+	        name: "show",
+	        rawName: "v-show",
+	        value: (event.isShow),
+	        expression: "event.isShow"
+	      }],
+	      staticClass: "body-item",
+	      on: {
+	        "click": function($event) {
+	          _vm.eventClick(event, $event)
+	        }
+	      }
+	    }, [_vm._v("\n              " + _vm._s(event.title) + "\n            ")])
+	  }))])]), _vm._v(" "), _vm._t("body-card")], 2)])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
