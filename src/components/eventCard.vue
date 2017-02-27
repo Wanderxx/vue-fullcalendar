@@ -1,7 +1,9 @@
 <template>
     <p class="event-item" :class="cssClasses"
        @click="$emit('click', event, $event)">
-        {{ title }}
+        <slot :event="event" v-if="showTitle">
+            Def: {{ event.title }}
+        </slot>
     </p>
 </template>
 
@@ -12,7 +14,7 @@
         props: ['event', 'date', 'firstDay'],
         computed: {
             cssClasses () {
-                var cssClasses = this.event.cssClass;
+                let cssClasses = this.event.cssClass;
 
                 if (!Array.isArray(cssClasses)) {
                     cssClasses = [cssClasses];
@@ -34,10 +36,8 @@
 
                 return cssClasses.join(' ');
             },
-
-            title () {
-                // On first day of week or on start date we put the title
-                return (this.date.day() == this.firstDay || this.start.isSame(this.date, 'day')) ? this.event.title : '　';
+            showTitle() {
+                return (this.date.day() == this.firstDay || this.start.isSame(this.date, 'day'));
             },
             start () {
                 return moment(this.event.start);
