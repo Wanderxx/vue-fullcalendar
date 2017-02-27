@@ -277,7 +277,7 @@
     display: flex;
   .day-cell{
     flex:1;
-    min-height: 100px;
+    min-height: 112px;
     padding:4px;
     border-right:1px solid #e0e0e0;
     border-bottom:1px solid #e0e0e0;
@@ -305,7 +305,7 @@
   .events-day{
     cursor: pointer;
     flex:1;
-    min-height: 99px;
+    min-height: 112px;
     overflow: hidden;
     text-overflow: ellipsis;
   .day-number{
