@@ -13,5 +13,10 @@ export default {
     weekNames   : ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
     monthNames  : ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
     titleFormat : 'MMMM yyyy'
-  }
+  },
+  ko : {
+    weekNames   : ['일', '월', '화', '수', '목', '금', '토'],
+    monthNames  : ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12'],
+    titleFormat : 'yyyy년MM월'
+  },
 }
