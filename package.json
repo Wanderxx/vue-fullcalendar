@@ -37,6 +37,7 @@
     "exports-loader": "^0.6.3",
     "file-loader": "^0.8.5",
     "imports-loader": "^0.6.5",
+    "moment": "^2.17.1",
     "node-libs-browser": "^0.5.3",
     "node-sass": "^3.4.2",
     "rollup": "^0.21.0",

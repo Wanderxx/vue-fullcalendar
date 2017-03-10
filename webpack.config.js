@@ -1,7 +1,8 @@
-var path    = require('path')
-var webpack = require('webpack')
+var path    = require('path');
+var webpack = require('webpack');
 
-module.exports={
+module.exports = {
+  devtool: 'source-map',
 	entry:'./demo/main.js',
 	output:{
 		path:path.resolve(__dirname, 'static'),
@@ -60,4 +61,4 @@ module.exports={
       chunks : false
     }
   }
-}
+};
