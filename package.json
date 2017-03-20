@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "es6-promise": "^4.0.5",
+    "lodash": "^4.17.4",
     "vue": "^2.1.8",
     "vue-fullcalendar": "^1.0.5"
   },

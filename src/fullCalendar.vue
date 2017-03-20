@@ -25,8 +25,7 @@
         <div class="dates-bg">
           <div class="week-row" v-for="week in currentDates">
             <div class="day-cell" v-for="day in week"
-                 :class="{'today' : day.isToday,
-              'not-cur-month' : !day.isCurMonth}">
+                 :class="cssClasses(day)">
               <p class="day-number">{{ day.monthDay }}</p>
             </div>
           </div>
@@ -36,8 +35,8 @@
         <div class="dates-events">
           <div class="events-week" v-for="week in currentDates">
             <div class="events-day" v-for="day in week" track-by="$index"
-                 :class="{'today' : day.isToday,
-              'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
+                 :class="{'today': day.isToday, 'not-cur-month': !day.isCurMonth}" 
+                 @click.stop="dayClick(day.date, $event)">
               <p class="day-number">{{day.monthDay}}</p>
               <div class="event-box">
                 <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick">
@@ -82,8 +81,9 @@
 </template>
 <script type="text/babel">
   // import langSets from './dataMap/langSets'
-  import dateFunc from './components/dateFunc'
   import moment from 'moment';
+  import _ from 'lodash';
+  import dateFunc from './components/dateFunc'
   import EventCard from './components/eventCard.vue';
 
   export default {
@@ -103,6 +103,10 @@
           return res >= 0 && res <= 6
         },
         default : 0
+      },
+      daysExtend: {
+        type: Array,
+        default: []
       }
     },
     components : {
@@ -131,6 +135,23 @@
       }
     },
     methods : {
+      cssClasses (day) {
+        let cssClasses = day.cssClass;
+
+        if (!Array.isArray(cssClasses)) {
+            cssClasses = [cssClasses];
+        } else {
+            cssClasses = Array.from(cssClasses);
+        }
+        if (day.isToday) {
+          cssClasses.push('today');
+        }
+        if (! day.isCurMonth) {
+          cssClasses.push('not-cur-month');
+        }
+        return cssClasses.join(' ');
+      },
+
       emitChangeMonth (firstDayOfMonth) {
         this.currentMonth = firstDayOfMonth;
 
@@ -152,22 +173,27 @@
           let week = [];
 
           for(let perDay = 0 ; perDay < 7 ; perDay++) {
+            let cssClass;
+            const extend = _.find(this.daysExtend, day => monthViewStartDate.isSame(day.date, 'day'));
+            if (extend) {
+             cssClass = extend.cssClass;
+            }
             week.push({
               monthDay : monthViewStartDate.date(),
               isToday : monthViewStartDate.isSame(moment(), 'day'),
               isCurMonth : monthViewStartDate.isSame(this.currentMonth, 'month'),
               weekDay : perDay,
               date : moment(monthViewStartDate),
-              events : this.slotEvents(monthViewStartDate)
+              events : this.slotEvents(monthViewStartDate),
+              cssClass: cssClass,
             });
-
             monthViewStartDate.add(1, 'day');
           }
 
           calendar.push(week);
         }
 
-        return calendar
+        return calendar;
       },
       slotEvents (date) {
 

@@ -3,7 +3,7 @@
   	<p>
   		Here is the demo of vue-fullcalendar, no jquery fullcalendar.js required!
   	</p>
-    <full-calendar class="test-fc" :events="fcEvents" 
+    <full-calendar class="test-fc" :events="fcEvents" :days-extend="daysExtend"
       first-day='1' locale="fr"
       @changeMonth="changeMonth"
       @eventClick="eventClick"
@@ -70,7 +70,13 @@ export default {
 	data () {
 		return {
             name:'Sunny!',
-            fcEvents : demoEvents
+            fcEvents : demoEvents,
+            daysExtend: [
+              {
+                date: '2017-03-10',
+                cssClass: ['red']
+              }
+            ]
         }
 	},
   methods : {
