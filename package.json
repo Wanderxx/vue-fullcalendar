@@ -1,6 +1,6 @@
 {
   "name": "vue2-full-calendar",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "DivXPro",
   "license": "MIT",
   "description": "pure vue-based fullcalendar, no jquery moment required",
