@@ -19,10 +19,25 @@
 let weekEnd = [5,6];
 let demoEvents = [
     {
-        title : 'Lunfel 3/27-3/28',
-        start : '2017-03-27',
-        end : '2017-03-28'
+      title : 'Lunfel',
+      start : '2017-03-27',
+      end : '2017-03-28'
     },
+    {
+      title : 'Lunfel1',
+      start : '2017-03-27',
+      end : '2017-03-28'
+    },
+    {
+      title : 'Lunfel2',
+      start : '2017-03-27',
+      end : '2017-03-28'
+    },
+    {
+      title : 'Lunfel3',
+      start : '2017-03-27',
+      end : '2017-03-28'
+    }
   ];
 
 export default {

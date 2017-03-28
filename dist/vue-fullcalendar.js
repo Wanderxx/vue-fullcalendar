@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.9
+ * vue-fullcalendar v1.0.10
  * (c) 2017 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -613,7 +613,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var monthViewStartDate = _dateFunc2.default.getMonthViewStartDate(this.currentMonth, this.firstDay);
 	      var calendar = [];
 	
-	      for (var perWeek = 0; perWeek < 6; perWeek++) {
+	      for (var perWeek = 0; perWeek < 5; perWeek++) {
 	        var week = [];
 	
 	        for (var perDay = 0; perDay < 7; perDay++) {

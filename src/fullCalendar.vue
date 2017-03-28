@@ -152,7 +152,7 @@
         let monthViewStartDate = dateFunc.getMonthViewStartDate(this.currentMonth, this.firstDay);
         let calendar = [];
 
-        for(let perWeek = 0 ; perWeek < 6 ; perWeek++) {
+        for(let perWeek = 0 ; perWeek < 5 ; perWeek++) {
           let week = [];
 
           for(let perDay = 0 ; perDay < 7 ; perDay++) {
