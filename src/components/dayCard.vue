@@ -1,7 +1,6 @@
 <template>
   <div class="week-row">
-    <div class="day-cell" v-for="(day, index) in week"
-          :class="cssClasses(day)">
+    <div class="day-cell" v-for="(day, index) in week" :class="cssClasses(day)">
       <p class="day-number">{{ day.monthDay }}</p>
     </div>
   </div>
@@ -11,7 +10,7 @@
   import moment from 'moment';
 
   export default {
-    props: ['week'],
+    props: ['week', 'weekEnd'],
     methods: {
       cssClasses (day) {
         let cssClasses = day.cssClass;

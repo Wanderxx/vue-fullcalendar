@@ -24,7 +24,7 @@
       <div class="dates" ref="dates">
         <!-- day -->
         <div class="dates-bg">
-          <day-card :week="week" v-for="week in currentDates"></day-card>
+          <day-card :week="week" :week-end="weekEnd" v-for="week in currentDates"></day-card>
         </div>
 
         <!-- absolute so we can make dynamic td -->
@@ -253,13 +253,14 @@
 <style lang="scss">
   .comp-full-calendar {
     // font-family: "elvetica neue", tahoma, "hiragino sans gb";
-    padding:20px;
+    padding: 20px;
     background: #fff;
     max-width: 960px;
-    margin:0 auto;
-    ul, p {
-      margin:0;
-      padding:0;
+    margin: 0 auto;
+    ul,
+    p {
+      margin: 0;
+      padding: 0;
     }
   }
 
@@ -267,125 +268,122 @@
     margin-top: 20px;
     .weeks {
       display: flex;
-      border-top:1px solid #e0e0e0;
-      border-bottom:1px solid #e0e0e0;
-      border-left:1px solid #e0e0e0;
-      .week{
-        flex:1;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      border-left: 1px solid #e0e0e0;
+      .week {
+        flex: 1;
         text-align: center;
-        border-right:1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
       }
     }
     .dates {
-      position:relative;
-    .dates-events{
-      position:absolute;
-      top:0;
-      left:0;
-      z-index:1;
-      width: 100%;
-    .events-week{
-      display: flex;
-    .events-day{
-      cursor: pointer;
-      flex:1;
-      min-height: 120px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    .day-number{
-      text-align: right;
-      padding:4px 5px 4px 4px;
-      opacity: 0;
-    }
-    &.not-cur-month{
-    .day-number{
-      color:rgba(0,0,0,.24);
-    }
-    }
-    .event-box{
-    .event-item{
-      cursor: pointer;
-      font-size:12px;
-      background-color:#C7E6FD;
-      margin-bottom:2px;
-      color: rgba(0,0,0,.87);
-      padding:0 0 0 4px;
-      height: 18px;
-      line-height: 18px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    &.is-start{
-      margin-left: 4px;
-    // border-top-left-radius:4px;
-    // border-bottom-left-radius:4px;
-    }
-    &.is-end{
-      margin-right: 4px;
-    // border-top-right-radius:4px;
-    // border-bottom-right-radius:4px;
-    }
-    &.is-opacity{
-      opacity: 0;
-    }
-    }
-    .more-link{
-      cursor: pointer;
-    // text-align: right;
-      padding-left: 8px;
-      padding-right: 2px;
-      color: rgba(0,0,0,.38);
-      font-size: 14px;
-    }
-    }
-    }
-    }
-    }
-    .more-events{
-      position:absolute;
-      width: 150px;
-      z-index: 2;
-      border:1px solid #eee;
-      box-shadow: 0 2px 6px rgba(0,0,0,.15);
-    .more-header{
-      background-color:#eee;
-      padding:5px;
-      display: flex;
-      align-items : center;
-      font-size: 14px;
-    .title{
-      flex:1;
-    }
-    .close{
-      margin-right: 2px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    }
-    .more-body{
-      height: 146px;
-      overflow: hidden;
-    .body-list{
-      height: 144px;
-      padding:5px;
-      overflow: auto;
-      background-color:#fff;
-    .body-item{
-      cursor: pointer;
-      font-size:12px;
-      background-color:#C7E6FD;
-      margin-bottom:2px;
-      color: rgba(0,0,0,.87);
-      padding:0 0 0 4px;
-      height: 18px;
-      line-height: 18px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    }
-    }
-    }
+      position: relative;
+      .dates-events {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        .events-week {
+          display: flex;
+          .events-day {
+            cursor: pointer;
+            flex: 1;
+            min-height: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .day-number {
+              text-align: right;
+              padding: 4px 5px 4px 4px;
+              opacity: 0;
+            }
+            &.not-cur-month {
+              .day-number {
+                color: rgba(0, 0, 0, .24);
+              }
+            }
+            .event-box {
+              .event-item {
+                cursor: pointer;
+                font-size: 12px;
+                background-color: #C7E6FD;
+                margin-bottom: 2px;
+                color: rgba(0, 0, 0, .87);
+                padding: 0 0 0 4px;
+                height: 18px;
+                line-height: 18px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                &.is-start {
+                  margin-left: 4px; // border-top-left-radius:4px;
+                  // border-bottom-left-radius:4px;
+                }
+                &.is-end {
+                  margin-right: 4px; // border-top-right-radius:4px;
+                  // border-bottom-right-radius:4px;
+                }
+                &.is-opacity {
+                  opacity: 0;
+                }
+              }
+              .more-link {
+                cursor: pointer; // text-align: right;
+                padding-left: 8px;
+                padding-right: 2px;
+                color: rgba(0, 0, 0, .38);
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+      .more-events {
+        position: absolute;
+        width: 150px;
+        z-index: 2;
+        border: 1px solid #eee;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+        .more-header {
+          background-color: #eee;
+          padding: 5px;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          .title {
+            flex: 1;
+          }
+          .close {
+            margin-right: 2px;
+            cursor: pointer;
+            font-size: 16px;
+          }
+        }
+        .more-body {
+          height: 146px;
+          overflow: hidden;
+          .body-list {
+            height: 144px;
+            padding: 5px;
+            overflow: auto;
+            background-color: #fff;
+            .body-item {
+              cursor: pointer;
+              font-size: 12px;
+              background-color: #C7E6FD;
+              margin-bottom: 2px;
+              color: rgba(0, 0, 0, .87);
+              padding: 0 0 0 4px;
+              height: 18px;
+              line-height: 18px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
     }
   }
 </style>
