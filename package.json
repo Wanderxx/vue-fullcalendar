@@ -1,7 +1,7 @@
 {
-  "name": "vue-fullcalendar",
-  "version": "1.0.9",
-  "author": "Sunny Wang",
+  "name": "vue2-full-calendar",
+  "version": "1.0.15",
+  "author": "DivXPro",
   "license": "MIT",
   "description": "pure vue-based fullcalendar, no jquery moment required",
   "main": "dist/vue-fullcalendar.js",
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wanderxx/vue-fullcalendar.git"
+    "url": "git+https://github.com/DivXPro/vue-fullcalendar.git"
   },
   "dependencies": {
     "es6-promise": "^4.0.5",
-    "vue": "^2.1.8",
-    "vue-fullcalendar": "^1.0.5"
+    "lodash": "^4.17.4",
+    "vue": "^2.1.8"
   },
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
@@ -56,5 +56,5 @@
     "vue",
     "fullcalendar"
   ],
-  "homepage": "https://github.com/Wanderxx/vue-fullcalendar#readme"
+  "homepage": "https://github.com/DivXPro/vue-fullcalendar#readme"
 }

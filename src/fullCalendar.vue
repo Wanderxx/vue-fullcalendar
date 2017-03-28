@@ -22,22 +22,17 @@
         <strong class="week" v-for="dayIndex in 7">{{ (dayIndex - 1) | localeWeekDay(firstDay, locale) }}</strong>
       </div>
       <div class="dates" ref="dates">
+        <!-- day -->
         <div class="dates-bg">
-          <div class="week-row" v-for="week in currentDates">
-            <div class="day-cell" v-for="day in week"
-                 :class="{'today' : day.isToday,
-              'not-cur-month' : !day.isCurMonth}">
-              <p class="day-number">{{ day.monthDay }}</p>
-            </div>
-          </div>
+          <day-card :week="week" :week-end="weekEnd" v-for="week in currentDates"></day-card>
         </div>
 
         <!-- absolute so we can make dynamic td -->
         <div class="dates-events">
           <div class="events-week" v-for="week in currentDates">
             <div class="events-day" v-for="day in week" track-by="$index"
-                 :class="{'today' : day.isToday,
-              'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
+                 :class="{'today': day.isToday, 'not-cur-month': !day.isCurMonth}" 
+                 @click.stop="dayClick(day.date, $event)">
               <p class="day-number">{{day.monthDay}}</p>
               <div class="event-box">
                 <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick">
@@ -82,9 +77,11 @@
 </template>
 <script type="text/babel">
   // import langSets from './dataMap/langSets'
-  import dateFunc from './components/dateFunc'
   import moment from 'moment';
+  import _ from 'lodash';
+  import dateFunc from './components/dateFunc'
   import EventCard from './components/eventCard.vue';
+  import DayCard from './components/dayCard.vue';
 
   export default {
     props : {
@@ -103,11 +100,20 @@
           return res >= 0 && res <= 6
         },
         default : 0
-      }
+      },
+      weekEnd: {
+        type: Array,
+        default: [],
+      },
+      daysExtend: {
+        type: Array,
+        default: []
+      },
     },
     components : {
+      'day-card': DayCard,
       'event-card': EventCard,
-      'fc-header' : require('./components/header')
+      'fc-header' : require('./components/header'),
     },
     mounted () {
       this.emitChangeMonth(this.currentMonth);
@@ -133,10 +139,8 @@
     methods : {
       emitChangeMonth (firstDayOfMonth) {
         this.currentMonth = firstDayOfMonth;
-
         let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
         let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
-
         this.$emit('changeMonth', start, end, firstDayOfMonth)
       },
       moreTitle (date) {
@@ -148,26 +152,30 @@
         let monthViewStartDate = dateFunc.getMonthViewStartDate(this.currentMonth, this.firstDay);
         let calendar = [];
 
-        for(let perWeek = 0 ; perWeek < 6 ; perWeek++) {
+        for(let perWeek = 0 ; perWeek < 5 ; perWeek++) {
           let week = [];
 
           for(let perDay = 0 ; perDay < 7 ; perDay++) {
+            let cssClass;
+            const extend = _.find(this.daysExtend, day => monthViewStartDate.isSame(day.date, 'day'));
+            if (extend) {
+             cssClass = extend.cssClass;
+            }
             week.push({
               monthDay : monthViewStartDate.date(),
               isToday : monthViewStartDate.isSame(moment(), 'day'),
               isCurMonth : monthViewStartDate.isSame(this.currentMonth, 'month'),
               weekDay : perDay,
               date : moment(monthViewStartDate),
-              events : this.slotEvents(monthViewStartDate)
+              events : this.slotEvents(monthViewStartDate),
+              cssClass: cssClass,
             });
-
             monthViewStartDate.add(1, 'day');
           }
-
           calendar.push(week);
         }
 
-        return calendar
+        return calendar;
       },
       slotEvents (date) {
 
@@ -243,165 +251,139 @@
   
 </script>
 <style lang="scss">
-  .comp-full-calendar{
+  .comp-full-calendar {
     // font-family: "elvetica neue", tahoma, "hiragino sans gb";
-    padding:20px;
+    padding: 20px;
     background: #fff;
     max-width: 960px;
-    margin:0 auto;
-    ul,p{
-      margin:0;
-      padding:0;
+    margin: 0 auto;
+    ul,
+    p {
+      margin: 0;
+      padding: 0;
     }
   }
 
-  .full-calendar-body{
+  .full-calendar-body {
     margin-top: 20px;
-  .weeks{
-    display: flex;
-    border-top:1px solid #e0e0e0;
-    border-bottom:1px solid #e0e0e0;
-    border-left:1px solid #e0e0e0;
-  .week{
-    flex:1;
-    text-align: center;
-    border-right:1px solid #e0e0e0;
-  }
-  }
-  .dates {
-    position:relative;
-  .week-row{
-  // width: 100%;
-  // position:absolute;
-    border-left:1px solid #e0e0e0;
-    display: flex;
-  .day-cell{
-    flex:1;
-    min-height: 112px;
-    padding:4px;
-    border-right:1px solid #e0e0e0;
-    border-bottom:1px solid #e0e0e0;
-  .day-number{
-    text-align: right;
-  }
-  &.today{
-     background-color:#fcf8e3;
-   }
-  &.not-cur-month{
-  .day-number{
-    color:rgba(0,0,0,.24);
-  }
-  }
-  }
-  }
-  .dates-events{
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:1;
-    width: 100%;
-  .events-week{
-    display: flex;
-  .events-day{
-    cursor: pointer;
-    flex:1;
-    min-height: 112px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  .day-number{
-    text-align: right;
-    padding:4px 5px 4px 4px;
-    opacity: 0;
-  }
-  &.not-cur-month{
-  .day-number{
-    color:rgba(0,0,0,.24);
-  }
-  }
-  .event-box{
-  .event-item{
-    cursor: pointer;
-    font-size:12px;
-    background-color:#C7E6FD;
-    margin-bottom:2px;
-    color: rgba(0,0,0,.87);
-    padding:0 0 0 4px;
-    height: 18px;
-    line-height: 18px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  &.is-start{
-     margin-left: 4px;
-   // border-top-left-radius:4px;
-   // border-bottom-left-radius:4px;
-   }
-  &.is-end{
-     margin-right: 4px;
-   // border-top-right-radius:4px;
-   // border-bottom-right-radius:4px;
-   }
-  &.is-opacity{
-     opacity: 0;
-   }
-  }
-  .more-link{
-    cursor: pointer;
-  // text-align: right;
-    padding-left: 8px;
-    padding-right: 2px;
-    color: rgba(0,0,0,.38);
-    font-size: 14px;
-  }
-  }
-  }
-  }
-  }
-  .more-events{
-    position:absolute;
-    width: 150px;
-    z-index: 2;
-    border:1px solid #eee;
-    box-shadow: 0 2px 6px rgba(0,0,0,.15);
-  .more-header{
-    background-color:#eee;
-    padding:5px;
-    display: flex;
-    align-items : center;
-    font-size: 14px;
-  .title{
-    flex:1;
-  }
-  .close{
-    margin-right: 2px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  }
-  .more-body{
-    height: 146px;
-    overflow: hidden;
-  .body-list{
-    height: 144px;
-    padding:5px;
-    overflow: auto;
-    background-color:#fff;
-  .body-item{
-    cursor: pointer;
-    font-size:12px;
-    background-color:#C7E6FD;
-    margin-bottom:2px;
-    color: rgba(0,0,0,.87);
-    padding:0 0 0 4px;
-    height: 18px;
-    line-height: 18px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  }
-  }
-  }
-  }
+    .weeks {
+      display: flex;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      border-left: 1px solid #e0e0e0;
+      .week {
+        flex: 1;
+        text-align: center;
+        border-right: 1px solid #e0e0e0;
+      }
+    }
+    .dates {
+      position: relative;
+      .dates-events {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        .events-week {
+          display: flex;
+          .events-day {
+            cursor: pointer;
+            flex: 1;
+            min-height: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .day-number {
+              text-align: right;
+              padding: 4px 5px 4px 4px;
+              opacity: 0;
+            }
+            &.not-cur-month {
+              .day-number {
+                color: rgba(0, 0, 0, .24);
+              }
+            }
+            .event-box {
+              .event-item {
+                cursor: pointer;
+                font-size: 12px;
+                background-color: #C7E6FD;
+                margin-bottom: 2px;
+                color: rgba(0, 0, 0, .87);
+                padding: 0 0 0 4px;
+                height: 18px;
+                line-height: 18px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                &.is-start {
+                  margin-left: 4px; // border-top-left-radius:4px;
+                  // border-bottom-left-radius:4px;
+                }
+                &.is-end {
+                  margin-right: 4px; // border-top-right-radius:4px;
+                  // border-bottom-right-radius:4px;
+                }
+                &.is-opacity {
+                  opacity: 0;
+                }
+              }
+              .more-link {
+                cursor: pointer; // text-align: right;
+                padding-left: 8px;
+                padding-right: 2px;
+                color: rgba(0, 0, 0, .38);
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+      .more-events {
+        position: absolute;
+        width: 150px;
+        z-index: 2;
+        border: 1px solid #eee;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+        .more-header {
+          background-color: #eee;
+          padding: 5px;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          .title {
+            flex: 1;
+          }
+          .close {
+            margin-right: 2px;
+            cursor: pointer;
+            font-size: 16px;
+          }
+        }
+        .more-body {
+          height: 146px;
+          overflow: hidden;
+          .body-list {
+            height: 144px;
+            padding: 5px;
+            overflow: auto;
+            background-color: #fff;
+            .body-item {
+              cursor: pointer;
+              font-size: 12px;
+              background-color: #C7E6FD;
+              margin-bottom: 2px;
+              color: rgba(0, 0, 0, .87);
+              padding: 0 0 0 4px;
+              height: 18px;
+              line-height: 18px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
   }
 </style>
