@@ -40,7 +40,7 @@
       currentDate (val) {
         if (!val) return
         this.headDate = val
-        console.log('currentDate', val)
+        // console.log('currentDate', val)
         // this.headDate = JSON.parse(JSON.stringify(val))
       }
     },
@@ -66,7 +66,7 @@
         // 1st day of this monthView
         let diff = parseInt(this.firstDay) - curWeekDay
         if (diff) diff -= 7
-        startDate.setDate(startDate.getDate() + diff) 
+        startDate.setDate(startDate.getDate() + diff)
 
         // the month view is 6*7
         let endDate = dateFunc.changeDay(startDate, 41)
@@ -74,7 +74,7 @@
         // 1st day of current month
         let currentDate = dateFunc.getStartDate(this.headDate)
 
-        this.$emit('change', 
+        this.$emit('change',
           dateFunc.format(startDate, 'yyyy-MM-dd'),
           dateFunc.format(endDate, 'yyyy-MM-dd'),
           dateFunc.format(currentDate,'yyyy-MM-dd'),

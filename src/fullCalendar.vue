@@ -1,7 +1,7 @@
 <template>
   <div class="comp-full-calendar">
     <!-- header pick month -->
-    <fc-header :current-date="currentDate" 
+    <fc-header :current-date="currentDate"
       :title-format="titleFormat"
       :first-day="firstDay"
       :month-names="monthNames"
@@ -18,10 +18,10 @@
       </div>
     </fc-header>
     <!-- body display date day and events -->
-    <fc-body :current-date="currentDate" :events="events" :month-names="monthNames" 
+    <fc-body :current-date="currentDate" :events="events" :month-names="monthNames"
       :week-names="weekNames" :first-day="firstDay"
       @eventclick="emitEventClick" @dayclick="emitDayClick"
-      @moreclick="emitMoreClick">
+      @moreclick="emitMoreClick" ref="body">
       <div slot="body-card">
         <slot name="fc-body-card">
         </slot>
@@ -31,7 +31,7 @@
 </template>
 <script type="text/babel">
   import langSets from './dataMap/langSets'
-
+  import dateFunc from './components/dateFunc'
   export default {
     props : {
       events : { // events will be displayed on calendar
@@ -60,7 +60,7 @@
         type : Array,
         default () {
           return langSets[this.lang].monthNames
-        } 
+        }
       },
       weekNames : {
         type : Array,
@@ -77,10 +77,18 @@
     },
     methods : {
       emitChangeMonth (start, end, currentStart, current) {
-        console.log('currentDate 2', this.currentDate)
+        this.$nextTick(()=>{
+          var startDate = this.$refs.body.currentDates[0][0].date
+          var endDate = this.$refs.body.currentDates[5][6].date
+          this.$emit('changeMonth', dateFunc.format(new Date(startDate), 'yyyy-MM-dd'),
+           dateFunc.format(new Date(endDate), 'yyyy-MM-dd'), currentStart)
+
+        })
+
+        // console.log('currentDate 2', this.currentDate)
         this.currentDate = current
-        console.log('currentDate 3', this.currentDate)
-        this.$emit('changeMonth', start, end, currentStart)
+        // console.log('currentDate 3', this.currentDate)
+        // this.$emit('changeMonth', start, end, currentStart)
       },
       emitEventClick (event, jsEvent, pos) {
         this.$emit('eventClick', event, jsEvent, pos)
@@ -97,7 +105,7 @@
       'fc-header' : require('./components/header')
     }
   }
-  
+
 </script>
 <style lang="scss">
   .comp-full-calendar{

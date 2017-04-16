@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.9
+ * vue-fullcalendar v1.1.0
  * (c) 2017 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -524,7 +524,43 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _langSets2 = _interopRequireDefault(_langSets);
 
+	var _dateFunc = __webpack_require__(9);
+
+	var _dateFunc2 = _interopRequireDefault(_dateFunc);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 	  props: {
@@ -573,10 +609,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  methods: {
 	    emitChangeMonth: function emitChangeMonth(start, end, currentStart, current) {
-	      console.log('currentDate 2', this.currentDate);
+	      var _this = this;
+
+	      this.$nextTick(function () {
+	        var startDate = _this.$refs.body.currentDates[0][0].date;
+	        var endDate = _this.$refs.body.currentDates[5][6].date;
+	        _this.$emit('changeMonth', _dateFunc2.default.format(new Date(startDate), 'yyyy-MM-dd'), _dateFunc2.default.format(new Date(endDate), 'yyyy-MM-dd'), currentStart);
+	      });
+
+	      // console.log('currentDate 2', this.currentDate)
 	      this.currentDate = current;
-	      console.log('currentDate 3', this.currentDate);
-	      this.$emit('changeMonth', start, end, currentStart);
+	      // console.log('currentDate 3', this.currentDate)
+	      // this.$emit('changeMonth', start, end, currentStart)
 	    },
 	    emitEventClick: function emitEventClick(event, jsEvent, pos) {
 	      this.$emit('eventClick', event, jsEvent, pos);
@@ -589,40 +633,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  components: {
-	    'fc-body': __webpack_require__(9),
+	    'fc-body': __webpack_require__(10),
 	    'fc-header': __webpack_require__(15)
 	  }
-	}; //
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	};
 
 /***/ }),
 /* 8 */
@@ -653,15 +667,91 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	var shortMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	var defMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+	var dateFunc = {
+	    getDuration: function getDuration(date) {
+	        // how many days of this month
+	        var dt = new Date(date);
+	        var month = dt.getMonth();
+	        dt.setMonth(dt.getMonth() + 1);
+	        dt.setDate(0);
+	        return dt.getDate();
+	    },
+	    changeDay: function changeDay(date, num) {
+	        var dt = new Date(date);
+	        return new Date(dt.setDate(dt.getDate() + num));
+	    },
+	    getStartDate: function getStartDate(date) {
+	        // return first day of this month
+	        return new Date(date.getFullYear(), date.getMonth(), 1);
+	    },
+	    getEndDate: function getEndDate(date) {
+	        // get last day of this month
+	        var dt = new Date(date.getFullYear(), date.getMonth() + 1, 1); // 1st day of next month
+	        return new Date(dt.setDate(dt.getDate() - 1)); // last day of this month
+	    },
+	    format: function format(date, _format, monthNames) {
+	        monthNames = monthNames || defMonthNames;
+	        if (typeof date === 'string') {
+	            date = new Date(date.replace(/-/g, '/'));
+	        } else {
+	            date = new Date(date);
+	        }
+
+	        var map = {
+	            'M': date.getMonth() + 1,
+	            'd': date.getDate(),
+	            'h': date.getHours(),
+	            'm': date.getMinutes(),
+	            's': date.getSeconds(),
+	            'q': Math.floor((date.getMonth() + 3) / 3),
+	            'S': date.getMilliseconds()
+	        };
+
+	        _format = _format.replace(/([yMdhmsqS])+/g, function (all, t) {
+	            // console.log('all', all, t, format)
+	            var v = map[t];
+	            if (v !== undefined) {
+	                if (all === 'MMMM') {
+	                    return monthNames[v - 1];
+	                }
+	                if (all === 'MMM') {
+	                    return shortMonth[v - 1];
+	                }
+	                if (all.length > 1) {
+	                    v = '0' + v;
+	                    v = v.substr(v.length - 2);
+	                }
+	                return v;
+	            } else if (t === 'y') {
+	                return String(date.getFullYear()).substr(4 - all.length);
+	            }
+	            return all;
+	        });
+	        // console.log('format res', format)
+	        return _format;
+	    }
+	};
+
+	module.exports = dateFunc;
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
 	/* styles */
-	__webpack_require__(10)
+	__webpack_require__(11)
 
 	var Component = __webpack_require__(6)(
 	  /* script */
-	  __webpack_require__(12),
+	  __webpack_require__(13),
 	  /* template */
 	  __webpack_require__(14),
 	  /* scopeId */
@@ -690,13 +780,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(11);
+	var content = __webpack_require__(12);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -716,7 +806,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -730,7 +820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -739,7 +829,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _dateFunc = __webpack_require__(13);
+	var _dateFunc = __webpack_require__(9);
 
 	var _dateFunc2 = _interopRequireDefault(_dateFunc);
 
@@ -781,7 +871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  watch: {
 	    weekNames: function weekNames(val) {
-	      console.log('watch weekNames', val);
+	      // console.log('watch weekNames', val)
 	    }
 	  },
 	  computed: {
@@ -804,7 +894,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    classNames: function classNames(cssClass) {
 	      if (!cssClass) return '';
-	      // string  
+	      // string
 	      if (typeof cssClass == 'string') return cssClass;
 
 	      // Array
@@ -995,80 +1085,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	var shortMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	var defMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-	var dateFunc = {
-	    getDuration: function getDuration(date) {
-	        // how many days of this month
-	        var dt = new Date(date);
-	        var month = dt.getMonth();
-	        dt.setMonth(dt.getMonth() + 1);
-	        dt.setDate(0);
-	        return dt.getDate();
-	    },
-	    changeDay: function changeDay(date, num) {
-	        var dt = new Date(date);
-	        return new Date(dt.setDate(dt.getDate() + num));
-	    },
-	    getStartDate: function getStartDate(date) {
-	        // return first day of this month
-	        return new Date(date.getFullYear(), date.getMonth(), 1);
-	    },
-	    getEndDate: function getEndDate(date) {
-	        // get last day of this month
-	        var dt = new Date(date.getFullYear(), date.getMonth() + 1, 1); // 1st day of next month
-	        return new Date(dt.setDate(dt.getDate() - 1)); // last day of this month
-	    },
-	    format: function format(date, _format, monthNames) {
-	        monthNames = monthNames || defMonthNames;
-	        if (typeof date === 'string') {
-	            date = new Date(date.replace(/-/g, '/'));
-	        } else {
-	            date = new Date(date);
-	        }
-
-	        var map = {
-	            'M': date.getMonth() + 1,
-	            'd': date.getDate(),
-	            'h': date.getHours(),
-	            'm': date.getMinutes(),
-	            's': date.getSeconds(),
-	            'q': Math.floor((date.getMonth() + 3) / 3),
-	            'S': date.getMilliseconds()
-	        };
-
-	        _format = _format.replace(/([yMdhmsqS])+/g, function (all, t) {
-	            var v = map[t];
-	            if (v !== undefined) {
-	                if (all === 'MMMM') {
-	                    return monthNames[v - 1];
-	                }
-	                if (all === 'MMM') {
-	                    return shortMonth[v - 1];
-	                }
-	                if (all.length > 1) {
-	                    v = '0' + v;
-	                    v = v.substr(v.length - 2);
-	                }
-	                return v;
-	            } else if (t === 'y') {
-	                return String(date.getFullYear()).substr(4 - all.length);
-	            }
-	            return all;
-	        });
-	        return _format;
-	    }
-	};
-
-	module.exports = dateFunc;
 
 /***/ }),
 /* 14 */
@@ -1298,7 +1314,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _dateFunc = __webpack_require__(13);
+	var _dateFunc = __webpack_require__(9);
 
 	var _dateFunc2 = _interopRequireDefault(_dateFunc);
 
@@ -1328,7 +1344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    currentDate: function currentDate(val) {
 	      if (!val) return;
 	      this.headDate = val;
-	      console.log('currentDate', val);
+	      // console.log('currentDate', val)
 	      // this.headDate = JSON.parse(JSON.stringify(val))
 	    }
 	  },
@@ -1446,6 +1462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, [_vm._t("fc-header-left")], 2), _vm._v(" "), _c('div', {
 	    slot: "header-right"
 	  }, [_vm._t("fc-header-right")], 2)]), _vm._v(" "), _c('fc-body', {
+	    ref: "body",
 	    attrs: {
 	      "current-date": _vm.currentDate,
 	      "events": _vm.events,

@@ -27,7 +27,7 @@
                   'is-start'   : isStart(event.start, day.date),
                   'is-end'     : isEnd(event.end,day.date),
                   'is-opacity' : !event.isShow
-                  }]" 
+                  }]"
                 @click="eventClick(event,$event)">
                 {{isBegin(event, day.date, day.weekDay)}}
               </p>
@@ -103,7 +103,7 @@
     },
     watch : {
       weekNames (val) {
-        console.log('watch weekNames', val)
+        // console.log('watch weekNames', val)
       }
     },
     computed : {
@@ -126,12 +126,12 @@
       },
       classNames (cssClass) {
         if(!cssClass) return ''
-        // string  
+        // string
         if (typeof cssClass == 'string') return cssClass
 
         // Array
         if (Array.isArray(cssClass)) return cssClass.join(' ')
-        
+
         // else
         return ''
       },
