@@ -4,7 +4,8 @@
     <fc-header :current-month="currentMonth"
       :first-day="firstDay"
       :locale="locale"
-      @change="emitChangeMonth">
+      @change="emitChangeMonth"
+      @changeTimeFrame="changeTimeFrame">
 
       <div slot="header-left">
         <slot name="fc-header-left">
@@ -17,15 +18,30 @@
       </div>
     </fc-header>
 
-    <month :firstDay="firstDay"
-            :locale="locale"
-            :events="events"
-            :eventLimit="eventLimit"
-            :showMore="showMore"
-            :morePos="morePos"
-            :selectDay="selectDay"
-            >
-    </month> 
+    <template v-if="currentTimeFrame === 'day'">
+      Day!!
+    </template>
+
+    <template v-else-if="currentTimeFrame === 'week'">
+      Week!!!!!
+    </template>
+
+    <template v-else-if="currentTimeFrame === 'month'">
+      Month
+      <month :firstDay="firstDay"
+              :locale="locale"
+              :events="events"
+              :eventLimit="eventLimit"
+              :showMore="showMore"
+              :morePos="morePos"
+              :selectDay="selectDay"
+              >
+      </month> 
+    </template>
+
+    <template v-else>
+      Select a time frame
+    </template>
 
   </div>
 </template>
@@ -70,7 +86,8 @@
           top: 0,
           left : 0
         },
-        selectDay : {}
+        selectDay : {},
+        currentTimeFrame: 'month'
       }
     },
     methods : {
@@ -82,6 +99,11 @@
         let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
 
         this.$emit('changeMonth', start, end, firstDayOfMonth)
+      },
+      changeTimeFrame (newTimeFrame) {
+        console.log('new time frame', newTimeFrame)
+
+        this.changeTimeFrame = newTimeFrame
       }
     }
   }

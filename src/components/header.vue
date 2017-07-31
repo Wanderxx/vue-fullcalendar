@@ -10,8 +10,13 @@
       <span class="next-month" @click.stop="goNext">{{rightArrow}}</span>
     </div>
     <div class="header-right">
-      <slot name="header-right">
-      </slot>
+      <!-- TODO: figure out if we want to allow the time frame selector to be overridden, or added to with the slot  -->
+      <!-- <slot name="header-right">
+      </slot> -->
+
+      <button type="button" @click.stop="showDay">Day</button>
+      <button type="button" @click.stop="showWeek">Week</button>
+      <button type="button" @click.stop="showMonth">Month</button>
     </div>
   </div>
 </template>
@@ -47,6 +52,18 @@
       goNext () {
         var newMonth = moment(this.currentMonth).add(1, 'months').startOf('month');
         this.$emit('change', newMonth);
+      },
+      showDay () {
+        console.log('showDay')
+        this.$emit('changeTimeFrame', 'day')
+      },
+      showWeek () {
+        console.log('showWeek')
+        this.$emit('changeTimeFrame', 'week')
+      },
+      showMonth () {
+        console.log('showMonth')
+        this.$emit('changeTimeFrame', 'month')
       }
     }
   }
