@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "es6-promise": "^4.0.5",
-    "vue": "^2.1.8",
+    "vue": "^2.4.2",
     "vue-fullcalendar": "^1.0.5"
   },
   "devDependencies": {
