@@ -83,10 +83,9 @@ export default {
       eventLimit: Number,
       showMore: Boolean,
       morePos: Object,
-      selectDay: Object
+      selectDay: Object,
+      options: Object
     },
-    
-
     components : {
       'event-card': EventCard,
     },

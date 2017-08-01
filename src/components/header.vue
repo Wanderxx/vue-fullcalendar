@@ -45,6 +45,7 @@
       }
     },
     methods : {
+      // TODO: update the methods so they handle changing between different time frames
       goPrev () {
         var newMonth = moment(this.currentMonth).subtract(1, 'months').startOf('month');
         this.$emit('change', newMonth);

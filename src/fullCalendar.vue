@@ -18,16 +18,15 @@
       </div>
     </fc-header>
 
-    <template v-if="currentTimeFrame === 'day'">
-      Day!!
+    <template v-if="computedTimeFrame === 'day'">
+      <day></day>
     </template>
 
-    <template v-else-if="currentTimeFrame === 'week'">
-      Week!!!!!
+    <template v-else-if="computedTimeFrame === 'week'">
+      <week></week>
     </template>
 
-    <template v-else-if="currentTimeFrame === 'month'">
-      Month
+    <template v-else-if="computedTimeFrame === 'month'">
       <month :firstDay="firstDay"
               :locale="locale"
               :events="events"
@@ -51,6 +50,8 @@
   import moment from 'moment';
   import EventCard from './components/eventCard.vue';
   import Month from './components/month.vue'
+  import Day from './components/day.vue'
+  import Week from './components/week.vue'
 
   export default {
     props : {
@@ -69,12 +70,19 @@
           return res >= 0 && res <= 6
         },
         default : 0
+      },
+      options: Object,
+      initialTimeFrame: {
+        type: String,
+        default: 'month'
       }
     },
     components : {
       'event-card': EventCard,
       'fc-header' : require('./components/header'),
-      'month': Month
+      'month': Month,
+      'day': Day,
+      'week': Week
     },
     data () {
       return {
@@ -87,7 +95,17 @@
           left : 0
         },
         selectDay : {},
-        currentTimeFrame: 'month'
+        currentTimeFrame: ''
+      }
+    },
+    computed: {
+      computedTimeFrame: {
+        get: function () {
+          return this.currentTimeFrame != '' ? this.currentTimeFrame : this.initialTimeFrame 
+        },
+        set: function (newValue) {
+          this.currentTimeFrame = newValue
+        }
       }
     },
     methods : {
@@ -103,7 +121,8 @@
       changeTimeFrame (newTimeFrame) {
         console.log('new time frame', newTimeFrame)
 
-        this.changeTimeFrame = newTimeFrame
+        this.$emit('changeTimeFrame', newTimeFrame) 
+        this.computedTimeFrame = newTimeFrame
       }
     }
   }
