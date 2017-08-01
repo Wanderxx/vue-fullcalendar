@@ -34,6 +34,7 @@
               :showMore="showMore"
               :morePos="morePos"
               :selectDay="selectDay"
+              :currentMonth="currentMonth"
               >
       </month> 
     </template>
@@ -111,6 +112,7 @@
     methods : {
       // TODO: find someway to pass this to many components, rather than redeclaring it
       emitChangeMonth (firstDayOfMonth) {
+        console.log('first day of month', firstDayOfMonth)
         this.currentMonth = firstDayOfMonth;
 
         let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);

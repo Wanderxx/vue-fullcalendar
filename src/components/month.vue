@@ -75,6 +75,7 @@ export default {
       firstDay : {
         type : Number | String,
         validator (val) {
+            console.log('val', val)
           let res = parseInt(val);
           return res >= 0 && res <= 6
         },
@@ -84,7 +85,8 @@ export default {
       showMore: Boolean,
       morePos: Object,
       selectDay: Object,
-      options: Object
+      options: Object,
+      currentMonth : {}
     },
     components : {
       'event-card': EventCard,
@@ -99,6 +101,8 @@ export default {
     },
     methods: {
         emitChangeMonth (firstDayOfMonth) {
+            console.log('emit change month in month.vue')
+            console.log('first day of month in month.vue', firstDayOfMonth)
             this.currentMonth = firstDayOfMonth;
 
             let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
@@ -112,6 +116,10 @@ export default {
         },
         getCalendar() {
             // calculate 2d-array of each month
+            console.log('get calendar function')
+            console.log('current month', this.currentMonth)
+            console.log('first day', this.firstDay)
+
             let monthViewStartDate = dateFunc.getMonthViewStartDate(this.currentMonth, this.firstDay);
             let calendar = [];
 
