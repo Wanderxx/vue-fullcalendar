@@ -4,22 +4,27 @@
     <fc-header :current-month="currentMonth"
       :first-day="firstDay"
       :locale="locale"
+      :start-date="initialStartDate"
+      :initialTimeFrame="computedTimeFrame"
       @change="emitChangeMonth"
+      @changeDay="emitChangeDay"
       @changeTimeFrame="changeTimeFrame">
 
-      <div slot="header-left">
+      <!-- <div slot="header-left">
         <slot name="fc-header-left">
         </slot>
-      </div>
+      </div> -->
 
-      <div slot="header-right">
+      <!-- <div slot="header-right">
         <slot name="fc-header-right">
         </slot>
-      </div>
+      </div> -->
     </fc-header>
 
     <template v-if="computedTimeFrame === 'day'">
-      <day></day>
+      <day :start-date="initialStartDate"
+        :options="options"
+      ></day>
     </template>
 
     <template v-else-if="computedTimeFrame === 'week'">
@@ -76,6 +81,10 @@
       initialTimeFrame: {
         type: String,
         default: 'month'
+      },
+      initialStartDate: {
+        type: Object,
+        default: () => { return moment() }
       }
     },
     components : {
@@ -96,16 +105,28 @@
           left : 0
         },
         selectDay : {},
-        currentTimeFrame: ''
+        currentTimeFrame: '',
+        currentStartDate: ''
       }
     },
     computed: {
+      // The variables with the 'computed' prefix are for variables which we pass in props from but don't want to change the props (Vue gives a warning)
+      // There are three variables prefixes which relate to this 'initial' for the prop, 'current' for the data value, and 'computed' for the computed values
+      // TODO: See if there is a better way of doing this. I think we could remove the data variables and just work with computed and props, but probably won't work with the get and set
       computedTimeFrame: {
         get: function () {
           return this.currentTimeFrame != '' ? this.currentTimeFrame : this.initialTimeFrame 
         },
         set: function (newValue) {
           this.currentTimeFrame = newValue
+        }
+      },
+      computedStartDate: {
+        get: function () {
+          return this.currentStartDate != '' ? this.currentStartDate : this.initialStartDate
+        },
+        set: function (newValue) {
+          this.currentStartDate = newValue
         }
       }
     },
@@ -120,9 +141,11 @@
 
         this.$emit('changeMonth', start, end, firstDayOfMonth)
       },
+      emitChangeDay (newDay) {
+        console.log('new day in emit change day', newDay)
+        this.computedStartDate = newDay
+      },
       changeTimeFrame (newTimeFrame) {
-        console.log('new time frame', newTimeFrame)
-
         this.$emit('changeTimeFrame', newTimeFrame) 
         this.computedTimeFrame = newTimeFrame
       }
@@ -135,7 +158,7 @@
     // font-family: "elvetica neue", tahoma, "hiragino sans gb";
     padding:20px;
     background: #fff;
-    max-width: 960px;
+    max-width: 100%;
     margin:0 auto;
     ul,p{
       margin:0;

@@ -20,45 +20,45 @@
 let demoEvents = [
     {
       title    : 'Sunny 725-727',
-      start    : '2017-02-25',
-      end      : '2017-02-27',
+      start    : '2017-08-25',
+      end      : '2017-08-27',
       cssClass : 'family'
     },
     {
       title : 'Lunfel 726-727',
-      start : '2017-02-26',
-      end : '2017-02-27',
+      start : '2017-08-26',
+      end : '2017-08-27',
       cssClass : ['home', 'work']
     },
     {
       title : 'Lunfel 2/27-2/28',
-      start : '2017-02-27',
-      end : '2017-02-28'
+      start : '2017-08-27',
+      end : '2017-08-28'
     },
     {
         title : 'Lunfel 2/27-2/28',
-        start : '2017-02-27',
-        end : '2017-02-28'
+        start : '2017-08-27',
+        end : '2017-08-28'
     },
     {
         title : 'Lunfel 2/27-2/28',
-        start : '2017-02-27',
-        end : '2017-02-28'
+        start : '2017-08-27',
+        end : '2017-08-28'
     },
     {
         title : 'Lunfel 2/26-3/05',
-        start : '2017-02-26',
-        end : '2017-03-05'
+        start : '2017-08-26',
+        end : '2017-09-05'
     },
     {
         title : 'Lunfel 1/27-1/28',
-        start : '2017-01-27',
-        end : '2017-01-28'
+        start : '2017-08-27',
+        end : '2017-08-28'
     },
     {
         title : 'Lunfel 1/27-2/2',
-        start : '2017-01-27',
-        end : '2017-02-02'
+        start : '2017-08-27',
+        end : '2017-09-02'
     },
     {
         title : 'Lunfel 3/27-3/28',
@@ -108,11 +108,11 @@ const options = {
         events: []
       }, {
         type: 'machine',
-        resourceNames: ['Machine One', 'Machine Two', 'Machine Three', 'Machine Four'],
+        resourceNames: ['Machine Two', 'Machine Three', 'Machine Four'],
         events: [
           {
             resourceName: 'Machine One',
-            date: '2017-08-01',
+            date: '2017-08-02',
             startTime: '12:00pm', //Start time should always be there
             endTime: '4:30pm', //End time is optional, should be able to figure this out from the duration if it's included instead
             type: 'Job',
@@ -120,7 +120,7 @@ const options = {
             recipient: 'Client'
           }, {
             resourceName: 'Machine Two',
-            date: '2017-08-01',
+            date: '2017-08-02',
             startTime: '8:00am',
             duration: '3:45', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
             type: 'Job',
@@ -128,7 +128,7 @@ const options = {
             recipient: 'Client1'
           }, {
             resourceName: 'Machine Four',
-            date: '2017-08-01',
+            date: '2017-08-02',
             startTime: '3:00pm',
             duration: '120', // minutes
             type: 'Job',

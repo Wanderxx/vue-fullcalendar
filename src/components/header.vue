@@ -30,41 +30,109 @@
       titleFormat  : {},
       firstDay     : {},
       monthNames   : {},
-      locale       : {}
+      locale       : {},
+      startDate: {
+        // TODO: update this to avoid the 'avoid mutating prop' warning
+        type: Object,
+        default: () => { return moment() }
+      },
+      initialTimeFrame: {
+        type: String,
+        default: 'month'
+      }
     },
     data () {
       return {
+        // TODO: change these boring ass arrows
         leftArrow  : '<',
-        rightArrow : '>'
+        rightArrow : '>',
+        currentTimeFrame: ''
       }
     },
     computed: {
       title () {
-        if (!this.currentMonth) return;
-        return this.currentMonth.locale(this.locale).format('MMMM YYYY')
-      }
+        if(!this.computedTimeFrame) return
+
+        if(this.computedTimeFrame === 'day') {
+
+          if(!this.startDate) return
+          return this.startDate.locale(this.locale).format('DD MMMM YYYY')
+
+        } else if (this.computedTimeFrame === 'week') {
+
+        } else if (this.computedTimeFrame === 'month') {
+
+          if (!this.currentMonth) return;
+          return this.currentMonth.locale(this.locale).format('MMMM YYYY')
+
+        } else {
+          return 'Choose time frame'
+        }
+      },
+      computedTimeFrame: {
+        get: function () {
+          return this.currentTimeFrame != '' ? this.currentTimeFrame : this.initialTimeFrame 
+        },
+        set: function (newValue) {
+          this.currentTimeFrame = newValue
+        }
+      } 
     },
     methods : {
       // TODO: update the methods so they handle changing between different time frames
       goPrev () {
-        var newMonth = moment(this.currentMonth).subtract(1, 'months').startOf('month');
-        this.$emit('change', newMonth);
+
+        console.log('go prev', this.computedTimeFrame)
+
+        if(this.computedTimeFrame === 'day') {
+
+          //if(!this.startDate) return
+          //return this.startDate.locale(this.locale).format('DD MMMM YYYY')
+          var newStartDate = moment(this.startDate).subtract(1, 'days')
+          //this.startDate = newStartDate //TODO: this probably doesn't go here, look at how the month is changed when emitting the change
+
+          //console.log('new start date:', newStartDate)
+          this.$emit('changeDay', newStartDate)
+          // this.$emit('change')
+
+        } else if (this.computedTimeFrame === 'week') {
+
+        } else if (this.computedTimeFrame === 'month') {
+
+          var newMonth = moment(this.currentMonth).subtract(1, 'months').startOf('month');
+          this.$emit('change', newMonth); //TODO: change this so that there are events for each time frame? or add the time frame to the event
+
+        }
       },
       goNext () {
-        var newMonth = moment(this.currentMonth).add(1, 'months').startOf('month');
-        this.$emit('change', newMonth);
+        if(this.computedTimeFrame === 'day') {
+
+          var newStartDate = moment(this.startDate).add(1, 'days')
+          this.$emit('changeDay', newStartDate)
+
+        } else if (this.computedTimeFrame === 'week') {
+
+        } else if (this.computedTimeFrame === 'month') {
+
+          var newMonth = moment(this.currentMonth).add(1, 'months').startOf('month');
+          this.$emit('change', newMonth); //TODO: change this so that there are events for each time frame? or add the time frame to the event
+
+        }
       },
       showDay () {
         console.log('showDay')
         this.$emit('changeTimeFrame', 'day')
+        this.computedTimeFrame = 'day'
       },
       showWeek () {
         console.log('showWeek')
         this.$emit('changeTimeFrame', 'week')
+        this.computedTimeFrame = 'week'
       },
       showMonth () {
         console.log('showMonth')
         this.$emit('changeTimeFrame', 'month')
+        this.computedTimeFrame = 'month'
       }
     }
   }
