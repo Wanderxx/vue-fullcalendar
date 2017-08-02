@@ -56,7 +56,7 @@
         if(this.computedTimeFrame === 'day') {
 
           if(!this.startDate) return
-          return this.startDate.locale(this.locale).format('DD MMMM YYYY')
+          return this.startDate.locale(this.locale).format('dddd DD MMMM YYYY')
 
         } else if (this.computedTimeFrame === 'week') {
 

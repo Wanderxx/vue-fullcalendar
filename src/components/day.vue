@@ -4,7 +4,12 @@
       <day-header class="resource-header" :headerTimes="timeArray"></day-header>
       <div class="time-row" v-for="name in resource.resourceNames">
         <div class="bordered time-cell">{{name}}</div>
-        <div class="bordered time-cell" v-for="count in timeArray.length"></div>
+        <div class="bordered time-cell" style="position: relative;" v-for="time in timeArray">
+          <template v-if="time == '10:30am'">
+            <div style="width: 100px; z-index: 1; background-color: red; position: absolute; top: 5px; left: 0px">
+              content</div>
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -74,7 +79,6 @@ export default {
 <style>
   .bordered {
       border: 1px solid grey;
-      /* display: inline-block; */
   }
 
   .time-row {
@@ -89,6 +93,8 @@ export default {
   }
 
   .resource-header {
+    margin-top: 4px;
+    margin-bottom: 4px;
     background-color: pink;
   }
 </style>

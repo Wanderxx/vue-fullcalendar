@@ -1,8 +1,5 @@
 <template>
   <div>
-  	<p>
-  		Here is the demo of vue-fullcalendar, no jquery fullcalendar.js required!
-  	</p>
     <full-calendar class="test-fc" :events="fcEvents" :options="calendarOptions" 
       :initialTimeFrame="'day'"
       first-day='1' locale="en"
