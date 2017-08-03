@@ -75,7 +75,7 @@ const options = {
         events: [ //The events for this resource group. The resourceName should map to something in resourceNames
           {
             resourceName: 'Charity Barnum',
-            date: '2017-08-01',
+            date: '2017-08-03',
             startTime: '12:00pm', //Start time should always be there
             endTime: '4:30pm', //End time is optional, should be able to figure this out from the duration if it's included instead
             type: 'Job',
@@ -83,9 +83,9 @@ const options = {
             recipient: 'Client'
           }, {
             resourceName: 'Rhett Butler',
-            date: '2017-08-01',
+            date: '2017-08-03',
             startTime: '8:00am',
-            duration: '3:45', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
+            duration: '3.75', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
             type: 'Job',
             title: 'Manufacture Workspace',
             recipient: 'Client1'
@@ -109,15 +109,23 @@ const options = {
         events: [
           {
             resourceName: 'Machine One',
-            date: '2017-08-02',
+            date: '2017-08-03',
             startTime: '12:00pm', //Start time should always be there
-            endTime: '4:30pm', //End time is optional, should be able to figure this out from the duration if it's included instead
+            endTime: '4:00pm', //End time is optional, should be able to figure this out from the duration if it's included instead
+            type: 'Job',
+            title: 'Manufacture Workspace',
+            recipient: 'Client'
+          }, {
+            resourceName: 'Machine One',
+            date: '2017-08-03',
+            startTime: '8:00am', //Start time should always be there
+            endTime: '11:00am', //End time is optional, should be able to figure this out from the duration if it's included instead
             type: 'Job',
             title: 'Manufacture Workspace',
             recipient: 'Client'
           }, {
             resourceName: 'Machine Two',
-            date: '2017-08-02',
+            date: '2017-08-03',
             startTime: '8:00am',
             duration: '3:45', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
             type: 'Job',
