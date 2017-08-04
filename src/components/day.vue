@@ -18,10 +18,13 @@ import _ from 'lodash'
 import dayHeader from './dayHeader'
 import timeFunc from './timeFunc'
 
+// TODO: handle resize
+
 export default {
   props: {
     startDate: {},
-    options: {}
+    options: {},
+    resourceGroups: {}
   },
   data () { 
     return {
@@ -44,21 +47,6 @@ export default {
       }
 
       return times
-    },
-    resourceGroups () {
-      let resourceNamesByGroups = this.options.resources.groups.map((item) => {
-        let definedResourceNames = item.resourceNames
-
-        let eventResourceNames = item.events.map((event) => {
-          return event.resourceName
-        })
-
-        return {
-          type: [item.type],
-          resourceNames: _.union(definedResourceNames, eventResourceNames).sort()
-        }
-      })
-      return resourceNamesByGroups
     },
     todaysEvents () {
       let todaysDateString = this.isoTodaysDateString
@@ -112,28 +100,6 @@ export default {
 </script>
 
 <style>
-  .bordered {
-      border: 1px solid grey;
-  }
-
-  .time-row {
-      display: flex;
-  }
-
-  .time-cell {
-      flex: 1;
-      height: 50px;
-      text-align: center;
-      vertical-align: middle;
-      position: relative;
-  }
-
-  .resource-header {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    background-color: pink;
-  }
-
   .event {
     min-width: 30px;
     min-height: 30px;

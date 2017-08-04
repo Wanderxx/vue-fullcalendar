@@ -1,7 +1,7 @@
 <template>
   <div>
     <full-calendar class="test-fc" :events="fcEvents" :options="calendarOptions" 
-      :initialTimeFrame="'day'"
+      :initialTimeFrame="'week'"
       first-day='1' locale="en"
       @changeMonth="changeMonth"
       @eventClick="eventClick"
@@ -67,6 +67,7 @@ let demoEvents = [
 const options = {
   dayStartTime: '8:00am', // Start time on the calendar
   dayEndTime: '5:30pm', // End time on the calendar
+  weekLength: 5, // or 7 
   resources: {
     groups: [ //Split resources into different related groups
       {
@@ -75,7 +76,7 @@ const options = {
         events: [ //The events for this resource group. The resourceName should map to something in resourceNames
           {
             resourceName: 'Charity Barnum',
-            date: '2017-08-03',
+            date: '2017-08-04',
             startTime: '12:00pm', //Start time should always be there
             endTime: '4:30pm', //End time is optional, should be able to figure this out from the duration if it's included instead
             type: 'Job',
@@ -83,7 +84,7 @@ const options = {
             recipient: 'Client'
           }, {
             resourceName: 'Rhett Butler',
-            date: '2017-08-03',
+            date: '2017-08-04',
             startTime: '8:00am',
             duration: '3.75', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
             type: 'Job',
@@ -109,23 +110,23 @@ const options = {
         events: [
           {
             resourceName: 'Machine One',
-            date: '2017-08-03',
-            startTime: '12:00pm', //Start time should always be there
+            date: '2017-08-04',
+            startTime: '1:00pm', //Start time should always be there
             endTime: '4:00pm', //End time is optional, should be able to figure this out from the duration if it's included instead
             type: 'Job',
             title: 'Manufacture Workspace',
-            recipient: 'Client'
+            recipient: 'pm'
           }, {
             resourceName: 'Machine One',
-            date: '2017-08-03',
+            date: '2017-08-04',
             startTime: '8:00am', //Start time should always be there
             endTime: '11:00am', //End time is optional, should be able to figure this out from the duration if it's included instead
-            type: 'Job',
+            type: 'Job am',
             title: 'Manufacture Workspace',
-            recipient: 'Client'
+            recipient: 'am'
           }, {
             resourceName: 'Machine Two',
-            date: '2017-08-03',
+            date: '2017-08-04',
             startTime: '8:00am',
             duration: '3:45', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
             type: 'Job',
@@ -139,6 +140,14 @@ const options = {
             type: 'Job',
             title: 'Manufacture Workspace',
             recipient: 'Client1'
+          }, {
+            resourceName: 'Machine Two',
+            date: '2017-08-04',
+            startTime: '11:00am',
+            duration: '3:45', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
+            type: 'Job',
+            title: 'Manufacture Workspace',
+            recipient: 'Client2'
           }
         ]
       }
@@ -176,5 +185,27 @@ export default {
 <style lang='scss'>
   .app{
     color:green;
+  }
+
+  .bordered {
+      border: 1px solid grey;
+  }
+
+  .time-row {
+      display: flex;
+  }
+
+  .time-cell {
+      flex: 1;
+      height: 50px;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+  }
+
+  .resource-header {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background-color: pink;
   }
 </style>

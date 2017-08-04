@@ -39,6 +39,14 @@
       initialTimeFrame: {
         type: String,
         default: 'month'
+      },
+      weekLength: {
+        type: Number,
+        default: 5 // default to mon - fri
+      },
+      weekStartDate: {
+        type: Object,
+        default: () => { return moment().startOf('isoweek') }
       }
     },
     data () {
@@ -51,7 +59,7 @@
     },
     computed: {
       title () {
-        if(!this.computedTimeFrame) return
+        if(!this.computedTimeFrame) return 'Choose time frame'
 
         if(this.computedTimeFrame === 'day') {
 
@@ -60,6 +68,13 @@
 
         } else if (this.computedTimeFrame === 'week') {
 
+          // TODO: probably change this so startDate isn't used so we avoid getting days and weeks mixed up.
+
+          let weekLength = this.weekLength
+          let weekStartDate = this.startDate.startOf('isoweek').format('dddd DD MMMM YYYY')
+          let weekEndDate = this.startDate.startOf('isoweek').add(weekLength - 1, 'd').format('dddd DD MMMM YYYY')
+          return weekStartDate + ' - ' + weekEndDate
+        
         } else if (this.computedTimeFrame === 'month') {
 
           if (!this.currentMonth) return;

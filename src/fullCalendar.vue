@@ -4,8 +4,10 @@
     <fc-header :current-month="currentMonth"
       :first-day="firstDay"
       :locale="locale"
-      :start-date="initialStartDate"
+      :startDate="initialStartDate"
+      :weekStartDate="currentWeekStart"
       :initialTimeFrame="computedTimeFrame"
+      :weekLength="options.weekLength"
       @change="emitChangeMonth"
       @changeDay="emitChangeDay"
       @changeTimeFrame="changeTimeFrame">
@@ -24,11 +26,16 @@
     <template v-if="computedTimeFrame === 'day'">
       <day :start-date="initialStartDate"
         :options="options"
+        :resourceGroups="resourceGroups"
       ></day>
     </template>
 
     <template v-else-if="computedTimeFrame === 'week'">
-      <week></week>
+      <week :resourceGroups="resourceGroups"
+          :weekStart="currentWeekStart"
+          :weekLength="options.weekLength"
+          :options="options"
+        ></week>
     </template>
 
     <template v-else-if="computedTimeFrame === 'month'">
@@ -106,7 +113,8 @@
         },
         selectDay : {},
         currentTimeFrame: '',
-        currentStartDate: ''
+        currentStartDate: '',
+        currentWeekStart: moment().startOf('isoweek')
       }
     },
     computed: {
@@ -128,6 +136,21 @@
         set: function (newValue) {
           this.currentStartDate = newValue
         }
+      },
+      resourceGroups () {
+        let resourceNamesByGroups = this.options.resources.groups.map((item) => {
+          let definedResourceNames = item.resourceNames
+
+          let eventResourceNames = item.events.map((event) => {
+            return event.resourceName
+          })
+
+          return {
+            type: [item.type],
+            resourceNames: _.union(definedResourceNames, eventResourceNames).sort()
+          }
+        })
+        return resourceNamesByGroups
       }
     },
     methods : {
