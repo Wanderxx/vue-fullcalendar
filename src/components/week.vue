@@ -113,7 +113,7 @@ export default {
 
       let elem = '<div class="day-event"> '
       _.forEach(eventsInTimePeriod, ((event) => {
-        elem += '<span>' + event.type + ' - ' + event.title + ' (' + timeOfDay + ')</span><br>'
+        elem += '<span>' + event.type + ' - ' + event.title + '</span><br>'
       }))
       elem += '</div>'
 
@@ -148,6 +148,8 @@ export default {
     z-index: 1;
     width: 85%;
     overflow: hidden;
+    max-height: 95%; 
+    /* padding: 2px; */
   }
 
   .time-of-day-span {
