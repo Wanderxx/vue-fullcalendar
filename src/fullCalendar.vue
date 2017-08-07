@@ -4,11 +4,11 @@
     <fc-header :current-month="currentMonth"
       :first-day="firstDay"
       :locale="locale"
-      :startDate="initialStartDate"
+      :startDate="computedStartDate"
       :weekStartDate="currentWeekStart"
       :initialTimeFrame="computedTimeFrame"
       :weekLength="options.weekLength"
-      @change="emitChangeMonth"
+      @changeMonth="emitChangeMonth"
       @changeDay="emitChangeDay"
       @changeTimeFrame="changeTimeFrame">
 
@@ -24,7 +24,7 @@
     </fc-header>
 
     <template v-if="computedTimeFrame === 'day'">
-      <day :start-date="initialStartDate"
+      <day :startDate="computedStartDate"
         :options="options"
         :resourceGroups="resourceGroups"
       ></day>
@@ -91,7 +91,10 @@
       },
       initialStartDate: {
         type: Object,
-        default: () => { return moment() }
+        default: () => { 
+          console.log('init start date', moment())
+          return moment() 
+        }
       }
     },
     components : {
@@ -131,9 +134,11 @@
       },
       computedStartDate: {
         get: function () {
+          console.log('getting computed start date with current start date:', this.currentStartDate)
           return this.currentStartDate != '' ? this.currentStartDate : this.initialStartDate
         },
         set: function (newValue) {
+          console.log('setting computed start date with date', newValue)
           this.currentStartDate = newValue
         }
       },
