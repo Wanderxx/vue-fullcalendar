@@ -1,15 +1,18 @@
 <template>
   <div class="comp-full-calendar">
     <!-- header pick month -->
+    <!-- :first-day="firstDay" -->
+
     <fc-header :current-month="currentMonth"
-      :first-day="firstDay"
+      
       :locale="locale"
       :startDate="computedStartDate"
-      :weekStartDate="currentWeekStart"
+      :weekStartDate="computedWeekStart"
       :initialTimeFrame="computedTimeFrame"
       :weekLength="options.weekLength"
       @changeMonth="emitChangeMonth"
       @changeDay="emitChangeDay"
+      @changeWeek="emitChangeWeek"
       @changeTimeFrame="changeTimeFrame">
 
       <!-- <div slot="header-left">
@@ -32,7 +35,7 @@
 
     <template v-else-if="computedTimeFrame === 'week'">
       <week :resourceGroups="resourceGroups"
-          :weekStart="currentWeekStart"
+          :weekStart="computedWeekStart"
           :weekLength="options.weekLength"
           :options="options"
         ></week>
@@ -92,10 +95,15 @@
       initialStartDate: {
         type: Object,
         default: () => { 
-          console.log('init start date', moment())
           return moment() 
         }
       }
+      // initialWeekStart: {
+      //   type: Object,
+      //   default: () => {
+      //     return moment().startOf('isoweek')
+      //   }
+      // }
     },
     components : {
       'event-card': EventCard,
@@ -116,8 +124,8 @@
         },
         selectDay : {},
         currentTimeFrame: '',
-        currentStartDate: '',
-        currentWeekStart: moment().startOf('isoweek')
+        currentStartDate: {},
+        currentWeekStart: {}
       }
     },
     computed: {
@@ -134,12 +142,29 @@
       },
       computedStartDate: {
         get: function () {
-          console.log('getting computed start date with current start date:', this.currentStartDate)
-          return this.currentStartDate != '' ? this.currentStartDate : this.initialStartDate
+          return this.currentStartDate != {} ? this.currentStartDate : this.initialStartDate
         },
         set: function (newValue) {
-          console.log('setting computed start date with date', newValue)
           this.currentStartDate = newValue
+        }
+      },
+      computedWeekStart: {
+        get: function () {
+          //return this.currentWeekStart != {} ? this.currentWeekStart : this.initialWeekStart
+
+          console.log('compute week start')
+
+          console.log(this.computedStartDate)
+          console.log(this.initialStartDate.format('dddd DD MMMM YYYY'))
+          console.log(this.initialStartDate.startOf('isoweek').format('dddd DD MMMM YYYY'))
+
+          // TODO: fix this up so it's cleaner and dont' reinit moment objs
+          return this.computedStartDate != {} ? 
+            moment(this.computedStartDate).clone().startOf('isoweek') : 
+            this.initialStartDate.clone().startOf('isoweek')
+        },
+        set: function (newWeekStart) {
+          this.computedStartDate = newWeekStart
         }
       },
       resourceGroups () {
@@ -152,7 +177,7 @@
 
           return {
             type: [item.type],
-            resourceNames: _.union(definedResourceNames, eventResourceNames).sort()
+            resourceNames: _.union(definedResourceNames, eventResourceNames).sort() // FIXME: sort doesnt sort with string number values
           }
         })
         return resourceNamesByGroups
@@ -162,12 +187,16 @@
       // TODO: find someway to pass this to many components, rather than redeclaring it
       emitChangeMonth (firstDayOfMonth) {
         console.log('first day of month', firstDayOfMonth)
-        this.currentMonth = firstDayOfMonth;
+        this.currentMonth = firstDayOfMonth
 
         let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
         let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
 
         this.$emit('changeMonth', start, end, firstDayOfMonth)
+      },
+      emitChangeWeek (newWeekStart) {
+        console.log('first day of week', newWeekStart)
+        this.computedWeekStart = newWeekStart
       },
       emitChangeDay (newDay) {
         console.log('new day in emit change day', newDay)

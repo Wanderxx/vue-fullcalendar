@@ -1,10 +1,11 @@
 <template>
   <div>
+    <!--first-day='1'  -->
     <full-calendar class="test-fc" 
         :events="fcEvents" 
         :options="calendarOptions" 
-        :initialTimeFrame="'day'" 
-        first-day='1' 
+        :initialTimeFrame="'week'" 
+        
         locale="en" 
         @changeMonth="changeMonth" 
         @eventClick="eventClick" 

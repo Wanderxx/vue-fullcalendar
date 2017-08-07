@@ -30,6 +30,10 @@ export default {
     resourceGroups: {},
     weekStart: {
       type: Object,
+      validator (val) {
+        console.log('week start validator', val)
+        return val
+      },
       default: () => { 
         return moment().startOf('isoweek')
       }
@@ -40,6 +44,7 @@ export default {
   computed: {
     weekEnd () {
       //TODO: would probably be best to pass this in (and into header.vue) rather than calculate it here
+      console.log('week end func', this.weekStart.clone().add(this.weekLength - 1, 'd'))
       return this.weekStart.clone().add(this.weekLength - 1, 'd')
     },
 
@@ -47,6 +52,10 @@ export default {
       let days = []
       let currentDay = this.weekStart.clone()
       let len = this.weekLength
+
+      console.log('day array')
+      console.log(currentDay.format('DD MMM YYYY'))
+      console.log('weekstart', this.weekStart)
 
       for(let i = 0; i < len; i++) {
         days.push(currentDay.format('ddd DD MMM'))

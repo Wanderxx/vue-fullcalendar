@@ -28,11 +28,10 @@ export default {
   props: {
     currentMonth: {},
     titleFormat: {},
-    firstDay: {},
+    // firstDay: {},
     monthNames: {},
     locale: {},
     startDate: {
-      // TODO: update this to avoid the 'avoid mutating prop' warning
       type: Object,
       default: () => { return moment() }
     },
@@ -71,8 +70,8 @@ export default {
         // TODO: probably change this so startDate isn't used so we avoid getting days and weeks mixed up.
 
         let weekLength = this.weekLength
-        let weekStartDate = this.startDate.startOf('isoweek').format('dddd DD MMMM YYYY')
-        let weekEndDate = this.startDate.startOf('isoweek').add(weekLength - 1, 'd').format('dddd DD MMMM YYYY')
+        let weekStartDate = this.weekStartDate.clone().startOf('isoweek').format('dddd DD MMMM YYYY')
+        let weekEndDate = this.weekStartDate.clone().startOf('isoweek').add(weekLength - 1, 'd').format('dddd DD MMMM YYYY')
         return weekStartDate + ' - ' + weekEndDate
 
       } else if (this.computedTimeFrame === 'month') {
@@ -96,21 +95,17 @@ export default {
   methods: {
     // TODO: update the methods so they handle changing between different time frames
     goPrev() {
-
-      console.log('go prev', this.computedTimeFrame)
-
       if (this.computedTimeFrame === 'day') {
 
-        //if(!this.startDate) return
-        //return this.startDate.locale(this.locale).format('DD MMMM YYYY')
         var newStartDate = moment(this.startDate).subtract(1, 'days')
-        //this.startDate = newStartDate //TODO: this probably doesn't go here, look at how the month is changed when emitting the change
-
-        console.log('new start date:', newStartDate)
         this.$emit('changeDay', newStartDate)
-        // this.$emit('change')
 
       } else if (this.computedTimeFrame === 'week') {
+
+        console.log(this.weekStartDate)
+
+        var newStartDate = moment(this.weekStartDate).subtract(1, 'w').startOf('isoweek')
+        this.$emit('changeWeek', newStartDate)
 
       } else if (this.computedTimeFrame === 'month') {
 
@@ -126,6 +121,9 @@ export default {
         this.$emit('changeDay', newStartDate)
 
       } else if (this.computedTimeFrame === 'week') {
+
+        var newStartDate = moment(this.weekStartDate).add(1, 'w').startOf('isoweek')
+        this.$emit('changeWeek', newStartDate)
 
       } else if (this.computedTimeFrame === 'month') {
 
