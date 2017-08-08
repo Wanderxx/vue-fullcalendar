@@ -124,8 +124,8 @@
         },
         selectDay : {},
         currentTimeFrame: '',
-        currentStartDate: {},
-        currentWeekStart: {}
+        currentStartDate: '', // This should probably be an object, but need to fix up check if so (in computed start date)
+        currentWeekStart: '' // This should probably be an object, but need to fix up check if so (in computed start date)
       }
     },
     computed: {
@@ -142,26 +142,20 @@
       },
       computedStartDate: {
         get: function () {
-          return this.currentStartDate != {} ? this.currentStartDate : this.initialStartDate
+          return this.currentWeekStart != '' ? this.currentWeekStart : this.initialStartDate
         },
         set: function (newValue) {
-          this.currentStartDate = newValue
+          this.currentWeekStart = newValue
         }
       },
       computedWeekStart: {
         get: function () {
-          //return this.currentWeekStart != {} ? this.currentWeekStart : this.initialWeekStart
-
-          console.log('compute week start')
-
-          console.log(this.computedStartDate)
-          console.log(this.initialStartDate.format('dddd DD MMMM YYYY'))
-          console.log(this.initialStartDate.startOf('isoweek').format('dddd DD MMMM YYYY'))
 
           // TODO: fix this up so it's cleaner and dont' reinit moment objs
-          return this.computedStartDate != {} ? 
-            moment(this.computedStartDate).clone().startOf('isoweek') : 
-            this.initialStartDate.clone().startOf('isoweek')
+          return this.computedStartDate.clone().startOf('isoweek')
+          //  != {} ? 
+          //   moment(this.computedStartDate).clone().startOf('isoweek') : 
+          //   this.initialStartDate.clone().startOf('isoweek')
         },
         set: function (newWeekStart) {
           this.computedStartDate = newWeekStart
@@ -192,10 +186,17 @@
         let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
         let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
 
+        console.log('start', start)
+        console.log('end', end)
+        console.log('current month', this.currentMonth)
+
+        this.emitChangeDay(this.currentMonth.clone())
+        this.emitChangeWeek(this.currentMonth.clone())
+
         this.$emit('changeMonth', start, end, firstDayOfMonth)
       },
       emitChangeWeek (newWeekStart) {
-        console.log('first day of week', newWeekStart)
+        console.log('emitChangeWeek first day of week', newWeekStart)
         this.computedWeekStart = newWeekStart
       },
       emitChangeDay (newDay) {

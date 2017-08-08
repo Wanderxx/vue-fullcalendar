@@ -103,10 +103,8 @@ export default {
     },
     methods: {
         emitChangeMonth (firstDayOfMonth) {
-            console.log('emit change month in month.vue')
-            console.log('first day of month in month.vue', firstDayOfMonth)
+            
             this.currentMonth = firstDayOfMonth;
-
             let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
             let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
 

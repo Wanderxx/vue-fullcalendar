@@ -102,8 +102,6 @@ export default {
 
       } else if (this.computedTimeFrame === 'week') {
 
-        console.log(this.weekStartDate)
-
         var newStartDate = moment(this.weekStartDate).subtract(1, 'w').startOf('isoweek')
         this.$emit('changeWeek', newStartDate)
 
@@ -127,8 +125,8 @@ export default {
 
       } else if (this.computedTimeFrame === 'month') {
 
-        var newMonth = moment(this.currentMonth).add(1, 'months').startOf('month');
-        this.$emit('change', newMonth); //TODO: change this so that there are events for each time frame? or add the time frame to the event
+        var newMonth = moment(this.currentMonth).add(1, 'months').startOf('month')
+        this.$emit('changeMonth', newMonth); //TODO: change this so that there are events for each time frame? or add the time frame to the event
 
       }
     },
