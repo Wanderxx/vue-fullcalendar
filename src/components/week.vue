@@ -75,7 +75,7 @@ export default {
     'day-header': dayHeader
   },
   methods: {
-    aDaysEvents: function (todaysDateString) {
+    aDaysEvents (todaysDateString) {
       //taken from todaysEvetns in day.vue to test it out. if it works move it to another file or something to avoid reuse
 
       let todaysEvents = []
@@ -91,7 +91,7 @@ export default {
       return _.flatten(todaysEvents)
     },
 
-    getEventElement: function (resourceName, inDate, timeOfDay) {
+    getEventElement (resourceName, inDate, timeOfDay) {
       let formattedDate = moment(inDate, 'ddd DD MMM').format('YYYY-MM-DD')
       let todaysEvents = _.find(this.weeksEvents, {date: formattedDate})
       let resourcesEvents = _.filter(todaysEvents.events, {resourceName: resourceName})

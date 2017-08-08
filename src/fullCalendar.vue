@@ -2,6 +2,7 @@
   <div class="comp-full-calendar">
     <!-- header pick month -->
     <!-- :first-day="firstDay" -->
+    {{colors}}
 
     <fc-header :current-month="currentMonth"
       
@@ -13,7 +14,8 @@
       @changeMonth="emitChangeMonth"
       @changeDay="emitChangeDay"
       @changeWeek="emitChangeWeek"
-      @changeTimeFrame="changeTimeFrame">
+      @changeTimeFrame="changeTimeFrame"
+      >
 
       <!-- <div slot="header-left">
         <slot name="fc-header-left">
@@ -30,8 +32,12 @@
       <day :startDate="computedStartDate"
         :options="options"
         :resourceGroups="resourceGroups"
+        :colors="colors"
+        :initialColorIndex="colorIndex"
+        @changeColorIndex="emitChangeColorIndex"
       ></day>
     </template>
+    
 
     <template v-else-if="computedTimeFrame === 'week'">
       <week :resourceGroups="resourceGroups"
@@ -57,7 +63,7 @@
 
   </div>
 </template>
-<script type="text/babel">
+ <script type="text/babel">
 // TODO: go through this and clean it up a bit
   import dateFunc from './components/dateFunc'
   import moment from 'moment';
@@ -65,6 +71,35 @@
   import Month from './components/month.vue'
   import Day from './components/day.vue'
   import Week from './components/week.vue'
+  import Vue from 'vue'
+
+
+// Vue.mixin({
+//   created: function () {
+//     console.log('mixin created')
+//     console.log(this)
+//     // console.log(this.colors)
+    
+//   }
+// })
+
+Vue.prototype.pColors = ['F22613', '446CB3']
+
+Vue.prototype.pColorIndex = 0
+
+Vue.prototype.getColor = function () {
+  // console.error('get color')
+  // console.log(this.pColorIndex)
+  // console.log(this.pColors)
+  // console.log(this.pColors.length)
+  let i = this.pColorIndex;
+  // console.log(this.pColorIndex > this.pColors.length)
+  this.pColorIndex = this.pColorIndex > this.pColors.length ? 0 : this.pColorIndex + 1
+  // console.log(this.pColorIndex)
+  return this.pColors[i]
+}
+
+
 
   export default {
     props : {
@@ -90,7 +125,14 @@
         default: () => { 
           return moment() 
         }
+      },
+      initColorIndex: {
+        default: 0
       }
+    },
+    beforeCreate() {
+      this.pColors = this.colors
+      console.error(this.pColors)
     },
     components : {
       'event-card': EventCard,
@@ -111,7 +153,15 @@
         // },
         currentTimeFrame: '',
         currentStartDate: '', // This should probably be an object, but need to fix up check if so (in computed start date)
-        currentWeekStart: '' // This should probably be an object, but need to fix up check if so (in computed start date)
+        currentWeekStart: '', // This should probably be an object, but need to fix up check if so (in computed start date)
+        currentColorIndex: undefined,
+        defaultColours: ['F22613', '446CB3']
+      }
+    },
+    watch: {
+      colorIndex: function(val) {
+        console.log('change in colour index watch new val', val)
+        this.colorIndex = val
       }
     },
     computed: {
@@ -136,8 +186,6 @@
       },
       computedWeekStart: {
         get: function () {
-
-          // TODO: fix this up so it's cleaner and dont' reinit moment objs
           return this.computedStartDate.clone().startOf('isoweek')
           //  != {} ? 
           //   moment(this.computedStartDate).clone().startOf('isoweek') : 
@@ -145,6 +193,17 @@
         },
         set: function (newWeekStart) {
           this.computedStartDate = newWeekStart
+        }
+      },
+      // TODO: probably remove all refrences to color index
+      colorIndex: {
+        get: function () {
+          console.log('color index get', this)
+          return this.currentColorIndex !== undefined ? this.currentColorIndex : this.initialColorIndex
+        },
+        set: function() {
+          console.log('color index set', this.currentColorIndex)
+          return this.currentColorIndex !== undefined ? this.currentColorIndex++ : this.initialColorIndex++; // make sure it only ever goes up in increments of 1
         }
       },
       resourceGroups () {
@@ -161,6 +220,14 @@
           }
         })
         return resourceNamesByGroups
+      },
+      color () {
+        let index = this.colorIndex
+        this.colorIndex++
+        return this.colors[index]
+      },
+      colors () {
+        return this.options.colors.length !== 0 ? this.options.colors : this.defaultColours
       }
     },
     methods : {
@@ -192,6 +259,10 @@
       changeTimeFrame (newTimeFrame) {
         this.$emit('changeTimeFrame', newTimeFrame) 
         this.computedTimeFrame = newTimeFrame
+      },
+      emitChangeColorIndex () {
+        console.log('emited change in color index')
+        this.colorIndex++;
       }
     }
   }

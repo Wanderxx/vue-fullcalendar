@@ -3,9 +3,9 @@
     <div v-for="resource in resourceGroups">
       <day-header class="resource-header" :headerTimes="timeArray"></day-header>
       <div class="time-row" v-for="name in resource.resourceNames">
-        <div class="bordered time-cell">{{name}}</div>
-        <div class="bordered time-cell" v-for="time in timeArray" ref="timecell">
-          <div v-html="getEventElement(name, time)"></div>
+        <div class="bordered time-cell">{{name}}</div> 
+        <div class="bordered time-cell" v-for="(time, index) in timeArray" ref="timecell">
+           <div v-html="getEventElement(name, time, index)"></div>
         </div>
       </div>
     </div>
@@ -17,6 +17,7 @@ import moment from 'moment'
 import _ from 'lodash'
 import dayHeader from './dayHeader'
 import timeFunc from './timeFunc'
+import dayEvent from './dayEvent'
 
 // TODO: handle resize
 
@@ -24,6 +25,7 @@ export default {
   props: {
     startDate: {},
     options: {},
+    colors: {},
     resourceGroups: {}
   },
   data () { 
@@ -31,8 +33,15 @@ export default {
       timeSpanWidth: 80
     }
   },
+  beforeCreate () {
+    this.colorIndex = 0
+  },
   mounted () {
     this.initTimeSpanWidth()
+  },
+  updated () {
+    console.log('updated')
+    console.log(this)
   },
   computed: {
     timeArray () {
@@ -63,18 +72,26 @@ export default {
       return _.flatten(todaysEvents)
     },
     isoTodaysDateString () {
-      return this.startDate.format('YYYY-MM-DD')
+      return this.startDate.clone().format('YYYY-MM-DD')
+    }
+  },
+  watch: {
+    startDate (val) {
+      this.colorIndex = 0 // reset evertime we change day
+      console.log('change in startDate watch new val', val)
+      return val
     }
   },
   components: {
-    'day-header': dayHeader
+    'day-header': dayHeader,
+    // 'day-event': dayEvent
   },
   methods: {
-    initTimeSpanWidth: function () {      
+    initTimeSpanWidth () {      
       if(this.$refs.timecell == undefined) return
       this.timeSpanWidth = this.$refs.timecell[0].clientWidth + 1.5 // extra for borders
     },
-    getEventElement: function (resourceName, time) {
+    getEventElement (resourceName, time, index) {
       var dateString = this.isoTodaysDateString      
 
       let event = _.find(this.todaysEvents, function (event) {
@@ -82,14 +99,22 @@ export default {
       })
 
       if(event != undefined) {
+        console.log('event', event)
         // TODO: Probably best to move this to a new component.
         let duration = event.duration ? 
           timeFunc.convertDurationToMinutes(event.duration) : 
           timeFunc.getDurationBetweenTimes(event.startTime, event.endTime)
 
         let pixelWidth = duration/30 * this.timeSpanWidth
+        //let color = event.color != null ? event.color : this.colors[this.colorIndex % this.colors.length]
+        console.log('color index', this.colorIndex)
+        this.colorIndex++
 
-        return '<div class="event" style="width: '+pixelWidth+'px;">' 
+let color = this.getColor()
+
+console.warn(color)
+
+        return '<div class="event" style="width: '+pixelWidth+'px; background-color: #' + color +'">' 
           + event.type + ' - ' + event.title + ' - ' + event.recipient 
           /// + ' || (duration: ' + duration + '. start/end: ' + event.startTime + '/' + event.endTime + '. width: ' + pixelWidth // debugging line
           + '</div>'
@@ -107,9 +132,10 @@ export default {
     z-index: 1;
     position: absolute;
     left: 0px;
-    border: 1px solid black;
-    margin-top: 10px;
+    border: 2px solid black;
+    top: 10px;
     overflow:hidden; 
-    background-color: lightblue;
+    background-color: lightblue; 
+    border-radius: 4px;
   }
 </style>

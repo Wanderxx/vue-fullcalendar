@@ -178,31 +178,31 @@ export default {
             // find all events start from this date
             let cellIndexArr = [];
             let thisDayEvents = this.events.filter(day => {
-            let st = moment(day.start);
-            let ed = moment(day.end ? day.end : st);
+                let st = moment(day.start);
+                let ed = moment(day.end ? day.end : st);
 
-            return date.isBetween(st, ed, null, '[]');
+                return date.isBetween(st, ed, null, '[]');
             });
 
             // sort by duration
             thisDayEvents.sort((a,b)=>{
-            if(!a.cellIndex) return 1;
-            if (!b.cellIndex) return -1;
-            return a.cellIndex - b.cellIndex
+                if(!a.cellIndex) return 1;
+                if (!b.cellIndex) return -1;
+                return a.cellIndex - b.cellIndex
             });
 
             // mark cellIndex and place holder
             for (let i = 0;i < thisDayEvents.length;i++) {
-            thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || (i + 1);
-            thisDayEvents[i].isShow = true;
-            if (thisDayEvents[i].cellIndex == i+1 || i>2) continue;
-            thisDayEvents.splice(i,0,{
-                title : 'holder',
-                cellIndex : i+1,
-                start : date.format(),
-                end : date.format(),
-                isShow : false
-            })
+                thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || (i + 1);
+                thisDayEvents[i].isShow = true;
+                if (thisDayEvents[i].cellIndex == i+1 || i>2) continue;
+                thisDayEvents.splice(i,0,{
+                    title : 'holder',
+                    cellIndex : i+1,
+                    start : date.format(),
+                    end : date.format(),
+                    isShow : false
+                })
             }
 
             return thisDayEvents

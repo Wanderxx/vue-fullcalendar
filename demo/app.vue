@@ -3,26 +3,25 @@
     <!--  -->
     <full-calendar class="test-fc" 
         :options="calendarOptions" 
-        :initialTimeFrame="'month'" 
+        :initialTimeFrame="'day'" 
         first-day='1'
-        locale="en" 
+        locale="en"
         @changeMonth="changeMonth" 
         @eventClick="eventClick" 
         @dayClick="dayClick" 
         @moreClick="moreClick">
-      <template slot="fc-event-card" scope="p">
-        <p>
-          <i class="fa">sadfsd</i> {{ p.event.title }} test</p>
-      </template>
+      
     </full-calendar>
   </div>
 </template>
 <script>
+import moment from 'moment'
 
 const options = {
   dayStartTime: '8:00am', // Start time on the calendar
   dayEndTime: '5:30pm', // End time on the calendar
   weekLength: 5, // or 7 
+  colors: ['EC644B', 'F1A9A0', '913D88', '59ABE3', '87D37C', 'F4D03F', 'F27935', '6C7A89'],
   resources: {
     groups: [ //Split resources into different related groups
       {
@@ -31,25 +30,59 @@ const options = {
         events: [ //The events for this resource group. The resourceName should map to something in resourceNames
           {
             resourceName: 'Charity Barnum',
-            date: '2017-08-08',
+            date: moment().format('YYYY-MM-DD'), // '2017-08-08',
             startTime: '12:00pm', //Start time should always be there
             endTime: '4:30pm', //End time is optional, should be able to figure this out from the duration if it's included instead
+            type: 'Job',
+            title: 'Manufacture Workspace',
+            recipient: 'Client',
+            color: 'FFF'
+          }, {
+            resourceName: 'Charity Barnum',
+            date: moment().format('YYYY-MM-DD'),
+            startTime: '8:00am', //Start time should always be there
+            duration: '3.75', //End time is optional, should be able to figure this out from the duration if it's included instead
             type: 'Job',
             title: 'Manufacture Workspace',
             recipient: 'Client'
           }, {
             resourceName: 'Rhett Butler',
-            date: '2017-08-04',
+            date: moment().format('YYYY-MM-DD'),
             startTime: '8:00am',
-            duration: '3.75', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
+            duration: '3.75', // this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) TODO: or minutes (probably best)
             type: 'Job',
             title: 'Manufacture Workspace',
             recipient: 'Client1'
           }, {
             resourceName: 'Annie Oakley',
-            date: '2017-08-01',
+            date: moment().format('YYYY-MM-DD'),
             startTime: '3:00pm',
             duration: '120', // minutes
+            type: 'Job',
+            title: 'Manufacture Workspace',
+            recipient: 'Client1'
+          }, {
+            resourceName: 'Charity Barnum',
+            date: moment().subtract(1, 'd').format('YYYY-MM-DD'), // '2017-08-08',
+            startTime: '12:00pm', //Start time should always be there
+            endTime: '4:30pm', //End time is optional, should be able to figure this out from the duration if it's included instead
+            type: 'Job',
+            title: 'Manufacture Workspace',
+            recipient: 'Client',
+            color: 'FFF'
+          }, {
+            resourceName: 'Charity Barnum',
+            date: moment().subtract(1, 'd').format('YYYY-MM-DD'),
+            startTime: '8:00am', //Start time should always be there
+            duration: '3.75', //End time is optional, should be able to figure this out from the duration if it's included instead
+            type: 'Job',
+            title: 'Manufacture Workspace',
+            recipient: 'Client'
+          }, {
+            resourceName: 'Rhett Butler',
+            date: moment().subtract(1, 'd').format('YYYY-MM-DD'),
+            startTime: '8:00am',
+            duration: '3.75', // this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) TODO: or minutes (probably best)
             type: 'Job',
             title: 'Manufacture Workspace',
             recipient: 'Client1'
@@ -139,27 +172,61 @@ export default {
 <style lang='scss'>
 .app {
   color: green;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .bordered {
-  border: 1px solid grey;
+  border: 1px solid #585858;
 }
 
 .time-row {
   display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  justify-content: center; 
+  align-items: center; 
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .time-cell {
   flex: 1;
   height: 50px;
-  text-align: center;
-  vertical-align: middle;
+  // text-align: center;
   position: relative;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .resource-header {
   margin-top: 4px;
   margin-bottom: 4px;
-  background-color: pink;
+  font-weight: bold;
+}
+
+.resource-header .time-cell {
+  background-color: #F9690E;
+
+}
+
+.time-row .time-cell:first-child {
+  margin-right: 4px;
+  border-radius: 4px;
+  min-width: 120px; 
+  background-color: #505050;
+  color: #F9690E;
+  font-weight: bold;
+}
+
+.time-row .time-cell:nth-child(2) {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.time-row .time-cell:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 </style>
