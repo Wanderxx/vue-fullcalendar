@@ -40,15 +40,11 @@
           :options="options"
         ></week>
     </template>
-<!-- :events="events" -->
+<!-- :events="events" :showMore="showMore" :selectDay="selectDay" :morePos="morePos" -->
     <template v-else-if="computedTimeFrame === 'month'">
       <month :firstDay="firstDay"
               :locale="locale"
-              
               :eventLimit="eventLimit"
-              :showMore="showMore"
-              :morePos="morePos"
-              :selectDay="selectDay"
               :currentMonth="currentMonth"
               :options="options"
               >
@@ -72,11 +68,6 @@
 
   export default {
     props : {
-      // TODO: update events so that it's calculated based off what was passed in
-      // events : { // events will be displayed on calendar
-      //   type : Array,
-      //   default : []
-      // },
       locale : {
         type : String,
         default : 'en'
@@ -100,12 +91,6 @@
           return moment() 
         }
       }
-      // initialWeekStart: {
-      //   type: Object,
-      //   default: () => {
-      //     return moment().startOf('isoweek')
-      //   }
-      // }
     },
     components : {
       'event-card': EventCard,
@@ -119,12 +104,11 @@
         currentMonth : moment().startOf('month'),
         isLismit : true,
         eventLimit : 3,
-        showMore : false,
-        morePos : {
-          top: 0,
-          left : 0
-        },
-        selectDay : {},
+        // showMore : true,
+        // morePos : {
+        //   top: 0,
+        //   left : 0
+        // },
         currentTimeFrame: '',
         currentStartDate: '', // This should probably be an object, but need to fix up check if so (in computed start date)
         currentWeekStart: '' // This should probably be an object, but need to fix up check if so (in computed start date)

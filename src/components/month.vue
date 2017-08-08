@@ -80,15 +80,21 @@ export default {
         default : 0
       },
       eventLimit: Number,
-      showMore: Boolean,
-      morePos: Object,
-      selectDay: Object,
+      // showMore: Boolean,
+      // morePos: Object,
+      // selectDay: Object,
       options: Object,
       currentMonth : {}
     },
     data () {
         return { 
-            eventsArray: []
+            eventsArray: [],
+            showMore: false,
+            selectDay : {},
+            morePos : {
+                top: 0,
+                left : 0
+            }
         }
     },
     components : {

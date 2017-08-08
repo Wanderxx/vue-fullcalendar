@@ -1,11 +1,10 @@
 <template>
   <div>
-    <!--first-day='1'  -->
+    <!--  -->
     <full-calendar class="test-fc" 
-        :events="fcEvents" 
         :options="calendarOptions" 
         :initialTimeFrame="'month'" 
-        
+        first-day='1'
         locale="en" 
         @changeMonth="changeMonth" 
         @eventClick="eventClick" 
@@ -19,55 +18,6 @@
   </div>
 </template>
 <script>
-let demoEvents = [
-  {
-    title: 'Sunny 725-727',
-    start: '2017-08-25',
-    end: '2017-08-27',
-    cssClass: 'family'
-  },
-  {
-    title: 'Lunfel 726-727',
-    start: '2017-08-26',
-    end: '2017-08-27',
-    cssClass: ['home', 'work']
-  },
-  {
-    title: 'Lunfel 2/27-2/28',
-    start: '2017-08-27',
-    end: '2017-08-28'
-  },
-  {
-    title: 'Lunfel 2/27-2/28',
-    start: '2017-08-27',
-    end: '2017-08-28'
-  },
-  {
-    title: 'Lunfel 2/27-2/28',
-    start: '2017-08-27',
-    end: '2017-08-28'
-  },
-  {
-    title: 'Lunfel 2/26-3/05',
-    start: '2017-08-26',
-    end: '2017-09-05'
-  },
-  {
-    title: 'Lunfel 1/27-1/28',
-    start: '2017-08-27',
-    end: '2017-08-28'
-  },
-  {
-    title: 'Lunfel 1/27-2/2',
-    start: '2017-08-27',
-    end: '2017-09-02'
-  },
-  {
-    title: 'Lunfel 3/27-3/28',
-    start: '2017-03-27',
-    end: '2017-03-28'
-  },
-];
 
 const options = {
   dayStartTime: '8:00am', // Start time on the calendar
@@ -164,7 +114,6 @@ export default {
   data() {
     return {
       name: 'Sunny!',
-      fcEvents: demoEvents,
       calendarOptions: options
     }
   },
