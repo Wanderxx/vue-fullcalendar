@@ -33,15 +33,8 @@ export default {
       timeSpanWidth: 80
     }
   },
-  beforeCreate () {
-    this.colorIndex = 0
-  },
   mounted () {
     this.initTimeSpanWidth()
-  },
-  updated () {
-    console.log('updated')
-    console.log(this)
   },
   computed: {
     timeArray () {
@@ -99,20 +92,13 @@ export default {
       })
 
       if(event != undefined) {
-        console.log('event', event)
         // TODO: Probably best to move this to a new component.
         let duration = event.duration ? 
           timeFunc.convertDurationToMinutes(event.duration) : 
           timeFunc.getDurationBetweenTimes(event.startTime, event.endTime)
 
         let pixelWidth = duration/30 * this.timeSpanWidth
-        //let color = event.color != null ? event.color : this.colors[this.colorIndex % this.colors.length]
-        console.log('color index', this.colorIndex)
-        this.colorIndex++
-
-let color = this.getColor()
-
-console.warn(color)
+        let color = event.color != null ? event.color : this.colors[index % this.colors.length]
 
         return '<div class="event" style="width: '+pixelWidth+'px; background-color: #' + color +'">' 
           + event.type + ' - ' + event.title + ' - ' + event.recipient 

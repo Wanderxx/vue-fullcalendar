@@ -21,7 +21,7 @@ const options = {
   dayStartTime: '8:00am', // Start time on the calendar
   dayEndTime: '5:30pm', // End time on the calendar
   weekLength: 5, // or 7 
-  colors: ['EC644B', 'F1A9A0', '913D88', '59ABE3', '87D37C', 'F4D03F', 'F27935', '6C7A89'],
+  colors: ['D1D5D8', '3498DB', 'F1C40F', 'E74C3C', '1ABC9C'],
   resources: {
     groups: [ //Split resources into different related groups
       {
@@ -36,7 +36,8 @@ const options = {
             type: 'Job',
             title: 'Manufacture Workspace',
             recipient: 'Client',
-            color: 'FFF'
+            color: 'FFF',
+            textColor: '000'
           }, {
             resourceName: 'Charity Barnum',
             date: moment().format('YYYY-MM-DD'),

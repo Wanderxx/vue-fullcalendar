@@ -33,8 +33,6 @@
         :options="options"
         :resourceGroups="resourceGroups"
         :colors="colors"
-        :initialColorIndex="colorIndex"
-        @changeColorIndex="emitChangeColorIndex"
       ></day>
     </template>
     
@@ -65,207 +63,157 @@
 </template>
  <script type="text/babel">
 // TODO: go through this and clean it up a bit
-  import dateFunc from './components/dateFunc'
-  import moment from 'moment';
-  import EventCard from './components/eventCard.vue';
-  import Month from './components/month.vue'
-  import Day from './components/day.vue'
-  import Week from './components/week.vue'
-  import Vue from 'vue'
+import dateFunc from './components/dateFunc'
+import moment from 'moment';
+import EventCard from './components/eventCard.vue';
+import Month from './components/month.vue'
+import Day from './components/day.vue'
+import Week from './components/week.vue'
+import Vue from 'vue'
 
-
-// Vue.mixin({
-//   created: function () {
-//     console.log('mixin created')
-//     console.log(this)
-//     // console.log(this.colors)
-    
-//   }
-// })
-
-Vue.prototype.pColors = ['F22613', '446CB3']
-
-Vue.prototype.pColorIndex = 0
-
-Vue.prototype.getColor = function () {
-  // console.error('get color')
-  // console.log(this.pColorIndex)
-  // console.log(this.pColors)
-  // console.log(this.pColors.length)
-  let i = this.pColorIndex;
-  // console.log(this.pColorIndex > this.pColors.length)
-  this.pColorIndex = this.pColorIndex > this.pColors.length ? 0 : this.pColorIndex + 1
-  // console.log(this.pColorIndex)
-  return this.pColors[i]
-}
-
-
-
-  export default {
-    props : {
-      locale : {
-        type : String,
-        default : 'en'
+export default {
+  props : {
+    locale : {
+      type : String,
+      default : 'en'
+    },
+    firstDay : {
+      type : Number | String,
+      validator (val) {
+        let res = parseInt(val);
+        return res >= 0 && res <= 6
       },
-      firstDay : {
-        type : Number | String,
-        validator (val) {
-          let res = parseInt(val);
-          return res >= 0 && res <= 6
-        },
-        default : 0
-      },
-      options: Object,
-      initialTimeFrame: {
-        type: String,
-        default: 'month'
-      },
-      initialStartDate: {
-        type: Object,
-        default: () => { 
-          return moment() 
-        }
-      },
-      initColorIndex: {
-        default: 0
+      default : 0
+    },
+    options: Object,
+    initialTimeFrame: {
+      type: String,
+      default: 'month'
+    },
+    initialStartDate: {
+      type: Object,
+      default: () => { 
+        return moment() 
       }
     },
-    beforeCreate() {
-      this.pColors = this.colors
-      console.error(this.pColors)
-    },
-    components : {
-      'event-card': EventCard,
-      'fc-header' : require('./components/header'),
-      'month': Month,
-      'day': Day,
-      'week': Week
-    },
-    data () {
-      return {
-        currentMonth : moment().startOf('month'),
-        isLismit : true,
-        eventLimit : 3,
-        // showMore : true,
-        // morePos : {
-        //   top: 0,
-        //   left : 0
-        // },
-        currentTimeFrame: '',
-        currentStartDate: '', // This should probably be an object, but need to fix up check if so (in computed start date)
-        currentWeekStart: '', // This should probably be an object, but need to fix up check if so (in computed start date)
-        currentColorIndex: undefined,
-        defaultColours: ['F22613', '446CB3']
+    initColorIndex: {
+      default: 0
+    }
+  },
+  components : {
+    'event-card': EventCard,
+    'fc-header' : require('./components/header'),
+    'month': Month,
+    'day': Day,
+    'week': Week
+  },
+  data () {
+    return {
+      currentMonth : moment().startOf('month'),
+      isLismit : true,
+      eventLimit : 3,
+      // showMore : true,
+      // morePos : {
+      //   top: 0,
+      //   left : 0
+      // },
+      currentTimeFrame: '',
+      currentStartDate: '', // This should probably be an object, but need to fix up check if so (in computed start date)
+      currentWeekStart: '', // This should probably be an object, but need to fix up check if so (in computed start date)
+      defaultColours: ['F22613', '446CB3'] // get colours from: http://flatcolors.net/palette/203-flat-wbuttons# or the colour array in app.vue options const
+    }
+  },
+  created () {
+    // assign color to event 
+    this.assignColorToEvents()
+  },
+  computed: {
+    // The variables with the 'computed' prefix are for variables which we pass in props from but don't want to change the props (Vue gives a warning)
+    // There are three variables prefixes which relate to this 'initial' for the prop, 'current' for the data value, and 'computed' for the computed values
+    // TODO: See if there is a better way of doing this. I think we could remove the data variables and just work with computed and props, but probably won't work with the get and set
+    computedTimeFrame: {
+      get: function () {
+        return this.currentTimeFrame != '' ? this.currentTimeFrame : this.initialTimeFrame 
+      },
+      set: function (newValue) {
+        this.currentTimeFrame = newValue
       }
     },
-    watch: {
-      colorIndex: function(val) {
-        console.log('change in colour index watch new val', val)
-        this.colorIndex = val
+    computedStartDate: {
+      get: function () {
+        return this.currentWeekStart != '' ? this.currentWeekStart : this.initialStartDate
+      },
+      set: function (newValue) {
+        this.currentWeekStart = newValue
       }
     },
-    computed: {
-      // The variables with the 'computed' prefix are for variables which we pass in props from but don't want to change the props (Vue gives a warning)
-      // There are three variables prefixes which relate to this 'initial' for the prop, 'current' for the data value, and 'computed' for the computed values
-      // TODO: See if there is a better way of doing this. I think we could remove the data variables and just work with computed and props, but probably won't work with the get and set
-      computedTimeFrame: {
-        get: function () {
-          return this.currentTimeFrame != '' ? this.currentTimeFrame : this.initialTimeFrame 
-        },
-        set: function (newValue) {
-          this.currentTimeFrame = newValue
-        }
+    computedWeekStart: {
+      get: function () {
+        return this.computedStartDate.clone().startOf('isoweek')
       },
-      computedStartDate: {
-        get: function () {
-          return this.currentWeekStart != '' ? this.currentWeekStart : this.initialStartDate
-        },
-        set: function (newValue) {
-          this.currentWeekStart = newValue
-        }
-      },
-      computedWeekStart: {
-        get: function () {
-          return this.computedStartDate.clone().startOf('isoweek')
-          //  != {} ? 
-          //   moment(this.computedStartDate).clone().startOf('isoweek') : 
-          //   this.initialStartDate.clone().startOf('isoweek')
-        },
-        set: function (newWeekStart) {
-          this.computedStartDate = newWeekStart
-        }
-      },
-      // TODO: probably remove all refrences to color index
-      colorIndex: {
-        get: function () {
-          console.log('color index get', this)
-          return this.currentColorIndex !== undefined ? this.currentColorIndex : this.initialColorIndex
-        },
-        set: function() {
-          console.log('color index set', this.currentColorIndex)
-          return this.currentColorIndex !== undefined ? this.currentColorIndex++ : this.initialColorIndex++; // make sure it only ever goes up in increments of 1
-        }
-      },
-      resourceGroups () {
-        let resourceNamesByGroups = this.options.resources.groups.map((item) => {
-          let definedResourceNames = item.resourceNames
+      set: function (newWeekStart) {
+        this.computedStartDate = newWeekStart
+      }
+    },
+    resourceGroups () {
+      let resourceNamesByGroups = this.options.resources.groups.map((item) => {
+        let definedResourceNames = item.resourceNames
 
-          let eventResourceNames = item.events.map((event) => {
-            return event.resourceName
-          })
+        let eventResourceNames = item.events.map((event) => {
+          return event.resourceName
+        })
 
-          return {
-            type: [item.type],
-            resourceNames: _.union(definedResourceNames, eventResourceNames).sort() // FIXME: sort doesnt sort with string number values
+        return {
+          type: [item.type],
+          resourceNames: _.union(definedResourceNames, eventResourceNames).sort() // FIXME: sort doesnt sort with string number values
+        }
+      })
+      return resourceNamesByGroups
+    },
+    colors () {
+      return this.options.colors.length !== 0 ? this.options.colors : this.defaultColours
+    }
+  },
+  methods : {
+    assignColorToEvents () {
+      let colors = this.colors
+      let colorIndex = 0
+
+      this.options.resources.groups.map((group) => {
+        group.events.map((event, index) => {
+          if(event.color === undefined) {
+            event.color = colors[colorIndex]
+            colorIndex++
           }
         })
-        return resourceNamesByGroups
-      },
-      color () {
-        let index = this.colorIndex
-        this.colorIndex++
-        return this.colors[index]
-      },
-      colors () {
-        return this.options.colors.length !== 0 ? this.options.colors : this.defaultColours
-      }
+      })
     },
-    methods : {
-      // TODO: find someway to pass this to many components, rather than redeclaring it
-      emitChangeMonth (firstDayOfMonth) {
-        console.log('first day of month', firstDayOfMonth)
-        this.currentMonth = firstDayOfMonth
+    emitChangeMonth (firstDayOfMonth) {
+      console.log('first day of month', firstDayOfMonth)
+      this.currentMonth = firstDayOfMonth
 
-        let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
-        let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
+      let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
+      let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
 
-        console.log('start', start)
-        console.log('end', end)
-        console.log('current month', this.currentMonth)
+      this.emitChangeDay(this.currentMonth.clone())
+      this.emitChangeWeek(this.currentMonth.clone())
 
-        this.emitChangeDay(this.currentMonth.clone())
-        this.emitChangeWeek(this.currentMonth.clone())
-
-        this.$emit('changeMonth', start, end, firstDayOfMonth)
-      },
-      emitChangeWeek (newWeekStart) {
-        console.log('emitChangeWeek first day of week', newWeekStart)
-        this.computedWeekStart = newWeekStart
-      },
-      emitChangeDay (newDay) {
-        console.log('new day in emit change day', newDay)
-        this.computedStartDate = newDay
-      },
-      changeTimeFrame (newTimeFrame) {
-        this.$emit('changeTimeFrame', newTimeFrame) 
-        this.computedTimeFrame = newTimeFrame
-      },
-      emitChangeColorIndex () {
-        console.log('emited change in color index')
-        this.colorIndex++;
-      }
+      this.$emit('changeMonth', start, end, firstDayOfMonth)
+    },
+    emitChangeWeek (newWeekStart) {
+      console.log('emitChangeWeek first day of week', newWeekStart)
+      this.computedWeekStart = newWeekStart
+    },
+    emitChangeDay (newDay) {
+      console.log('new day in emit change day', newDay)
+      this.computedStartDate = newDay
+    },
+    changeTimeFrame (newTimeFrame) {
+      this.$emit('changeTimeFrame', newTimeFrame) 
+      this.computedTimeFrame = newTimeFrame
     }
   }
+}
   
 </script>
 <style lang="scss">

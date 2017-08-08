@@ -26,3 +26,4 @@
     * <strike>The other rows should be seperate for each time section, and a row for all time headings</strike>
 
 * Handle responsiveness
+* Handle text colour in individual events
