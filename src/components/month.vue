@@ -24,9 +24,6 @@
                             <event-card :event="event" :date="day.date" :firstDay="firstDay"
                                         v-for="event in day.events" v-show="event.cellIndex <= eventLimit"
                                         @click="eventClick">
-                                <template scope="p">
-                                    <slot name="fc-event-card" :event="p.event"></slot>
-                                </template>
                             </event-card>
                             <p v-if="day.events.length > eventLimit" class="more-link" @click.stop="selectThisDay(day, $event)">
                                 + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
