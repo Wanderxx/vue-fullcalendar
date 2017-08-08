@@ -1,7 +1,7 @@
 <template>
     <!-- body display date day and events -->
     <div class="full-calendar-body">
-        <div class="weeks">
+        <div class="weeks resource-header">
             <strong class="week" v-for="dayIndex in 7">{{ (dayIndex - 1) | localeWeekDay(firstDay, locale) }}</strong>
         </div>
         <div class="dates" ref="dates">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- absolute so we can make dynamic td -->
             <div class="dates-events">
                 <div class="events-week" v-for="week in currentDates">
@@ -21,8 +21,8 @@
                   'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
                         <p class="day-number">{{day.monthDay}}</p>
                         <div class="event-box">
-                            <event-card :event="event" :date="day.date" :firstDay="firstDay" 
-                                        v-for="event in day.events" v-show="event.cellIndex <= eventLimit" 
+                            <event-card :event="event" :date="day.date" :firstDay="firstDay"
+                                        v-for="event in day.events" v-show="event.cellIndex <= eventLimit"
                                         @click="eventClick">
                                 <template scope="p">
                                     <slot name="fc-event-card" :event="p.event"></slot>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- full events when click show more -->
             <div class="more-events" v-show="showMore" :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
                 <div class="more-header">
@@ -50,26 +50,23 @@
                     </ul>
                 </div>
             </div>
-    
+
             <slot name="body-card">
-    
+
             </slot>
-    
+
         </div>
     </div>
 </template>
 
 <script>
 import dateFunc from './dateFunc'
+import timeFunc from './timeFunc'
 import EventCard from './eventCard.vue'
 import moment from 'moment'
 
 export default {
     props : {
-      events : { // events will be displayed on calendar
-        type : Array,
-        default : []
-      },
       locale : {
         type : String,
         default : 'en'
@@ -77,7 +74,6 @@ export default {
       firstDay : {
         type : Number | String,
         validator (val) {
-            console.log('val', val)
           let res = parseInt(val);
           return res >= 0 && res <= 6
         },
@@ -90,6 +86,11 @@ export default {
       options: Object,
       currentMonth : {}
     },
+    data () {
+        return { 
+            eventsArray: []
+        }
+    },
     components : {
       'event-card': EventCard,
     },
@@ -99,11 +100,39 @@ export default {
     computed: {
         currentDates() {
             return this.getCalendar()
+        },
+        //TODO: turn events into computed events after logic is figured out
+        events: {
+            get: function () {
+                return this.eventsArray.length !== 0 ? this.eventsArray : this.getEvents()
+            },
+            set: function () {
+                return this.eventsArray
+            }
         }
     },
     methods: {
+        getEvents () {
+            let eventArray = []
+
+            this.options.resources.groups.map((item) => {
+                item.events.map((event) => {
+                    let duration = event.duration ? 
+                        timeFunc.convertDurationToMinutes(event.duration) : 
+                        timeFunc.getDurationBetweenTimes(event.startTime, event.endTime)
+                   
+                    eventArray.push({
+                        title: event.type + ' ' + event.title + ' ' + event.recipient,
+                        start: event.date,
+                        end: moment(event.date).add(duration, 'm').format('YYYY-MM-DD') // TODO: work in duration
+                    })
+                })
+            })
+
+            return eventArray
+        },
         emitChangeMonth (firstDayOfMonth) {
-            
+
             this.currentMonth = firstDayOfMonth;
             let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
             let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
@@ -116,9 +145,6 @@ export default {
         },
         getCalendar() {
             // calculate 2d-array of each month
-            console.log('get calendar function')
-            console.log('current month', this.currentMonth)
-            console.log('first day', this.firstDay)
 
             let monthViewStartDate = dateFunc.getMonthViewStartDate(this.currentMonth, this.firstDay);
             let calendar = [];

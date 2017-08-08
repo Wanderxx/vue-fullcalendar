@@ -40,16 +40,17 @@
           :options="options"
         ></week>
     </template>
-
+<!-- :events="events" -->
     <template v-else-if="computedTimeFrame === 'month'">
       <month :firstDay="firstDay"
               :locale="locale"
-              :events="events"
+              
               :eventLimit="eventLimit"
               :showMore="showMore"
               :morePos="morePos"
               :selectDay="selectDay"
               :currentMonth="currentMonth"
+              :options="options"
               >
       </month> 
     </template>
@@ -71,10 +72,11 @@
 
   export default {
     props : {
-      events : { // events will be displayed on calendar
-        type : Array,
-        default : []
-      },
+      // TODO: update events so that it's calculated based off what was passed in
+      // events : { // events will be displayed on calendar
+      //   type : Array,
+      //   default : []
+      // },
       locale : {
         type : String,
         default : 'en'

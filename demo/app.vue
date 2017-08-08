@@ -4,7 +4,7 @@
     <full-calendar class="test-fc" 
         :events="fcEvents" 
         :options="calendarOptions" 
-        :initialTimeFrame="'week'" 
+        :initialTimeFrame="'month'" 
         
         locale="en" 
         @changeMonth="changeMonth" 
