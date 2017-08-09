@@ -92,6 +92,7 @@ export default {
 
       if(event != undefined) {
         // TODO: Probably best to move this to a new component.
+        // console.log('event in event elemtn', event)
         let duration = event.duration ? 
           timeFunc.convertDurationToMinutes(event.duration) : 
           timeFunc.getDurationBetweenTimes(event.startTime, event.endTime)

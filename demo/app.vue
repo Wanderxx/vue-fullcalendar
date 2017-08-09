@@ -58,7 +58,7 @@ const options = {
             resourceName: 'Annie Oakley',
             date: moment().format('YYYY-MM-DD'),
             startTime: '3:00pm',
-            duration: '120', // minutes
+            duration: '145', // minutes
             type: 'Job',
             title: 'Manufacture Workspace',
             recipient: 'Client1'
@@ -174,63 +174,5 @@ export default {
 .app {
   color: green;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.bordered {
-  border: 1px solid #585858;
-}
-
-.time-row {
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  justify-content: center; 
-  align-items: center; 
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.time-cell {
-  flex: 1;
-  height: 50px;
-  // text-align: center;
-  position: relative;
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.resource-header {
-  margin-top: 4px;
-  margin-bottom: 4px;
-  font-weight: bold;
-}
-
-.resource-header .time-cell {
-  background-color: #F9690E;
-
-}
-
-.time-row .time-cell:first-child, .time-row .day-cell:first-child {
-  margin-right: 4px;
-  border-radius: 4px;
-  min-width: 120px; 
-  background-color: #505050;
-  color: #F9690E;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.time-row .time-cell:nth-child(2) {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.time-row .time-cell:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
 }
 </style>

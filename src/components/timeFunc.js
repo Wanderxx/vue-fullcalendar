@@ -15,6 +15,9 @@ let timeFunc = {
         // the duration is in the format H:decimal of hour
         let split = duration.split('.')
         return moment.duration(split[0]+':'+((parseInt(split[1])/ 100 * 60).toString())).asMinutes()
+    } else {
+      // the duration is in minutes
+      return duration
     }
   }
 };
