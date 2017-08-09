@@ -21,7 +21,7 @@ const options = {
   dayStartTime: '8:00am', // Start time on the calendar
   dayEndTime: '5:30pm', // End time on the calendar
   weekLength: 5, // or 7 
-  colors: ['D1D5D8', '3498DB', 'F1C40F', 'E74C3C', '1ABC9C'],
+  colors: ['3498DB', 'F1C40F', 'E74C3C', '1ABC9C'],
   resources: {
     groups: [ //Split resources into different related groups
       {
@@ -99,7 +99,7 @@ const options = {
         events: [
           {
             resourceName: 'Machine One',
-            date: '2017-08-04',
+            date: moment().format('YYYY-MM-DD'),
             startTime: '1:00pm', //Start time should always be there
             endTime: '4:00pm', //End time is optional, should be able to figure this out from the duration if it's included instead
             type: 'Job',
@@ -107,7 +107,7 @@ const options = {
             recipient: 'pm'
           }, {
             resourceName: 'Machine One',
-            date: '2017-08-04',
+            date: moment().format('YYYY-MM-DD'),
             startTime: '8:00am', //Start time should always be there
             endTime: '11:00am', //End time is optional, should be able to figure this out from the duration if it's included instead
             type: 'Job am',
@@ -115,7 +115,7 @@ const options = {
             recipient: 'am'
           }, {
             resourceName: 'Machine Two',
-            date: '2017-08-04',
+            date: moment().format('YYYY-MM-DD'),
             startTime: '8:00am',
             duration: '3:45', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
             type: 'Job',
@@ -123,7 +123,7 @@ const options = {
             recipient: 'Client1'
           }, {
             resourceName: 'Machine Four',
-            date: '2017-08-02',
+            date: moment().format('YYYY-MM-DD'),
             startTime: '3:00pm',
             duration: '120', // minutes
             type: 'Job',
@@ -131,8 +131,8 @@ const options = {
             recipient: 'Client1'
           }, {
             resourceName: 'Machine Two',
-            date: '2017-08-04',
-            startTime: '11:00am',
+            date: moment().format('YYYY-MM-DD'),
+            startTime: '11:30am',
             duration: '3:45', // TODO: decide whether this should be time format (h:mm) or decimal (3.75 (3:45 === 3.75)) or minutes (probably best)
             type: 'Job',
             title: 'Manufacture Workspace',
@@ -212,13 +212,16 @@ export default {
 
 }
 
-.time-row .time-cell:first-child {
+.time-row .time-cell:first-child, .time-row .day-cell:first-child {
   margin-right: 4px;
   border-radius: 4px;
   min-width: 120px; 
   background-color: #505050;
   color: #F9690E;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .time-row .time-cell:nth-child(2) {

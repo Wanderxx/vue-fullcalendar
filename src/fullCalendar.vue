@@ -120,7 +120,7 @@ export default {
       currentTimeFrame: '',
       currentStartDate: '', // This should probably be an object, but need to fix up check if so (in computed start date)
       currentWeekStart: '', // This should probably be an object, but need to fix up check if so (in computed start date)
-      defaultColours: ['F22613', '446CB3'] // get colours from: http://flatcolors.net/palette/203-flat-wbuttons# or the colour array in app.vue options const
+      defaultColours: ['F1C40F', 'E74C3C', '3498DB', '1ABC9C'] // get colours from: http://flatcolors.net/palette/203-flat-wbuttons# or the colour array in app.vue options const
     }
   },
   created () {
@@ -182,7 +182,7 @@ export default {
       this.options.resources.groups.map((group) => {
         group.events.map((event, index) => {
           if(event.color === undefined) {
-            event.color = colors[colorIndex]
+            event.color = colors[colorIndex % colors.length]
             colorIndex++
           }
         })
@@ -233,13 +233,16 @@ export default {
     margin-top: 20px;
   .weeks{
     display: flex;
-    border-top:1px solid #e0e0e0;
-    border-bottom:1px solid #e0e0e0;
-    border-left:1px solid #e0e0e0;
   .week{
     flex:1;
     text-align: center;
-    border-right:1px solid #e0e0e0;
+    // border-right:1px solid #e0e0e0;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
   }
   }
   .dates {
@@ -276,6 +279,7 @@ export default {
     width: 100%;
   .events-week{
     display: flex;
+    min-height: 120px;
   .events-day{
     cursor: pointer;
     flex:1;
@@ -333,12 +337,13 @@ export default {
   }
   .more-events{
     position:absolute;
-    width: 150px;
+    width: 200px;
     z-index: 2;
     border:1px solid #eee;
     box-shadow: 0 2px 6px rgba(0,0,0,.15);
   .more-header{
-    background-color:#eee;
+    background-color: #F9690E;
+    font-weight: bold;
     padding:5px;
     display: flex;
     align-items : center;
@@ -372,6 +377,8 @@ export default {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: 1px solid black;
+    border-radius: 3px;
   }
   }
   }

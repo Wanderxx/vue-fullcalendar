@@ -2,7 +2,7 @@
     <!-- body display date day and events -->
     <div class="full-calendar-body">
         <div class="weeks resource-header">
-            <strong class="week" v-for="dayIndex in 7">{{ (dayIndex - 1) | localeWeekDay(firstDay, locale) }}</strong>
+            <strong class="week bordered" v-for="dayIndex in 7">{{ (dayIndex - 1) | localeWeekDay(firstDay, locale) }}</strong>
         </div>
         <div class="dates" ref="dates">
             <div class="dates-bg">
@@ -23,7 +23,7 @@
                         <div class="event-box">
                             <event-card :event="event" :date="day.date" :firstDay="firstDay"
                                         v-for="event in day.events" v-show="event.cellIndex <= eventLimit"
-                                        @click="eventClick">
+                                        @click="eventClick" v-bind:style="{ 'background-color': '#'+event.color}">
                             </event-card>
                             <p v-if="day.events.length > eventLimit" class="more-link" @click.stop="selectThisDay(day, $event)">
                                 + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
@@ -41,7 +41,9 @@
                 </div>
                 <div class="more-body">
                     <ul class="body-list">
-                        <li v-for="event in selectDay.events" v-show="event.isShow" class="body-item" @click="eventClick(event, $event)">
+                        <li v-for="event in selectDay.events" v-show="event.isShow" class="body-item" 
+                            @click="eventClick(event, $event)"
+                            v-bind:style="{ 'background-color': '#'+event.color}">
                             {{event.title}}
                         </li>
                     </ul>
@@ -127,7 +129,8 @@ export default {
                     eventArray.push({
                         title: event.type + ' ' + event.title + ' ' + event.recipient,
                         start: event.date,
-                        end: moment(event.date).add(duration, 'm').format('YYYY-MM-DD') // TODO: work in duration
+                        end: moment(event.date).add(duration, 'm').format('YYYY-MM-DD'),
+                        color: event.color
                     })
                 })
             })
@@ -247,5 +250,13 @@ export default {
 </script>
 
 <style>
+.resource-header .week {
+    background-color: #F9690E;
+    font-family: Arial, Helvetica, sans-serif;
+} 
 
+.event-item {
+    border: 2px solid black;
+    border-radius: 4px;
+}
 </style>

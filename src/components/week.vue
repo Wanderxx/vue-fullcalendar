@@ -111,7 +111,7 @@ export default {
 
       if(eventsInTimePeriod.length < 1) return
 
-      let elem = '<div class="day-event"> '
+      let elem = '<div class="day-event" style="background-color: #'+eventsInTimePeriod[0].color+';">'
       _.forEach(eventsInTimePeriod, ((event) => {
         elem += '<span>' + event.type + ' - ' + event.title + '</span><br>'
       }))
@@ -141,15 +141,15 @@ export default {
 
   .day-event {
     background-color: lightblue;
-    border: 1px solid black;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 1;
     z-index: 1;
     width: 85%;
     overflow: hidden;
-    max-height: 95%; 
-    /* padding: 2px; */
+    max-height: 90%; 
+    border: 2px solid black;
+    border-radius: 4px;  
   }
 
   .time-of-day-span {
@@ -161,5 +161,6 @@ export default {
     border: 1px solid lightgrey;
     width: 10%;
     text-align: center;
+    min-width: 30px;
   }
 </style>
