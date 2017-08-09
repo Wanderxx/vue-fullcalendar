@@ -111,7 +111,8 @@ export default {
 
       if(eventsInTimePeriod.length < 1) return
 
-      let elem = '<div class="day-event" style="background-color: #'+eventsInTimePeriod[0].color+';">'
+      let elem = '<div class="day-event" style="background-color: #'+eventsInTimePeriod[0].color+'; color: '+eventsInTimePeriod[0].textColor+ ';">'
+      
       _.forEach(eventsInTimePeriod, ((event) => {
         elem += '<span>' + event.type + ' - ' + event.title + '</span><br>'
       }))

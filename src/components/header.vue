@@ -14,9 +14,9 @@
       <!-- <slot name="header-right">
           </slot> -->
   
-      <button type="button" @click.stop="showDay">Day</button>
-      <button type="button" @click.stop="showWeek">Week</button>
-      <button type="button" @click.stop="showMonth">Month</button>
+      <button type="button" @click.stop="showDay" v-bind:class="dayClass">Day</button>
+      <button type="button" @click.stop="showWeek" v-bind:class="weekClass">Week</button>
+      <button type="button" @click.stop="showMonth" v-bind:class="monthClass">Month</button>
     </div>
   </div>
 </template>
@@ -47,13 +47,22 @@ export default {
     weekStartDate: {
       type: Object,
       default: () => { return moment().startOf('isoweek') }
-    }
+    },
+    dayClass: '',
+    weekClass: '',
+    monthClass: '',
+    leftArrow: {
+      type: String,
+      default: '◀'
+    },
+    rightArrow: {
+      type: String,
+      default: '▶'
+  }
   },
   data() {
     return {
-      // TODO: change these boring arrows
-      leftArrow: '◀',
-      rightArrow: '►',
+      
       currentTimeFrame: ''
     }
   },

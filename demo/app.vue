@@ -3,7 +3,7 @@
     <!--  -->
     <full-calendar class="test-fc" 
         :options="calendarOptions" 
-        :initialTimeFrame="'day'" 
+        :initialTimeFrame="'week'" 
         first-day='1'
         locale="en"
         @changeMonth="changeMonth" 
@@ -22,6 +22,11 @@ const options = {
   dayEndTime: '5:30pm', // End time on the calendar
   weekLength: 5, // or 7 
   colors: ['3498DB', 'F1C40F', 'E74C3C', '1ABC9C'],
+  dayButtonClass: 'btn btn-secondary', // TODO: figure out if this should be in a header obj
+  weekButtonClass: 'btn btn-secondary',
+  monthButtonClass: 'btn btn-secondary',
+  // rightArrow: '',
+  leftArrow: '◀',
   resources: {
     groups: [ //Split resources into different related groups
       {

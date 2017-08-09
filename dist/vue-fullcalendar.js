@@ -757,6 +757,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
 	
 	// TODO: go through this and clean it up a bit
 
@@ -35651,7 +35656,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, "\n.day-half {\n  height: 50%;\n  outline: 1px solid grey;\n  text-align: left;\n  position: relative;\n}\n.day-cell {\n  flex: 1;\n  height: 75px;\n  text-align: center;\n  vertical-align: middle;\n  position: relative;\n}\n.day-event {\n  background-color: lightblue;\n  position: absolute;\n  right: 0;\n  top: 1;\n  z-index: 1;\n  width: 85%;\n  overflow: hidden;\n  max-height: 90%; \n  border: 2px solid black;\n  border-radius: 4px;\n}\n.time-of-day-span {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 2;\n  background-color: white;\n  border: 1px solid lightgrey;\n  width: 10%;\n  text-align: center;\n  min-width: 30px;\n}\n", "", {"version":3,"sources":["/./src/components/week.vue?e00f9ada"],"names":[],"mappings":";AA8HA;EACA,YAAA;EACA,wBAAA;EACA,iBAAA;EACA,mBAAA;CACA;AAEA;EACA,QAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,mBAAA;CACA;AAEA;EACA,4BAAA;EACA,mBAAA;EACA,SAAA;EACA,OAAA;EACA,WAAA;EACA,WAAA;EACA,iBAAA;EACA,gBAAA;EACA,wBAAA;EACA,mBAAA;CACA;AAEA;EACA,mBAAA;EACA,QAAA;EACA,OAAA;EACA,WAAA;EACA,wBAAA;EACA,4BAAA;EACA,WAAA;EACA,mBAAA;EACA,gBAAA;CACA","file":"week.vue","sourcesContent":["<template>\r\n  <div class=\"root\">\r\n    <div v-for=\"resource in resourceGroups\">\r\n      <day-header class=\"resource-header\" :headerTimes=\"dayArray\"></day-header>\r\n      <div class=\"time-row\" v-for=\"name in resource.resourceNames\">\r\n        <div class=\"bordered day-cell\">{{name}}</div>\r\n        <div class=\"bordered day-cell\" v-for=\"day in dayArray\" ref=\"daycell\">\r\n          <div class=\"day-half\">\r\n            <span class=\"time-of-day-span\">AM</span>\r\n            <div v-html=\"getEventElement(name, day, 'am')\"></div>\r\n          </div>\r\n          <div class=\"day-half\">\r\n            <span class=\"time-of-day-span\">PM</span>\r\n            <div v-html=\"getEventElement(name, day, 'pm')\"></div>\r\n          </div>\r\n        </div>\r\n      </div> \r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<script>\r\nimport dayHeader from './dayHeader' // despite the name, I believe it can be used for week headings too\r\nimport moment from 'moment' \r\n\r\nexport default {\r\n props: {\r\n    // startDate: {},\r\n    options: {},\r\n    resourceGroups: {},\r\n    weekStart: {\r\n      type: Object,\r\n      default: () => { \r\n        return moment().startOf('isoweek')\r\n      }\r\n    },\r\n    weekLength: {}\r\n  },\r\n  \r\n  computed: {\r\n    weekEnd () {\r\n      //TODO: would probably be best to pass this in (and into header.vue) rather than calculate it here\r\n      return this.weekStart.clone().add(this.weekLength - 1, 'd')\r\n    },\r\n\r\n    dayArray () {\r\n      let days = []\r\n      let currentDay = this.weekStart.clone()\r\n      let len = this.weekLength\r\n\r\n      for(let i = 0; i < len; i++) {\r\n        days.push(currentDay.format('ddd DD MMM'))\r\n        currentDay.add(1, 'd')\r\n      }\r\n      return days\r\n    },\r\n\r\n    weeksEvents () {\r\n      let weekCurrentDate = this.weekStart.clone()\r\n      let weekEndDate = this.weekEnd.clone()\r\n      let events = []\r\n\r\n      while (weekCurrentDate <= weekEndDate) {\r\n        let formattedDate = weekCurrentDate.format('YYYY-MM-DD')\r\n        events.push({\r\n          date: formattedDate, \r\n          events: this.aDaysEvents(formattedDate)\r\n        })\r\n        weekCurrentDate.add(1, 'd')\r\n      }\r\n      return events;\r\n    },\r\n  },\r\n  components: {\r\n    'day-header': dayHeader\r\n  },\r\n  methods: {\r\n    aDaysEvents (todaysDateString) {\r\n      //taken from todaysEvetns in day.vue to test it out. if it works move it to another file or something to avoid reuse\r\n\r\n      let todaysEvents = []\r\n\r\n      this.options.resources.groups.map((item) => {\r\n        var filteredEvents = _.filter(item.events, function (event) {\r\n          return event.date === todaysDateString\r\n        })\r\n        \r\n        if(filteredEvents.length > 0) todaysEvents.push(filteredEvents)\r\n      })\r\n\r\n      return _.flatten(todaysEvents)\r\n    },\r\n\r\n    getEventElement (resourceName, inDate, timeOfDay) {\r\n      let formattedDate = moment(inDate, 'ddd DD MMM').format('YYYY-MM-DD')\r\n      let todaysEvents = _.find(this.weeksEvents, {date: formattedDate})\r\n      let resourcesEvents = _.filter(todaysEvents.events, {resourceName: resourceName})\r\n      let timePeriodStart = moment('12:00am', 'h:mma')\r\n      let timePeriodEnd = moment('12:00pm', 'h:mma')\r\n\r\n      if(timeOfDay === 'pm') {\r\n        //if PM override timeStart and timeEnd\r\n        timePeriodStart = moment('12:00pm', 'h:mma')\r\n        timePeriodEnd = moment('12:00am', 'h:mma').add(1, 'd')\r\n      }\r\n\r\n      let eventsInTimePeriod = _.filter(resourcesEvents, function (event) {\r\n        let eventStartTime = moment(event.startTime, 'h:mma')\r\n        return eventStartTime > timePeriodStart && eventStartTime <= timePeriodEnd\r\n      })\r\n\r\n      if(eventsInTimePeriod.length < 1) return\r\n\r\n      let elem = '<div class=\"day-event\" style=\"background-color: #'+eventsInTimePeriod[0].color+';\">'\r\n      _.forEach(eventsInTimePeriod, ((event) => {\r\n        elem += '<span>' + event.type + ' - ' + event.title + '</span><br>'\r\n      }))\r\n      elem += '</div>'\r\n\r\n      return elem\r\n    }\r\n  }\r\n}\r\n</script>\r\n\r\n<style>\r\n  .day-half {\r\n    height: 50%;\r\n    outline: 1px solid grey;\r\n    text-align: left;\r\n    position: relative;\r\n  }\r\n\r\n  .day-cell {\r\n    flex: 1;\r\n    height: 75px;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    position: relative;\r\n  }\r\n\r\n  .day-event {\r\n    background-color: lightblue;\r\n    position: absolute;\r\n    right: 0;\r\n    top: 1;\r\n    z-index: 1;\r\n    width: 85%;\r\n    overflow: hidden;\r\n    max-height: 90%; \r\n    border: 2px solid black;\r\n    border-radius: 4px;  \r\n  }\r\n\r\n  .time-of-day-span {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 2;\r\n    background-color: white;\r\n    border: 1px solid lightgrey;\r\n    width: 10%;\r\n    text-align: center;\r\n    min-width: 30px;\r\n  }\r\n</style>\r\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\n.day-half {\n  height: 50%;\n  outline: 1px solid grey;\n  text-align: left;\n  position: relative;\n}\n.day-cell {\n  flex: 1;\n  height: 75px;\n  text-align: center;\n  vertical-align: middle;\n  position: relative;\n}\n.day-event {\n  background-color: lightblue;\n  position: absolute;\n  right: 0;\n  top: 1;\n  z-index: 1;\n  width: 85%;\n  overflow: hidden;\n  max-height: 90%; \n  border: 2px solid black;\n  border-radius: 4px;\n}\n.time-of-day-span {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 2;\n  background-color: white;\n  border: 1px solid lightgrey;\n  width: 10%;\n  text-align: center;\n  min-width: 30px;\n}\n", "", {"version":3,"sources":["/./src/components/week.vue?a05fa424"],"names":[],"mappings":";AA+HA;EACA,YAAA;EACA,wBAAA;EACA,iBAAA;EACA,mBAAA;CACA;AAEA;EACA,QAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,mBAAA;CACA;AAEA;EACA,4BAAA;EACA,mBAAA;EACA,SAAA;EACA,OAAA;EACA,WAAA;EACA,WAAA;EACA,iBAAA;EACA,gBAAA;EACA,wBAAA;EACA,mBAAA;CACA;AAEA;EACA,mBAAA;EACA,QAAA;EACA,OAAA;EACA,WAAA;EACA,wBAAA;EACA,4BAAA;EACA,WAAA;EACA,mBAAA;EACA,gBAAA;CACA","file":"week.vue","sourcesContent":["<template>\r\n  <div class=\"root\">\r\n    <div v-for=\"resource in resourceGroups\">\r\n      <day-header class=\"resource-header\" :headerTimes=\"dayArray\"></day-header>\r\n      <div class=\"time-row\" v-for=\"name in resource.resourceNames\">\r\n        <div class=\"bordered day-cell\">{{name}}</div>\r\n        <div class=\"bordered day-cell\" v-for=\"day in dayArray\" ref=\"daycell\">\r\n          <div class=\"day-half\">\r\n            <span class=\"time-of-day-span\">AM</span>\r\n            <div v-html=\"getEventElement(name, day, 'am')\"></div>\r\n          </div>\r\n          <div class=\"day-half\">\r\n            <span class=\"time-of-day-span\">PM</span>\r\n            <div v-html=\"getEventElement(name, day, 'pm')\"></div>\r\n          </div>\r\n        </div>\r\n      </div> \r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<script>\r\nimport dayHeader from './dayHeader' // despite the name, I believe it can be used for week headings too\r\nimport moment from 'moment' \r\n\r\nexport default {\r\n props: {\r\n    // startDate: {},\r\n    options: {},\r\n    resourceGroups: {},\r\n    weekStart: {\r\n      type: Object,\r\n      default: () => { \r\n        return moment().startOf('isoweek')\r\n      }\r\n    },\r\n    weekLength: {}\r\n  },\r\n  \r\n  computed: {\r\n    weekEnd () {\r\n      //TODO: would probably be best to pass this in (and into header.vue) rather than calculate it here\r\n      return this.weekStart.clone().add(this.weekLength - 1, 'd')\r\n    },\r\n\r\n    dayArray () {\r\n      let days = []\r\n      let currentDay = this.weekStart.clone()\r\n      let len = this.weekLength\r\n\r\n      for(let i = 0; i < len; i++) {\r\n        days.push(currentDay.format('ddd DD MMM'))\r\n        currentDay.add(1, 'd')\r\n      }\r\n      return days\r\n    },\r\n\r\n    weeksEvents () {\r\n      let weekCurrentDate = this.weekStart.clone()\r\n      let weekEndDate = this.weekEnd.clone()\r\n      let events = []\r\n\r\n      while (weekCurrentDate <= weekEndDate) {\r\n        let formattedDate = weekCurrentDate.format('YYYY-MM-DD')\r\n        events.push({\r\n          date: formattedDate, \r\n          events: this.aDaysEvents(formattedDate)\r\n        })\r\n        weekCurrentDate.add(1, 'd')\r\n      }\r\n      return events;\r\n    },\r\n  },\r\n  components: {\r\n    'day-header': dayHeader\r\n  },\r\n  methods: {\r\n    aDaysEvents (todaysDateString) {\r\n      //taken from todaysEvetns in day.vue to test it out. if it works move it to another file or something to avoid reuse\r\n\r\n      let todaysEvents = []\r\n\r\n      this.options.resources.groups.map((item) => {\r\n        var filteredEvents = _.filter(item.events, function (event) {\r\n          return event.date === todaysDateString\r\n        })\r\n        \r\n        if(filteredEvents.length > 0) todaysEvents.push(filteredEvents)\r\n      })\r\n\r\n      return _.flatten(todaysEvents)\r\n    },\r\n\r\n    getEventElement (resourceName, inDate, timeOfDay) {\r\n      let formattedDate = moment(inDate, 'ddd DD MMM').format('YYYY-MM-DD')\r\n      let todaysEvents = _.find(this.weeksEvents, {date: formattedDate})\r\n      let resourcesEvents = _.filter(todaysEvents.events, {resourceName: resourceName})\r\n      let timePeriodStart = moment('12:00am', 'h:mma')\r\n      let timePeriodEnd = moment('12:00pm', 'h:mma')\r\n\r\n      if(timeOfDay === 'pm') {\r\n        //if PM override timeStart and timeEnd\r\n        timePeriodStart = moment('12:00pm', 'h:mma')\r\n        timePeriodEnd = moment('12:00am', 'h:mma').add(1, 'd')\r\n      }\r\n\r\n      let eventsInTimePeriod = _.filter(resourcesEvents, function (event) {\r\n        let eventStartTime = moment(event.startTime, 'h:mma')\r\n        return eventStartTime > timePeriodStart && eventStartTime <= timePeriodEnd\r\n      })\r\n\r\n      if(eventsInTimePeriod.length < 1) return\r\n\r\n      let elem = '<div class=\"day-event\" style=\"background-color: #'+eventsInTimePeriod[0].color+'; color: '+eventsInTimePeriod[0].textColor+ ';\">'\r\n      \r\n      _.forEach(eventsInTimePeriod, ((event) => {\r\n        elem += '<span>' + event.type + ' - ' + event.title + '</span><br>'\r\n      }))\r\n      elem += '</div>'\r\n\r\n      return elem\r\n    }\r\n  }\r\n}\r\n</script>\r\n\r\n<style>\r\n  .day-half {\r\n    height: 50%;\r\n    outline: 1px solid grey;\r\n    text-align: left;\r\n    position: relative;\r\n  }\r\n\r\n  .day-cell {\r\n    flex: 1;\r\n    height: 75px;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    position: relative;\r\n  }\r\n\r\n  .day-event {\r\n    background-color: lightblue;\r\n    position: absolute;\r\n    right: 0;\r\n    top: 1;\r\n    z-index: 1;\r\n    width: 85%;\r\n    overflow: hidden;\r\n    max-height: 90%; \r\n    border: 2px solid black;\r\n    border-radius: 4px;  \r\n  }\r\n\r\n  .time-of-day-span {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 2;\r\n    background-color: white;\r\n    border: 1px solid lightgrey;\r\n    width: 10%;\r\n    text-align: center;\r\n    min-width: 30px;\r\n  }\r\n</style>\r\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -35783,7 +35788,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      if (eventsInTimePeriod.length < 1) return;
 	
-	      var elem = '<div class="day-event" style="background-color: #' + eventsInTimePeriod[0].color + ';">';
+	      var elem = '<div class="day-event" style="background-color: #' + eventsInTimePeriod[0].color + '; color: ' + eventsInTimePeriod[0].textColor + ';">';
+	
 	      _.forEach(eventsInTimePeriod, function (event) {
 	        elem += '<span>' + event.type + ' - ' + event.title + '</span><br>';
 	      });
@@ -44789,13 +44795,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	      default: function _default() {
 	        return (0, _moment2.default)().startOf('isoweek');
 	      }
+	    },
+	    dayClass: '',
+	    weekClass: '',
+	    monthClass: '',
+	    leftArrow: {
+	      type: String,
+	      default: '◀'
+	    },
+	    rightArrow: {
+	      type: String,
+	      default: '▶'
 	    }
 	  },
 	  data: function data() {
 	    return {
-	      // TODO: change these boring arrows
-	      leftArrow: '◀',
-	      rightArrow: '►',
+	
 	      currentTimeFrame: ''
 	    };
 	  },
@@ -44916,6 +44931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, [_vm._v(_vm._s(_vm.rightArrow))])]), _vm._v(" "), _c('div', {
 	    staticClass: "header-right"
 	  }, [_c('button', {
+	    class: _vm.dayClass,
 	    attrs: {
 	      "type": "button"
 	    },
@@ -44926,6 +44942,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, [_vm._v("Day")]), _vm._v(" "), _c('button', {
+	    class: _vm.weekClass,
 	    attrs: {
 	      "type": "button"
 	    },
@@ -44936,6 +44953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, [_vm._v("Week")]), _vm._v(" "), _c('button', {
+	    class: _vm.monthClass,
 	    attrs: {
 	      "type": "button"
 	    },
@@ -44969,7 +44987,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      "start-date": _vm.computedStartDate,
 	      "week-start-date": _vm.computedWeekStart,
 	      "initial-time-frame": _vm.computedTimeFrame,
-	      "week-length": _vm.options.weekLength
+	      "week-length": _vm.options.weekLength,
+	      "dayClass": _vm.options.dayButtonClass,
+	      "weekClass": _vm.options.weekButtonClass,
+	      "monthClass": _vm.options.monthButtonClass,
+	      "rightArrow": _vm.options.rightArrow,
+	      "leftArrow": _vm.options.leftArrow
 	    },
 	    on: {
 	      "changeMonth": _vm.emitChangeMonth,
