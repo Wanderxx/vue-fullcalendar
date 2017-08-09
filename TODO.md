@@ -16,14 +16,10 @@
     * Headings
     * Some common styling for headings, events etc
 * Add button to go to current week/day/month (depending on what view it is on)
-* Figure out how I'm gonna do functions in methods etc, either name: function() {}  or name () {}
 
 
 ## Styling TODO
 
-* Day
-    * <strike> Get first column to stand out like in the example </strike>
-    * <strike>The other rows should be seperate for each time section, and a row for all time headings</strike>
-
 * Handle responsiveness
 * Handle text colour in individual events
+    * might be best to figure out a text color, and also add it to the options

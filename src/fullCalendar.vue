@@ -185,6 +185,9 @@ export default {
             event.color = colors[colorIndex % colors.length]
             colorIndex++
           }
+          if(event.textColor === undefined) {
+            event.textColor = '000' // TODO: might be best to figure out a text color, and also add it to the options
+          }
         })
       })
     },

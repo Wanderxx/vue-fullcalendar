@@ -37,7 +37,7 @@ const options = {
             title: 'Manufacture Workspace',
             recipient: 'Client',
             color: 'FFF',
-            textColor: '000'
+            textColor: 'ff0000'
           }, {
             resourceName: 'Charity Barnum',
             date: moment().format('YYYY-MM-DD'),

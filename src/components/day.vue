@@ -100,7 +100,7 @@ export default {
         let pixelWidth = duration/30 * this.timeSpanWidth
         let color = event.color != null ? event.color : this.colors[index % this.colors.length]
 
-        return '<div class="event" style="width: '+pixelWidth+'px; background-color: #' + color +'">' 
+        return '<div class="event" style="width: '+pixelWidth+'px; background-color: #' + color +'; color: '+event.textColor+ ';">' 
           + event.type + ' - ' + event.title + ' - ' + event.recipient 
           /// + ' || (duration: ' + duration + '. start/end: ' + event.startTime + '/' + event.endTime + '. width: ' + pixelWidth // debugging line
           + '</div>'
