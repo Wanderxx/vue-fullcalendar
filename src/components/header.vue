@@ -22,7 +22,8 @@
 </template>
 <script type="text/babel">
 import dateFunc from './dateFunc'
-import moment from 'moment';
+import moment from 'moment'
+
 
 export default {
   props: {
@@ -51,8 +52,8 @@ export default {
   data() {
     return {
       // TODO: change these boring arrows
-      leftArrow: '<',
-      rightArrow: '>',
+      leftArrow: '◀',
+      rightArrow: '►',
       currentTimeFrame: ''
     }
   },

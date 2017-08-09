@@ -17,7 +17,6 @@ import moment from 'moment'
 import _ from 'lodash'
 import dayHeader from './dayHeader'
 import timeFunc from './timeFunc'
-import dayEvent from './dayEvent'
 
 // TODO: handle resize
 

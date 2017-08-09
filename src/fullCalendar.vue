@@ -2,15 +2,12 @@
   <div class="comp-full-calendar">
     <!-- header pick month -->
     <!-- :first-day="firstDay" -->
-    {{colors}}
-
     <fc-header :current-month="currentMonth"
-      
       :locale="locale"
-      :startDate="computedStartDate"
-      :weekStartDate="computedWeekStart"
-      :initialTimeFrame="computedTimeFrame"
-      :weekLength="options.weekLength"
+      :start-date="computedStartDate"
+      :week-start-date="computedWeekStart"
+      :initial-time-frame="computedTimeFrame"
+      :week-length="options.weekLength"
       @changeMonth="emitChangeMonth"
       @changeDay="emitChangeDay"
       @changeWeek="emitChangeWeek"
@@ -31,7 +28,7 @@
     <template v-if="computedTimeFrame === 'day'">
       <day :startDate="computedStartDate"
         :options="options"
-        :resourceGroups="resourceGroups"
+        :resource-groups="resourceGroups"
         :colors="colors"
       ></day>
     </template>
@@ -39,17 +36,17 @@
 
     <template v-else-if="computedTimeFrame === 'week'">
       <week :resourceGroups="resourceGroups"
-          :weekStart="computedWeekStart"
-          :weekLength="options.weekLength"
+          :week-start="computedWeekStart"
+          :week-length="options.weekLength"
           :options="options"
         ></week>
     </template>
 <!-- :events="events" :showMore="showMore" :selectDay="selectDay" :morePos="morePos" -->
     <template v-else-if="computedTimeFrame === 'month'">
-      <month :firstDay="firstDay"
+      <month :first-day="firstDay"
               :locale="locale"
-              :eventLimit="eventLimit"
-              :currentMonth="currentMonth"
+              :event-limit="eventLimit"
+              :current-month="currentMonth"
               :options="options"
               >
       </month> 
