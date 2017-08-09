@@ -1,10 +1,10 @@
 <template>
-  <div class="root">
+  <div class="root a-grid">
     <div v-for="resource in resourceGroups">
       <day-header class="resource-header" :headerTimes="timeArray"></day-header>
       <div class="time-row" v-for="name in resource.resourceNames">
         <div class="bordered time-cell">{{name}}</div> 
-        <div class="bordered time-cell" v-for="(time, index) in timeArray" ref="timecell">
+        <div class="outlined time-cell" v-for="(time, index) in timeArray" ref="timecell">
            <div v-html="getEventElement(name, time, index)"></div>
         </div>
       </div>
@@ -98,11 +98,17 @@ export default {
           timeFunc.getDurationBetweenTimes(event.startTime, event.endTime)
 
         let pixelWidth = duration/30 * this.timeSpanWidth
+        let percentWidth = duration/30 * 100 - 2
         let color = event.color != null ? event.color : this.colors[index % this.colors.length]
 
-        return '<div class="event" style="width: '+pixelWidth+'px; background-color: #' + color +'; color: '+event.textColor+ ';">' 
+        return '<div class="outlined event" style="width: '+percentWidth
+            +'%; background-color: #' + color +'; color: '+event.textColor+ ';">' 
           + event.type + ' - ' + event.title + ' - ' + event.recipient 
-          /// + ' || (duration: ' + duration + '. start/end: ' + event.startTime + '/' + event.endTime + '. width: ' + pixelWidth // debugging line
+          + ' || (duration: ' + duration 
+          + '. start/end: ' + event.startTime + '/' 
+          + (event.endTime != undefined ? event.endTime : 
+              moment(event.startTime, 'h:mma').add(parseInt(duration), 'm').format('h:mm a'))
+          // + '. width: ' + pixelWidth // debugging line
           + '</div>'
       }
     }
@@ -117,11 +123,9 @@ export default {
     max-height: 30px;
     z-index: 1;
     position: absolute;
-    left: 0px;
-    border: 2px solid black;
+    left: 1px;
     top: 10px;
     overflow:hidden; 
     background-color: lightblue; 
-    border-radius: 4px;
   }
 </style>

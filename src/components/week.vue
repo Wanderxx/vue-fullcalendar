@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div class="root a-grid">
     <div v-for="resource in resourceGroups">
       <day-header class="resource-header" :headerTimes="dayArray"></day-header>
       <div class="time-row" v-for="name in resource.resourceNames">
@@ -112,7 +112,7 @@ export default {
       if(eventsInTimePeriod.length < 1) return
 
       let elem = '<div class="day-event" style="background-color: #'+eventsInTimePeriod[0].color+'; color: '+eventsInTimePeriod[0].textColor+ ';">'
-      
+
       _.forEach(eventsInTimePeriod, ((event) => {
         elem += '<span>' + event.type + ' - ' + event.title + '</span><br>'
       }))
@@ -138,6 +138,7 @@ export default {
     text-align: center;
     vertical-align: middle;
     position: relative;
+    min-width: 45px;
   }
 
   .day-event {
@@ -155,11 +156,11 @@ export default {
 
   .time-of-day-span {
     position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
+    left: 1;
+    top: 1;
+    z-index: 1;
     background-color: white;
-    border: 1px solid lightgrey;
+    outline: 1px solid lightgrey;
     width: 10%;
     text-align: center;
     min-width: 30px;

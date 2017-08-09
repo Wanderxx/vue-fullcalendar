@@ -2,8 +2,8 @@
   <div class="root">
     <div class="time-row">
         <div class="bordered time-cell">Resource</div>
-        <div class="bordered time-cell" v-for="time in headerTimes">
-            {{time}}
+        <div class="outlined time-cell" v-for="time in headerTimes">
+            <span>{{time}}</span>
         </div>
     </div>
   </div>
@@ -15,6 +15,9 @@ export default {
 }
 </script>
 
-<style>
-  
+<style lang="scss">
+  /* transform: rotate(7deg); */
+  /* .time-cell span {
+    transform: rotate(-90deg);
+  } */
 </style>

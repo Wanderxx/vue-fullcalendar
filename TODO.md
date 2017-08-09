@@ -16,6 +16,7 @@
     * Headings
     * Some common styling for headings, events etc
 * Add button to go to current week/day/month (depending on what view it is on)
+* Add ability to change time span from 30min 
 
 
 ## Styling TODO

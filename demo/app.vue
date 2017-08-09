@@ -3,7 +3,7 @@
     <!--  -->
     <full-calendar class="test-fc" 
         :options="calendarOptions" 
-        :initialTimeFrame="'week'" 
+        :initialTimeFrame="'day'" 
         first-day='1'
         locale="en"
         @changeMonth="changeMonth" 
