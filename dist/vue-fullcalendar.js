@@ -536,6 +536,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      },
 	
 	      default: 0
+	    },
+	    linkMoreStr: {
+	      type: String,
+	      default: "+ ### more"
 	    }
 	  },
 	  components: {
@@ -565,6 +569,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  methods: {
+	    linkMore: function linkMore(day) {
+	      var remainingItems = day.events[day.events.length - 1].cellIndex - this.eventLimit;
+	      return this.linkMoreStr.replace("###", remainingItems);
+	    },
 	    emitChangeMonth: function emitChangeMonth(firstDayOfMonth) {
 	      this.currentMonth = firstDayOfMonth;
 	
@@ -17570,7 +17578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _vm.selectThisDay(day, $event)
 	          }
 	        }
-	      }, [_vm._v("\n                + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n              ")]) : _vm._e()], 2)])
+	      }, [_vm._v("\n                " + _vm._s(_vm.linkMore(day)) + "\n              ")]) : _vm._e()], 2)])
 	    }))
 	  })), _vm._v(" "), _c('div', {
 	    directives: [{

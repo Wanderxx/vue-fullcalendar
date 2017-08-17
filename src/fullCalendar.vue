@@ -47,7 +47,7 @@
                 </event-card>
                 <p v-if="day.events.length > eventLimit"
                    class="more-link" @click.stop="selectThisDay(day, $event)">
-                  + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
+                  {{ linkMore(day) }}
                 </p>
               </div>
             </div>
@@ -103,6 +103,10 @@
           return res >= 0 && res <= 6
         },
         default : 0
+      },
+      linkMoreStr : {
+        type: String,
+        default: "+ ### more"
       }
     },
     components : {
@@ -131,6 +135,10 @@
       }
     },
     methods : {
+      linkMore (day) {
+        const remainingItems = day.events[day.events.length -1].cellIndex - this.eventLimit;
+        return this.linkMoreStr.replace("###", remainingItems);
+      },
       emitChangeMonth (firstDayOfMonth) {
         this.currentMonth = firstDayOfMonth;
 
