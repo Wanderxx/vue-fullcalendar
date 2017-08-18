@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar v1.0.9
+ * vue-fullcalendar v1.0.10
  * (c) 2017 Sunny Wang <sunnywang0104@163.com> 
  * @license MIT
  */
@@ -17293,7 +17293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('p', {
+	  return _c('div', {
 	    staticClass: "event-item",
 	    class: _vm.cssClasses,
 	    on: {
@@ -17609,20 +17609,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, [_c('ul', {
 	    staticClass: "body-list"
 	  }, _vm._l((_vm.selectDay.events), function(event) {
-	    return _c('li', {
-	      directives: [{
-	        name: "show",
-	        rawName: "v-show",
-	        value: (event.isShow),
-	        expression: "event.isShow"
-	      }],
-	      staticClass: "body-item",
+	    return _c('event-card', {
+	      attrs: {
+	        "event": event,
+	        "date": _vm.selectDay.date
+	      },
 	      on: {
-	        "click": function($event) {
-	          _vm.eventClick(event, $event)
+	        "click": _vm.eventClick
+	      },
+	      scopedSlots: _vm._u([{
+	        key: "default",
+	        fn: function(p) {
+	          return [_vm._t("fc-event-card", null, {
+	            event: p.event
+	          })]
 	        }
-	      }
-	    }, [_vm._v("\n              " + _vm._s(event.title) + "\n            ")])
+	      }])
+	    })
 	  }))])]), _vm._v(" "), _vm._t("body-card")], 2)])], 1)
 	},staticRenderFns: []}
 

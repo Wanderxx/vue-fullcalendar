@@ -63,11 +63,11 @@
           </div>
           <div class="more-body">
             <ul class="body-list">
-              <li v-for="event in selectDay.events"
-                  v-show="event.isShow" class="body-item"
-                  @click="eventClick(event, $event)">
-                {{event.title}}
-              </li>
+              <event-card :event="event" :date="selectDay.date" v-for="event in selectDay.events" @click="eventClick">
+                <template scope="p">
+                  <slot name="fc-event-card" :event="p.event"></slot>
+                </template>
+              </event-card>
             </ul>
           </div>
         </div>
