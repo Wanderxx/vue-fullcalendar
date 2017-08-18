@@ -214,7 +214,7 @@
       selectThisDay (day, jsEvent) {
         this.selectDay = day;
         this.showMore = true;
-        this.morePos = this.computePos(event.target);
+        this.morePos = this.computePos(jsEvent.target);
         this.morePos.top -= 100;
         let events = day.events.filter(item =>{
           return item.isShow == true
