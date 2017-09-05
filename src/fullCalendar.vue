@@ -6,8 +6,8 @@
       :locale="locale"
       @change="emitChangeMonth">
 
-      <div slot="header-left">
-        <slot name="fc-header-left">
+      <div slot="header-center">
+        <slot name="fc-header-center">
         </slot>
       </div>
 
@@ -94,7 +94,7 @@
       },
       locale : {
         type : String,
-        default : 'en'
+        default : 'pt-br'
       },
       firstDay : {
         type : Number | String,
@@ -248,7 +248,7 @@
       }
     }
   }
-  
+
 </script>
 <style lang="scss">
   .comp-full-calendar{
@@ -289,9 +289,6 @@
     padding:4px;
     border-right:1px solid #e0e0e0;
     border-bottom:1px solid #e0e0e0;
-  .day-number{
-    text-align: right;
-  }
   &.today{
      background-color:#fcf8e3;
    }
