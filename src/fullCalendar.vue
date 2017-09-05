@@ -6,8 +6,8 @@
       :locale="locale"
       @change="emitChangeMonth">
 
-      <div slot="header-left">
-        <slot name="fc-header-left">
+      <div slot="header-center">
+        <slot name="fc-header-center">
         </slot>
       </div>
 
@@ -47,7 +47,7 @@
                 </event-card>
                 <p v-if="day.events.length > eventLimit"
                    class="more-link" @click.stop="selectThisDay(day, $event)">
-                  + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
+                  {{ linkMore(day) }}
                 </p>
               </div>
             </div>
@@ -63,11 +63,11 @@
           </div>
           <div class="more-body">
             <ul class="body-list">
-              <li v-for="event in selectDay.events"
-                  v-show="event.isShow" class="body-item"
-                  @click="eventClick(event, $event)">
-                {{event.title}}
-              </li>
+              <event-card :event="event" :date="selectDay.date" v-for="event in selectDay.events" @click="eventClick">
+                <template scope="p">
+                  <slot name="fc-event-card" :event="p.event"></slot>
+                </template>
+              </event-card>
             </ul>
           </div>
         </div>
@@ -94,7 +94,7 @@
       },
       locale : {
         type : String,
-        default : 'en'
+        default : 'pt-br'
       },
       firstDay : {
         type : Number | String,
@@ -103,6 +103,10 @@
           return res >= 0 && res <= 6
         },
         default : 0
+      },
+      linkMoreStr : {
+        type: String,
+        default: "+ ### more"
       }
     },
     components : {
@@ -131,6 +135,10 @@
       }
     },
     methods : {
+      linkMore (day) {
+        const remainingItems = day.events[day.events.length -1].cellIndex - this.eventLimit;
+        return this.linkMoreStr.replace("###", remainingItems);
+      },
       emitChangeMonth (firstDayOfMonth) {
         this.currentMonth = firstDayOfMonth;
 
@@ -206,7 +214,7 @@
       selectThisDay (day, jsEvent) {
         this.selectDay = day;
         this.showMore = true;
-        this.morePos = this.computePos(event.target);
+        this.morePos = this.computePos(jsEvent.target);
         this.morePos.top -= 100;
         let events = day.events.filter(item =>{
           return item.isShow == true
@@ -240,7 +248,7 @@
       }
     }
   }
-  
+
 </script>
 <style lang="scss">
   .comp-full-calendar{
@@ -281,9 +289,6 @@
     padding:4px;
     border-right:1px solid #e0e0e0;
     border-bottom:1px solid #e0e0e0;
-  .day-number{
-    text-align: right;
-  }
   &.today{
      background-color:#fcf8e3;
    }
