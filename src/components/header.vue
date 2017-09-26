@@ -5,9 +5,11 @@
       </slot>
     </div>
     <div class="header-center">
+      <span class="prev-year" @click.stop="goPrevYear">{{leftArrowYear}}</span>
       <span class="prev-month" @click.stop="goPrev">{{leftArrow}}</span>
       <span class="title">{{title}}</span>
       <span class="next-month" @click.stop="goNext">{{rightArrow}}</span>
+      <span class="next-year" @click.stop="goNextYear">{{rightArrowYear}}</span>
     </div>
     <div class="header-right">
       <slot name="header-right">
@@ -30,7 +32,9 @@
     data () {
       return {
         leftArrow  : '<',
-        rightArrow : '>'
+        rightArrow : '>',
+        leftArrowYear : '<<',
+        rightArrowYear : '>>'
       }
     },
     computed: {
@@ -46,6 +50,14 @@
       },
       goNext () {
         var newMonth = moment(this.currentMonth).add(1, 'months').startOf('month');
+        this.$emit('change', newMonth);
+      },
+      goPrevYear() {
+        var newMonth = moment(this.currentMonth).subtract(12, 'months').startOf('month');
+        this.$emit('change', newMonth);
+      },
+      goNextYear() {
+        var newMonth = moment(this.currentMonth).add(12, 'months').startOf('month');
         this.$emit('change', newMonth);
       }
     }
@@ -64,7 +76,7 @@
     .title{
       margin: 0 10px;
     }
-    .prev-month,.next-month{
+    .prev-month,.next-month,.prev-year,.next-year{
       cursor: pointer;
     }
   }
