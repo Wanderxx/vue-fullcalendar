@@ -19,4 +19,9 @@ export default {
     monthNames  : ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12'],
     titleFormat : 'yyyy년MM월'
   },
+  nl : {
+    weekNames   : ['ma', 'di', 'woe', 'do', 'vr', 'za', 'zo'],
+    monthNames  : ['Januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+    titleFormat : 'MMMM yyyy'
+  }
 }
