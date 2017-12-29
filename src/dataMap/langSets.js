@@ -19,4 +19,9 @@ export default {
     monthNames  : ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12'],
     titleFormat : 'yyyy년MM월'
   },
+  pt : {
+    weekNames   : ['Dom', 'Seg','Ter','Qua','Qui','Sex','Sáb'],
+    monthNames  : ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+    titleFormat : 'MMMM yyyy'
+  }
 }
