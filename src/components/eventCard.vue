@@ -2,7 +2,7 @@
     <p class="event-item" :class="cssClasses"
        @click="$emit('click', event, $event)">
         <slot :event="event" v-if="showTitle">
-            Def: {{ event.title }}
+            {{ event.title }}
         </slot>
     </p>
 </template>
