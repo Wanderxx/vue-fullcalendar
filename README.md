@@ -1,4 +1,4 @@
-##vue-fullcalendar
+# vue-fullcalendar
 
 [![npm](https://img.shields.io/npm/v/vue-fullcalendar.svg?maxAge=2592000?style=flat-square)]()
 [![npm](https://img.shields.io/npm/dt/vue-fullcalendar.svg?maxAge=2592000?style=flat-square)]()
@@ -195,4 +195,4 @@ You will be able to register your own stuff by using slots
 
 3. **fc-body-card** : inside the body area, usually working with `EventClick`, to display a event detail
 
-###END
+### END
