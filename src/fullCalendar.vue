@@ -218,6 +218,7 @@ export default {
   methods: {
     emitChangeMonth(firstDayOfMonth) {
       this.currentMonth = firstDayOfMonth;
+      this.activeEvent = null;
 
       const start = dateFunc.getMonthViewStartDate(
         firstDayOfMonth,
@@ -227,6 +228,7 @@ export default {
 
       this.$emit('changeMonth', start, end, firstDayOfMonth);
     },
+
     moreTitle(date) {
       if (!date) return '';
       return moment(date).format('ll');
@@ -299,9 +301,9 @@ export default {
     selectThisDay(day, jsEvent) {
       this.selectDay = day;
       this.showMore = true;
-      this.morePos = this.computePos(event.target);
+      this.morePos = this.computePos(jsEvent.target);
       this.morePos.top -= 100;
-      const events = day.events.filter(item => item.isShow == true);
+      const events = day.events.filter(item => item.isShow === true);
       this.$emit('moreClick', day.date, events, jsEvent);
     },
 
@@ -322,12 +324,7 @@ export default {
     eventClick(event, jsEvent) {
       if (!event.isShow) return;
 
-      if (this.activeEvent !== event) {
-        this.activeEvent = event;
-      } else {
-        this.activeEvent = null;
-      }
-
+      this.activeEvent = event;
       jsEvent.stopPropagation();
       const pos = this.computePos(jsEvent.target);
       this.$emit('eventClick', event, jsEvent, pos);

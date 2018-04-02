@@ -601,6 +601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  methods: {
 	    emitChangeMonth: function emitChangeMonth(firstDayOfMonth) {
 	      this.currentMonth = firstDayOfMonth;
+	      this.activeEvent = null;
 	
 	      var start = _dateFunc2.default.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
 	      var end = _dateFunc2.default.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
@@ -673,10 +674,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    selectThisDay: function selectThisDay(day, jsEvent) {
 	      this.selectDay = day;
 	      this.showMore = true;
-	      this.morePos = this.computePos(event.target);
+	      this.morePos = this.computePos(jsEvent.target);
 	      this.morePos.top -= 100;
 	      var events = day.events.filter(function (item) {
-	        return item.isShow == true;
+	        return item.isShow === true;
 	      });
 	      this.$emit('moreClick', day.date, events, jsEvent);
 	    },
@@ -695,12 +696,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    eventClick: function eventClick(event, jsEvent) {
 	      if (!event.isShow) return;
 	
-	      if (this.activeEvent !== event) {
-	        this.activeEvent = event;
-	      } else {
-	        this.activeEvent = null;
-	      }
-	
+	      this.activeEvent = event;
 	      jsEvent.stopPropagation();
 	      var pos = this.computePos(jsEvent.target);
 	      this.$emit('eventClick', event, jsEvent, pos);
