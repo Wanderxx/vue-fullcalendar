@@ -17619,7 +17619,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        cssClasses.push('is-opacity');
 	      }
 	
-	      return cssClasses;
+	      return cssClasses.join(' ');
 	    },
 	    showTitle: function showTitle() {
 	      return this.date.day() == this.firstDay || this.start.isSame(this.date, 'day');
@@ -17629,12 +17629,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    end: function end() {
 	      return (0, _moment2.default)(this.event.end);
-	    }
-	  },
-	
-	  methods: {
-	    dayClick: function dayClick(event, $event) {
-	      this.$emit('click', event, $event);
 	    }
 	  }
 	}; //
@@ -18249,7 +18243,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    staticClass: "event-item",
 	    class: _vm.cssClasses,
 	    on: {
-	      "click": _vm.dayClick
+	      "click": function($event) {
+	        _vm.$emit('click', _vm.event, $event)
+	      }
 	    }
 	  }, [(_vm.showTitle) ? _vm._t("default", [_vm._v("\n    Def: " + _vm._s(_vm.event.title) + "\n  ")], {
 	    event: _vm.event
