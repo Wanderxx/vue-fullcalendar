@@ -256,7 +256,6 @@ export default {
 
           monthViewStartDate.add(1, 'day');
         }
-        console.log(week);
         calendar.push(week);
       }
 
@@ -315,7 +314,6 @@ export default {
 
     dayClick(day, jsEvent) {
       this.activeDay = day;
-      console.log(this.currentDates);
       this.$emit('dayClick', day, jsEvent);
     },
 

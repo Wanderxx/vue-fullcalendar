@@ -632,7 +632,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	          monthViewStartDate.add(1, 'day');
 	        }
-	        console.log(week);
 	        calendar.push(week);
 	      }
 	
@@ -690,7 +689,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    dayClick: function dayClick(day, jsEvent) {
 	      this.activeDay = day;
-	      console.log(this.currentDates);
 	      this.$emit('dayClick', day, jsEvent);
 	    },
 	    eventClick: function eventClick(event, jsEvent) {
