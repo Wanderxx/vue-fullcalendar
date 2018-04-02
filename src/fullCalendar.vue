@@ -80,8 +80,7 @@
             <div
               v-for="day in week"
               :class="{'today' : day.isToday,
-                       'not-cur-month' : !day.isCurMonth,
-                       'events-day--active': day.isActive}"
+                       'not-cur-month' : !day.isCurMonth}"
               track-by="$index"
               class="events-day"
               @click.stop="dayClick(day.date, $event)"
@@ -94,6 +93,7 @@
                   :event="event"
                   :date="day.date"
                   :first-day="firstDay"
+                  :class="{'is-active': event.isActive}"
                   @click="eventClick"
                 >
                   <template scope="p">
@@ -201,7 +201,7 @@ export default {
         left: 0,
       },
       selectDay: {},
-      activeDay: {},
+      activeEvent: {},
     };
   },
 
@@ -248,7 +248,6 @@ export default {
             monthDay: monthViewStartDate.date(),
             isToday: monthViewStartDate.isSame(moment(), 'day'),
             isCurMonth: monthViewStartDate.isSame(this.currentMonth, 'month'),
-            isActive: monthViewStartDate.isSame(this.activeDay, 'day'),
             weekDay: perDay,
             date: moment(monthViewStartDate),
             events: this.slotEvents(monthViewStartDate),
@@ -261,6 +260,7 @@ export default {
 
       return calendar;
     },
+
     slotEvents(date) {
       // find all events start from this date
       const thisDayEvents = this.events.filter(day => {
@@ -281,6 +281,8 @@ export default {
       for (let i = 0; i < thisDayEvents.length; i += 1) {
         thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
         thisDayEvents[i].isShow = true;
+        thisDayEvents[i].isActive = thisDayEvents[i] === this.activeEvent;
+
         if (thisDayEvents[i].cellIndex === i + 1 || i > 2) continue;
         thisDayEvents.splice(i, 0, {
           title: 'holder',
@@ -313,13 +315,13 @@ export default {
     },
 
     dayClick(day, jsEvent) {
-      this.activeDay = day;
       this.$emit('dayClick', day, jsEvent);
     },
 
     eventClick(event, jsEvent) {
       if (!event.isShow) return;
 
+      this.activeEvent = event;
       jsEvent.stopPropagation();
       const pos = this.computePos(jsEvent.target);
       this.$emit('eventClick', event, jsEvent, pos);
@@ -430,6 +432,10 @@ export default {
               }
               &.is-opacity {
                 opacity: 0;
+              }
+
+              &.is-active {
+                background-color: rgba(0, 0, 0, 0.3);
               }
             }
             .more-link {
