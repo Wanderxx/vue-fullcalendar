@@ -578,9 +578,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      showMore: false,
 	      morePos: {
 	        top: 0,
+	
 	        left: 0
 	      },
-	      selectDay: {}
+	      selectDay: {},
+	      activeDay: {}
 	    };
 	  },
 	
@@ -622,6 +624,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            monthDay: monthViewStartDate.date(),
 	            isToday: monthViewStartDate.isSame((0, _moment2.default)(), 'day'),
 	            isCurMonth: monthViewStartDate.isSame(this.currentMonth, 'month'),
+	            isActive: monthViewStartDate.isSame(this.activeDay, 'day'),
 	            weekDay: perDay,
 	            date: (0, _moment2.default)(monthViewStartDate),
 	            events: this.slotEvents(monthViewStartDate)
@@ -629,7 +632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	          monthViewStartDate.add(1, 'day');
 	        }
-	
+	        console.log(week);
 	        calendar.push(week);
 	      }
 	
@@ -686,6 +689,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    },
 	    dayClick: function dayClick(day, jsEvent) {
+	      this.activeDay = day;
+	      console.log(this.currentDates);
 	      this.$emit('dayClick', day, jsEvent);
 	    },
 	    eventClick: function eventClick(event, jsEvent) {
@@ -697,6 +702,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	}; //
+	//
 	//
 	//
 	//
@@ -17593,13 +17599,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	
-	  data: function data() {
-	    return {
-	      current: false
-	    };
-	  },
-	
-	
 	  computed: {
 	    cssClasses: function cssClasses() {
 	      var cssClasses = this.event.cssClass;
@@ -17637,7 +17636,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  methods: {
 	    dayClick: function dayClick(event, $event) {
-	      this.current = true;
 	      this.$emit('click', event, $event);
 	    }
 	  }
@@ -18251,9 +18249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('p', {
 	    staticClass: "event-item",
-	    class: _vm.cssClasses.concat( [{
-	      'event-item--current': _vm.current
-	    }]),
+	    class: _vm.cssClasses,
 	    on: {
 	      "click": _vm.dayClick
 	    }
@@ -18571,7 +18567,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        staticClass: "events-day",
 	        class: {
 	          'today': day.isToday,
-	            'not-cur-month': !day.isCurMonth
+	            'not-cur-month': !day.isCurMonth,
+	            'events-day--active': day.isActive
 	        },
 	        attrs: {
 	          "track-by": "$index"
