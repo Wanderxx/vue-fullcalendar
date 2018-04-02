@@ -689,6 +689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    },
 	    dayClick: function dayClick(day, jsEvent) {
+	      this.activeEvent = null;
 	      this.$emit('dayClick', day, jsEvent);
 	    },
 	    eventClick: function eventClick(event, jsEvent) {

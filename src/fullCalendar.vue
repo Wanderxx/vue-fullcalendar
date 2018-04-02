@@ -315,6 +315,7 @@ export default {
     },
 
     dayClick(day, jsEvent) {
+      this.activeEvent = null;
       this.$emit('dayClick', day, jsEvent);
     },
 
