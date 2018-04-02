@@ -695,7 +695,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    eventClick: function eventClick(event, jsEvent) {
 	      if (!event.isShow) return;
 	
-	      this.activeEvent = event;
+	      if (this.activeEvent !== event) {
+	        this.activeEvent = event;
+	      } else {
+	        this.activeEvent = null;
+	      }
+	
 	      jsEvent.stopPropagation();
 	      var pos = this.computePos(jsEvent.target);
 	      this.$emit('eventClick', event, jsEvent, pos);

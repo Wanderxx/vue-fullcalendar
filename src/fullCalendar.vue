@@ -322,7 +322,12 @@ export default {
     eventClick(event, jsEvent) {
       if (!event.isShow) return;
 
-      this.activeEvent = event;
+      if (this.activeEvent !== event) {
+        this.activeEvent = event;
+      } else {
+        this.activeEvent = null;
+      }
+
       jsEvent.stopPropagation();
       const pos = this.computePos(jsEvent.target);
       this.$emit('eventClick', event, jsEvent, pos);
