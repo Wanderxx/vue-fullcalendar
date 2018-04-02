@@ -1,6 +1,6 @@
 <template>
   <p
-    :class="[...cssClasses, {'event-item--current': current}]"
+    :class="cssClasses"
     class="event-item"
     @click="dayClick"
   >
@@ -30,12 +30,6 @@ export default {
       type: Number | String,
       required: true,
     },
-  },
-
-  data() {
-    return {
-      current: false,
-    };
   },
 
   computed: {
@@ -80,7 +74,6 @@ export default {
 
   methods: {
     dayClick(event, $event) {
-      this.current = true;
       this.$emit('click', event, $event);
     },
   },

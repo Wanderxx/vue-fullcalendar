@@ -190,7 +190,7 @@ You will be able to register your own stuff by using slots
 
 1.  **fc-header-left** : top left area
 
-2.  **fc-header-center** : center area with scoped slots (title, rightArrow, leftArrow, goPrev, goNext)
+2.  **fc-header-center** : center area with scoped slots (title, rightArrow, leftArrow, goPrev, goNext, currentMonth)
 
 3.  **fc-header-right** : top right area. In my case, I added a filter menu there
 

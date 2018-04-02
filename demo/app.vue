@@ -26,7 +26,7 @@
 
       <template
         slot="fc-header-center"
-        slot-scope="{title, rightArrow, leftArrow, goPrev, goNext}"
+        slot-scope="{title, rightArrow, leftArrow, goPrev, goNext, currentMonth}"
       >
         <span
           class="prev-month"

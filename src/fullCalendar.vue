@@ -80,7 +80,8 @@
             <div
               v-for="day in week"
               :class="{'today' : day.isToday,
-                       'not-cur-month' : !day.isCurMonth}"
+                       'not-cur-month' : !day.isCurMonth,
+                       'events-day--active': day.isActive}"
               track-by="$index"
               class="events-day"
               @click.stop="dayClick(day.date, $event)"
@@ -196,9 +197,11 @@ export default {
       showMore: false,
       morePos: {
         top: 0,
+
         left: 0,
       },
       selectDay: {},
+      activeDay: {},
     };
   },
 
@@ -228,6 +231,7 @@ export default {
       if (!date) return '';
       return moment(date).format('ll');
     },
+
     getCalendar() {
       // calculate 2d-array of each month
       const monthViewStartDate = dateFunc.getMonthViewStartDate(
@@ -244,6 +248,7 @@ export default {
             monthDay: monthViewStartDate.date(),
             isToday: monthViewStartDate.isSame(moment(), 'day'),
             isCurMonth: monthViewStartDate.isSame(this.currentMonth, 'month'),
+            isActive: monthViewStartDate.isSame(this.activeDay, 'day'),
             weekDay: perDay,
             date: moment(monthViewStartDate),
             events: this.slotEvents(monthViewStartDate),
@@ -251,7 +256,7 @@ export default {
 
           monthViewStartDate.add(1, 'day');
         }
-
+        console.log(week);
         calendar.push(week);
       }
 
@@ -289,6 +294,7 @@ export default {
 
       return thisDayEvents;
     },
+
     selectThisDay(day, jsEvent) {
       this.selectDay = day;
       this.showMore = true;
@@ -297,6 +303,7 @@ export default {
       const events = day.events.filter(item => item.isShow == true);
       this.$emit('moreClick', day.date, events, jsEvent);
     },
+
     computePos(target) {
       const eventRect = target.getBoundingClientRect();
       const pageRect = this.$refs.dates.getBoundingClientRect();
@@ -305,9 +312,13 @@ export default {
         top: eventRect.top + eventRect.height - pageRect.top,
       };
     },
+
     dayClick(day, jsEvent) {
+      this.activeDay = day;
+      console.log(this.currentDates);
       this.$emit('dayClick', day, jsEvent);
     },
+
     eventClick(event, jsEvent) {
       if (!event.isShow) return;
 
