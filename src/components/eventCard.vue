@@ -2,7 +2,7 @@
   <p
     :class="cssClasses"
     class="event-item"
-    @click="dayClick"
+    @click="$emit('click', event, $event)"
   >
     <slot
       v-if="showTitle"
@@ -54,27 +54,18 @@ export default {
         cssClasses.push('is-opacity');
       }
 
-      return cssClasses;
+      return cssClasses.join(' ');
     },
-
     showTitle() {
       return (
         this.date.day() == this.firstDay || this.start.isSame(this.date, 'day')
       );
     },
-
     start() {
       return moment(this.event.start);
     },
-
     end() {
       return moment(this.event.end);
-    },
-  },
-
-  methods: {
-    dayClick(event, $event) {
-      this.$emit('click', event, $event);
     },
   },
 };
