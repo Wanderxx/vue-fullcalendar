@@ -357,7 +357,6 @@ export default {
         this.selectDay = this.selectDay !== day ? day : null;
 
         this.morePos = this.computePos(jsEvent.target);
-        this.morePos.top -= 100;
         events = day.events.filter(item => item.isShow === true);
       } else {
         this.selectDay = null;
