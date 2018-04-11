@@ -119,7 +119,6 @@
                   <p
                     v-if="day.events.length > eventLimit"
                     class="more-link"
-                    @click.stop="selectThisDay(day, $event)"
                   >
                     + {{ day.events[day.events.length -1].cellIndex - eventLimit }} more
                   </p>
@@ -143,7 +142,6 @@
                   <p
                     v-if="day.events.length > eventLimit"
                     class="summary-link"
-                    @click="selectThisDay(day, $event)"
                   >
                     <slot
                       :events="day.events"
@@ -159,37 +157,40 @@
         </div>
 
         <!-- full events when click show more -->
-        <div
-          v-if="showMore && selectDay"
-          :style="{left: morePos.left + 'px', top: morePos.top + 'px'}"
-          class="more-events"
+        <slot
+          v-if="selectDay"
+          :selectDay="selectDay"
+          :position="morePos"
+          name="more-content"
         >
-          <div class="more-header">
-            <span class="title">{{ moreTitle(selectDay.date) }}</span>
-            <span
-              class="close"
-              @click.stop="showMore = false"
-            >x</span>
+          <div
+            :style="{left: morePos.left + 'px', top: morePos.top + 'px'}"
+            class="more-event"
+          >
+            <div class="more-header">
+              <span class="title">{{ moreTitle(selectDay.date) }}</span>
+            </div>
+            <div class="more-body">
+              <ul class="body-list">
+                <li
+                  v-for="(event, eventKey) in selectDay.events"
+                  v-show="event.isShow"
+                  :key="eventKey"
+                  class="body-item"
+                  @click="eventClick(event, $event)"
+                >
+                  {{ event.title }}
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="more-body">
-            <ul class="body-list">
-              <li
-                v-for="(event, eventKey) in selectDay.events"
-                v-show="event.isShow"
-                :key="eventKey"
-                class="body-item"
-                @click="eventClick(event, $event)"
-              >
-                {{ event.title }}
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <slot name="body-card"/>
-
+        </slot>
       </div>
+
+      <slot name="body-card"/>
+
     </div>
+  </div>
   </div>
 </template>
 <script type="text/babel">
@@ -241,13 +242,11 @@ export default {
   data() {
     return {
       currentMonth: moment().startOf('month'),
-      showMore: false,
       morePos: {
         top: 0,
-
         left: 0,
       },
-      selectDay: {},
+      selectDay: null,
     };
   },
 
@@ -342,15 +341,6 @@ export default {
       return thisDayEvents;
     },
 
-    selectThisDay(day, jsEvent) {
-      this.selectDay = day;
-      this.showMore = true;
-      this.morePos = this.computePos(jsEvent.target);
-      this.morePos.top -= 100;
-      const events = day.events.filter(item => item.isShow === true);
-      this.$emit('moreClick', day.date, events, jsEvent);
-    },
-
     computePos(target) {
       const eventRect = target.getBoundingClientRect();
       const pageRect = this.$refs.dates.getBoundingClientRect();
@@ -361,13 +351,19 @@ export default {
     },
 
     dayClick(day, jsEvent) {
+      let events;
+
       if (day.events.length) {
         this.selectDay = this.selectDay !== day ? day : null;
+
+        this.morePos = this.computePos(jsEvent.target);
+        this.morePos.top -= 100;
+        events = day.events.filter(item => item.isShow === true);
       } else {
         this.selectDay = null;
       }
 
-      this.$emit('dayClick', day, jsEvent);
+      this.$emit('dayClick', day, events, jsEvent);
     },
 
     eventClick(event, jsEvent) {

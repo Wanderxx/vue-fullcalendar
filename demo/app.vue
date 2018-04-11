@@ -52,6 +52,25 @@
       >
         {{ p.events.length }} Events
       </template>
+
+      <template
+        slot="more-content"
+        slot-scope="p"
+      >
+        <div class="more-body">
+          <ul class="body-list">
+            <li
+              v-for="(event, eventKey) in p.selectDay.events"
+              v-show="event.isShow"
+              :key="eventKey"
+              class="body-item"
+              @click="eventClick(event, $event)"
+            >
+              {{ event.title }}
+            </li>
+          </ul>
+        </div>
+      </template>
     </full-calendar>
   </div>
 </template>

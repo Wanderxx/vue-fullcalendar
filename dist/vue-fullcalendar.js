@@ -732,6 +732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
 	
 	// import langSets from './dataMap/langSets'
 	exports.default = {
@@ -777,13 +778,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  data: function data() {
 	    return {
 	      currentMonth: (0, _moment2.default)().startOf('month'),
-	      showMore: false,
 	      morePos: {
 	        top: 0,
-	
 	        left: 0
 	      },
-	      selectDay: {}
+	      selectDay: null
 	    };
 	  },
 	
@@ -870,16 +869,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return thisDayEvents;
 	    },
-	    selectThisDay: function selectThisDay(day, jsEvent) {
-	      this.selectDay = day;
-	      this.showMore = true;
-	      this.morePos = this.computePos(jsEvent.target);
-	      this.morePos.top -= 100;
-	      var events = day.events.filter(function (item) {
-	        return item.isShow === true;
-	      });
-	      this.$emit('moreClick', day.date, events, jsEvent);
-	    },
 	    computePos: function computePos(target) {
 	      var eventRect = target.getBoundingClientRect();
 	      var pageRect = this.$refs.dates.getBoundingClientRect();
@@ -889,13 +878,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    },
 	    dayClick: function dayClick(day, jsEvent) {
+	      var events = void 0;
+	
 	      if (day.events.length) {
 	        this.selectDay = this.selectDay !== day ? day : null;
+	
+	        this.morePos = this.computePos(jsEvent.target);
+	        this.morePos.top -= 100;
+	        events = day.events.filter(function (item) {
+	          return item.isShow === true;
+	        });
 	      } else {
 	        this.selectDay = null;
 	      }
 	
-	      this.$emit('dayClick', day, jsEvent);
+	      this.$emit('dayClick', day, events, jsEvent);
 	    },
 	    eventClick: function eventClick(event, jsEvent) {
 	      if (!event.isShow) return;
@@ -18666,13 +18663,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }])
 	        })
 	      }), _vm._v(" "), (day.events.length > _vm.eventLimit) ? _c('p', {
-	        staticClass: "more-link",
-	        on: {
-	          "click": function($event) {
-	            $event.stopPropagation();
-	            _vm.selectThisDay(day, $event)
-	          }
-	        }
+	        staticClass: "more-link"
 	      }, [_vm._v("\n                  + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n                ")]) : _vm._e()] : [_vm._l((day.events), function(event, eventKey) {
 	        return (day.events.length === 1) ? _c('event-card', {
 	          key: eventKey,
@@ -18691,18 +18682,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }])
 	        }) : _vm._e()
 	      }), _vm._v(" "), (day.events.length > _vm.eventLimit) ? _c('p', {
-	        staticClass: "summary-link",
-	        on: {
-	          "click": function($event) {
-	            _vm.selectThisDay(day, $event)
-	          }
-	        }
+	        staticClass: "summary-link"
 	      }, [_vm._t("daySummary", [_vm._v("\n                    " + _vm._s(day.events.length) + " Events\n                  ")], {
 	        events: day.events
 	      })], 2) : _vm._e()]], 2)])
 	    }))
-	  })), _vm._v(" "), (_vm.showMore && _vm.selectDay) ? _c('div', {
-	    staticClass: "more-events",
+	  })), _vm._v(" "), (_vm.selectDay) ? _vm._t("more-content", [_c('div', {
+	    staticClass: "more-event",
 	    style: ({
 	      left: _vm.morePos.left + 'px',
 	      top: _vm.morePos.top + 'px'
@@ -18711,15 +18697,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    staticClass: "more-header"
 	  }, [_c('span', {
 	    staticClass: "title"
-	  }, [_vm._v(_vm._s(_vm.moreTitle(_vm.selectDay.date)))]), _vm._v(" "), _c('span', {
-	    staticClass: "close",
-	    on: {
-	      "click": function($event) {
-	        $event.stopPropagation();
-	        _vm.showMore = false
-	      }
-	    }
-	  }, [_vm._v("x")])]), _vm._v(" "), _c('div', {
+	  }, [_vm._v(_vm._s(_vm.moreTitle(_vm.selectDay.date)))])]), _vm._v(" "), _c('div', {
 	    staticClass: "more-body"
 	  }, [_c('ul', {
 	    staticClass: "body-list"
@@ -18738,8 +18716,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          _vm.eventClick(event, $event)
 	        }
 	      }
-	    }, [_vm._v("\n              " + _vm._s(event.title) + "\n            ")])
-	  }))])]) : _vm._e(), _vm._v(" "), _vm._t("body-card")], 2)])], 1)
+	    }, [_vm._v("\n                " + _vm._s(event.title) + "\n              ")])
+	  }))])])], {
+	    selectDay: _vm.selectDay,
+	    position: _vm.morePos
+	  }) : _vm._e()], 2), _vm._v(" "), _vm._t("body-card")], 2)], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
