@@ -6,6 +6,7 @@
     <full-calendar
       :events="fcEvents"
       :first-day="1"
+      :event-limit="1"
       class="test-fc"
       locale="fr"
       @changeMonth="changeMonth"
@@ -26,23 +27,30 @@
 
       <template
         slot="fc-header-center"
-        slot-scope="{title, rightArrow, leftArrow, goPrev, goNext, currentMonth}"
+        slot-scope="p"
       >
         <span
           class="prev-month"
-          @click.stop="goPrev"
+          @click.stop="p.goPrev"
         >prev</span>
 
-        <span class="title">{{ title }}</span>
+        <span class="title">{{ p.title }}</span>
 
         <span
           class="next-month"
-          @click.stop="goNext"
+          @click.stop="p.goNext"
         >next</span>
       </template>
 
       <template slot="fc-header-right">
         right
+      </template>
+
+      <template
+        slot="daySummary"
+        slot-scope="p"
+      >
+        {{ p.events.length }} Events
       </template>
     </full-calendar>
   </div>

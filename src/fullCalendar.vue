@@ -79,37 +79,72 @@
           >
             <div
               v-for="day in week"
-              :class="{'today' : day.isToday,
-                       'not-cur-month' : !day.isCurMonth}"
+              :class="{
+                'today' : day.isToday,
+                'not-cur-month' : !day.isCurMonth,
+                'event-box-multiple': day.events.length > 1
+              }"
               track-by="$index"
               class="events-day"
               @click.stop="dayClick(day.date, $event)"
             >
               <p class="day-number">{{ day.monthDay }}</p>
               <div class="event-box">
-                <event-card
-                  v-for="event in day.events"
-                  v-show="event.cellIndex <= eventLimit"
-                  :event="event"
-                  :date="day.date"
-                  :first-day="firstDay"
-                  :class="{'is-active': event.isActive}"
-                  @click="eventClick"
-                >
-                  <template scope="p">
+                <template v-if="eventLimit > 1">
+                  <event-card
+                    v-for="event in day.events"
+                    v-show="event.cellIndex <= eventLimit"
+                    :event="event"
+                    :date="day.date"
+                    :first-day="firstDay"
+                    :class="{'is-active': event.isActive}"
+                    @click="eventClick"
+                  >
+                    <template scope="p">
+                      <slot
+                        :event="p.event"
+                        name="fc-event-card"
+                      />
+                    </template>
+                  </event-card>
+                  <p
+                    v-if="day.events.length > eventLimit"
+                    class="more-link"
+                    @click.stop="selectThisDay(day, $event)"
+                  >
+                    + {{ day.events[day.events.length -1].cellIndex - eventLimit }} more
+                  </p>
+                </template>
+                <template v-else>
+                  <event-card
+                    v-for="event in day.events"
+                    v-if="day.events.length === 1"
+                    :event="event"
+                    :date="day.date"
+                    :first-day="firstDay"
+                    :class="{'is-active': event.isActive}"
+                    @click="eventClick"
+                  >
+                    <template scope="p">
+                      <slot
+                        :event="p.event"
+                        name="fc-event-card"
+                      />
+                    </template>
+                  </event-card>
+                  <p
+                    v-if="day.events.length > eventLimit"
+                    class="more-link"
+                    @click.stop="selectThisDay(day, $event)"
+                  >
                     <slot
-                      :event="p.event"
-                      name="fc-event-card"
-                    />
-                  </template>
-                </event-card>
-                <p
-                  v-if="day.events.length > eventLimit"
-                  class="more-link"
-                  @click.stop="selectThisDay(day, $event)"
-                >
-                  + {{ day.events[day.events.length -1].cellIndex - eventLimit }} more
-                </p>
+                      :events="day.events"
+                      name="daySummary"
+                    >
+                      {{ day.events.length }} Events
+                    </slot>
+                  </p>
+                </template>
               </div>
             </div>
           </div>
@@ -187,13 +222,15 @@ export default {
       },
       default: 0,
     },
+    eventLimit: {
+      type: Number,
+      default: 3,
+    },
   },
 
   data() {
     return {
       currentMonth: moment().startOf('month'),
-      isLismit: true,
-      eventLimit: 3,
       showMore: false,
       morePos: {
         top: 0,

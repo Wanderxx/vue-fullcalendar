@@ -567,14 +567,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      },
 	
 	      default: 0
+	    },
+	    eventLimit: {
+	      type: Number,
+	      default: 3
 	    }
 	  },
 	
 	  data: function data() {
 	    return {
 	      currentMonth: (0, _moment2.default)().startOf('month'),
-	      isLismit: true,
-	      eventLimit: 3,
 	      showMore: false,
 	      morePos: {
 	        top: 0,
@@ -703,6 +705,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -18564,7 +18601,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        staticClass: "events-day",
 	        class: {
 	          'today': day.isToday,
-	            'not-cur-month': !day.isCurMonth
+	            'not-cur-month': !day.isCurMonth,
+	            'event-box-multiple': day.events.length > 1
 	        },
 	        attrs: {
 	          "track-by": "$index"
@@ -18579,7 +18617,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        staticClass: "day-number"
 	      }, [_vm._v(_vm._s(day.monthDay))]), _vm._v(" "), _c('div', {
 	        staticClass: "event-box"
-	      }, [_vm._l((day.events), function(event) {
+	      }, [(_vm.eventLimit > 1) ? [_vm._l((day.events), function(event) {
 	        return _c('event-card', {
 	          directives: [{
 	            name: "show",
@@ -18615,7 +18653,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _vm.selectThisDay(day, $event)
 	          }
 	        }
-	      }, [_vm._v("\n                + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n              ")]) : _vm._e()], 2)])
+	      }, [_vm._v("\n                  + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n                ")]) : _vm._e()] : [_vm._l((day.events), function(event) {
+	        return (day.events.length === 1) ? _c('event-card', {
+	          class: {
+	            'is-active': event.isActive
+	          },
+	          attrs: {
+	            "event": event,
+	            "date": day.date,
+	            "first-day": _vm.firstDay
+	          },
+	          on: {
+	            "click": _vm.eventClick
+	          },
+	          scopedSlots: _vm._u([{
+	            key: "default",
+	            fn: function(p) {
+	              return [_vm._t("fc-event-card", null, {
+	                event: p.event
+	              })]
+	            }
+	          }])
+	        }) : _vm._e()
+	      }), _vm._v(" "), (day.events.length > _vm.eventLimit) ? _c('p', {
+	        staticClass: "more-link",
+	        on: {
+	          "click": function($event) {
+	            $event.stopPropagation();
+	            _vm.selectThisDay(day, $event)
+	          }
+	        }
+	      }, [_vm._t("daySummary", [_vm._v("\n                    " + _vm._s(day.events.length) + " Events\n                  ")], {
+	        events: day.events
+	      })], 2) : _vm._e()]], 2)])
 	    }))
 	  })), _vm._v(" "), _c('div', {
 	    directives: [{
