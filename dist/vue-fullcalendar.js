@@ -733,6 +733,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
+	//
+	//
 	
 	// import langSets from './dataMap/langSets'
 	exports.default = {
@@ -18600,7 +18603,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        staticClass: "day-cell",
 	        class: {
 	          'today': day.isToday,
-	            'not-cur-month': !day.isCurMonth
+	            'not-cur-month': !day.isCurMonth,
+	            'has-event': day.events.length,
+	            'has-events': day.events.length > 1,
 	        }
 	      }, [_c('p', {
 	        staticClass: "day-number"
@@ -18619,7 +18624,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        class: {
 	          'today': day.isToday,
 	            'not-cur-month': !day.isCurMonth,
-	            'events-day-multiple': day.events.length > 1,
+	            'has-event': day.events.length,
+	            'has-events': day.events.length > 1,
 	            'is-active': day === _vm.selectDay
 	        },
 	        attrs: {

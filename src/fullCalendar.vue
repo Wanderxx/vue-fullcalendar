@@ -68,7 +68,9 @@
               :key="dayIndex"
               :class="{
                 'today': day.isToday,
-                'not-cur-month' : !day.isCurMonth
+                'not-cur-month' : !day.isCurMonth,
+                'has-event' : day.events.length,
+                'has-events': day.events.length > 1,
               }"
               class="day-cell"
             >
@@ -90,7 +92,8 @@
               :class="{
                 'today' : day.isToday,
                 'not-cur-month' : !day.isCurMonth,
-                'events-day-multiple': day.events.length > 1,
+                'has-event' : day.events.length,
+                'has-events': day.events.length > 1,
                 'is-active': day === selectDay
               }"
               track-by="$index"
