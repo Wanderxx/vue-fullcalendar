@@ -49,6 +49,7 @@
       <div class="weeks">
         <strong
           v-for="dayIndex in 7"
+          :key="dayIndex"
           class="week"
         >{{ (dayIndex - 1) | localeWeekDay(firstDay, locale) }}</strong>
       </div>
@@ -58,12 +59,17 @@
       >
         <div class="dates-bg">
           <div
-            v-for="week in currentDates"
+            v-for="(week, weekIndex) in currentDates"
+            :key="weekIndex"
             class="week-row"
           >
             <div
-              v-for="day in week"
-              :class="{'today' : day.isToday, 'not-cur-month' : !day.isCurMonth}"
+              v-for="(day, dayIndex) in week"
+              :key="dayIndex"
+              :class="{
+                'today': day.isToday,
+                'not-cur-month' : !day.isCurMonth
+              }"
               class="day-cell"
             >
               <p class="day-number">{{ day.monthDay }}</p>
@@ -74,30 +80,33 @@
         <!-- absolute so we can make dynamic td -->
         <div class="dates-events">
           <div
-            v-for="(week, key) in currentDates"
+            v-for="(week, weekKey) in currentDates"
+            :key="weekKey"
             class="events-week"
           >
             <div
-              v-for="day in week"
+              v-for="(day, dayIndex) in week"
+              :key="dayIndex"
               :class="{
                 'today' : day.isToday,
                 'not-cur-month' : !day.isCurMonth,
-                'event-box-multiple': day.events.length > 1
+                'events-day-multiple': day.events.length > 1,
+                'is-active': day === selectDay
               }"
               track-by="$index"
               class="events-day"
-              @click.stop="dayClick(day.date, $event)"
+              @click.stop="dayClick(day, $event)"
             >
               <p class="day-number">{{ day.monthDay }}</p>
               <div class="event-box">
                 <template v-if="eventLimit > 1">
                   <event-card
-                    v-for="event in day.events"
+                    v-for="(event, eventKey) in day.events"
                     v-show="event.cellIndex <= eventLimit"
+                    :key="eventKey"
                     :event="event"
                     :date="day.date"
                     :first-day="firstDay"
-                    :class="{'is-active': event.isActive}"
                     @click="eventClick"
                   >
                     <template scope="p">
@@ -117,13 +126,12 @@
                 </template>
                 <template v-else>
                   <event-card
-                    v-for="event in day.events"
+                    v-for="(event, eventKey) in day.events"
                     v-if="day.events.length === 1"
+                    :key="eventKey"
                     :event="event"
                     :date="day.date"
                     :first-day="firstDay"
-                    :class="{'is-active': event.isActive}"
-                    @click="eventClick"
                   >
                     <template scope="p">
                       <slot
@@ -135,7 +143,7 @@
                   <p
                     v-if="day.events.length > eventLimit"
                     class="summary-link"
-                    @click.stop="selectThisDay(day, $event)"
+                    @click="selectThisDay(day, $event)"
                   >
                     <slot
                       :events="day.events"
@@ -152,7 +160,7 @@
 
         <!-- full events when click show more -->
         <div
-          v-show="showMore"
+          v-if="showMore && selectDay"
           :style="{left: morePos.left + 'px', top: morePos.top + 'px'}"
           class="more-events"
         >
@@ -166,8 +174,9 @@
           <div class="more-body">
             <ul class="body-list">
               <li
-                v-for="event in selectDay.events"
+                v-for="(event, eventKey) in selectDay.events"
                 v-show="event.isShow"
+                :key="eventKey"
                 class="body-item"
                 @click="eventClick(event, $event)"
               >
@@ -188,11 +197,12 @@
 import dateFunc from './components/dateFunc';
 import moment from 'moment';
 import EventCard from './components/eventCard.vue';
+import FcHeader from './components/header.vue';
 
 export default {
   components: {
-    'event-card': EventCard,
-    'fc-header': require('./components/header'),
+    EventCard,
+    FcHeader,
   },
 
   filters: {
@@ -238,7 +248,6 @@ export default {
         left: 0,
       },
       selectDay: {},
-      activeEvent: {},
     };
   },
 
@@ -255,7 +264,6 @@ export default {
   methods: {
     emitChangeMonth(firstDayOfMonth) {
       this.currentMonth = firstDayOfMonth;
-      this.activeEvent = null;
 
       const start = dateFunc.getMonthViewStartDate(
         firstDayOfMonth,
@@ -320,7 +328,6 @@ export default {
       for (let i = 0; i < thisDayEvents.length; i += 1) {
         thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
         thisDayEvents[i].isShow = true;
-        thisDayEvents[i].isActive = thisDayEvents[i] === this.activeEvent;
 
         if (thisDayEvents[i].cellIndex === i + 1 || i > 2) continue;
         thisDayEvents.splice(i, 0, {
@@ -354,14 +361,18 @@ export default {
     },
 
     dayClick(day, jsEvent) {
-      this.activeEvent = null;
+      if (day.events.length) {
+        this.selectDay = this.selectDay !== day ? day : null;
+      } else {
+        this.selectDay = null;
+      }
+
       this.$emit('dayClick', day, jsEvent);
     },
 
     eventClick(event, jsEvent) {
       if (!event.isShow) return;
 
-      this.activeEvent = event;
       jsEvent.stopPropagation();
       const pos = this.computePos(jsEvent.target);
       this.$emit('eventClick', event, jsEvent, pos);
@@ -372,7 +383,8 @@ export default {
 
 <style lang="scss">
 .comp-full-calendar {
-  // font-family: "elvetica neue", tahoma, "hiragino sans gb";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 20px;
   background: #fff;
   max-width: 960px;
@@ -410,9 +422,8 @@ export default {
         padding: 4px;
         border-right: 1px solid #e0e0e0;
         border-bottom: 1px solid #e0e0e0;
-        .day-number {
-          text-align: right;
-        }
+        box-sizing: border-box;
+
         &.today {
           background-color: #fcf8e3;
         }
@@ -438,7 +449,6 @@ export default {
           overflow: hidden;
           text-overflow: ellipsis;
           .day-number {
-            text-align: right;
             padding: 4px 5px 4px 4px;
             opacity: 0;
           }
@@ -446,6 +456,9 @@ export default {
             .day-number {
               color: rgba(0, 0, 0, 0.24);
             }
+          }
+          &.is-active {
+            background-color: rgba(0, 0, 0, 0.3);
           }
           .event-box {
             .event-item {
@@ -472,10 +485,6 @@ export default {
               }
               &.is-opacity {
                 opacity: 0;
-              }
-
-              &.is-active {
-                background-color: rgba(0, 0, 0, 0.3);
               }
             }
             .more-link {
@@ -535,6 +544,9 @@ export default {
         }
       }
     }
+  }
+  .summary-link {
+    padding: 5px;
   }
 }
 </style>

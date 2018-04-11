@@ -144,7 +144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, "\n.comp-full-calendar {\n  padding: 20px;\n  background: #fff;\n  max-width: 960px;\n  margin: 0 auto;\n}\n.comp-full-calendar ul,\n  .comp-full-calendar p {\n    margin: 0;\n    padding: 0;\n}\n.full-calendar-body {\n  margin-top: 20px;\n}\n.full-calendar-body .weeks {\n    display: flex;\n    border-top: 1px solid #e0e0e0;\n    border-bottom: 1px solid #e0e0e0;\n    border-left: 1px solid #e0e0e0;\n}\n.full-calendar-body .weeks .week {\n      flex: 1;\n      text-align: center;\n      border-right: 1px solid #e0e0e0;\n}\n.full-calendar-body .dates {\n    position: relative;\n}\n.full-calendar-body .dates .week-row {\n      border-left: 1px solid #e0e0e0;\n      display: flex;\n}\n.full-calendar-body .dates .week-row .day-cell {\n        flex: 1;\n        min-height: 112px;\n        padding: 4px;\n        border-right: 1px solid #e0e0e0;\n        border-bottom: 1px solid #e0e0e0;\n}\n.full-calendar-body .dates .week-row .day-cell .day-number {\n          text-align: right;\n}\n.full-calendar-body .dates .week-row .day-cell.today {\n          background-color: #fcf8e3;\n}\n.full-calendar-body .dates .week-row .day-cell.not-cur-month .day-number {\n          color: rgba(0, 0, 0, 0.24);\n}\n.full-calendar-body .dates .dates-events {\n      position: absolute;\n      top: 0;\n      left: 0;\n      z-index: 1;\n      width: 100%;\n}\n.full-calendar-body .dates .dates-events .events-week {\n        display: flex;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day {\n          cursor: pointer;\n          flex: 1;\n          min-height: 112px;\n          overflow: hidden;\n          text-overflow: ellipsis;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .day-number {\n            text-align: right;\n            padding: 4px 5px 4px 4px;\n            opacity: 0;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day.not-cur-month .day-number {\n            color: rgba(0, 0, 0, 0.24);\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #c7e6fd;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-start {\n              margin-left: 4px;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-end {\n              margin-right: 4px;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-opacity {\n              opacity: 0;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-active {\n              background-color: rgba(0, 0, 0, 0.3);\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .more-link {\n            cursor: pointer;\n            padding-left: 8px;\n            padding-right: 2px;\n            color: rgba(0, 0, 0, 0.38);\n            font-size: 14px;\n}\n.full-calendar-body .dates .more-events {\n      position: absolute;\n      width: 150px;\n      z-index: 2;\n      border: 1px solid #eee;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\n}\n.full-calendar-body .dates .more-events .more-header {\n        background-color: #eee;\n        padding: 5px;\n        display: flex;\n        align-items: center;\n        font-size: 14px;\n}\n.full-calendar-body .dates .more-events .more-header .title {\n          flex: 1;\n}\n.full-calendar-body .dates .more-events .more-header .close {\n          margin-right: 2px;\n          cursor: pointer;\n          font-size: 16px;\n}\n.full-calendar-body .dates .more-events .more-body {\n        height: 146px;\n        overflow: hidden;\n}\n.full-calendar-body .dates .more-events .more-body .body-list {\n          height: 144px;\n          padding: 5px;\n          overflow: auto;\n          background-color: #fff;\n}\n.full-calendar-body .dates .more-events .more-body .body-list .body-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #c7e6fd;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis;\n}\n", ""]);
+	exports.push([module.id, "\n.comp-full-calendar {\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  padding: 20px;\n  background: #fff;\n  max-width: 960px;\n  margin: 0 auto;\n}\n.comp-full-calendar ul,\n  .comp-full-calendar p {\n    margin: 0;\n    padding: 0;\n}\n.full-calendar-body {\n  margin-top: 20px;\n}\n.full-calendar-body .weeks {\n    display: flex;\n    border-top: 1px solid #e0e0e0;\n    border-bottom: 1px solid #e0e0e0;\n    border-left: 1px solid #e0e0e0;\n}\n.full-calendar-body .weeks .week {\n      flex: 1;\n      text-align: center;\n      border-right: 1px solid #e0e0e0;\n}\n.full-calendar-body .dates {\n    position: relative;\n}\n.full-calendar-body .dates .week-row {\n      border-left: 1px solid #e0e0e0;\n      display: flex;\n}\n.full-calendar-body .dates .week-row .day-cell {\n        flex: 1;\n        min-height: 112px;\n        padding: 4px;\n        border-right: 1px solid #e0e0e0;\n        border-bottom: 1px solid #e0e0e0;\n        box-sizing: border-box;\n}\n.full-calendar-body .dates .week-row .day-cell.today {\n          background-color: #fcf8e3;\n}\n.full-calendar-body .dates .week-row .day-cell.not-cur-month .day-number {\n          color: rgba(0, 0, 0, 0.24);\n}\n.full-calendar-body .dates .dates-events {\n      position: absolute;\n      top: 0;\n      left: 0;\n      z-index: 1;\n      width: 100%;\n}\n.full-calendar-body .dates .dates-events .events-week {\n        display: flex;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day {\n          cursor: pointer;\n          flex: 1;\n          min-height: 112px;\n          overflow: hidden;\n          text-overflow: ellipsis;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .day-number {\n            padding: 4px 5px 4px 4px;\n            opacity: 0;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day.not-cur-month .day-number {\n            color: rgba(0, 0, 0, 0.24);\n}\n.full-calendar-body .dates .dates-events .events-week .events-day.is-active {\n            background-color: rgba(0, 0, 0, 0.3);\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #c7e6fd;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-start {\n              margin-left: 4px;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-end {\n              margin-right: 4px;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .event-item.is-opacity {\n              opacity: 0;\n}\n.full-calendar-body .dates .dates-events .events-week .events-day .event-box .more-link {\n            cursor: pointer;\n            padding-left: 8px;\n            padding-right: 2px;\n            color: rgba(0, 0, 0, 0.38);\n            font-size: 14px;\n}\n.full-calendar-body .dates .more-events {\n      position: absolute;\n      width: 150px;\n      z-index: 2;\n      border: 1px solid #eee;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\n}\n.full-calendar-body .dates .more-events .more-header {\n        background-color: #eee;\n        padding: 5px;\n        display: flex;\n        align-items: center;\n        font-size: 14px;\n}\n.full-calendar-body .dates .more-events .more-header .title {\n          flex: 1;\n}\n.full-calendar-body .dates .more-events .more-header .close {\n          margin-right: 2px;\n          cursor: pointer;\n          font-size: 16px;\n}\n.full-calendar-body .dates .more-events .more-body {\n        height: 146px;\n        overflow: hidden;\n}\n.full-calendar-body .dates .more-events .more-body .body-list {\n          height: 144px;\n          padding: 5px;\n          overflow: auto;\n          background-color: #fff;\n}\n.full-calendar-body .dates .more-events .more-body .body-list .body-item {\n            cursor: pointer;\n            font-size: 12px;\n            background-color: #c7e6fd;\n            margin-bottom: 2px;\n            color: rgba(0, 0, 0, 0.87);\n            padding: 0 0 0 4px;\n            height: 18px;\n            line-height: 18px;\n            white-space: nowrap;\n            overflow: hidden;\n            text-overflow: ellipsis;\n}\n.full-calendar-body .summary-link {\n    padding: 5px;\n}\n", ""]);
 	
 	// exports
 
@@ -532,179 +532,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _eventCard2 = _interopRequireDefault(_eventCard);
 	
+	var _header = __webpack_require__(175);
+	
+	var _header2 = _interopRequireDefault(_header);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = {
-	  components: {
-	    'event-card': _eventCard2.default,
-	    'fc-header': __webpack_require__(175)
-	  },
-	
-	  filters: {
-	    localeWeekDay: function localeWeekDay(weekday, firstDay, locale) {
-	      var localMoment = (0, _moment2.default)().locale(locale);
-	      return localMoment.localeData().weekdaysShort()[(weekday + parseInt(firstDay, 10)) % 7];
-	    }
-	  },
-	
-	  props: {
-	    events: {
-	      // events will be displayed on calendar
-	      type: Array,
-	      default: function _default() {
-	        return [];
-	      }
-	    },
-	    locale: {
-	      type: String,
-	      default: 'en'
-	    },
-	    firstDay: {
-	      type: Number,
-	      validator: function validator(val) {
-	        var res = parseInt(val, 10);
-	        return res >= 0 && res <= 6;
-	      },
-	
-	      default: 0
-	    },
-	    eventLimit: {
-	      type: Number,
-	      default: 3
-	    }
-	  },
-	
-	  data: function data() {
-	    return {
-	      currentMonth: (0, _moment2.default)().startOf('month'),
-	      showMore: false,
-	      morePos: {
-	        top: 0,
-	
-	        left: 0
-	      },
-	      selectDay: {},
-	      activeEvent: {}
-	    };
-	  },
-	
-	
-	  computed: {
-	    currentDates: function currentDates() {
-	      return this.getCalendar();
-	    }
-	  },
-	
-	  mounted: function mounted() {
-	    this.emitChangeMonth(this.currentMonth);
-	  },
-	
-	
-	  methods: {
-	    emitChangeMonth: function emitChangeMonth(firstDayOfMonth) {
-	      this.currentMonth = firstDayOfMonth;
-	      this.activeEvent = null;
-	
-	      var start = _dateFunc2.default.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
-	      var end = _dateFunc2.default.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
-	
-	      this.$emit('changeMonth', start, end, firstDayOfMonth);
-	    },
-	    moreTitle: function moreTitle(date) {
-	      if (!date) return '';
-	      return (0, _moment2.default)(date).format('ll');
-	    },
-	    getCalendar: function getCalendar() {
-	      // calculate 2d-array of each month
-	      var monthViewStartDate = _dateFunc2.default.getMonthViewStartDate(this.currentMonth, this.firstDay);
-	      var calendar = [];
-	
-	      for (var perWeek = 0; perWeek < 6; perWeek += 1) {
-	        var week = [];
-	
-	        for (var perDay = 0; perDay < 7; perDay += 1) {
-	          week.push({
-	            monthDay: monthViewStartDate.date(),
-	            isToday: monthViewStartDate.isSame((0, _moment2.default)(), 'day'),
-	            isCurMonth: monthViewStartDate.isSame(this.currentMonth, 'month'),
-	            weekDay: perDay,
-	            date: (0, _moment2.default)(monthViewStartDate),
-	            events: this.slotEvents(monthViewStartDate)
-	          });
-	
-	          monthViewStartDate.add(1, 'day');
-	        }
-	        calendar.push(week);
-	      }
-	
-	      return calendar;
-	    },
-	    slotEvents: function slotEvents(date) {
-	      // find all events start from this date
-	      var thisDayEvents = this.events.filter(function (day) {
-	        var st = (0, _moment2.default)(day.start);
-	        var ed = (0, _moment2.default)(day.end ? day.end : st);
-	
-	        return date.isBetween(st, ed, null, '[]');
-	      });
-	
-	      // sort by duration
-	      thisDayEvents.sort(function (a, b) {
-	        if (!a.cellIndex) return 1;
-	        if (!b.cellIndex) return -1;
-	        return a.cellIndex - b.cellIndex;
-	      });
-	
-	      // mark cellIndex and place holder
-	      for (var i = 0; i < thisDayEvents.length; i += 1) {
-	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
-	        thisDayEvents[i].isShow = true;
-	        thisDayEvents[i].isActive = thisDayEvents[i] === this.activeEvent;
-	
-	        if (thisDayEvents[i].cellIndex === i + 1 || i > 2) continue;
-	        thisDayEvents.splice(i, 0, {
-	          title: 'holder',
-	          cellIndex: i + 1,
-	          start: date.format(),
-	          end: date.format(),
-	          isShow: false
-	        });
-	      }
-	
-	      return thisDayEvents;
-	    },
-	    selectThisDay: function selectThisDay(day, jsEvent) {
-	      this.selectDay = day;
-	      this.showMore = true;
-	      this.morePos = this.computePos(jsEvent.target);
-	      this.morePos.top -= 100;
-	      var events = day.events.filter(function (item) {
-	        return item.isShow === true;
-	      });
-	      this.$emit('moreClick', day.date, events, jsEvent);
-	    },
-	    computePos: function computePos(target) {
-	      var eventRect = target.getBoundingClientRect();
-	      var pageRect = this.$refs.dates.getBoundingClientRect();
-	      return {
-	        left: eventRect.left - pageRect.left,
-	        top: eventRect.top + eventRect.height - pageRect.top
-	      };
-	    },
-	    dayClick: function dayClick(day, jsEvent) {
-	      this.activeEvent = null;
-	      this.$emit('dayClick', day, jsEvent);
-	    },
-	    eventClick: function eventClick(event, jsEvent) {
-	      if (!event.isShow) return;
-	
-	      this.activeEvent = event;
-	      jsEvent.stopPropagation();
-	      var pos = this.computePos(jsEvent.target);
-	      this.$emit('eventClick', event, jsEvent, pos);
-	    }
-	  }
-	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -891,6 +734,178 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	
 	// import langSets from './dataMap/langSets'
+	exports.default = {
+	  components: {
+	    EventCard: _eventCard2.default,
+	    FcHeader: _header2.default
+	  },
+	
+	  filters: {
+	    localeWeekDay: function localeWeekDay(weekday, firstDay, locale) {
+	      var localMoment = (0, _moment2.default)().locale(locale);
+	      return localMoment.localeData().weekdaysShort()[(weekday + parseInt(firstDay, 10)) % 7];
+	    }
+	  },
+	
+	  props: {
+	    events: {
+	      // events will be displayed on calendar
+	      type: Array,
+	      default: function _default() {
+	        return [];
+	      }
+	    },
+	    locale: {
+	      type: String,
+	      default: 'en'
+	    },
+	    firstDay: {
+	      type: Number,
+	      validator: function validator(val) {
+	        var res = parseInt(val, 10);
+	        return res >= 0 && res <= 6;
+	      },
+	
+	      default: 0
+	    },
+	    eventLimit: {
+	      type: Number,
+	      default: 3
+	    }
+	  },
+	
+	  data: function data() {
+	    return {
+	      currentMonth: (0, _moment2.default)().startOf('month'),
+	      showMore: false,
+	      morePos: {
+	        top: 0,
+	
+	        left: 0
+	      },
+	      selectDay: {}
+	    };
+	  },
+	
+	
+	  computed: {
+	    currentDates: function currentDates() {
+	      return this.getCalendar();
+	    }
+	  },
+	
+	  mounted: function mounted() {
+	    this.emitChangeMonth(this.currentMonth);
+	  },
+	
+	
+	  methods: {
+	    emitChangeMonth: function emitChangeMonth(firstDayOfMonth) {
+	      this.currentMonth = firstDayOfMonth;
+	
+	      var start = _dateFunc2.default.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
+	      var end = _dateFunc2.default.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
+	
+	      this.$emit('changeMonth', start, end, firstDayOfMonth);
+	    },
+	    moreTitle: function moreTitle(date) {
+	      if (!date) return '';
+	      return (0, _moment2.default)(date).format('ll');
+	    },
+	    getCalendar: function getCalendar() {
+	      // calculate 2d-array of each month
+	      var monthViewStartDate = _dateFunc2.default.getMonthViewStartDate(this.currentMonth, this.firstDay);
+	      var calendar = [];
+	
+	      for (var perWeek = 0; perWeek < 6; perWeek += 1) {
+	        var week = [];
+	
+	        for (var perDay = 0; perDay < 7; perDay += 1) {
+	          week.push({
+	            monthDay: monthViewStartDate.date(),
+	            isToday: monthViewStartDate.isSame((0, _moment2.default)(), 'day'),
+	            isCurMonth: monthViewStartDate.isSame(this.currentMonth, 'month'),
+	            weekDay: perDay,
+	            date: (0, _moment2.default)(monthViewStartDate),
+	            events: this.slotEvents(monthViewStartDate)
+	          });
+	
+	          monthViewStartDate.add(1, 'day');
+	        }
+	        calendar.push(week);
+	      }
+	
+	      return calendar;
+	    },
+	    slotEvents: function slotEvents(date) {
+	      // find all events start from this date
+	      var thisDayEvents = this.events.filter(function (day) {
+	        var st = (0, _moment2.default)(day.start);
+	        var ed = (0, _moment2.default)(day.end ? day.end : st);
+	
+	        return date.isBetween(st, ed, null, '[]');
+	      });
+	
+	      // sort by duration
+	      thisDayEvents.sort(function (a, b) {
+	        if (!a.cellIndex) return 1;
+	        if (!b.cellIndex) return -1;
+	        return a.cellIndex - b.cellIndex;
+	      });
+	
+	      // mark cellIndex and place holder
+	      for (var i = 0; i < thisDayEvents.length; i += 1) {
+	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
+	        thisDayEvents[i].isShow = true;
+	
+	        if (thisDayEvents[i].cellIndex === i + 1 || i > 2) continue;
+	        thisDayEvents.splice(i, 0, {
+	          title: 'holder',
+	          cellIndex: i + 1,
+	          start: date.format(),
+	          end: date.format(),
+	          isShow: false
+	        });
+	      }
+	
+	      return thisDayEvents;
+	    },
+	    selectThisDay: function selectThisDay(day, jsEvent) {
+	      this.selectDay = day;
+	      this.showMore = true;
+	      this.morePos = this.computePos(jsEvent.target);
+	      this.morePos.top -= 100;
+	      var events = day.events.filter(function (item) {
+	        return item.isShow === true;
+	      });
+	      this.$emit('moreClick', day.date, events, jsEvent);
+	    },
+	    computePos: function computePos(target) {
+	      var eventRect = target.getBoundingClientRect();
+	      var pageRect = this.$refs.dates.getBoundingClientRect();
+	      return {
+	        left: eventRect.left - pageRect.left,
+	        top: eventRect.top + eventRect.height - pageRect.top
+	      };
+	    },
+	    dayClick: function dayClick(day, jsEvent) {
+	      if (day.events.length) {
+	        this.selectDay = this.selectDay !== day ? day : null;
+	      } else {
+	        this.selectDay = null;
+	      }
+	
+	      this.$emit('dayClick', day, jsEvent);
+	    },
+	    eventClick: function eventClick(event, jsEvent) {
+	      if (!event.isShow) return;
+	
+	      jsEvent.stopPropagation();
+	      var pos = this.computePos(jsEvent.target);
+	      this.$emit('eventClick', event, jsEvent, pos);
+	    }
+	  }
+	};
 
 /***/ }),
 /* 8 */
@@ -18571,6 +18586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    staticClass: "weeks"
 	  }, _vm._l((7), function(dayIndex) {
 	    return _c('strong', {
+	      key: dayIndex,
 	      staticClass: "week"
 	    }, [_vm._v(_vm._s(_vm._f("localeWeekDay")((dayIndex - 1), _vm.firstDay, _vm.locale)))])
 	  })), _vm._v(" "), _c('div', {
@@ -18578,14 +18594,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    staticClass: "dates"
 	  }, [_c('div', {
 	    staticClass: "dates-bg"
-	  }, _vm._l((_vm.currentDates), function(week) {
+	  }, _vm._l((_vm.currentDates), function(week, weekIndex) {
 	    return _c('div', {
+	      key: weekIndex,
 	      staticClass: "week-row"
-	    }, _vm._l((week), function(day) {
+	    }, _vm._l((week), function(day, dayIndex) {
 	      return _c('div', {
+	        key: dayIndex,
 	        staticClass: "day-cell",
 	        class: {
-	          'today': day.isToday, 'not-cur-month': !day.isCurMonth
+	          'today': day.isToday,
+	            'not-cur-month': !day.isCurMonth
 	        }
 	      }, [_c('p', {
 	        staticClass: "day-number"
@@ -18593,16 +18612,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }))
 	  })), _vm._v(" "), _c('div', {
 	    staticClass: "dates-events"
-	  }, _vm._l((_vm.currentDates), function(week, key) {
+	  }, _vm._l((_vm.currentDates), function(week, weekKey) {
 	    return _c('div', {
+	      key: weekKey,
 	      staticClass: "events-week"
-	    }, _vm._l((week), function(day) {
+	    }, _vm._l((week), function(day, dayIndex) {
 	      return _c('div', {
+	        key: dayIndex,
 	        staticClass: "events-day",
 	        class: {
 	          'today': day.isToday,
 	            'not-cur-month': !day.isCurMonth,
-	            'event-box-multiple': day.events.length > 1
+	            'events-day-multiple': day.events.length > 1,
+	            'is-active': day === _vm.selectDay
 	        },
 	        attrs: {
 	          "track-by": "$index"
@@ -18610,14 +18632,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        on: {
 	          "click": function($event) {
 	            $event.stopPropagation();
-	            _vm.dayClick(day.date, $event)
+	            _vm.dayClick(day, $event)
 	          }
 	        }
 	      }, [_c('p', {
 	        staticClass: "day-number"
 	      }, [_vm._v(_vm._s(day.monthDay))]), _vm._v(" "), _c('div', {
 	        staticClass: "event-box"
-	      }, [(_vm.eventLimit > 1) ? [_vm._l((day.events), function(event) {
+	      }, [(_vm.eventLimit > 1) ? [_vm._l((day.events), function(event, eventKey) {
 	        return _c('event-card', {
 	          directives: [{
 	            name: "show",
@@ -18625,9 +18647,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            value: (event.cellIndex <= _vm.eventLimit),
 	            expression: "event.cellIndex <= eventLimit"
 	          }],
-	          class: {
-	            'is-active': event.isActive
-	          },
+	          key: eventKey,
 	          attrs: {
 	            "event": event,
 	            "date": day.date,
@@ -18653,18 +18673,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _vm.selectThisDay(day, $event)
 	          }
 	        }
-	      }, [_vm._v("\n                  + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n                ")]) : _vm._e()] : [_vm._l((day.events), function(event) {
+	      }, [_vm._v("\n                  + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n                ")]) : _vm._e()] : [_vm._l((day.events), function(event, eventKey) {
 	        return (day.events.length === 1) ? _c('event-card', {
-	          class: {
-	            'is-active': event.isActive
-	          },
+	          key: eventKey,
 	          attrs: {
 	            "event": event,
 	            "date": day.date,
 	            "first-day": _vm.firstDay
-	          },
-	          on: {
-	            "click": _vm.eventClick
 	          },
 	          scopedSlots: _vm._u([{
 	            key: "default",
@@ -18679,7 +18694,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        staticClass: "summary-link",
 	        on: {
 	          "click": function($event) {
-	            $event.stopPropagation();
 	            _vm.selectThisDay(day, $event)
 	          }
 	        }
@@ -18687,13 +18701,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        events: day.events
 	      })], 2) : _vm._e()]], 2)])
 	    }))
-	  })), _vm._v(" "), _c('div', {
-	    directives: [{
-	      name: "show",
-	      rawName: "v-show",
-	      value: (_vm.showMore),
-	      expression: "showMore"
-	    }],
+	  })), _vm._v(" "), (_vm.showMore && _vm.selectDay) ? _c('div', {
 	    staticClass: "more-events",
 	    style: ({
 	      left: _vm.morePos.left + 'px',
@@ -18715,7 +18723,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    staticClass: "more-body"
 	  }, [_c('ul', {
 	    staticClass: "body-list"
-	  }, _vm._l((_vm.selectDay.events), function(event) {
+	  }, _vm._l((_vm.selectDay.events), function(event, eventKey) {
 	    return _c('li', {
 	      directives: [{
 	        name: "show",
@@ -18723,6 +18731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: (event.isShow),
 	        expression: "event.isShow"
 	      }],
+	      key: eventKey,
 	      staticClass: "body-item",
 	      on: {
 	        "click": function($event) {
@@ -18730,7 +18739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 	    }, [_vm._v("\n              " + _vm._s(event.title) + "\n            ")])
-	  }))])]), _vm._v(" "), _vm._t("body-card")], 2)])], 1)
+	  }))])]) : _vm._e(), _vm._v(" "), _vm._t("body-card")], 2)])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {

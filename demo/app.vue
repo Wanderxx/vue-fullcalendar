@@ -8,7 +8,7 @@
       :first-day="1"
       :event-limit="1"
       class="test-fc"
-      locale="fr"
+      locale="en"
       @changeMonth="changeMonth"
       @eventClick="eventClick"
       @dayClick="dayClick"
@@ -21,7 +21,7 @@
         <p><i class="fa">Title:</i> {{ p.event.title }}</p>
       </template>
       <template slot="fc-header-left">
-        left
+        left slot
       </template>
 
 
@@ -43,7 +43,7 @@
       </template>
 
       <template slot="fc-header-right">
-        right
+        right slot
       </template>
 
       <template
