@@ -884,7 +884,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.selectDay = this.selectDay !== day ? day : null;
 	
 	        this.morePos = this.computePos(jsEvent.target);
-	        this.morePos.top -= 100;
 	        events = day.events.filter(function (item) {
 	          return item.isShow === true;
 	        });
