@@ -134,7 +134,7 @@
                   </event-card>
                   <p
                     v-if="day.events.length > eventLimit"
-                    class="more-link"
+                    class="summary-link"
                     @click.stop="selectThisDay(day, $event)"
                   >
                     <slot
