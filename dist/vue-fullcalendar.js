@@ -18676,7 +18676,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }])
 	        }) : _vm._e()
 	      }), _vm._v(" "), (day.events.length > _vm.eventLimit) ? _c('p', {
-	        staticClass: "more-link",
+	        staticClass: "summary-link",
 	        on: {
 	          "click": function($event) {
 	            $event.stopPropagation();
