@@ -1,50 +1,72 @@
 <template>
-    <p class="event-item" :class="cssClasses"
-       @click="$emit('click', event, $event)">
-        <slot :event="event" v-if="showTitle">
-            Def: {{ event.title }}
-        </slot>
-    </p>
+  <p
+    :class="cssClasses"
+    class="event-item"
+    @click="$emit('click', event, $event)"
+  >
+    <slot
+      v-if="showTitle"
+      :event="event"
+    >
+      Def: {{ event.title }}
+    </slot>
+  </p>
 </template>
 
 <script>
-    import moment from 'moment'
+import moment from 'moment';
 
-    export default {
-        props: ['event', 'date', 'firstDay'],
-        computed: {
-            cssClasses () {
-                let cssClasses = this.event.cssClass;
+export default {
+  props: {
+    event: {
+      type: Object,
+      required: true,
+    },
+    date: {
+      type: Object,
+      required: true,
+    },
+    firstDay: {
+      type: Number | String,
+      required: true,
+    },
+  },
 
-                if (!Array.isArray(cssClasses)) {
-                    cssClasses = [cssClasses];
-                } else {
-                    cssClasses = Array.from(cssClasses);
-                }
+  computed: {
+    cssClasses() {
+      let cssClasses = this.event.cssClass;
 
-                if (this.start.isSame(this.date, 'day')) {
-                    cssClasses.push('is-start');
-                }
+      if (!Array.isArray(cssClasses)) {
+        cssClasses = [cssClasses];
+      } else {
+        cssClasses = Array.from(cssClasses);
+      }
 
-                if (this.end.isSame(this.date, 'day')) {
-                    cssClasses.push('is-end');
-                }
+      if (this.start.isSame(this.date, 'day')) {
+        cssClasses.push('is-start');
+      }
 
-                if (! this.event.isShow) {
-                    cssClasses.push('is-opacity');
-                }
+      if (this.end.isSame(this.date, 'day')) {
+        cssClasses.push('is-end');
+      }
 
-                return cssClasses.join(' ');
-            },
-            showTitle() {
-                return (this.date.day() == this.firstDay || this.start.isSame(this.date, 'day'));
-            },
-            start () {
-                return moment(this.event.start);
-            },
-            end () {
-                return moment(this.event.end);
-            }
-        }
-    }
+      if (!this.event.isShow) {
+        cssClasses.push('is-opacity');
+      }
+
+      return cssClasses.join(' ');
+    },
+    showTitle() {
+      return (
+        this.date.day() == this.firstDay || this.start.isSame(this.date, 'day')
+      );
+    },
+    start() {
+      return moment(this.event.start);
+    },
+    end() {
+      return moment(this.event.end);
+    },
+  },
+};
 </script>
