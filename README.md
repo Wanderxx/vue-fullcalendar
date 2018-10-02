@@ -104,7 +104,7 @@ A sample screenshot is here,
 	events = [
 	  {
 	    title     :  'event1',
-	    start     : '2016-07-01'，
+	    start     : '2016-07-01',
 	    cssClass  : 'family',
 	    YOUR_DATA : {}
 	  },
@@ -112,7 +112,7 @@ A sample screenshot is here,
 	    title     : 'event2',
 	    start     : '2016-07-02',
 	    end       : '2016-07-03',
-	    cssClass  : ['family', 'career']
+	    cssClass  : ['family', 'career'],
 	    YOUR_DATA : {}
 	  }
 	]         
