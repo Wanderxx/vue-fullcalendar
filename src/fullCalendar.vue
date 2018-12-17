@@ -136,7 +136,7 @@
 
         let start = dateFunc.getMonthViewStartDate(firstDayOfMonth, this.firstDay);
         let end = dateFunc.getMonthViewEndDate(firstDayOfMonth, this.firstDay);
-
+        console.log("---")
         this.$emit('changeMonth', start, end, firstDayOfMonth)
       },
       moreTitle (date) {
