@@ -40,9 +40,9 @@
               'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
               <p class="day-number">{{day.monthDay}}</p>
               <div class="event-box">
-                <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick">
-                  <template scope="p">
-                    <slot name="fc-event-card" :event="p.event"></slot>
+                <event-card :event="event" :date="day.date" :firstDay="firstDay" :key="index" v-for="(event,index) in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick">
+                  <template>
+                    <slot name="fc-event-card" :event="event"></slot>
                   </template>
                 </event-card>
                 <p v-if="day.events.length > eventLimit"
