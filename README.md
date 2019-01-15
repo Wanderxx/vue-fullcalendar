@@ -128,7 +128,7 @@ A sample screenshot is here,
 	
 	- `YOUR_DATA` You can define as many data you want as possible
 
-2. **locale** : langague of things like monthNames weekNames and titleFormat. Support same locales than [moment.js](http://momentjs.com/docs/#/i18n/)
+2. **lang** : langague of things like monthNames weekNames and titleFormat. Support same locales than [moment.js](http://momentjs.com/docs/#/i18n/)
 	
 	- `default` : `en`
 
