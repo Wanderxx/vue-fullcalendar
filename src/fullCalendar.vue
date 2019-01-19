@@ -27,7 +27,9 @@
             <div class="day-cell" v-for="day in week"
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}">
-              <p class="day-number">{{ day.monthDay }}</p>
+              <p class="day-number">
+                <span style="float:left" @click="addClick(day.date, $event)">新增</span>{{ day.monthDay }}
+              </p>
             </div>
           </div>
         </div>
@@ -230,6 +232,9 @@
         jsEvent.stopPropagation();
         let pos = this.computePos(jsEvent.target);
         this.$emit('eventClick', event, jsEvent, pos);
+      },
+      addClick(day, jsEvent) {
+        this.$emit('addClick', day, jsEvent)
       }
     },
     filters: {
