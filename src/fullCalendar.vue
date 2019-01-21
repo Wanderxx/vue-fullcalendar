@@ -27,9 +27,9 @@
             <div class="day-cell" v-for="day in week"
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}">
-              <!-- <p class="day-number">
-                <span style="float:left" @click="addClick(day.date, $event)">新增</span>{{ day.monthDay }}
-              </p> -->
+              <p class="day-number">
+                <span style="float:left;color:#C7E6FD">+</span>{{ day.monthDay }}
+              </p>
             </div>
           </div>
         </div>
@@ -40,7 +40,9 @@
             <div class="events-day" v-for="day in week" track-by="$index"
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
-              <p class="day-number">{{day.monthDay}}</p>
+              <p class="day-number">
+                <span style="float:left" @click="addClick(day.date, $event)">+</span>{{day.monthDay}}
+              </p>
               <div class="event-box">
                 <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick">
                   <template scope="p">

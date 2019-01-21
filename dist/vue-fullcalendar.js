@@ -776,6 +776,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
+	//
 	
 	// import langSets from './dataMap/langSets'
 
@@ -18535,7 +18537,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'today': day.isToday,
 	            'not-cur-month': !day.isCurMonth
 	        }
-	      })
+	      }, [_c('p', {
+	        staticClass: "day-number"
+	      }, [_c('span', {
+	        staticStyle: {
+	          "float": "left",
+	          "color": "#C7E6FD"
+	        }
+	      }, [_vm._v("+")]), _vm._v(_vm._s(day.monthDay) + "\n            ")])])
 	    }), 0)
 	  }), 0), _vm._v(" "), _c('div', {
 	    staticClass: "dates-events"
@@ -18560,7 +18569,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }, [_c('p', {
 	        staticClass: "day-number"
-	      }, [_vm._v(_vm._s(day.monthDay))]), _vm._v(" "), _c('div', {
+	      }, [_c('span', {
+	        staticStyle: {
+	          "float": "left"
+	        },
+	        on: {
+	          "click": function($event) {
+	            _vm.addClick(day.date, $event)
+	          }
+	        }
+	      }, [_vm._v("+")]), _vm._v(_vm._s(day.monthDay) + "\n            ")]), _vm._v(" "), _c('div', {
 	        staticClass: "event-box"
 	      }, [_vm._l((day.events), function(event) {
 	        return _c('event-card', {
