@@ -661,7 +661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var events = day.events.filter(function (item) {
 	        return item.isShow == true;
 	      });
-	      this.$emit('moreClick', day.date, events, jsEvent);
+	      this.$emit('moreClick', day, events, jsEvent);
 	    },
 	    computePos: function computePos(target) {
 	      var eventRect = target.getBoundingClientRect();
@@ -693,6 +693,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	}; //
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -18542,8 +18546,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }, [_c('span', {
 	        staticStyle: {
 	          "float": "left",
-	          "font-size": "14px",
-	          "color": "rgb(69, 84, 219)"
+	          "font-size": "18px",
+	          "color": "RGB(107,118,219)"
 	        }
 	      }, [_vm._v("+")]), _vm._v(_vm._s(day.monthDay) + "\n            ")])])
 	    }), 0)
@@ -18573,7 +18577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }, [_c('span', {
 	        staticStyle: {
 	          "float": "left",
-	          "font-size": "14px"
+	          "font-size": "18px"
 	        },
 	        on: {
 	          "click": function($event) {
@@ -18588,8 +18592,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          directives: [{
 	            name: "show",
 	            rawName: "v-show",
-	            value: (event.cellIndex <= _vm.eventLimit),
-	            expression: "event.cellIndex <= eventLimit"
+	            value: ((event.cellIndex <= _vm.eventLimit) || (day.events.length <= _vm.eventLimit)),
+	            expression: "(event.cellIndex <= eventLimit) || (day.events.length <= eventLimit)"
 	          }],
 	          attrs: {
 	            "event": event,
@@ -18616,7 +18620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _vm.selectThisDay(day, $event)
 	          }
 	        }
-	      }, [_vm._v("\n                + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n              ")]) : _vm._e()], 2)])
+	      }, [_vm._v("\n                + " + _vm._s(day.events.length - _vm.eventLimit) + " more\n              ")]) : _vm._e()], 2)])
 	    }), 0)
 	  }), 0), _vm._v(" "), _c('div', {
 	    directives: [{

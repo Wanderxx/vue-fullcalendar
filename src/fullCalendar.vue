@@ -28,7 +28,7 @@
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}">
               <p class="day-number">
-                <span style="float:left;font-size:14px;color:rgb(69, 84, 219)">+</span>{{ day.monthDay }}
+                <span style="float:left;font-size:18px;color:RGB(107,118,219)">+</span>{{ day.monthDay }}
               </p>
             </div>
           </div>
@@ -41,17 +41,21 @@
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
               <p class="day-number">
-                <span style="float:left;font-size:14px;" @click.stop="addClick(day.date, $event)">+</span>{{day.monthDay}}
+                <span style="float:left;font-size:18px;" @click.stop="addClick(day.date, $event)">+</span>{{day.monthDay}}
               </p>
               <div class="event-box">
-                <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick">
+                <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="(event.cellIndex <= eventLimit) || (day.events.length <= eventLimit)" @click="eventClick">
                   <template scope="p">
                     <slot name="fc-event-card" :event="p.event"></slot>
                   </template>
                 </event-card>
-                <p v-if="day.events.length > eventLimit"
+                <!-- <p v-if="day.events.length > eventLimit"
                    class="more-link" @click.stop="selectThisDay(day, $event)">
                   + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
+                </p> -->
+                <p v-if="day.events.length > eventLimit"
+                   class="more-link" @click.stop="selectThisDay(day, $event)">
+                  + {{day.events.length - eventLimit}} more
                 </p>
               </div>
             </div>
@@ -215,7 +219,7 @@
         let events = day.events.filter(item =>{
           return item.isShow == true
         });
-        this.$emit('moreClick', day.date, events, jsEvent)
+        this.$emit('moreClick', day, events, jsEvent)
       },
       computePos (target) {
         let eventRect = target.getBoundingClientRect();
