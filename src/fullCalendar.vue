@@ -28,7 +28,7 @@
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}">
               <p class="day-number">
-                <span style="float:left;color:#C7E6FD">+</span>{{ day.monthDay }}
+                <span style="float:left;font-size:14px;color:rgb(69, 84, 219)">+</span>{{ day.monthDay }}
               </p>
             </div>
           </div>
@@ -41,7 +41,7 @@
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
               <p class="day-number">
-                <span style="float:left" @click="addClick(day.date, $event)">+</span>{{day.monthDay}}
+                <span style="float:left;font-size:14px;" @click.stop="addClick(day.date, $event)">+</span>{{day.monthDay}}
               </p>
               <div class="event-box">
                 <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick">
@@ -312,7 +312,7 @@
   .events-day{
     cursor: pointer;
     flex:1;
-    min-height: 112px;
+    min-height: 121px;
     overflow: hidden;
     text-overflow: ellipsis;
   .day-number{
