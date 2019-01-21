@@ -18535,18 +18535,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'today': day.isToday,
 	            'not-cur-month': !day.isCurMonth
 	        }
-	      }, [_c('p', {
-	        staticClass: "day-number"
-	      }, [_c('span', {
-	        staticStyle: {
-	          "float": "left"
-	        },
-	        on: {
-	          "click": function($event) {
-	            _vm.addClick(day.date, $event)
-	          }
-	        }
-	      }, [_vm._v("新增")]), _vm._v(_vm._s(day.monthDay) + "\n            ")])])
+	      })
 	    }), 0)
 	  }), 0), _vm._v(" "), _c('div', {
 	    staticClass: "dates-events"
