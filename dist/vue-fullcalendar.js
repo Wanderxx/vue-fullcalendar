@@ -565,7 +565,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return {
 	      currentMonth: (0, _moment2.default)().startOf('month'),
 	      isLismit: true,
-	      eventLimit: 3,
+	      eventLimit: 4,
 	      showMore: false,
 	      morePos: {
 	        top: 0,
@@ -693,6 +693,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	}; //
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -17689,6 +17694,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
+	//
+	//
 
 /***/ }),
 /* 138 */
@@ -18290,9 +18298,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _vm.$emit('click', _vm.event, $event)
 	      }
 	    }
-	  }, [(_vm.showTitle) ? _vm._t("default", [_vm._v("\n        Def: " + _vm._s(_vm.event.title) + "\n    ")], {
+	  }, [_vm._t("default", [_vm._v("\n        Def: " + _vm._s(_vm.event.title) + "\n    ")], {
 	    event: _vm.event
-	  }) : _vm._e()], 2)
+	  })], 2)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -18587,13 +18595,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }, [_vm._v("+")]), _vm._v(_vm._s(day.monthDay) + "\n            ")]), _vm._v(" "), _c('div', {
 	        staticClass: "event-box"
-	      }, [_vm._l((day.events), function(event) {
+	      }, [_vm._l((day.events), function(event, index) {
 	        return _c('event-card', {
 	          directives: [{
 	            name: "show",
 	            rawName: "v-show",
-	            value: ((event.cellIndex <= _vm.eventLimit) || (day.events.length <= _vm.eventLimit)),
-	            expression: "(event.cellIndex <= eventLimit) || (day.events.length <= eventLimit)"
+	            value: (index < _vm.eventLimit),
+	            expression: "index < eventLimit"
 	          }],
 	          attrs: {
 	            "event": event,

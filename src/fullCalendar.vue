@@ -44,7 +44,12 @@
                 <span style="float:left;font-size:18px;" @click.stop="addClick(day.date, $event)">+</span>{{day.monthDay}}
               </p>
               <div class="event-box">
-                <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="(event.cellIndex <= eventLimit) || (day.events.length <= eventLimit)" @click="eventClick">
+                <!-- <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="(event.cellIndex <= eventLimit) || (day.events.length <= eventLimit)" @click="eventClick">
+                  <template scope="p">
+                    <slot name="fc-event-card" :event="p.event"></slot>
+                  </template>
+                </event-card> -->
+                <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="(event,index) in day.events" v-show="index < eventLimit" @click="eventClick">
                   <template scope="p">
                     <slot name="fc-event-card" :event="p.event"></slot>
                   </template>
@@ -124,7 +129,7 @@
       return {
         currentMonth : moment().startOf('month'),
         isLismit : true,
-        eventLimit : 3,
+        eventLimit : 4,
         showMore : false,
         morePos : {
           top: 0,

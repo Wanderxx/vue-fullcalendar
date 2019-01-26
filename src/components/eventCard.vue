@@ -1,7 +1,10 @@
 <template>
     <p class="event-item" :class="cssClasses"
        @click="$emit('click', event, $event)">
-        <slot :event="event" v-if="showTitle">
+        <!-- <slot :event="event" v-if="showTitle">
+            Def: {{ event.title }}
+        </slot> -->
+        <slot :event="event">
             Def: {{ event.title }}
         </slot>
     </p>
