@@ -199,14 +199,14 @@
         for (let i = 0;i < thisDayEvents.length;i++) {
           thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || (i + 1);
           thisDayEvents[i].isShow = true;
-          if (thisDayEvents[i].cellIndex == i+1 || i>2) continue;
-          thisDayEvents.splice(i,0,{
-            title : 'holder',
-            cellIndex : i+1,
-            start : date.format(),
-            end : date.format(),
-            isShow : false
-          })
+          // if (thisDayEvents[i].cellIndex == i+1 || i>2) continue;
+          // thisDayEvents.splice(i,0,{
+          //   title : 'holder',
+          //   cellIndex : i+1,
+          //   start : date.format(),
+          //   end : date.format(),
+          //   isShow : false
+          // })
         }
 
         return thisDayEvents
