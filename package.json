@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wanderxx/vue-fullcalendar.git"
+    "url": "git+https://github.com/timeLorder/vue-fullcalendar.git"
   },
   "dependencies": {
     "es6-promise": "^4.0.5",
@@ -37,9 +37,10 @@
     "exports-loader": "^0.6.3",
     "file-loader": "^0.8.5",
     "imports-loader": "^0.6.5",
+    "mirror-config-china": "^2.5.1",
     "moment": "^2.17.1",
     "node-libs-browser": "^0.5.3",
-    "node-sass": "^3.4.2",
+    "node-sass": "^4.11.0",
     "rollup": "^0.21.0",
     "rollup-plugin-babel": "^1.0.0",
     "rollup-plugin-replace": "^1.1.0",
@@ -56,5 +57,5 @@
     "vue",
     "fullcalendar"
   ],
-  "homepage": "https://github.com/Wanderxx/vue-fullcalendar#readme"
+  "homepage": "https://github.com/timeLorder/vue-fullcalendar#readme"
 }

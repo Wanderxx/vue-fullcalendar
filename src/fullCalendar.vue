@@ -27,7 +27,9 @@
             <div class="day-cell" v-for="day in week"
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}">
-              <p class="day-number">{{ day.monthDay }}</p>
+              <p class="day-number">
+                <span style="float:left;font-size:18px;color:RGB(107,118,219)">+</span>{{ day.monthDay }}
+              </p>
             </div>
           </div>
         </div>
@@ -38,16 +40,27 @@
             <div class="events-day" v-for="day in week" track-by="$index"
                  :class="{'today' : day.isToday,
               'not-cur-month' : !day.isCurMonth}" @click.stop="dayClick(day.date, $event)">
-              <p class="day-number">{{day.monthDay}}</p>
+              <p class="day-number">
+                <span style="float:left;font-size:18px;" @click.stop="addClick(day.date, $event)">+</span>{{day.monthDay}}
+              </p>
               <div class="event-box">
-                <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="event.cellIndex <= eventLimit" @click="eventClick">
+                <!-- <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="event in day.events" v-show="(event.cellIndex <= eventLimit) || (day.events.length <= eventLimit)" @click="eventClick">
+                  <template scope="p">
+                    <slot name="fc-event-card" :event="p.event"></slot>
+                  </template>
+                </event-card> -->
+                <event-card :event="event" :date="day.date" :firstDay="firstDay" v-for="(event,index) in day.events" v-show="index < eventLimit" @click="eventClick">
                   <template scope="p">
                     <slot name="fc-event-card" :event="p.event"></slot>
                   </template>
                 </event-card>
-                <p v-if="day.events.length > eventLimit"
+                <!-- <p v-if="day.events.length > eventLimit"
                    class="more-link" @click.stop="selectThisDay(day, $event)">
                   + {{day.events[day.events.length -1].cellIndex - eventLimit}} more
+                </p> -->
+                <p v-if="day.events.length > eventLimit"
+                   class="more-link" @click.stop="selectThisDay(day, $event)">
+                  + {{day.events.length - eventLimit}} more
                 </p>
               </div>
             </div>
@@ -116,7 +129,7 @@
       return {
         currentMonth : moment().startOf('month'),
         isLismit : true,
-        eventLimit : 3,
+        eventLimit : 4,
         showMore : false,
         morePos : {
           top: 0,
@@ -191,14 +204,14 @@
         for (let i = 0;i < thisDayEvents.length;i++) {
           thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || (i + 1);
           thisDayEvents[i].isShow = true;
-          if (thisDayEvents[i].cellIndex == i+1 || i>2) continue;
-          thisDayEvents.splice(i,0,{
-            title : 'holder',
-            cellIndex : i+1,
-            start : date.format(),
-            end : date.format(),
-            isShow : false
-          })
+          // if (thisDayEvents[i].cellIndex == i+1 || i>2) continue;
+          // thisDayEvents.splice(i,0,{
+          //   title : 'holder',
+          //   cellIndex : i+1,
+          //   start : date.format(),
+          //   end : date.format(),
+          //   isShow : false
+          // })
         }
 
         return thisDayEvents
@@ -211,7 +224,7 @@
         let events = day.events.filter(item =>{
           return item.isShow == true
         });
-        this.$emit('moreClick', day.date, events, jsEvent)
+        this.$emit('moreClick', day, events, jsEvent)
       },
       computePos (target) {
         let eventRect = target.getBoundingClientRect();
@@ -230,6 +243,9 @@
         jsEvent.stopPropagation();
         let pos = this.computePos(jsEvent.target);
         this.$emit('eventClick', event, jsEvent, pos);
+      },
+      addClick(day, jsEvent) {
+        this.$emit('addClick', day, jsEvent)
       }
     },
     filters: {
@@ -305,7 +321,7 @@
   .events-day{
     cursor: pointer;
     flex:1;
-    min-height: 112px;
+    min-height: 121px;
     overflow: hidden;
     text-overflow: ellipsis;
   .day-number{
