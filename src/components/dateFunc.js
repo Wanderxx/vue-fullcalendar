@@ -1,10 +1,12 @@
 import moment from 'moment';
 
 let dateFunc = {
-  getMonthViewStartDate (date, firstDay) {
+  getMonthViewStartDate (date, firstDay, setMonth) {
+
     firstDay = parseInt(firstDay);
     let start = moment(date);
-    let startOfMonth = moment(start.startOf('month'));
+ 
+    let startOfMonth = setMonth > 0 ? moment().month(setMonth - 1).startOf('month') : moment(start.startOf('month'));
 
     start.subtract(startOfMonth.day(), 'days');
 

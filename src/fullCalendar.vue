@@ -103,6 +103,10 @@
           return res >= 0 && res <= 6
         },
         default : 0
+      },
+      setMonth : {
+        type : Number | String,
+        default : null
       }
     },
     components : {
@@ -127,6 +131,9 @@
     },
     computed: {
       currentDates () {
+        if(this.setMonth){
+          this.currentMonth = moment().month(this.setMonth - 1).startOf('month')
+        }
         return this.getCalendar()
       }
     },
@@ -145,7 +152,7 @@
       },
       getCalendar () {
         // calculate 2d-array of each month
-        let monthViewStartDate = dateFunc.getMonthViewStartDate(this.currentMonth, this.firstDay);
+        let monthViewStartDate = dateFunc.getMonthViewStartDate(this.currentMonth, this.firstDay, this.setMonth);
         let calendar = [];
 
         for(let perWeek = 0 ; perWeek < 6 ; perWeek++) {
