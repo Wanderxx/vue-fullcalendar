@@ -240,7 +240,7 @@
       }
     }
   }
-  
+
 </script>
 <style lang="scss">
   .comp-full-calendar{
@@ -368,7 +368,7 @@
     padding:5px;
     display: flex;
     align-items : center;
-    font-size: 12px!important;
+    font-size: 14px!important;
   .mtitle{
     flex:1;
   }
