@@ -58,7 +58,7 @@
         <div class="more-events" v-show="showMore"
              :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
           <div class="more-header">
-            <span class="title">{{ moreTitle(selectDay.date) }}</span>
+            <span class="mtitle">{{ moreTitle(selectDay.date) }}</span>
             <span class="close" @click.stop="showMore = false">x</span>
           </div>
           <div class="more-body">
@@ -369,7 +369,7 @@
     display: flex;
     align-items : center;
     font-size: 12px!important;
-  .title{
+  .mtitle{
     flex:1;
   }
   .close{
