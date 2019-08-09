@@ -16754,6 +16754,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        expression: "event.isShow"
 	      }],
 	      staticClass: "body-item",
+				class: "event.cssClass",
 	      on: {
 	        "click": function($event) {
 	          _vm.eventClick(event, $event)
