@@ -565,7 +565,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return {
 	      currentMonth: (0, _moment2.default)().startOf('month'),
 	      isLismit: true,
-	      eventLimit: 3,
+	      eventLimit: 4,
 	      showMore: false,
 	      morePos: {
 	        top: 0,
