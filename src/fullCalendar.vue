@@ -368,7 +368,7 @@
     padding:5px;
     display: flex;
     align-items : center;
-    font-size: 14px;
+    font-size: 12px;
   .title{
     flex:1;
   }
