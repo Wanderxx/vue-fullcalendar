@@ -16409,7 +16409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _vm.$emit('click', _vm.event, $event)
 	      }
 	    }
-	  }, [(_vm.showTitle) ? _vm._t("default", [_vm._v("\n        Def: " + _vm._s(_vm.event.title) + "\n    ")], {
+	  }, [(_vm.showTitle) ? _vm._t("default", [_vm._v("\n     " + _vm._s(_vm.event.title) + "\n    ")], {
 	    event: _vm.event
 	  }) : _vm._e()], 2)
 	},staticRenderFns: []}
