@@ -566,7 +566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			'changeFlag'(to,from){
 				console.log(this.changeFlag);
 			}
-		}
+		},
 	  data: function data() {
 	    return {
 	      currentMonth: (0, _moment2.default)().startOf('month'),
