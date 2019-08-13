@@ -680,6 +680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    },
 	    dayClick: function dayClick(day, jsEvent) {
+				console.log(day);
 	      this.$emit('dayClick', day, jsEvent);
 	    },
 	    eventClick: function eventClick(event, jsEvent) {
@@ -688,7 +689,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      jsEvent.stopPropagation();
 	      var pos = this.computePos(jsEvent.target);
 	      this.$emit('eventClick', event, jsEvent, pos);
-	    }
+	    },
+			closeMoreDay: function closeMoreDay(){
+				 this.$emit('closeMoreDay');
+				console.log(this.showMore);
+			}
 	  },
 	  filters: {
 	    localeWeekDay: function localeWeekDay(weekday, firstDay, locale) {
