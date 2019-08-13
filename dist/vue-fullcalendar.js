@@ -633,7 +633,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      thisDayEvents.sort(function (a, b) {
 					var dayLengthA = Math.abs(new Date(a.end) - new Date(a.start));
 					var dayLengthB = Math.abs(new Date(b.end) - new Date(b.start));
-					console.log( "a : " + a +" // "+dayLengthA + " vs " +"b : "+b +" // " + dayLengthB);
+					console.log( "a : " + a.start + a.end +" // "+dayLengthA + " vs " +"b : "+b.start + b.end +" // " + dayLengthB);
 	        // if (!a.cellIndex) return 1;
 	        // if (!b.cellIndex) return -1;
 					if(dayLengthA > dayLengthB){
