@@ -15783,9 +15783,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                cssClasses.push('is-end');
 	            }
 
-	            if (!this.event.isShow) {
-	                cssClasses.push('is-opacity');
-	            }
+	            // if (!this.event.isShow) {
+	            //     cssClasses.push('is-opacity');
+	            // }
 
 	            return cssClasses.join(' ');
 	        },
