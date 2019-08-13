@@ -643,7 +643,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						return Math.abs(new Date(a.start) - new Date(b.start));
 					}
 	      });
-				console.log(date + " // " + thisDayEvents);
+				console.log(thisDayEvents);
 	      // mark cellIndex and place holder
 	      for (var i = 0; i < thisDayEvents.length; i++) {
 	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
