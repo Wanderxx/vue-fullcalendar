@@ -553,7 +553,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      default: 0
 	    },
-			changeFlag:{type:boolean}
+			changeFlag:{type:Boolean}
 	  },
 	  components: {
 	    'event-card': _eventCard2.default,
