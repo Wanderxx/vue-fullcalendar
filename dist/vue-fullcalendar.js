@@ -633,7 +633,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      thisDayEvents.sort(function (a, b) {
 					var dayLengthA = Math.abs(new Date(a.end) - new Date(a.start));
 					var dayLengthB = Math.abs(new Date(b.end) - new Date(b.start));
-					console.log( "a : " + a.start + a.end +" // "+dayLengthA + " vs " +"b : "+b.start + b.end +" // " + dayLengthB);
 	        // if (!a.cellIndex) return 1;
 	        // if (!b.cellIndex) return -1;
 					if(dayLengthA > dayLengthB){
@@ -644,7 +643,6 @@ return /******/ (function(modules) { // webpackBootstrap
 						return Math.abs(new Date(b.start) - new Date(a.start));
 					}
 	      });
-				console.log(thisDayEvents);
 	      // mark cellIndex and place holder
 	      for (var i = 0; i < thisDayEvents.length; i++) {
 	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
@@ -680,7 +678,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    },
 	    dayClick: function dayClick(day, jsEvent) {
-				console.log(day);
 	      this.$emit('dayClick', day, jsEvent);
 	    },
 	    eventClick: function eventClick(event, jsEvent) {
