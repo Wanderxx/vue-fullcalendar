@@ -641,12 +641,18 @@ return /******/ (function(modules) { // webpackBootstrap
 					var dayLengthB = Math.abs(new Date(b.end) - new Date(b.start));
 	        // if (!a.cellIndex) return 1;
 	        // if (!b.cellIndex) return -1;
-					if(dayLengthA > dayLengthB){
+					if (new Date(a.start) < new Date(b.start)) {
 						return -1;
-					}else if(dayLengthA < dayLengthB){
+					}else if(new Date(a.start) > new Date(b.start)){
 						return 1;
-					}else {
-						return Math.abs(new Date(b.start) - new Date(a.start));
+					}else{
+						if(dayLengthA > dayLengthB){
+							return -1;
+						}else if(dayLengthA < dayLengthB){
+							return 1;
+						}else {
+							return Math.abs(new Date(b.start) - new Date(a.start));
+						}
 					}
 	      });
 	      // mark cellIndex and place holder
