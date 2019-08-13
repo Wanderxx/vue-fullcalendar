@@ -656,7 +656,6 @@ return /******/ (function(modules) { // webpackBootstrap
 					}
 	      });
 	      // mark cellIndex and place holder
-				console.log(thisDayEvents);
 	      for (var i = 0; i < thisDayEvents.length; i++) {
 	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
 	        thisDayEvents[i].isShow = true;
