@@ -637,11 +637,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // if (!a.cellIndex) return 1;
 	        // if (!b.cellIndex) return -1;
 					if(dayLengthA > dayLengthB){
-						return 1;
-					}else if(dayLengthA < dayLengthB){
 						return -1;
+					}else if(dayLengthA < dayLengthB){
+						return 1;
 					}else {
-						return Math.abs(new Date(a.start) - new Date(b.start));
+						return Math.abs(new Date(b.start) - new Date(a.start));
 					}
 	      });
 				console.log(thisDayEvents);
