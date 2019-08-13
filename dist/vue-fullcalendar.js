@@ -633,10 +633,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      thisDayEvents.sort(function (a, b) {
 					var dayLengthA = Math.abs(new Date(a.end) - new Date(a.start));
 					var dayLengthB = Math.abs(new Date(b.end) - new Date(b.start));
-	        if (!a.cellIndex) return 1;
-	        if (!b.cellIndex) return -1;
-	        return dayLengthA - dayLengthB;
+	        // if (!a.cellIndex) return 1;
+	        // if (!b.cellIndex) return -1;
+					if(dayLengthA > dayLengthB){
+						return 1;
+					}else if(dayLengthA < dayLengthB){
+						return -1;
+					}else {
+						return Math.abs(new Date(a.start) - new Date(b.start));
+					}
 	      });
+				console.log(date + " // " + thisDayEvents);
 	      // mark cellIndex and place holder
 	      for (var i = 0; i < thisDayEvents.length; i++) {
 	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
