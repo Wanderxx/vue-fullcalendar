@@ -552,7 +552,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      },
 
 	      default: 0
-	    }
+	    },
+			changeFlag:{type:boolean}
 	  },
 	  components: {
 	    'event-card': _eventCard2.default,
@@ -561,6 +562,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mounted: function mounted() {
 	    this.emitChangeMonth(this.currentMonth);
 	  },
+		watch:{
+			'changeFlag'(to,from){
+				console.log(this.changeFlag);
+			}
+		}
 	  data: function data() {
 	    return {
 	      currentMonth: (0, _moment2.default)().startOf('month'),
@@ -682,15 +688,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    eventClick: function eventClick(event, jsEvent) {
 	      if (!event.isShow) return;
-
 	      jsEvent.stopPropagation();
 	      var pos = this.computePos(jsEvent.target);
 	      this.$emit('eventClick', event, jsEvent, pos);
-	    },
-			closeMoreDay: function closeMoreDay(){
-				 this.$emit('closeMoreDay');
-				console.log(this.showMore);
-			}
+	    }
 	  },
 	  filters: {
 	    localeWeekDay: function localeWeekDay(weekday, firstDay, locale) {
