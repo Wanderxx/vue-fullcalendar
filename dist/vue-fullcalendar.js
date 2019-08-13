@@ -564,7 +564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 		watch:{
 			'changeFlag'(to,from){
-				this.selectThisDay(this.selectDay);
+				this.selectThisDay(this.selectDay , this.selectEvent);
 			}
 		},
 	  data: function data() {
@@ -577,7 +577,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        top: 0,
 	        left: 0
 	      },
-	      selectDay: {}
+	      selectDay: {},
+				selectEvent:{},
 	    };
 	  },
 
@@ -665,6 +666,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      return thisDayEvents;
 	    },
+			settingDay: function settingDay(day, jsEvent) {
+				this.selectEvent = event;
+				this.selectDay = day;
+				this.selectThisDay(day,event);
+			},
 	    selectThisDay: function selectThisDay(day, jsEvent) {
 	      this.selectDay = day;
 	      this.showMore = true;
@@ -16723,7 +16729,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        on: {
 	          "click": function($event) {
 	            $event.stopPropagation();
-	            _vm.selectThisDay(day, $event)
+	            _vm.settingDay(day, $event);
 	          }
 	        }
 	      }, [_vm._v("\n                + " + _vm._s(day.events[day.events.length - 1].cellIndex - _vm.eventLimit) + " more\n              ")]) : _vm._e()], 2)])
