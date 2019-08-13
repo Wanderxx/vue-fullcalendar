@@ -629,19 +629,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return date.isBetween(st, ed, null, '[]');
 	      });
-
+				console.log(thisDayEvents);
 	      // sort by duration
 	      thisDayEvents.sort(function (a, b) {
 	        if (!a.cellIndex) return 1;
 	        if (!b.cellIndex) return -1;
-	        return a.cellIndex - b.cellIndex;
+	        return b.cellIndex - a.cellIndex;
 	      });
-
+				console.log(thisDayEvents);
 	      // mark cellIndex and place holder
 	      for (var i = 0; i < thisDayEvents.length; i++) {
 	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
 	        thisDayEvents[i].isShow = true;
-	        // if (thisDayEvents[i].cellIndex == i + 1 || i > 2) continue;
+	        if (thisDayEvents[i].cellIndex == i + 1 || i > 2) continue;
 	        // thisDayEvents.splice(i, 0, {
 	        //   title: 'holder',
 	        //   cellIndex: i + 1,
