@@ -564,7 +564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 		watch:{
 			'changeFlag'(to,from){
-				selectThisDay(this.selectDay);
+				this.selectThisDay(this.selectDay);
 			}
 		},
 	  data: function data() {
