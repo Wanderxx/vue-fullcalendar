@@ -629,14 +629,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return date.isBetween(st, ed, null, '[]');
 	      });
-				console.log(thisDayEvents);
 	      // sort by duration
 	      thisDayEvents.sort(function (a, b) {
+					var dayLengthA = Math.abs(new Date(a.end) - new Date(a.start));
+					var dayLengthB = Math.abs(new Date(b.end) - new Date(b.start));
 	        if (!a.cellIndex) return 1;
 	        if (!b.cellIndex) return -1;
-	        return b.cellIndex - a.cellIndex;
+	        return dayLengthA - dayLengthB;
 	      });
-				console.log(thisDayEvents);
 	      // mark cellIndex and place holder
 	      for (var i = 0; i < thisDayEvents.length; i++) {
 	        thisDayEvents[i].cellIndex = thisDayEvents[i].cellIndex || i + 1;
