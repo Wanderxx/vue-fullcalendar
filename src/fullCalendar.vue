@@ -58,13 +58,13 @@
         <div class="more-events" v-show="showMore"
              :style="{left: morePos.left + 'px', top: morePos.top + 'px'}">
           <div class="more-header">
-            <span class="title">{{ moreTitle(selectDay.date) }}</span>
+            <span class="mtitle">{{ moreTitle(selectDay.date) }}</span>
             <span class="close" @click.stop="showMore = false">x</span>
           </div>
           <div class="more-body">
             <ul class="body-list">
               <li v-for="event in selectDay.events"
-                  v-show="event.isShow" class="body-item"
+                  v-show="event.isShow" class="body-item" :class="event.cssClass"
                   @click="eventClick(event, $event)">
                 {{event.title}}
               </li>
@@ -240,7 +240,7 @@
       }
     }
   }
-  
+
 </script>
 <style lang="scss">
   .comp-full-calendar{
@@ -368,8 +368,8 @@
     padding:5px;
     display: flex;
     align-items : center;
-    font-size: 14px;
-  .title{
+    font-size: 14px!important;
+  .mtitle{
     flex:1;
   }
   .close{
